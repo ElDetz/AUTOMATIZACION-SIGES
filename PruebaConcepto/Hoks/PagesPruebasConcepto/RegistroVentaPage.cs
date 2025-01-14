@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,60 +28,67 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
 
         By saveSaleButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]");
 
-        public void ClicksalesButton()
+        public void EnterField(By _path,string _field)
         {
-            driver.FindElement(salesButton).Click();
+            driver.FindElement(_path).Clear();
+            driver.FindElement(_path).SendKeys(_field);
+            driver.FindElement(_path).SendKeys(Keys.Enter);
         }
 
-        public void ClicknewSaleButton()
+        public void ClickButton(By _button)
         {
-            driver.FindElement(newSaleButton).Click();
-        }
-
-        public void EnterCodeBarra(string code)
-        {
-            driver.FindElement(codeBarraField).SendKeys(code);
-            driver.FindElement(codeBarraField).SendKeys(Keys.Enter);
-        }
-
-        public void EnterDni(string dni)
-        {
-            driver.FindElement(dniField).Clear();
-            driver.FindElement(dniField).SendKeys(dni);
-            driver.FindElement(dniField).SendKeys(Keys.Enter);
-        }
-
-        public void ClickinfoTranfonButton()
-        {
-            driver.FindElement(infoTranfonButton).Click();
-        }
-        public void EnterinfoTranfon(string info)
-        {
-            driver.FindElement(infoTranfonField).SendKeys(info);
-        }
-
-        public void ClicksaveSaleButton()
-        {
-            driver.FindElement(saveSaleButton).Click();
+            driver.FindElement(_button).Click();
         }
 
         // Método para realizar el inicio de sesión completo
-        public void newSale(string codeBarra, string dni, string info)
+        public void CompleteFields(string codeBarra, string dni)
         {
-            ClicksalesButton();
+            ClickButton(salesButton);
             Thread.Sleep(2000);
-            ClicknewSaleButton();
+
+            ClickButton(newSaleButton);
             Thread.Sleep(4000);
-            EnterCodeBarra(codeBarra);
+
+            EnterField(codeBarraField, codeBarra);
             Thread.Sleep(4000);
-            EnterDni(dni);
-            Thread.Sleep(4000);
-            ClickinfoTranfonButton();
-            Thread.Sleep(4000);
-            EnterinfoTranfon(info);
-            Thread.Sleep(4000);
-            ClicksaveSaleButton();
+
+            EnterField(dniField, dni);
             Thread.Sleep(4000);
         }
-    }
+
+        public void PaymentMethod(string info)
+        {
+            ClickButton(infoTranfonButton);
+            Thread.Sleep(4000);
+            EnterField(infoTranfonField, info);
+            Thread.Sleep(4000);
+            ClickButton(saveSaleButton);
+            Thread.Sleep(2000);
+
+        }
+
+
+        /*public void ssdsd(string codeBarra, string dni, string info)
+        {
+                        ClickButton(salesButton);
+                    Thread.Sleep(2000);
+                        ClickButton(newSaleButton);
+
+                    Thread.Sleep(4000);
+                        EnterField(codeBarraField, codeBarra);
+                    Thread.Sleep(4000);
+
+                        EnterField(dniField, dni);
+
+                    Thread.Sleep(4000);
+                        ClickButton(infoTranfonButton);
+                    Thread.Sleep(4000);
+                        EnterField(infoTranfonField, info);
+                    Thread.Sleep(4000);
+                        ClickButton(saveSaleButton);
+                    Thread.Sleep(2000);
+
+        }*/
+
+}
 }

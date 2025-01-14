@@ -29,10 +29,10 @@ namespace PruebaConcepto.StepDefinitions
             loginPage.LoginToApplication(p0, calidad);
         }
 
-        [When(@"Datos de la venta '([^']*)' y '([^']*)' y '([^']*)'")]  
-        public void WhenDatosDeLaVenta(string codeBarra, string dni, string info)
+        [When(@"Datos de la venta '([^']*)' y '([^']*)'")]  
+        public void WhenDatosDeLaVenta(string codeBarra, string dni)
         {
-            registroVentaPage.newSale(codeBarra,dni,info);
+            registroVentaPage.CompleteFields(codeBarra,dni);
         }
 
         [When(@"Tipo de pago")]
@@ -41,16 +41,16 @@ namespace PruebaConcepto.StepDefinitions
             
         }
 
-        [When(@"Medio de pago")]
-        public void WhenMedioDePago()
+        [When(@"Medio de pago '([^']*)'")]
+        public void WhenMedioDePago(string info)
         {
-            
+            registroVentaPage.PaymentMethod(info);
         }
 
         [Then(@"Registro exitoso")]
         public void ThenRegistroExitoso()
         {
-            
+
         }
     }
 }

@@ -106,13 +106,13 @@ this.ScenarioInitialize(scenarioInfo);
     testRunner.Given("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
-    testRunner.When("Datos de la venta \'1010-3\' y \'72935878\' y \'12025600\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("Datos de la venta \'1010-3\' y \'72935878\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
     testRunner.And("Tipo de pago", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
-    testRunner.And("Medio de pago", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("Medio de pago \'Cancelado\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
     testRunner.Then("Registro exitoso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
