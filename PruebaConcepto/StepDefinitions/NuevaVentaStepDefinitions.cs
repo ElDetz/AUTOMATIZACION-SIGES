@@ -1,6 +1,7 @@
 using OpenQA.Selenium;
 using PruebaConcepto.Hoks.PagesPruebaConcepto;
 using System;
+using System.Net;
 using TechTalk.SpecFlow;
 
 namespace PruebaConcepto.StepDefinitions
@@ -9,11 +10,13 @@ namespace PruebaConcepto.StepDefinitions
     public class NuevaVentaStepDefinitions
     {
         private IWebDriver driver;
-        SearchPage searchPage;
+        LoginPage loginPage;
+        RegistroVentaPage registroVentaPage;
         public NuevaVentaStepDefinitions(IWebDriver driver)
         {
             this.driver = driver;
-            this.searchPage = new SearchPage(driver); // Inicializa searchPage aquí
+            this.loginPage = new LoginPage(driver);
+            this.registroVentaPage = new RegistroVentaPage(driver);
         }
 
         [Given(@"Inicio de sesion con usuario '([^']*)' y contrasena '([^']*)'")]
@@ -23,31 +26,31 @@ namespace PruebaConcepto.StepDefinitions
             Thread.Sleep(8000);
 
             // Realizar el inicio de sesión
-            searchPage.LoginToApplication(p0, calidad);
+            loginPage.LoginToApplication(p0, calidad);
         }
 
-        [When(@"Datos de la venta")]
-        public void WhenDatosDeLaVenta()
+        [When(@"Datos de la venta '([^']*)' y '([^']*)' y '([^']*)'")]  
+        public void WhenDatosDeLaVenta(string codeBarra, string dni, string info)
         {
-            throw new PendingStepException();
+            registroVentaPage.newSale(codeBarra,dni,info);
         }
 
         [When(@"Tipo de pago")]
         public void WhenTipoDePago()
         {
-            throw new PendingStepException();
+            
         }
 
         [When(@"Medio de pago")]
         public void WhenMedioDePago()
         {
-            throw new PendingStepException();
+            
         }
 
         [Then(@"Registro exitoso")]
         public void ThenRegistroExitoso()
         {
-            throw new PendingStepException();
+            
         }
     }
 }

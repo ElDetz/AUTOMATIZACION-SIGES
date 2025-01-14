@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace PruebaConcepto.Hoks.PagesPruebaConcepto
 {
-    public class SearchPage
+    public class LoginPage
     {
         private IWebDriver driver;
 
-        public SearchPage(IWebDriver driver)
+        public LoginPage(IWebDriver driver)
         {
             this.driver = driver;
         }
