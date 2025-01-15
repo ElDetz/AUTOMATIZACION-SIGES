@@ -13,15 +13,15 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
     public class RegistroVentaPage
     {
         private IWebDriver driver;
-        
+
         public RegistroVentaPage(IWebDriver driver)
         {
-            this.driver = driver;  
+            this.driver = driver;
         }
 
         // Element locators
-        By salesButton = By.XPath("//span[contains(text(),'Venta')]"); 
-        By newSaleButton = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[1]/a[1]"); 
+        By salesButton = By.XPath("//span[contains(text(),'Venta')]");
+        By newSaleButton = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[1]/a[1]");
         By codeBarraField = By.XPath("//input[@id='idCodigoBarra']");
         By dniField = By.XPath("//input[@id='DocumentoIdentidad']");
 
@@ -29,6 +29,8 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
         By infoTranfonField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[7]/div[1]/textarea[1]");
 
         By tdebButton = By.XPath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/label[3]");
+
+        By efeButton = By.XPath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/label[5]");
 
         By bankButton = By.XPath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[5]/div[1]/span[1]/span[1]/span[1]/span[1]");
 
@@ -38,7 +40,11 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
 
         By saveSaleButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]");
 
-        public void EnterField(By _path,string _field)
+        By CCButton = By.XPath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/input[1]");
+
+        By CoutaField = By.XPath("");
+
+        public void EnterField(By _path, string _field)
         {
             driver.FindElement(_path).Clear();
             driver.FindElement(_path).SendKeys(_field);
@@ -65,6 +71,10 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
             EnterField(dniField, dni);
             Thread.Sleep(4000);
         }
+        public void PaymentTypeCC()
+        {
+   
+        }
 
         public void PaymentMethodTranfon(string info)
         {
@@ -76,13 +86,21 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
             Thread.Sleep(2000);
 
         }
+        public void PaymentMethodEf()
+        {
+            ClickButton(efeButton);
+            Thread.Sleep(4000);
+            ClickButton(saveSaleButton);
+            Thread.Sleep(5000);
+
+        }
 
         public void PaymentMethodTdeb(string info)
         {
             ClickButton(tdebButton);
             driver.FindElement(bankButton).SendKeys(Keys.Enter);
             Thread.Sleep(4000);
-            driver.FindElement(locator).SendKeys(banco);
+            driver.FindElement(locator).SendKeys("bbva");
             Thread.Sleep(6000);
             driver.FindElement(locator).SendKeys(Keys.Enter);
 
