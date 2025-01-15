@@ -1,5 +1,6 @@
 ﻿using FluentAssertions.Equivalency;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace PruebaConcepto.Hoks.PagesPruebaConcepto
 {
@@ -30,16 +32,13 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
 
         By tdebButton = By.XPath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/label[3]");
 
-        By bankButton = By.XPath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[5]/div[1]/span[1]/span[1]/span[1]/span[1]");
+        By bankButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[1]/span[1]/span[1]");
 
-        By locator = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[3]/span[1]/span[1]/input[1]");
-
-        
-
+        By bankField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[3]/span[1]/span[1]/input[1]");
 
         By infoTdebField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/textarea[1]");
 
-
+        
 
         By saveSaleButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]");
 
@@ -85,13 +84,27 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
         public void PaymentMethodTdeb(string info)
         {
             ClickButton(tdebButton);
-            driver.FindElement(bankButton).SendKeys(Keys.Enter);
             Thread.Sleep(4000);
-            driver.FindElement(locator).SendKeys("BBVA");
+            driver.FindElement(bankButton).Click();
             Thread.Sleep(4000);
-            driver.FindElement(locator).SendKeys(Keys.Enter);
-
+            driver.FindElement(bankField).SendKeys("BBVA");
+            driver.FindElement(bankField).SendKeys(Keys.Enter);
+           
             /*
+            IWebElement dropdownElement = driver.FindElement(By.Id("idEntidadFinanciera"));
+            Thread.Sleep(4000);
+            // Crear una instancia de SelectElement
+            SelectElement dropdown = new SelectElement(dropdownElement);
+            Thread.Sleep(4000);
+            // Seleccionar la opción "BBVA CONTINENTAL"
+            dropdown.SelectByText("BBVA CONTINENTAL");
+            Thread.Sleep(4000);
+
+            //driver.FindElement(locator).SendKeys("BBVA");
+
+            //driver.FindElement(locator).SendKeys(Keys.Enter);
+
+            
             IWebElement invoiceElement = driver.FindElement(locator);
             invoiceElement.SendKeys("BBVA");
             invoiceElement.SendKeys(Keys.Enter);*/
