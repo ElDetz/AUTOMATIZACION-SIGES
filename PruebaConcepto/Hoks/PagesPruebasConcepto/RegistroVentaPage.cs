@@ -34,12 +34,7 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
 
         By locator = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[3]/span[1]/span[1]/input[1]");
 
-        
-
-
         By infoTdebField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/textarea[1]");
-
-
 
         By saveSaleButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]");
 
@@ -87,8 +82,8 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
             ClickButton(tdebButton);
             driver.FindElement(bankButton).SendKeys(Keys.Enter);
             Thread.Sleep(4000);
-            driver.FindElement(locator).SendKeys("BBVA");
-            Thread.Sleep(4000);
+            driver.FindElement(locator).SendKeys(banco);
+            Thread.Sleep(6000);
             driver.FindElement(locator).SendKeys(Keys.Enter);
 
             /*
