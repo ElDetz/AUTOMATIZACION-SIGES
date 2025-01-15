@@ -82,20 +82,30 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
 
         public void SelecOption(By _path, string option)
         {
-            IWebElement dropdownPath = driver.FindElement(_path);
+            try
+            {
+                // Esperar que el menú desplegable sea visible
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                wait.Until(ExpectedConditions.ElementIsVisible(_path));
 
-            // Encuentra el elemento del menú desplegable
-            IWebElement dropdownOptions = driver.FindElement(SelecOptions);
+                // Abre el menú desplegable
+                IWebElement dropdown = driver.FindElement(_path);
+                dropdown.Click();
 
-            // Usa el valor del parámetro 'option' para construir dinámicamente el XPath
-            IWebElement optionElement = driver.FindElement(By.XPath($"//li[contains(text(), '{option}')]"));
+                // Espera explícita para que las opciones sean visibles
+                wait.Until(ExpectedConditions.ElementIsVisible(SelecOptions));
 
-            // Haz clic en la opción deseada
-            optionElement.Click();
-
+                // Selecciona la opción deseada
+                IWebElement optionElement = driver.FindElement(By.XPath($"//li[contains(text(), '{option}')]"));
+                optionElement.Click();
+            }
+            catch (NoSuchElementException ex)
+            {
+                Console.WriteLine($"Error: No se encontró la opción '{option}' en el menú desplegable. Detalle: {ex.Message}");
+            }
         }
 
-        
+
 
 
         public void PaymentMethodTranfon(string info)
@@ -122,113 +132,35 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
             //dropdownBank.Click();
             Thread.Sleep(4000);
 
-            SelecOption(bankField,typeBank);
+            SelecOption(bankField, typeBank);
             SelecOption(cardField, typeCard);
-
-
-            
-
-            /*
-            driver.FindElement(bankField).SendKeys("BBVA");
-            driver.FindElement(bankField).SendKeys(Keys.Enter);*/
-
-
-            /*
-            driver.FindElement(By.Id("idEntidadFinanciera"));
-
-            IWebElement dropdownElement = driver.FindElement(By.Id("idEntidadFinanciera"));
-            Thread.Sleep(4000);
-            SelectElement selector = new SelectElement(dropdownElement);
-            Thread.Sleep(4000);
-            selector.SelectByText("BBVA  CONTINENTAL");
-            */
-
-            //TARJETA
-            /*
-            IWebElement invoiceElement = driver.FindElement(typeCard);
-            Thread.Sleep(4000);
-            
-            Thread.Sleep(4000);
-            invoiceElement.SendKeys("MASTER CARD");
-            Thread.Sleep(4000);
-            invoiceElement.SendKeys(Keys.Enter);
-            */
-
-
-            //WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            /*
-            // Paso 1: Clic en el menú desplegable
-            Thread.Sleep(4000);
-            IWebElement dropdownTrigger = driver.FindElement(typeCard);
-            dropdownTrigger.Click();
-            Thread.Sleep(4000);
-
-            // Paso 2: Esperar hasta que las opciones sean visibles
-            IWebElement dropdownOptions = driver.FindElement(By.CssSelector(".select2-results__options"));
-
-            // Paso 3: Seleccionar la opción deseada (por ejemplo, "MASTER CARD")
-            IWebElement masterCardOption = driver.FindElement(By.XPath("//li[contains(text(), 'MASTER CARD')]"));
-            masterCardOption.Click();
-            */
-
-            //TARJETA
-            /*
-            string methodTarjeta = "VISA";
-
-            var dropdownTarjeta = new SelectElement(driver.FindElement(By.Id("idEntidadFinanciera")));
-            Thread.Sleep(4000);
-            dropdownTarjeta.SelectByText(methodTarjeta);
-            Assert.That(dropdownTarjeta.SelectedOption.Text, Is.EqualTo("VISA"));
-            */
-
-
-
-
-            /*
-            driver.FindElement(bankField).SendKeys("BBVA");
-            driver.FindElement(bankField).SendKeys(Keys.Enter);
-            */
-
-            /*
-            IWebElement dropdownElement = driver.FindElement(By.Id("idEntidadFinanciera"));
-            Thread.Sleep(4000);
-            // Crear una instancia de SelectElement
-            SelectElement dropdown = new SelectElement(dropdownElement);
-            Thread.Sleep(4000);
-            // Seleccionar la opción "BBVA CONTINENTAL"
-            dropdown.SelectByText("BBVA CONTINENTAL");
-            Thread.Sleep(4000);*/
-
-
-            /*
-            switch (invoiceType)
-            {
-                case "BV":
-                    invoiceElement.SendKeys("Boleta de venta");
-                    break;
-                case "FE":
-                    invoiceElement.SendKeys("Factura Electronica");
-                    break;
-                case "NV":
-                    invoiceElement.SendKeys("Nota de venta");
-                    break;
-                default:
-                    break;
-            }*/
-
-
+    
             Thread.Sleep(4000);
             EnterField(infoTdebField, info);
             Thread.Sleep(4000);
             ClickButton(saveSaleButton);
             Thread.Sleep(2000);
 
-            /*
-            IWebElement dropdownOptions1 = driver.FindElement(By.CssSelector(".select2-results__options"));
-
-            IWebElement masterCardOption1 = driver.FindElement(By.XPath("//li[contains(text(), 'BBVA  CONTINENTAL')]"));
-            masterCardOption1.Click();*/
         }
 
+        /*
+        public void SelecOption(By _path, string option)
+        {
+            // Esperar que el menú desplegable sea visible
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementIsVisible(_path));
+            IWebElement dropdownPath = driver.FindElement(_path);
+
+            // Encuentra el elemento del menú desplegable
+            IWebElement dropdownOptions = driver.FindElement(SelecOptions);
+
+            // Usa el valor del parámetro 'option' para construir dinámicamente el XPath
+            IWebElement optionElement = driver.FindElement(By.XPath($"//li[contains(text(), '{option}')]"));
+
+            // Haz clic en la opción deseada
+            optionElement.Click();
+
+        }
+        */
     }
 }
