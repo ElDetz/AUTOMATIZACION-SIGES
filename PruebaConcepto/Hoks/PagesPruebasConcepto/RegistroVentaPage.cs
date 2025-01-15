@@ -1,5 +1,9 @@
 ﻿using FluentAssertions.Equivalency;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +11,9 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
+using System.Xml;
+using NUnit.Framework;
 
 namespace PruebaConcepto.Hoks.PagesPruebaConcepto
 {
@@ -30,19 +37,19 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
 
         By tdebButton = By.XPath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/label[3]");
 
-        By efeButton = By.XPath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/label[5]");
+        By bankButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[1]/span[1]/span[1]");
 
-        By bankButton = By.XPath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[5]/div[1]/span[1]/span[1]/span[1]/span[1]");
+        By bankField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[3]/span[1]/span[1]/input[1]");
 
-        By locator = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[3]/span[1]/span[1]/input[1]");
+        //TARJETA
+        private readonly By typeCard = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[2]/span[1]/span[1]");
+
 
         By infoTdebField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/textarea[1]");
 
         By saveSaleButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]");
 
-        By CCButton = By.XPath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/input[1]");
-
-        By CoutaField = By.XPath("");
+        By saveSaleButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]");
 
         public void EnterField(By _path, string _field)
         {
@@ -98,16 +105,98 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
         public void PaymentMethodTdeb(string info)
         {
             ClickButton(tdebButton);
-            driver.FindElement(bankButton).SendKeys(Keys.Enter);
             Thread.Sleep(4000);
-            driver.FindElement(locator).SendKeys("bbva");
-            Thread.Sleep(6000);
-            driver.FindElement(locator).SendKeys(Keys.Enter);
+            driver.FindElement(bankButton).Click();
+            Thread.Sleep(4000);
+
+            // Banco escribiendo
+            driver.FindElement(bankField).SendKeys("BBVA");
+            driver.FindElement(bankField).SendKeys(Keys.Enter);
+
 
             /*
-            IWebElement invoiceElement = driver.FindElement(locator);
-            invoiceElement.SendKeys("BBVA");
-            invoiceElement.SendKeys(Keys.Enter);*/
+            driver.FindElement(By.Id("idEntidadFinanciera"));
+
+            IWebElement dropdownElement = driver.FindElement(By.Id("idEntidadFinanciera"));
+            Thread.Sleep(4000);
+            SelectElement selector = new SelectElement(dropdownElement);
+            Thread.Sleep(4000);
+            selector.SelectByText("BBVA  CONTINENTAL");
+            */
+
+            //TARJETA
+            /*
+            IWebElement invoiceElement = driver.FindElement(typeCard);
+            Thread.Sleep(4000);
+            
+            Thread.Sleep(4000);
+            invoiceElement.SendKeys("MASTER CARD");
+            Thread.Sleep(4000);
+            invoiceElement.SendKeys(Keys.Enter);
+            */
+
+
+            //WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+
+            // Paso 1: Clic en el menú desplegable
+            Thread.Sleep(4000);
+            IWebElement dropdownTrigger = driver.FindElement(typeCard);
+            dropdownTrigger.Click();
+            Thread.Sleep(4000);
+
+            // Paso 2: Esperar hasta que las opciones sean visibles
+            IWebElement dropdownOptions = driver.FindElement(By.CssSelector(".select2-results__options"));
+
+            // Paso 3: Seleccionar la opción deseada (por ejemplo, "MASTER CARD")
+            IWebElement masterCardOption = driver.FindElement(By.XPath("//li[contains(text(), 'MASTER CARD')]"));
+            masterCardOption.Click();
+
+
+            //TARJETA
+            /*
+            string methodTarjeta = "VISA";
+
+            var dropdownTarjeta = new SelectElement(driver.FindElement(By.Id("idEntidadFinanciera")));
+            Thread.Sleep(4000);
+            dropdownTarjeta.SelectByText(methodTarjeta);
+            Assert.That(dropdownTarjeta.SelectedOption.Text, Is.EqualTo("VISA"));
+            */
+
+
+
+
+            /*
+            driver.FindElement(bankField).SendKeys("BBVA");
+            driver.FindElement(bankField).SendKeys(Keys.Enter);
+            */
+
+            /*
+            IWebElement dropdownElement = driver.FindElement(By.Id("idEntidadFinanciera"));
+            Thread.Sleep(4000);
+            // Crear una instancia de SelectElement
+            SelectElement dropdown = new SelectElement(dropdownElement);
+            Thread.Sleep(4000);
+            // Seleccionar la opción "BBVA CONTINENTAL"
+            dropdown.SelectByText("BBVA CONTINENTAL");
+            Thread.Sleep(4000);*/
+
+
+            /*
+            switch (invoiceType)
+            {
+                case "BV":
+                    invoiceElement.SendKeys("Boleta de venta");
+                    break;
+                case "FE":
+                    invoiceElement.SendKeys("Factura Electronica");
+                    break;
+                case "NV":
+                    invoiceElement.SendKeys("Nota de venta");
+                    break;
+                default:
+                    break;
+            }*/
+
 
             Thread.Sleep(4000);
             EnterField(infoTdebField, info);
