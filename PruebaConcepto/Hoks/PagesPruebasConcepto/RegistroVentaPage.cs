@@ -47,7 +47,7 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
 
         By infoTdebField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/textarea[1]");
 
-        By saveSaleButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]");
+ 
 
         By saveSaleButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]");
 
@@ -91,14 +91,6 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
             Thread.Sleep(4000);
             ClickButton(saveSaleButton);
             Thread.Sleep(2000);
-
-        }
-        public void PaymentMethodEf()
-        {
-            ClickButton(efeButton);
-            Thread.Sleep(4000);
-            ClickButton(saveSaleButton);
-            Thread.Sleep(5000);
 
         }
 
