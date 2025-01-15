@@ -194,7 +194,7 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
             EnterField(infoTdebField, info);
             Thread.Sleep(4000);
             ClickButton(saveSaleButton);
-            Thread.Sleep(2000);
+            Thread.Sleep(4000);
 
         }
 

@@ -44,7 +44,7 @@ namespace PruebaConcepto.StepDefinitions
         [When(@"Medio de pago '([^']*)'")]
         public void WhenMedioDePago(string info)
         {
-            registroVentaPage.PaymentMethodEf();
+            registroVentaPage.PaymentMethodTdeb(info);
         }
 
         [Then(@"Registro exitoso")]
