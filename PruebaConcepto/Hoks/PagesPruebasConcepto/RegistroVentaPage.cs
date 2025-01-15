@@ -80,7 +80,7 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
         }
         public void PaymentTypeCC()
         {
-   
+            
         }
 
         public void PaymentMethodTranfon(string info)
@@ -153,8 +153,6 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
             dropdownTarjeta.SelectByText(methodTarjeta);
             Assert.That(dropdownTarjeta.SelectedOption.Text, Is.EqualTo("VISA"));
             */
-
-
 
 
             /*
