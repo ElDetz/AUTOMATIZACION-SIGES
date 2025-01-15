@@ -26,6 +26,8 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
             this.driver = driver;
         }
 
+        By SelecOptions = By.CssSelector(".select2-results__options");
+        
         // Element locators
         By salesButton = By.XPath("//span[contains(text(),'Venta')]");
         By newSaleButton = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[1]/a[1]");
@@ -42,7 +44,7 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
         By bankField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[3]/span[1]/span[1]/input[1]");
 
         //TARJETA
-        private readonly By typeCard = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[2]/span[1]/span[1]");
+        private readonly By cardField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[2]/span[1]/span[1]");
 
 
         By infoTdebField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/textarea[1]");
@@ -83,6 +85,24 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
             
         }
 
+        public void SelecOption(By _path, string option)
+        {
+            IWebElement dropdownPath = driver.FindElement(_path);
+
+            // Encuentra el elemento del menú desplegable
+            IWebElement dropdownOptions = driver.FindElement(SelecOptions);
+
+            // Usa el valor del parámetro 'option' para construir dinámicamente el XPath
+            IWebElement optionElement = driver.FindElement(By.XPath($"//li[contains(text(), '{option}')]"));
+
+            // Haz clic en la opción deseada
+            optionElement.Click();
+
+        }
+
+        
+
+
         public void PaymentMethodTranfon(string info)
         {
             ClickButton(tranfonButton);
@@ -94,16 +114,28 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
 
         }
 
-        public void PaymentMethodTdeb(string info)
+        public void PaymentMethodTdeb(string info, string typeBank, string typeCard)
         {
             ClickButton(tdebButton);
             Thread.Sleep(4000);
             driver.FindElement(bankButton).Click();
             Thread.Sleep(4000);
 
-            // Banco escribiendo
+            // Banco
+            Thread.Sleep(4000);
+            IWebElement dropdownBank = driver.FindElement(bankField);
+            //dropdownBank.Click();
+            Thread.Sleep(4000);
+
+            SelecOption(bankField,typeBank);
+            SelecOption(cardField, typeCard);
+
+
+            
+
+            /*
             driver.FindElement(bankField).SendKeys("BBVA");
-            driver.FindElement(bankField).SendKeys(Keys.Enter);
+            driver.FindElement(bankField).SendKeys(Keys.Enter);*/
 
 
             /*
@@ -129,7 +161,7 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
 
 
             //WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-
+            /*
             // Paso 1: Clic en el menú desplegable
             Thread.Sleep(4000);
             IWebElement dropdownTrigger = driver.FindElement(typeCard);
@@ -142,7 +174,7 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
             // Paso 3: Seleccionar la opción deseada (por ejemplo, "MASTER CARD")
             IWebElement masterCardOption = driver.FindElement(By.XPath("//li[contains(text(), 'MASTER CARD')]"));
             masterCardOption.Click();
-
+            */
 
             //TARJETA
             /*
@@ -194,6 +226,11 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
             ClickButton(saveSaleButton);
             Thread.Sleep(4000);
 
+            /*
+            IWebElement dropdownOptions1 = driver.FindElement(By.CssSelector(".select2-results__options"));
+
+            IWebElement masterCardOption1 = driver.FindElement(By.XPath("//li[contains(text(), 'BBVA  CONTINENTAL')]"));
+            masterCardOption1.Click();*/
         }
 
     }
