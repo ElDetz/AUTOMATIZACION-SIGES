@@ -34,22 +34,41 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
         By codeBarraField = By.XPath("//input[@id='idCodigoBarra']");
         By dniField = By.XPath("//input[@id='DocumentoIdentidad']");
 
-        By tranfonButton = By.XPath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/label[2]");
-        By infoTranfonField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[7]/div[1]/textarea[1]");
 
-        By tdebButton = By.XPath("/html[1]/body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/label[3]");
+        //METODO 1
 
-        By bankButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[1]/span[1]/span[1]");
+        // TDEB
+        By bankFieldTdeb = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[1]/span[1]/span[1]");
 
-        By bankField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[3]/span[1]/span[1]/input[1]");
+        By cardFieldTdeb = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[2]/span[1]/span[1]");
 
-        //TARJETA
-        private readonly By cardField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[2]/span[1]/span[1]");
+        By infoMethod1FieldTdeb = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/textarea[1]");
+
+        // TCRED
+        By bankFieldTcred = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[5]/div[1]/span[1]/span[1]/span[1]");
+
+        By cardFieldTcred = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[5]/div[1]/span[2]/span[1]/span[1]");
+
+        By infoMethod1FieldTcred = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[5]/div[1]/textarea[1]");
 
 
-        By infoTdebField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/textarea[1]");
+        //METODO 2
 
- 
+        //DEPCU
+        By bankAccountFieldDepcu = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[8]/div[1]/span[1]/span[1]/span[1]");
+
+        By infoMethod2FieldDepcu = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[8]/div[1]/textarea[1]");
+
+        //TRANFON
+        By bankAccountFieldTranfon = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[7]/div[1]/span[1]/span[1]/span[1]");
+
+        //METODO 2
+
+        //EFECTIVO
+        By infoMethod2FieldTranfon = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[7]/div[1]/textarea[1]");
+
+        By observacionFieldEf = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[2]/div[1]/textarea[1]");
+
 
         By saveSaleButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]");
 
@@ -80,9 +99,30 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
             EnterField(dniField, dni);
             Thread.Sleep(4000);
         }
-        public void PaymentTypeCC()
+
+        public string VerMedioPago()
         {
-            
+            // Encuentra el contenedor con los botones de radio
+            var medioPagoContainer = driver.FindElement(By.Id("medioPago0"));
+
+            // Encuentra todos los botones de radio dentro del contenedor
+            var radioButtons = medioPagoContainer.FindElements(By.CssSelector("input[type='radio']"));
+
+            // Itera por cada botón de radio para verificar cuál está seleccionado
+            foreach (var radioButton in radioButtons)
+            {
+                if (radioButton.Selected) // Verifica si el botón está seleccionado
+                {
+                    // Encuentra el label asociado al botón de radio seleccionado
+                    var label = driver.FindElement(By.CssSelector($"label[for='{radioButton.GetAttribute("id")}']"));
+
+                    // Retorna el texto del label (DEPCU, TRANFON, etc.)
+                    return label.Text;
+                }
+            }
+
+            // Si no se selecciona nada, retorna una cadena vacía o lanza una excepción si es necesario
+            return string.Empty;
         }
 
         public void SelecOption(By _path, string option)
@@ -110,42 +150,86 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
             }
         }
 
-
-
-
-        public void PaymentMethodTranfon(string info)
+        // METODO DE PAGO TARJETA
+        public void PaymentMethod1( string typeBank, string typeCard, string info)
         {
-            ClickButton(tranfonButton);
-            Thread.Sleep(4000);
-            EnterField(infoTranfonField, info);
-            Thread.Sleep(4000);
-            ClickButton(saveSaleButton);
-            Thread.Sleep(2000);
+            string medioPagoSeleccionado = VerMedioPago();
 
+            switch (medioPagoSeleccionado)
+            {
+                case "TDEB":
+
+                    SelecOption(bankFieldTdeb, typeBank); // SELECCION BANCO
+                    SelecOption(cardFieldTdeb, typeCard); // SELECCION TARJETA
+
+                    EnterField(infoMethod1FieldTdeb, info); // AGREGA INFO
+                    Thread.Sleep(4000);
+              
+                    break;
+
+                case "TCRE":
+
+                    SelecOption(bankFieldTcred, typeBank); // SELECCION BANCO
+                    SelecOption(cardFieldTcred, typeCard); // SELECCION TARJETA
+
+                    EnterField(infoMethod1FieldTcred, info); // AGREGA INFO
+                    Thread.Sleep(4000);
+
+                    break;
+                default:
+                    throw new ArgumentException($"El tipo de pago {medioPagoSeleccionado} no es válido.");
+            }
         }
 
-        public void PaymentMethodTdeb(string info, string typeBank, string typeCard)
+        //METODO PAGO BANCO
+        public void PaymentMethod2(string _bank, string info)
         {
-            ClickButton(tdebButton);
-            Thread.Sleep(4000);
-            driver.FindElement(bankButton).Click();
-            Thread.Sleep(4000);
+            string medioPagoSeleccionado = VerMedioPago();
 
-            // Banco
-            Thread.Sleep(4000);
-            IWebElement dropdownBank = driver.FindElement(bankField);
-            //dropdownBank.Click();
-            Thread.Sleep(4000);
+            switch (medioPagoSeleccionado)
+            {
+                case "DEPCU":
 
-            SelecOption(bankField, typeBank);
-            SelecOption(cardField, typeCard);
-    
-            Thread.Sleep(4000);
-            EnterField(infoTdebField, info);
-            Thread.Sleep(4000);
-            ClickButton(saveSaleButton);
+                    SelecOption(bankAccountFieldDepcu, _bank); // CUENTA
+
+                    EnterField(infoMethod2FieldDepcu, info); // AGREGA INFO
+                    Thread.Sleep(4000);
+
+                    break;
+
+                case "TRANFON":
+
+                    SelecOption(bankAccountFieldTranfon, _bank); // CUENTA
+
+                    EnterField(infoMethod2FieldTranfon, info); // AGREGA INFO
+                    Thread.Sleep(4000);
+
+                    break;
+                default:
+                    throw new ArgumentException($"El tipo de pago {medioPagoSeleccionado} no es válido.");
+            }
+        }
+
+        // METODO DE PAGO EFECTIVO
+        public void PaymentMethod3(string _observacion)
+        {
+            string medioPagoSeleccionado = VerMedioPago();
+
+            if (medioPagoSeleccionado == "EF")
+            {
+                EnterField(observacionFieldEf, _observacion); // AGREGA OBSERVACION
+                Thread.Sleep(4000);
+            }
+            else
+            {
+                throw new ArgumentException($"El tipo de pago {medioPagoSeleccionado} no es válido.");
+            }
+        }
+
+        public void SaveSale()
+        {
+            ClickButton(saveSaleButton); // GUARDAR VENTA
             Thread.Sleep(2000);
-
         }
 
         /*

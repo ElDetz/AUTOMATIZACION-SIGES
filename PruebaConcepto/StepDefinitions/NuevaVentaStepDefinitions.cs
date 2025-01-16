@@ -35,22 +35,35 @@ namespace PruebaConcepto.StepDefinitions
             registroVentaPage.CompleteFields(codeBarra,dni);
         }
 
-        [When(@"Tipo de pago")]
-        public void WhenTipoDePago()
+        [When(@"Tipo de pago '([^']*)'")]
+        public void WhenTipoDePago(string _PaymentType)
         {
-            
+            registroVentaPage.PaymentType(_PaymentType);
         }
 
-        [When(@"Medio de pago '([^']*)'")]
-        public void WhenMedioDePago(string info)
+        [When(@"Datos del pago '([^']*)' y '([^']*)' y '([^']*)'")]
+        public void WhenDatosDelPagoYY(string _bank, string _card, string _info)
         {
-            registroVentaPage.PaymentMethodTdeb(info, "BBVA  CONTINENTAL", "MASTER CARD");
+            registroVentaPage.PaymentMethod1(_bank, _card, _info);
         }
+
+        [When(@"Datos del pago '([^']*)' y '([^']*)'")]
+        public void WhenDatosDelPagoY(string _bank, string _info)
+        {
+            registroVentaPage.PaymentMethod2(_bank, _info);
+        }
+
+        [When(@"Datos del pago '([^']*)'")]
+        public void WhenDatosDelPago(string _observacion)
+        {
+            registroVentaPage.PaymentMethod3(_observacion);
+        }
+
 
         [Then(@"Registro exitoso")]
         public void ThenRegistroExitoso()
         {
-
+            registroVentaPage.SaveSale();
         }
     }
 }
