@@ -11,8 +11,7 @@ namespace RESTAURANTE.Hoks.Pages
         {
             this.driver = driver;
         }
-
-        // Element locators
+     
         By usernameField = By.XPath("//input[@id='Email']"); // campo de usuario
         By passwordField = By.XPath("//input[@id='Password']"); // campo de contraseña
         By loginButton = By.XPath("//button[contains(text(),'Iniciar')]"); // botón de inicio de sesión 

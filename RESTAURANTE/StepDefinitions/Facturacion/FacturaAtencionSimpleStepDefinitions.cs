@@ -10,10 +10,12 @@ namespace RESTAURANTE.StepDefinitions.Facturacion
     {
         private IWebDriver driver;
         LoginPage loginPage;
+        UtilityPage utilityPage;
         public FacturaAtencionSimpleStepDefinitions(IWebDriver driver)
         {
             this.driver = driver;
             this.loginPage = new LoginPage(driver);
+            this.utilityPage = new UtilityPage(driver);
         }
 
         [Given(@"Inicio de sesion con usuario '([^']*)' y contrasena '([^']*)'")]
@@ -26,11 +28,12 @@ namespace RESTAURANTE.StepDefinitions.Facturacion
             loginPage.LoginToApplication(_user, _password);
         }
 
-        [Given(@"Ingresar a Modulo Caja")]
-        public void GivenIngresarAModuloCaja()
+        [Given(@"Ingreso Modulo '([^']*)'")]
+        public void GivenIngresoModulo(string _modulo)
         {
-            
+            utilityPage.enterModulo(_modulo);
         }
+
 
         [When(@"Datos de la factura")]
         public void WhenDatosDeLaFactura()
