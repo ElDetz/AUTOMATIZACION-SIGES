@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RESTAURANTE", "RESTAURANTE\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaConcepto", "PruebaConcepto\PruebaConcepto.csproj", "{FC99FF37-7E07-4F71-865A-724B3C230864}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VENTAS", "VENTAS\VENTAS.csproj", "{C26B305F-5A87-4DE5-978A-F77A55F70135}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigesCore", "VENTAS\SigesCore.csproj", "{C26B305F-5A87-4DE5-978A-F77A55F70135}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

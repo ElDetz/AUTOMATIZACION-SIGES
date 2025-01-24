@@ -34,7 +34,6 @@ namespace RESTAURANTE.StepDefinitions.Facturacion
             utilityPage.enterModulo(_modulo);
         }
 
-
         [When(@"Datos de la factura")]
         public void WhenDatosDeLaFactura()
         {
@@ -46,7 +45,5 @@ namespace RESTAURANTE.StepDefinitions.Facturacion
         {
            
         }
-
-
     }
 }
