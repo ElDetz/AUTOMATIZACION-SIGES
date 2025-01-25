@@ -3,7 +3,7 @@ using AventStack.ExtentReports.Gherkin.Model;
 using BoDi;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using PruebaConcepto.Utility;
+using RESTAURANTE.Utility;
 using TechTalk.SpecFlow;
 
 namespace AutomatizaciónVentas.Hoks

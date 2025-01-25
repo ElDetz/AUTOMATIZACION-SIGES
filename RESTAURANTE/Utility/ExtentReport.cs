@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PruebaConcepto.Utility
+namespace RESTAURANTE.Utility
 {
     public class ExtentReport
     {
