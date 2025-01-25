@@ -35,6 +35,7 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
         By dniField = By.XPath("//input[@id='DocumentoIdentidad']");
 
 
+
         //METODO 1
 
         // TDEB
@@ -72,6 +73,7 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
 
         By saveSaleButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]");
 
+        
         public void EnterField(By _path, string _field)
         {
             driver.FindElement(_path).Clear();
@@ -140,9 +142,9 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
                 // Espera explícita para que las opciones sean visibles
                 wait.Until(ExpectedConditions.ElementIsVisible(SelecOptions));
 
-                // Selecciona la opción deseada
+                /*Selecciona la opción deseada
                 IWebElement optionElement = driver.FindElement(By.XPath($"//li[contains(text(), '{option}')]"));
-                optionElement.Click();
+                optionElement.Click();*/
             }
             catch (NoSuchElementException ex)
             {

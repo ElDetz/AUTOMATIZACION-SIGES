@@ -32,7 +32,9 @@
     <Folder Include="Hooks\ComprasPage\" />
     <Folder Include="Hooks\AlmacenPage\" />
     <Folder Include="Hooks\TesoreriaFinanzasPage\" />
-    <Folder Include="Hooks\VentasPage\" />
+    <Folder Include="StepDefinitions\Compras\" />
+    <Folder Include="StepDefinitions\Almacen\" />
+    <Folder Include="StepDefinitions\TesoreriaFinanzas\" />
     <Folder Include="TestResults\" />
     <Folder Include="Support\" />
   </ItemGroup>
