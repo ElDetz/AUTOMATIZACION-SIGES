@@ -3,7 +3,7 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 
 
-namespace RESTAURANTE.Hoks.Pages
+namespace SigesCore.Hoks
 {
     public class UtilityPage
     {
