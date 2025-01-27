@@ -70,13 +70,9 @@ namespace SigesCore.Hooks.VentasPage
             field.Clear(); 
             field.SendKeys(Keys.Control + "a"); 
             field.SendKeys(Keys.Delete); 
-
-         
             field.SendKeys(_field);
-
             field.SendKeys(Keys.Enter);
         }
-
 
         public void ClickButton(By _button)
         {
