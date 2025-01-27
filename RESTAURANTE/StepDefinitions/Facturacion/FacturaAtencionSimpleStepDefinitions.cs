@@ -50,7 +50,6 @@ namespace RESTAURANTE.StepDefinitions.Facturacion
             facturacionSimplePage.invoiceData(_clientType, _clientValue);
         }
 
-
         [When(@"Datos de la factura")]
         public void WhenDatosDeLaFactura()
         {
