@@ -21,9 +21,7 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
         private By facturarAtencionButton = By.XPath("//tbody/tr[1]/td[9]/a[1]/span[1]");
         //private By facturarAtencionButton = By.CssSelector("a.btn.btn-success.btn-sm[ng-click='iniciarFacturacion(item)']");
 
-
-
-        public void typeFactura(string _typeFactura)
+        public void typeFactura(string _typeFactura) 
         {
             // Boton Facturar
             utilityPage.elementExists(facturarAtencionButton);

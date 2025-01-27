@@ -121,7 +121,10 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
         // TIPO COMPROBANTE DE PAGO
         public void typeComprobante(string _typeComprobante)
         {
+            facturacionPage.typeComprobante(docField, _typeComprobante);
+
             utilityPage.buttonClickeable(docField);
+
             Thread.Sleep(4000);
             //facturacionPage.typeComprobante(docField, _typeComprobante);
             //Thread.Sleep(4000);

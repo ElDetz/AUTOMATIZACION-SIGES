@@ -53,7 +53,7 @@ namespace RESTAURANTE.StepDefinitions.Facturacion
         [When(@"Selecciona el tipo de factura '([^']*)'")]
         public void WhenSeleccionaElTipoDeFactura(string _typeComprobante)
         {
-            //facturacionSimplePage.typeComprobante(_typeComprobante);
+            facturacionSimplePage.typeComprobante(_typeComprobante);
         }
 
         [When(@"Selecciona el modo de pago '([^']*)'")]
