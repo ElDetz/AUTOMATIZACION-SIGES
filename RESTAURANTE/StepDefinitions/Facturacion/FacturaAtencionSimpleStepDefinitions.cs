@@ -50,14 +50,9 @@ namespace RESTAURANTE.StepDefinitions.Facturacion
             facturacionSimplePage.invoiceData(_clientType, _clientValue);
         }
 
-        [When(@"Selecciona el tipo de factura '([^']*)'")]
-        public void WhenSeleccionaElTipoDeFactura(string _typeComprobante)
-        {
-            facturacionSimplePage.typeComprobante(_typeComprobante);
-        }
 
-        [When(@"Selecciona el modo de pago '([^']*)'")]
-        public void WhenSeleccionaElModoDePago(string _moodPago)
+        [When(@"Datos de la factura")]
+        public void WhenDatosDeLaFactura()
         {
             facturacionSimplePage.moodPay(_moodPago);
         }
@@ -74,7 +69,5 @@ namespace RESTAURANTE.StepDefinitions.Facturacion
         {
            
         }
-
-
     }
 }
