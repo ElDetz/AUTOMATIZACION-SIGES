@@ -4,6 +4,8 @@ using TechTalk.SpecFlow;
 using SigesCore.Hooks.LoginPage;
 using SigesCore.Hooks.VentasPage;
 using System.Net;
+using SigesCore.Hooks.Utility;
+using SigesCore.Hooks.XPaths;
 
 namespace SigesCore.StepDefinitions.Ventas
 {
@@ -13,11 +15,13 @@ namespace SigesCore.StepDefinitions.Ventas
         private IWebDriver driver;
         LoginPage login;
         NuevaVentaPage newSale;
+        UtilityPage UtilityPage;
         public NuevaVentaStepDefinitions(IWebDriver driver)
         {
             this.driver = driver;
             this.login = new LoginPage(driver);
             this.newSale = new NuevaVentaPage(driver);
+            this.UtilityPage = new UtilityPage(driver);
         }
         [Given(@"Inicio de sesion con usuario '([^']*)' y contrasena '([^']*)'")]
         public void GivenInicioDeSesionConUsuarioYContrasena(string email, string password)
@@ -27,16 +31,16 @@ namespace SigesCore.StepDefinitions.Ventas
             login.LoginToApplication(email, password);
         }
 
-        [When(@"Click en venta luego nueva venta")]
-        public void WhenClickEnVentaLuegoNuevaVenta()
+        [When(@"Seleccionar Venta y luego ""([^""]*)""")]
+        public void WhenSeleccionarVentaYLuego(string modulo)
         {
-            newSale.Buttons();
+            newSale.enterModulo(modulo);
         }
 
         [When(@"Agregar concepto por codigo de barra '([^']*)'")]
         public void WhenAgregarConceptoPorCodigoDeBarra(string codeBarra)
         {
-            newSale.BarCodeConcept(codeBarra);
+            newSale.barCodeConcept(codeBarra);
         }
 
         [When(@"Seleccionar familia '([^']*)', concepto '([^']*)' y cantidad '([^']*)'")]
@@ -44,23 +48,17 @@ namespace SigesCore.StepDefinitions.Ventas
         {
             newSale.Concept(family, concept, quantity);
         }
-        
-        public void WhenAgregarConceptoPorCodigoDeBarraSeleccionarFamiliaConceptoYCantidad(string p0, string aBRA, string p2, string p3)
-        {
-            throw new PendingStepException();
-        }
 
-
-        [When(@"Ingresar dni '([^']*)' y activar IGV")]
-        public void WhenIngresarDniEActivarIGV(string dni)
+        [When(@"Activar IGV '([^']*)'")]
+        public void WhenActivarIGV(string option)
         {
-            newSale.DateConcept(dni);
+            newSale.IGVoption(option);
         }
 
         [When(@"Tipo documento '([^']*)'")]
-        public void WhenTipoDocumento(string doc)
+        public void WhenTipoDocumento(string doc, string value)
         {
-            newSale.TypeDoc(doc);
+            newSale.invoiceData(doc, value);
         }
 
         [When(@"Medio de pago '([^']*)' y '([^']*)' y '([^']*)'")]

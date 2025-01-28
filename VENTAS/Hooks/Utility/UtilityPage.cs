@@ -1,9 +1,10 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using SigesCore.Hooks.XPaths;
 
 
-namespace SigesCore.Hoks
+namespace SigesCore.Hooks.Utility
 {
     public class UtilityPage
     {
@@ -17,25 +18,10 @@ namespace SigesCore.Hoks
                 throw new ArgumentNullException(nameof(driver), "El WebDriver no puede ser null.");
             }
             this.driver = driver;
-            this.wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
         }
 
-
         //By restauranteField = By.XPath("//span[contains(text(),'Restaurante')]");
-
-        By restauranteField = By.XPath("//a[@class='menu-lista-cabecera']/span[text()='Restaurante']");
-
-        By atencionField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[1]/a[1]");
-        By preparacionField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[2]/a[1]");
-        
-        By cajaField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[3]/a[1]");
-        //By cajaField = By.XPath("//ul[@class='treeview-menu']//a[normalize-space(text())='Caja']");
-
-        By complementosField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[3]/a[1]");
-        By reportesField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[5]/a[1]");
-
-        // MENU DESPEGABLE
-        By SelecOptions = By.CssSelector(".select2-results__options");
 
         public void WaitForOverlayToDisappear(By overlayLocator)
         {
@@ -53,7 +39,6 @@ namespace SigesCore.Hoks
                 }
             });
         }
-
         public void enterField(By _path, string _field)
         {
             if (driver.FindElements(_path).Count == 0)
@@ -62,8 +47,21 @@ namespace SigesCore.Hoks
             }
 
             wait.Until(ExpectedConditions.ElementIsVisible(_path)); // Espera hasta que el elemento sea visible
-            driver.FindElement(_path).Clear(); 
-            driver.FindElement(_path).SendKeys(_field); 
+            driver.FindElement(_path).Clear();
+            driver.FindElement(_path).SendKeys(_field);
+        }
+
+        public void enterField2(By _path, string _field)
+        {
+            if (driver.FindElements(_path).Count == 0)
+            {
+                throw new NoSuchElementException($"El elemento con el localizador {_path} no se encontró.");
+            }
+
+            wait.Until(ExpectedConditions.ElementIsVisible(_path)); // Espera hasta que el elemento sea visible
+            driver.FindElement(_path).Clear();
+            driver.FindElement(_path).SendKeys(_field);
+            driver.FindElement(_path).SendKeys(Keys.Enter);
         }
 
         public void elementExists(By _button)
@@ -103,60 +101,9 @@ namespace SigesCore.Hoks
             }
         }
 
-        /*
-        public void elementVisible(By _button)
-        {
-            if (driver.FindElements(_button).Count == 0)
-            {
-                throw new NoSuchElementException($"El elemento con el localizador {_button} no se encontró.");
-            }
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(_button)); // Espera hasta que el elemento sea visible
-            driver.FindElement(_button).Click();
-        }
-        */
-
         // Ingreso Modulo
-        public void enterModulo(string _modulo)
-        {
-            // Clic en "Restaurante"
-            buttonClickeable(restauranteField);
-
-            switch (_modulo)
-            {
-                case "Atencion":
-
-                    buttonClickeable(atencionField);
-                    break;
-
-                case "Preparacion":
-
-                    buttonClickeable(preparacionField);
-                    break;
-
-                case "Caja":
-
-                    buttonClickeable(cajaField);
-                    break;
-
-                case "Complementos":
-
-                    buttonClickeable(complementosField);
-                    break;
-
-                case "Reportes":
-
-                    buttonClickeable(reportesField);
-                    break;
-
-                default:
-                    throw new ArgumentException($"El {_modulo} no es válido.");
-            }
-
-            //Thread.Sleep(4000);
-        }
-
-        public void SelecOption(By _path, string _option)
+       
+        public void SelectOption(By _path, string _option)
         {
             try
             {
@@ -168,7 +115,7 @@ namespace SigesCore.Hoks
                 dropdown.Click();
 
                 // Espera a que las opciones sean visibles
-                WaitForElementVisible(SelecOptions);
+                WaitForElementVisible(ModuloVenta.SelectOptions);
 
                 // Selecciona la opción correspondiente (busca por texto visible en el <li>)
                 IWebElement optionElement = driver.FindElement(By.XPath($"//li[contains(text(), '{_option}')]"));
@@ -179,6 +126,5 @@ namespace SigesCore.Hoks
                 Console.WriteLine($"Error: No se encontró la opción '{_option}' en el menú desplegable. Detalle: {ex.Message}");
             }
         }
-
     }
 }

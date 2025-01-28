@@ -2,6 +2,8 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using SigesCore.Hooks.Utility;
+using SigesCore.Hooks.XPaths;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,22 +16,31 @@ namespace SigesCore.Hooks.VentasPage
     public class NuevaVentaPage
     {
         private readonly IWebDriver driver;
+        WebDriverWait wait;
+        UtilityPage utilityPage;
 
         public NuevaVentaPage(IWebDriver driver)
         {
             this.driver = driver;
+            this.utilityPage = new UtilityPage(driver);
         }
         //By SelecOptions = By.CssSelector("select2-results__options");
 
-        By salesButton = By.XPath("//span[contains(text(),'Venta')]");
+        private By aliasField = By.ClassName("//input[@ng-model='$ctrl.facturacion.Orden.Cliente.Alias']");
 
-        By newSaleButton = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[1]/a[1]");
-        
+        private By buscarCliente = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/selector-actor-comercial[1]/ng-form[1]/div[1]/div[1]/div[1]/a[3]");
+
+        private By overlayLocator = By.ClassName("block-ui-overlay");
+
+        private By clientField = By.ClassName("//input[@id='DocumentoIdentidad']");
+
         By codeBarraField = By.XPath("//input[@id='idCodigoBarra']");
 
         By dniField = By.XPath("//input[@id='DocumentoIdentidad']");
 
         By checkboxIGV = By.XPath("//input[@id='ventaigv0']");
+
+        By checkboxDetUnif = By.XPath("//input[@id='detalleunificado0']");
 
         By pathFamily = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/registrador-detalles[1]/div[1]/div[1]/selector-concepto-comercial[1]/ng-form[1]/div[1]/div[5]/div[1]/span[1]/span[1]/span[1]");
         By pathInputFieldFamily = By.XPath("//input[@class='select2-search__field']");
@@ -59,33 +70,101 @@ namespace SigesCore.Hooks.VentasPage
 
         By infoMethod1FieldTcred = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[8]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[5]/div[1]/textarea[1]");
 
-        public void EnterField(By _path, string _field)
+        public void enterModulo(string _modulo)
         {
-            // Localizar el campo una sola vez
-            IWebElement field = driver.FindElement(_path);
+            // Clic en "Restaurante"
+            utilityPage.buttonClickeable(ModuloVenta.VentasField);
 
-            
-            field.Click();
+            switch (_modulo)
+            {
+                case "Nueva Venta":
 
-            field.Clear(); 
-            field.SendKeys(Keys.Control + "a"); 
-            field.SendKeys(Keys.Delete); 
-            field.SendKeys(_field);
-            field.SendKeys(Keys.Enter);
+                    utilityPage.buttonClickeable(ModuloVenta.NuevaVentaField);
+                    break;
+
+                case "Venta Modo Caja":
+
+                    utilityPage.buttonClickeable(ModuloVenta.VentaModoCajaField);
+                    break;
+
+                case "Venta Por Contingencia":
+
+                    utilityPage.buttonClickeable(ModuloVenta.VentaContingenciaField);
+                    break;
+
+                case "Ver Ventas":
+
+                    utilityPage.buttonClickeable(ModuloVenta.VerVentasField);
+                    break;
+
+                case "Reportes Vendedor":
+
+                    utilityPage.buttonClickeable(ModuloVenta.ReportesVendedorField);
+                    break;
+
+                case "Reportes Puntos":
+
+                    utilityPage.buttonClickeable(ModuloVenta.ReportesPuntosField);
+                    break;
+
+                case "Reportes Gerente":
+
+                    utilityPage.buttonClickeable(ModuloVenta.ReportesGerenteField);
+                    break;
+
+                case "Reportes":
+
+                    utilityPage.buttonClickeable(ModuloVenta.ReportesField);
+                    break;
+
+                default:
+                    throw new ArgumentException($"El {_modulo} no es válido.");
+            }
+        }
+        public void barCodeConcept(string codeBarra)
+        {
+            utilityPage.elementExists(codeBarraField);
+            utilityPage.WaitForElementVisible(overlayLocator);
+            utilityPage.enterField2(codeBarraField, codeBarra);
+            Thread.Sleep(4000);
         }
 
-        public void ClickButton(By _button)
-        {
-            driver.FindElement(_button).Click();
-        }
-        public void CheckIGV()
+        /*public void CheckIGV()
         {
             var checkbox = driver.FindElement(checkboxIGV);
             if (!checkbox.Selected)
             {
                 checkbox.Click();
             }
+        }*/
+
+        public void CheckIGVandDetUnif(string option)
+        {
+            // Convertir la opción a mayúsculas para evitar problemas de sensibilidad de mayúsculas
+            option = option.ToUpper();
+
+            // Localizar el checkbox
+            var checkbox = driver.FindElement(checkboxIGV);
+
+            switch (option)
+            {
+                case "SI":
+                    // Siempre activar IGV, ya que sabemos que está desactivado
+                    checkbox.Click();
+                    Console.WriteLine("El IGV ha sido activado.");
+                    break;
+
+                case "NO":
+                    // No hacer nada, ya que el IGV siempre está desactivado
+                    Console.WriteLine("El IGV ya estaba desactivado.");
+                    break;
+
+                default:
+                    // Manejar opciones no válidas
+                    throw new ArgumentException($"Opción no válida: {option}. Use 'SI' o 'NO'.");
+            }
         }
+
         //Método para seleccionar una familia y un concepto
         public void SelectConcept(By pathFamilia, By pathInputField, string option)
         {
@@ -117,6 +196,43 @@ namespace SigesCore.Hooks.VentasPage
             {
                 Console.WriteLine($"Error inesperado: {ex.Message}");
             }
+        }
+        public void invoiceData(string _clientType, string _clientValue)
+        {
+            // ESPERA PARA RELLENAR CAMPOS
+            utilityPage.elementExists(clientField);
+            utilityPage.WaitForOverlayToDisappear(overlayLocator);
+
+            // TIPO CLIENTE
+            switch (_clientType)
+            {
+                case "VARIOS":
+
+                    //CAMPO CLIENTE VACIO
+                    break;
+
+                case "DNI":
+
+                    utilityPage.enterField(clientField, _clientValue);
+                    break;
+
+                case "RUC":
+
+                    utilityPage.enterField(clientField, _clientValue);
+                    break;
+
+                case "ALIAS":
+
+                    utilityPage.enterField(aliasField, _clientValue);
+                    break;
+                case "REGISTRADO":
+                    //utilityPage.enterField(registradoField, _clientValue);
+                    break;
+
+                default:
+                    throw new ArgumentException($"El {_clientType} no es válido");
+            }
+
         }
 
         //Ver medio de pago
@@ -181,7 +297,7 @@ namespace SigesCore.Hooks.VentasPage
                     SelectOption(bankFieldTdeb, typeBank); // SELECCION BANCO
                     SelectOption(cardFieldTdeb, typeCard); // SELECCION TARJETA
 
-                    EnterField(infoMethod1FieldTdeb, info); // AGREGA INFO
+                    utilityPage.enterField(infoMethod1FieldTdeb, info); // AGREGA INFO
                     Thread.Sleep(4000);
 
                     break;
@@ -191,7 +307,7 @@ namespace SigesCore.Hooks.VentasPage
                     SelectOption(bankFieldTcred, typeBank); // SELECCION BANCO
                     SelectOption(cardFieldTcred, typeCard); // SELECCION TARJETA
 
-                    EnterField(infoMethod1FieldTcred, info); // AGREGA INFO
+                    utilityPage.enterField(infoMethod1FieldTcred, info); // AGREGA INFO
                     Thread.Sleep(4000);
 
                     break;
@@ -201,45 +317,20 @@ namespace SigesCore.Hooks.VentasPage
         }
 
         // Método para realizar el inicio de sesión completo
-        public void Buttons()
-        {
-            ClickButton(salesButton);
-            Thread.Sleep(2000);
 
-            ClickButton(newSaleButton);
-            Thread.Sleep(8000);
-
-        }
-
-        public void BarCodeConcept(String codeBarra)
-        {
-            EnterField(codeBarraField, codeBarra);
-            Thread.Sleep(4000);
-        }
         public void Concept(string family, string concept, string quantity)
         {
             SelectConcept(pathFamily, pathInputFieldFamily, family);
-            Thread.Sleep(4000);
-
+  
             SelectConcept(pathConcept, pathInputFieldFamily, concept);
-            Thread.Sleep(4000);
 
-            EnterField(Quantity, quantity);
+            //EnterField(Quantity, quantity);
             Thread.Sleep(4000);
         }
 
-        public void TypeDoc(string doc)
+        public void IGVoption(string option)
         {
-            SelectConcept(pathDoc, pathInputDoc, doc);
-            Thread.Sleep(4000);
-        }
-        public void DateConcept(string dni)
-        {
-            CheckIGV();
-            Thread.Sleep(2000);
-
-            EnterField(dniField, dni);
-            Thread.Sleep(4000);
+            //CheckIGV(option);
         }
     }
 }
