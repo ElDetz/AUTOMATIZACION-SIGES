@@ -47,21 +47,10 @@ namespace SigesCore.Hooks.Utility
             }
 
             wait.Until(ExpectedConditions.ElementIsVisible(_path)); // Espera hasta que el elemento sea visible
+            driver.FindElement(_path).SendKeys(Keys.Control + "a");
+            driver.FindElement(_path).SendKeys(Keys.Delete);
             driver.FindElement(_path).Clear();
             driver.FindElement(_path).SendKeys(_field);
-        }
-
-        public void enterField2(By _path, string _field)
-        {
-            if (driver.FindElements(_path).Count == 0)
-            {
-                throw new NoSuchElementException($"El elemento con el localizador {_path} no se encontró.");
-            }
-
-            wait.Until(ExpectedConditions.ElementIsVisible(_path)); // Espera hasta que el elemento sea visible
-            driver.FindElement(_path).Clear();
-            driver.FindElement(_path).SendKeys(_field);
-            driver.FindElement(_path).SendKeys(Keys.Enter);
         }
 
         public void elementExists(By _button)
@@ -69,7 +58,6 @@ namespace SigesCore.Hooks.Utility
             try
             {
                 wait.Until(ExpectedConditions.ElementExists(_button)); // Espera hasta que el elemento exista en el DOM
-                //buttonClickeable(_button);
             }
             catch (WebDriverTimeoutException)
             {
@@ -103,6 +91,11 @@ namespace SigesCore.Hooks.Utility
 
         // Ingreso Modulo
        
+        public void WaitExistsVisible(By pathExists, By pathOverlay)
+        {
+            elementExists(pathExists);
+            WaitForElementVisible(pathOverlay);
+        }
         public void SelectOption(By _path, string _option)
         {
             try
@@ -115,7 +108,7 @@ namespace SigesCore.Hooks.Utility
                 dropdown.Click();
 
                 // Espera a que las opciones sean visibles
-                WaitForElementVisible(ModuloVenta.SelectOptions);
+                WaitForElementVisible(Extras.SelectOptions);
 
                 // Selecciona la opción correspondiente (busca por texto visible en el <li>)
                 IWebElement optionElement = driver.FindElement(By.XPath($"//li[contains(text(), '{_option}')]"));
@@ -125,6 +118,46 @@ namespace SigesCore.Hooks.Utility
             {
                 Console.WriteLine($"Error: No se encontró la opción '{_option}' en el menú desplegable. Detalle: {ex.Message}");
             }
+        }
+
+        public void enterDate(By path, string option)
+        {
+            WaitExistsVisible(path, Extras.overlayLocator);
+            enterField(path, option);
+            driver.FindElement(path).SendKeys(Keys.Enter);
+            Thread.Sleep(4000);
+        }
+
+        public void click(By component)
+        {
+            IWebElement dropdown = driver.FindElement(component);
+            dropdown.Click();
+        }
+
+        public void dataEntryAndEnter(By component, string option)
+        {
+            enterField(component, option);
+            driver.FindElement(component).SendKeys(Keys.Enter);
+        }
+
+        public void SelectOption(By _pathConcept, By _pathFieldConcept, string option)
+        {
+            click(_pathConcept);
+            dataEntryAndEnter(_pathFieldConcept, option);    
+        }
+        public void Registered(By buttonRegistered, By FieldRegistered, string option)
+        {
+            click(buttonRegistered);
+            Thread.Sleep(4000);
+            click(FieldRegistered);
+            dataEntryAndEnter(FieldRegistered, option);
+        }
+        public void cantidad(By cantidad, string valor)
+        {
+            Thread.Sleep(2000);
+            enterField(cantidad, valor);
+            Thread.Sleep(2000);
+            driver.FindElement(cantidad).SendKeys(Keys.Enter);
         }
     }
 }

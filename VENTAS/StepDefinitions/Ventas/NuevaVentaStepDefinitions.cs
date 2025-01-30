@@ -6,6 +6,7 @@ using SigesCore.Hooks.VentasPage;
 using System.Net;
 using SigesCore.Hooks.Utility;
 using SigesCore.Hooks.XPaths;
+using static SigesCore.Hooks.VentasPage.NuevaVentaPage;
 
 namespace SigesCore.StepDefinitions.Ventas
 {
@@ -35,37 +36,75 @@ namespace SigesCore.StepDefinitions.Ventas
         public void WhenSeleccionarVentaYLuego(string modulo)
         {
             newSale.enterModulo(modulo);
+        }       
+
+        [When(@"Agregar concepto Agregar concepto por codigo de barra '([^']*)'")]
+        public void WhenAgregarConceptoAgregarConceptoPorCodigoDeBarra(string valor)
+        {
+            newSale.barCodeConcept(valor);
         }
 
-        [When(@"Agregar concepto por codigo de barra '([^']*)'")]
-        public void WhenAgregarConceptoPorCodigoDeBarra(string codeBarra)
+        [When(@"Agregar concepto por seleccion '([^']*)'")]
+        public void WhenAgregarConceptoPorSeleccion(string value)
         {
-            newSale.barCodeConcept(codeBarra);
+            newSale.SelectConcept(value);
         }
 
-        [When(@"Seleccionar familia '([^']*)', concepto '([^']*)' y cantidad '([^']*)'")]
-        public void WhenSeleccionarFamiliaConceptoYCantidad(string family, string concept, string quantity)
+        [When(@"Ingresar cantidad '([^']*)'")]
+        public void WhenIngresarCantidad(string cantidad)
         {
-            newSale.Concept(family, concept, quantity);
+            newSale.QuantityConcept(cantidad);
         }
+
+        /*[When(@"Agregar concepto por '([^']*)' '([^']*)'")]
+        public void WhenAgregarConceptoPor(string method, string value)
+        {
+            newSale.AddConcept(method, value);
+        }*/
 
         [When(@"Activar IGV '([^']*)'")]
         public void WhenActivarIGV(string option)
         {
-            newSale.IGVoption(option);
+            CheckboxHelper.ActivarIGV(option, driver);
         }
 
-        [When(@"Tipo documento '([^']*)'")]
-        public void WhenTipoDocumento(string doc, string value)
+        [When(@"Activar Detalle Unificado '([^']*)'")]
+        public void WhenActivarDetalleUnificado(string option)
+        {
+            CheckboxHelper.ActivarDetalleUnif(option, driver);
+        }
+
+        [When(@"Seleccionar tipo de cliente '([^']*)' '([^']*)'")]
+        public void WhenSeleccionarTipoDeCliente(string doc, string value)
         {
             newSale.invoiceData(doc, value);
         }
 
-        [When(@"Medio de pago '([^']*)' y '([^']*)' y '([^']*)'")]
+        [When(@"Seleccionar tipo de comprobante '([^']*)'")]
+        public void WhenSeleccionarTipoDeComprobante(string tipoComprobante)
+        {
+            newSale.TipoComprobante(tipoComprobante);   
+        }
+
+        [When(@"Seleccionar credito rapido")]
+        public void WhenSeleccionarCreditoRapido()
+        {
+            newSale.Creditorapido();
+        }
+
+
+        [When(@"Selecionar tipo de pago '([^']*)'")]
+        public void WhenSelecionarTipoDePago(string option)
+        {
+            newSale.PaymentMethod(option);
+        }
+
+
+        /*[When(@"Medio de pago '([^']*)' y '([^']*)' y '([^']*)'")]
         public void WhenMedioDePagoYY(string bank, string card, string info)
         {
             newSale.PaymentMethod1(bank, card, info);
-        }
+        }*/
 
         [Then(@"Guardar venta")]
         public void ThenGuardarVenta()
