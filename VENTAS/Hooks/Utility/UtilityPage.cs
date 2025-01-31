@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using SigesCore.Hooks.XPaths;
+using System.IO;
 
 
 namespace SigesCore.Hooks.Utility
@@ -158,6 +159,45 @@ namespace SigesCore.Hooks.Utility
             enterField(cantidad, valor);
             Thread.Sleep(2000);
             driver.FindElement(cantidad).SendKeys(Keys.Enter);
+        }
+
+        public void moodPay(By _path, string _option)
+        {
+            switch (_option)
+            {
+                case "DEPCU":
+
+                    buttonClickeable(_path);
+                    break;
+
+                case "TRANFON":
+
+                    buttonClickeable(_path);
+                    break;
+
+                case "TDEB":
+
+                    buttonClickeable(_path);
+                    break;
+
+                case "TCRE":
+
+                    buttonClickeable(_path);
+                    break;
+
+                case "EF":
+
+                    buttonClickeable(_path);
+                    break;
+                case "PTS":
+
+                    buttonClickeable(_path);
+                    break;
+
+                default:
+                    throw new ArgumentException($"El {_path} no es válido");
+            }
+
         }
     }
 }
