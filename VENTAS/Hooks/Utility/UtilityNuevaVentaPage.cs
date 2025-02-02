@@ -7,12 +7,12 @@ using System.IO;
 
 namespace SigesCore.Hooks.Utility
 {
-    public class UtilityPage
+    public class UtilityNuevaVentaPage
     {
         private IWebDriver driver;
         WebDriverWait wait;
 
-        public UtilityPage(IWebDriver driver, int timeoutInSeconds = 150)
+        public UtilityNuevaVentaPage(IWebDriver driver, int timeoutInSeconds = 150)
         {
             if (driver == null)
             {

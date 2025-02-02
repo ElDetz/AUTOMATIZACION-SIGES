@@ -20,12 +20,12 @@ namespace SigesCore.Hooks.VentasPage
     {
         private readonly IWebDriver driver;
         WebDriverWait wait;
-        UtilityPage utilityPage;
+        UtilityNuevaVentaPage utilityPage;
 
         public NuevaVentaPage(IWebDriver driver)
         {
             this.driver = driver;
-            this.utilityPage = new UtilityPage(driver);
+            this.utilityPage = new UtilityNuevaVentaPage(driver);
         }
 
         public void SelectModule(string option)

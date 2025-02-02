@@ -16,13 +16,13 @@ namespace SigesCore.StepDefinitions.Ventas
         private IWebDriver driver;
         LoginPage login;
         NuevaVentaPage newSale;
-        UtilityPage UtilityPage;
+        UtilityNuevaVentaPage UtilityPage;
         public NuevaVentaStepDefinitions(IWebDriver driver)
         {
             this.driver = driver;
             this.login = new LoginPage(driver);
             this.newSale = new NuevaVentaPage(driver);
-            this.UtilityPage = new UtilityPage(driver);
+            this.UtilityPage = new UtilityNuevaVentaPage(driver);
         }
 
         [Given(@"Inicio de sesion con usuario '([^']*)' y contrasena '([^']*)'")]
@@ -98,12 +98,6 @@ namespace SigesCore.StepDefinitions.Ventas
         {
             newSale.EnterCardDetails(bank, card, info);
         }
-
-        /*[When(@"Medio de pago '([^']*)' y '([^']*)' y '([^']*)'")]
-        public void WhenMedioDePagoYY(string bank, string card, string info)
-        {
-            newSale.PaymentMethod1(bank, card, info);
-        }*/
 
         [Then(@"Guardar venta")]
         public void ThenGuardarVenta()
