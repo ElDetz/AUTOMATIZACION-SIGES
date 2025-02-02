@@ -22,10 +22,10 @@ namespace SigesCore.Hooks.LoginPage
 
         public void LoginToApplication(string email, string password)
         {
-            utilityPage.enterField(Login.EmailInputField, email);
-            utilityPage.enterField(Login.PasswordInputField, password);
-            utilityPage.buttonClickeable(Login.SignInButton);
-            utilityPage.buttonClickeable(Login.ConfirmButton);
+            utilityPage.EnterField(Login.EmailInputField, email);
+            utilityPage.EnterField(Login.PasswordInputField, password);
+            utilityPage.ClickButton(Login.SignInButton);
+            utilityPage.ClickButton(Login.ConfirmButton);
         }
     }
 }

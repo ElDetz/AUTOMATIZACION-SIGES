@@ -30,48 +30,48 @@ namespace SigesCore.Hooks.VentasPage
 
         public void SelectModule(string option)
         {
-            utilityPage.buttonClickeable(SalesModule.SalesMenu);
+            utilityPage.ClickButton(SalesModule.SalesMenu);
 
             switch (option)
             {
                 case "Nueva Venta":
 
-                    utilityPage.buttonClickeable(SalesModule.NewSaleLink);
+                    utilityPage.ClickButton(SalesModule.NewSaleLink);
                     break;
 
                 case "Venta Modo Caja":
 
-                    utilityPage.buttonClickeable(SalesModule.SaleCashModeLink);
+                    utilityPage.ClickButton(SalesModule.SaleCashModeLink);
                     break;
 
                 case "Venta Por Contingencia":
 
-                    utilityPage.buttonClickeable(SalesModule.ContingencySaleLink);
+                    utilityPage.ClickButton(SalesModule.ContingencySaleLink);
                     break;
 
                 case "Ver Ventas":
 
-                    utilityPage.buttonClickeable(SalesModule.ViewSalesLink);
+                    utilityPage.ClickButton(SalesModule.ViewSalesLink);
                     break;
 
                 case "Reportes Vendedor":
 
-                    utilityPage.buttonClickeable(SalesModule.SellerReportLink);
+                    utilityPage.ClickButton(SalesModule.SellerReportLink);
                     break;
 
                 case "Reportes Puntos":
 
-                    utilityPage.buttonClickeable(SalesModule.PointsReportLink);
+                    utilityPage.ClickButton(SalesModule.PointsReportLink);
                     break;
 
                 case "Reportes Gerente":
 
-                    utilityPage.buttonClickeable(SalesModule.ManagerReportLink);
+                    utilityPage.ClickButton(SalesModule.ManagerReportLink);
                     break;
 
                 case "Reportes":
 
-                    utilityPage.buttonClickeable(SalesModule.ReportsMenu);
+                    utilityPage.ClickButton(SalesModule.ReportsMenu);
                     break;
 
                 default:
@@ -82,11 +82,11 @@ namespace SigesCore.Hooks.VentasPage
         public void TypeSelectConcept(string option, string value)
         {
             option = option.ToUpper();
-            utilityPage.elementExists(Concept.BarcodeInputField);
+            utilityPage.ElementExists(Concept.BarcodeInputField);
             switch (option)
             {
                 case "BARRA":
-                    utilityPage.barCodeConcept(value);
+                    utilityPage.BarCodeConcept(value);
                     break;
 
                 case "SELECCION":
@@ -101,7 +101,7 @@ namespace SigesCore.Hooks.VentasPage
 
         public void QuantityConcept(string value)
         {
-            utilityPage.cantidad(Concept.QuantityInputField, value);
+            utilityPage.Quantity(Concept.QuantityInputField, value);
         }
 
         public class CheckboxHelper
@@ -149,7 +149,7 @@ namespace SigesCore.Hooks.VentasPage
         public void SelectCustomerType(string option, string value)
         {
             option = option.ToUpper();
-            utilityPage.elementExists(Dates.ClientField);
+            utilityPage.ElementExists(Dates.ClientField);
 
             switch (option)
             {
@@ -159,21 +159,21 @@ namespace SigesCore.Hooks.VentasPage
 
                 case "DNI":
 
-                    utilityPage.enterField(Dates.ClientField, value);
+                    utilityPage.EnterField(Dates.ClientField, value);
                     driver.FindElement(Dates.ClientField).SendKeys(Keys.Enter);
                     Thread.Sleep(4000);
                     break;
 
                 case "RUC":
 
-                    utilityPage.enterField(Dates.ClientField, value);
+                    utilityPage.EnterField(Dates.ClientField, value);
                     driver.FindElement(Dates.ClientField).SendKeys(Keys.Enter);
                     Thread.Sleep(4000);
                     break;
 
                 case "ALIAS":
 
-                    utilityPage.enterField(Dates.AliasField, value);
+                    utilityPage.EnterField(Dates.AliasField, value);
                     driver.FindElement(Dates.AliasField).SendKeys(Keys.Enter);
                     Thread.Sleep(4000);
                     break;
@@ -190,7 +190,7 @@ namespace SigesCore.Hooks.VentasPage
         public void SelectInvoiceType(string option)
         {
             option = option.ToUpper();
-            utilityPage.elementExists(Voucher.DocField);
+            utilityPage.ElementExists(Voucher.DocField);
 
             switch (option)
             {
@@ -274,7 +274,7 @@ namespace SigesCore.Hooks.VentasPage
 
                     utilityPage.SelectOption(DebitPayment.BankSelector, typeBank);
                     utilityPage.SelectOption(DebitPayment.BankSelector, typeCard);
-                    utilityPage.enterField(DebitPayment.PaymentDetails, info);
+                    utilityPage.EnterField(DebitPayment.PaymentDetails, info);
                     Thread.Sleep(4000);
                     break;
 
@@ -282,27 +282,27 @@ namespace SigesCore.Hooks.VentasPage
 
                     utilityPage.SelectOption(CreditPayment.BankSelector, typeBank);
                     utilityPage.SelectOption(CreditPayment.CardSelector, typeCard);
-                    utilityPage.enterField(CreditPayment.PaymentDetails, info);
+                    utilityPage.EnterField(CreditPayment.PaymentDetails, info);
                     Thread.Sleep(4000);
                     break;
 
                 case "DEPCU":
 
                     utilityPage.SelectOption(Deposit.BankSelector, typeBank);
-                    utilityPage.enterField(Deposit.PaymentDetails, info);
+                    utilityPage.EnterField(Deposit.PaymentDetails, info);
                     Thread.Sleep(4000);
                     break;
 
                 case "TRANFON":
 
                     utilityPage.SelectOption(Transfer.BankSelector, typeBank);
-                    utilityPage.enterField(Transfer.PaymentDetails, info);
+                    utilityPage.EnterField(Transfer.PaymentDetails, info);
                     Thread.Sleep(4000);
                     break;
 
                 case "EF":
 
-                    utilityPage.enterField(Cash.Received, info);
+                    utilityPage.EnterField(Cash.Received, info);
                     Thread.Sleep(4000);
                     break;
 
@@ -316,7 +316,7 @@ namespace SigesCore.Hooks.VentasPage
 
         public void SaveSale()
         {
-            utilityPage.buttonClickeable(AdditionalElements.SaveSaleButton);
+            utilityPage.ClickButton(AdditionalElements.SaveSaleButton);
             Thread.Sleep(5000);
         }
     }

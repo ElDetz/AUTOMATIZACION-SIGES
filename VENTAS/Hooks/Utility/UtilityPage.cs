@@ -22,8 +22,6 @@ namespace SigesCore.Hooks.Utility
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
         }
 
-        //By restauranteField = By.XPath("//span[contains(text(),'Restaurante')]");
-
         public void WaitForOverlayToDisappear(By overlayLocator)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
@@ -32,49 +30,50 @@ namespace SigesCore.Hooks.Utility
                 try
                 {
                     IWebElement overlay = driver.FindElement(overlayLocator);
-                    return !overlay.Displayed; // Espera hasta que el overlay no esté visible
+                    return !overlay.Displayed; 
                 }
                 catch (NoSuchElementException)
                 {
-                    return true; // Si no se encuentra, el overlay ya desapareció
+                    return true;
                 }
             });
         }
-        public void enterField(By _path, string _field)
+
+        public void EnterField(By path, string field)
         {
-            if (driver.FindElements(_path).Count == 0)
+            if (driver.FindElements(path).Count == 0)
             {
-                throw new NoSuchElementException($"El elemento con el localizador {_path} no se encontró.");
+                throw new NoSuchElementException($"El elemento con el localizador {path} no se encontró.");
             }
 
-            wait.Until(ExpectedConditions.ElementIsVisible(_path)); // Espera hasta que el elemento sea visible
-            driver.FindElement(_path).SendKeys(Keys.Control + "a");
-            driver.FindElement(_path).SendKeys(Keys.Delete);
-            driver.FindElement(_path).Clear();
-            driver.FindElement(_path).SendKeys(_field);
+            wait.Until(ExpectedConditions.ElementIsVisible(path)); // Espera hasta que el elemento sea visible
+            driver.FindElement(path).SendKeys(Keys.Control + "a");
+            driver.FindElement(path).SendKeys(Keys.Delete);
+            driver.FindElement(path).Clear();
+            driver.FindElement(path).SendKeys(field);
         }
 
-        public void elementExists(By _button)
+        public void ElementExists(By button)
         {
             try
             {
-                wait.Until(ExpectedConditions.ElementExists(_button)); // Espera hasta que el elemento exista en el DOM
+                wait.Until(ExpectedConditions.ElementExists(button)); // Espera hasta que el elemento exista en el DOM
             }
             catch (WebDriverTimeoutException)
             {
-                throw new NoSuchElementException($"El elemento con el localizador {_button} no se encontró dentro del tiempo esperado.");
+                throw new NoSuchElementException($"El elemento con el localizador {button} no se encontró dentro del tiempo esperado.");
             }
         }
 
-        public void buttonClickeable(By _button)
+        public void ClickButton(By button)
         {
-            if (driver.FindElements(_button).Count == 0)
+            if (driver.FindElements(button).Count == 0)
             {
-                throw new NoSuchElementException($"El elemento con el localizador {_button} no se encontró.");
+                throw new NoSuchElementException($"El elemento con el localizador {button} no se encontró.");
             }
 
-            wait.Until(ExpectedConditions.ElementToBeClickable(_button)); // Espera hasta que el elemento sea clickeable
-            driver.FindElement(_button).Click();
+            wait.Until(ExpectedConditions.ElementToBeClickable(button)); // Espera hasta que el elemento sea clickeable
+            driver.FindElement(button).Click();
         }
 
         // Esperar que el menú desplegable sea visible
@@ -94,105 +93,95 @@ namespace SigesCore.Hooks.Utility
        
         public void WaitExistsVisible(By pathExists, By pathOverlay)
         {
-            elementExists(pathExists);
+            ElementExists(pathExists);
             WaitForElementVisible(pathOverlay);
         }
 
-        public void enterDate(By path, string option)
+        public void EnterDate(By path, string option)
         {
             WaitExistsVisible(path, AdditionalElements.OverlayElement);
-            enterField(path, option);
+            EnterField(path, option);
             driver.FindElement(path).SendKeys(Keys.Enter);
             Thread.Sleep(4000);
         }
 
-        public void click(By component)
+        public void ClickUility(By component)
         {
             IWebElement dropdown = driver.FindElement(component);
             dropdown.Click();
         }
 
-        public void dataEntryAndEnter(By component, string option)
+        public void DataEntryAndEnter(By component, string option)
         {
-            enterField(component, option);
+            EnterField(component, option);
             driver.FindElement(component).SendKeys(Keys.Enter);
         }
 
-        public void SelectOption2(By _pathConcept, By _pathFieldConcept, string option)
-        {
-            click(_pathConcept);
-            dataEntryAndEnter(_pathFieldConcept, option);    
-        }
         public void Registered(By buttonRegistered, By FieldRegistered, string option)
         {
-            click(buttonRegistered);
+            ClickUility(buttonRegistered);
             Thread.Sleep(4000);
-            click(FieldRegistered);
-            dataEntryAndEnter(FieldRegistered, option);
-        }
-        public void cantidad(By cantidad, string valor)
-        {
-            Thread.Sleep(2000);
-            enterField(cantidad, valor);
-            Thread.Sleep(2000);
-            driver.FindElement(cantidad).SendKeys(Keys.Enter);
+            ClickUility(FieldRegistered);
+            DataEntryAndEnter(FieldRegistered, option);
         }
 
-        public void PaymentMethodUtility(By _path, string _option)
+        public void Quantity(By quantity, string value)
         {
-            switch (_option)
+            Thread.Sleep(2000);
+            EnterField(quantity, value);
+            Thread.Sleep(2000);
+            driver.FindElement(quantity).SendKeys(Keys.Enter);
+        }
+
+        public void PaymentMethodUtility(By path, string option)
+        {
+            switch (option)
             {
                 case "DEPCU":
 
-                    buttonClickeable(_path);
+                    ClickButton(path);
                     break;
 
                 case "TRANFON":
 
-                    buttonClickeable(_path);
+                    ClickButton(path);
                     break;
 
                 case "TDEB":
 
-                    buttonClickeable(_path);
+                    ClickButton(path);
                     break;
 
                 case "TCRE":
 
-                    buttonClickeable(_path);
+                    ClickButton(path);
                     break;
 
                 case "EF":
 
-                    buttonClickeable(_path);
+                    ClickButton(path);
                     break;
                 case "PTS":
 
-                    buttonClickeable(_path);
+                    ClickButton(path);
                     break;
 
                 default:
-                    throw new ArgumentException($"El {_path} no es válido");
+                    throw new ArgumentException($"El {path} no es válido");
             }
         }
 
         public string ViewPaymentMethod()
         {
-            // Encuentra el contenedor con los botones de radio
             var medioPagoContainer = driver.FindElement(By.Id("medioPago0"));
-
-            // Encuentra todos los botones de radio dentro del contenedor
             var radioButtons = medioPagoContainer.FindElements(By.CssSelector("input[type='radio']"));
 
-            // Itera por cada botón de radio para verificar cuál está seleccionado
             foreach (var radioButton in radioButtons)
             {
-                if (radioButton.Selected) // Verifica si el botón está seleccionado
+                if (radioButton.Selected) 
                 {
-                    // Encuentra el label asociado al botón de radio seleccionado
                     var label = driver.FindElement(By.CssSelector($"label[for='{radioButton.GetAttribute("id")}']"));
 
-                    // Retorna el texto del label (DEPCU, TRANFON, etc.)
                     return label.Text;
                 }
             }
@@ -200,22 +189,18 @@ namespace SigesCore.Hooks.Utility
             return string.Empty;
         }
 
-        public void SelectOption(By _path, string option)
+        public void SelectOption(By path, string option)
         {
             try
             {
-                // Esperar que el menú desplegable sea visible
                 WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-                wait.Until(ExpectedConditions.ElementIsVisible(_path));
+                wait.Until(ExpectedConditions.ElementIsVisible(path));
 
-                // Abre el menú desplegable
-                IWebElement dropdown = driver.FindElement(_path);
+                IWebElement dropdown = driver.FindElement(path);
                 dropdown.Click();
 
-                // Espera explícita para que las opciones sean visibles
                 wait.Until(ExpectedConditions.ElementIsVisible(AdditionalElements.SelectODropdownOptions));
 
-                // Selecciona la opción deseada
                 IWebElement optionElement = driver.FindElement(By.XPath($"//li[contains(text(), '{option}')]"));
                 optionElement.Click();
             }
@@ -225,9 +210,9 @@ namespace SigesCore.Hooks.Utility
             }
         }
 
-        public void barCodeConcept(string value)
+        public void BarCodeConcept(string value)
         {
-            enterDate(Concept.BarcodeInputField, value);
+            EnterDate(Concept.BarcodeInputField, value);
         }
 
         public void SelectConcept(string value)
