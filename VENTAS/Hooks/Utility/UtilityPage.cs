@@ -97,29 +97,6 @@ namespace SigesCore.Hooks.Utility
             elementExists(pathExists);
             WaitForElementVisible(pathOverlay);
         }
-        public void SelectOption(By _path, string _option)
-        {
-            try
-            {
-                // Espera que el elemento del menú sea visible
-                WaitForElementVisible(_path);
-
-                // Haz clic en el campo Select2 para abrir el menú desplegable
-                IWebElement dropdown = driver.FindElement(_path);
-                dropdown.Click();
-
-                // Espera a que las opciones sean visibles
-                WaitForElementVisible(Extras.SelectOptions);
-
-                // Selecciona la opción correspondiente (busca por texto visible en el <li>)
-                IWebElement optionElement = driver.FindElement(By.XPath($"//li[contains(text(), '{_option}')]"));
-                optionElement.Click();
-            }
-            catch (NoSuchElementException ex)
-            {
-                Console.WriteLine($"Error: No se encontró la opción '{_option}' en el menú desplegable. Detalle: {ex.Message}");
-            }
-        }
 
         public void enterDate(By path, string option)
         {
@@ -141,7 +118,7 @@ namespace SigesCore.Hooks.Utility
             driver.FindElement(component).SendKeys(Keys.Enter);
         }
 
-        public void SelectOption(By _pathConcept, By _pathFieldConcept, string option)
+        public void SelectOption2(By _pathConcept, By _pathFieldConcept, string option)
         {
             click(_pathConcept);
             dataEntryAndEnter(_pathFieldConcept, option);    
@@ -161,7 +138,7 @@ namespace SigesCore.Hooks.Utility
             driver.FindElement(cantidad).SendKeys(Keys.Enter);
         }
 
-        public void moodPay(By _path, string _option)
+        public void PaymentMethodUtility(By _path, string _option)
         {
             switch (_option)
             {
@@ -197,7 +174,66 @@ namespace SigesCore.Hooks.Utility
                 default:
                     throw new ArgumentException($"El {_path} no es válido");
             }
+        }
 
+        public string ViewPaymentMethod()
+        {
+            // Encuentra el contenedor con los botones de radio
+            var medioPagoContainer = driver.FindElement(By.Id("medioPago0"));
+
+            // Encuentra todos los botones de radio dentro del contenedor
+            var radioButtons = medioPagoContainer.FindElements(By.CssSelector("input[type='radio']"));
+
+            // Itera por cada botón de radio para verificar cuál está seleccionado
+            foreach (var radioButton in radioButtons)
+            {
+                if (radioButton.Selected) // Verifica si el botón está seleccionado
+                {
+                    // Encuentra el label asociado al botón de radio seleccionado
+                    var label = driver.FindElement(By.CssSelector($"label[for='{radioButton.GetAttribute("id")}']"));
+
+                    // Retorna el texto del label (DEPCU, TRANFON, etc.)
+                    return label.Text;
+                }
+            }
+            // Si no se selecciona nada, retorna una cadena vacía o lanza una excepción si es necesario
+            return string.Empty;
+        }
+
+        public void SelectOption(By _path, string option)
+        {
+            try
+            {
+                // Esperar que el menú desplegable sea visible
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                wait.Until(ExpectedConditions.ElementIsVisible(_path));
+
+                // Abre el menú desplegable
+                IWebElement dropdown = driver.FindElement(_path);
+                dropdown.Click();
+
+                // Espera explícita para que las opciones sean visibles
+                wait.Until(ExpectedConditions.ElementIsVisible(Extras.SelectOptions));
+
+                // Selecciona la opción deseada
+                IWebElement optionElement = driver.FindElement(By.XPath($"//li[contains(text(), '{option}')]"));
+                optionElement.Click();
+            }
+            catch (NoSuchElementException ex)
+            {
+                Console.WriteLine($"Error: No se encontró la opción '{option}' en el menú desplegable. Detalle: {ex.Message}");
+            }
+        }
+
+        public void barCodeConcept(string value)
+        {
+            enterDate(Concept.codeBarraField, value);
+        }
+
+        public void SelectConcept(string value)
+        {
+            Thread.Sleep(4000);
+            SelectOption(Concept.pathConcept, value);
         }
     }
 }

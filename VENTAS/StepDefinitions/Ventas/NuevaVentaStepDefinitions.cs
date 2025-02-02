@@ -35,7 +35,7 @@ namespace SigesCore.StepDefinitions.Ventas
         [When(@"Seleccionar Venta y luego ""([^""]*)""")]
         public void WhenSeleccionarVentaYLuego(string modulo)
         {
-            newSale.enterModulo(modulo);
+            newSale.SelectModule(modulo);
         }
 
         /*[When(@"Agregar concepto Agregar concepto por codigo de barra '([^']*)'")]
@@ -57,9 +57,9 @@ namespace SigesCore.StepDefinitions.Ventas
         }
 
         [When(@"Ingresar cantidad '([^']*)'")]
-        public void WhenIngresarCantidad(string cantidad)
+        public void WhenIngresarCantidad(string quantity)
         {
-            newSale.QuantityConcept(cantidad);
+            newSale.QuantityConcept(quantity);
         }
 
         /*[When(@"Agregar concepto por '([^']*)' '([^']*)'")]
@@ -71,13 +71,13 @@ namespace SigesCore.StepDefinitions.Ventas
         [When(@"Activar IGV '([^']*)'")]
         public void WhenActivarIGV(string option)
         {
-            CheckboxHelper.ActivarIGV(option, driver);
+            CheckboxHelper.EnableIGV(option, driver);
         }
 
         [When(@"Activar Detalle Unificado '([^']*)'")]
         public void WhenActivarDetalleUnificado(string option)
         {
-            CheckboxHelper.ActivarDetalleUnif(option, driver);
+            CheckboxHelper.EnableUnifiedDetail(option, driver);
         }
 
         /*[When(@"Click en Cliente registrado '([^']*)'")]
@@ -87,15 +87,15 @@ namespace SigesCore.StepDefinitions.Ventas
         }*/
 
         [When(@"Seleccionar tipo de cliente '([^']*)' '([^']*)'")]
-        public void WhenSeleccionarTipoDeCliente(string doc, string value)
+        public void WhenSeleccionarTipoDeCliente(string option, string value)
         {
-            newSale.invoiceData(doc, value);
+            newSale.SelectCustomerType(option, value);
         }
 
         [When(@"Seleccionar tipo de comprobante '([^']*)'")]
-        public void WhenSeleccionarTipoDeComprobante(string tipoComprobante)
+        public void WhenSeleccionarTipoDeComprobante(string option)
         {
-            newSale.TipoComprobante(tipoComprobante);   
+            newSale.SelectInvoiceType(option);   
         }
 
         /*[When(@"Seleccionar credito rapido")]
@@ -110,11 +110,10 @@ namespace SigesCore.StepDefinitions.Ventas
             newSale.PaymentMethod(option);
         }
 
-
         [When(@"Rellene datos de la tarjeta '([^']*)' , '([^']*)' y '([^']*)'")]
         public void WhenRelleneDatosDeLaTarjetaY(string bank, string card, string info)
         {
-            newSale.PaymentMethod(bank, card, info);
+            newSale.EnterCardDetails(bank, card, info);
         }
 
         /*[When(@"Medio de pago '([^']*)' y '([^']*)' y '([^']*)'")]
@@ -126,7 +125,7 @@ namespace SigesCore.StepDefinitions.Ventas
         [Then(@"Guardar venta")]
         public void ThenGuardarVenta()
         {
-            newSale.saveSale();
+            newSale.SaveSale();
         }
     }
 }
