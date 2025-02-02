@@ -100,7 +100,7 @@ namespace SigesCore.Hooks.Utility
 
         public void enterDate(By path, string option)
         {
-            WaitExistsVisible(path, Extras.overlayLocator);
+            WaitExistsVisible(path, AdditionalElements.OverlayElement);
             enterField(path, option);
             driver.FindElement(path).SendKeys(Keys.Enter);
             Thread.Sleep(4000);
@@ -213,7 +213,7 @@ namespace SigesCore.Hooks.Utility
                 dropdown.Click();
 
                 // Espera explícita para que las opciones sean visibles
-                wait.Until(ExpectedConditions.ElementIsVisible(Extras.SelectOptions));
+                wait.Until(ExpectedConditions.ElementIsVisible(AdditionalElements.SelectODropdownOptions));
 
                 // Selecciona la opción deseada
                 IWebElement optionElement = driver.FindElement(By.XPath($"//li[contains(text(), '{option}')]"));
@@ -227,13 +227,13 @@ namespace SigesCore.Hooks.Utility
 
         public void barCodeConcept(string value)
         {
-            enterDate(Concept.codeBarraField, value);
+            enterDate(Concept.BarcodeInputField, value);
         }
 
         public void SelectConcept(string value)
         {
             Thread.Sleep(4000);
-            SelectOption(Concept.pathConcept, value);
+            SelectOption(Concept.ConceptSelection, value);
         }
     }
 }

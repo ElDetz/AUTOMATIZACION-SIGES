@@ -79,28 +79,24 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
-        public void TypeSelectConcept(string option, string valor)
+        public void TypeSelectConcept(string option, string value)
         {
             option = option.ToUpper();
-            utilityPage.elementExists(Concept.codeBarraField);
+            utilityPage.elementExists(Concept.BarcodeInputField);
             switch (option)
             {
                 case "BARRA":
-                    utilityPage.barCodeConcept(valor);
+                    utilityPage.barCodeConcept(value);
                     break;
 
                 case "SELECCION":
-                    utilityPage.SelectConcept(valor);
+                    utilityPage.SelectConcept(value);
                     break;
 
                 default:
                     throw new ArgumentException($"El {option} no es válido");
             }
 
-        }
-        public void TypeSelectConcept(string option)
-        {
-           
         }
 
         public void QuantityConcept(string value)
@@ -224,83 +220,6 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
-        /*
-        public void PaymentMethod(string option)
-        {
-            option = option.ToUpper();
-
-            // Espera explícita para asegurarse de que el elemento 'PayMethod.payment' esté visible
-            utilityPage.elementExists(PayMethod.payment);
-
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-
-            switch (option)
-            {
-                case "Contado":
-                    // Espera explícita para asegurar que el botón 'contado' esté clickeable
-                    wait.Until(ExpectedConditions.ElementToBeClickable(PayMethod.contado));
-                    utilityPage.buttonClickeable(PayMethod.contado);
-                    break;
-
-                case "Rapido":
-                    // Espera explícita para asegurar que el botón 'rapido' esté clickeable
-                    wait.Until(ExpectedConditions.ElementToBeClickable(PayMethod.rapido));
-                    utilityPage.buttonClickeable(PayMethod.rapido);
-                    break;
-
-                case "Configurado":
-                    // Espera explícita para asegurar que el botón 'configurado' esté clickeable
-                    wait.Until(ExpectedConditions.ElementToBeClickable(PayMethod.configurado));
-                    utilityPage.buttonClickeable(PayMethod.configurado);
-                    break;
-
-                default:
-                    throw new ArgumentException($"El {option} no es válido");
-            }
-        }*/
-
-        public void Creditorapido()
-        {
-            utilityPage.buttonClickeable(PayMethod.rapido);
-        }
-
-        By registrado = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/selector-actor-comercial[1]/ng-form[1]/div[1]/div[1]/div[1]/a[3]");
-        By fieldRegistrado = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/selector-actor-comercial[1]/ng-form[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1]");
-        public void ClickClienteRegistrado(string valor)
-        {
-            utilityPage.buttonClickeable(registrado);
-            Thread.Sleep(2000);
-            utilityPage.buttonClickeable(fieldRegistrado);
-            Thread.Sleep(2000);
-            utilityPage.enterDate(fieldRegistrado, valor);
-        }
-
-        public void BuscarClienteRegistrado(string datoCliente)
-        {
-            // Paso 1: Hacer clic en el botón de búsqueda de clientes
-            var botonBuscarCliente = driver.FindElement(registrado);
-            botonBuscarCliente.Click();
-
-            // Esperar que el campo de búsqueda sea visible y esté habilitado
-            utilityPage.WaitForElementVisible(fieldRegistrado);
-            var campoBusqueda = driver.FindElement(fieldRegistrado);
-
-            // Paso 2: Hacer clic en el campo de búsqueda
-            campoBusqueda.Click();
-
-            // Esperar a que el campo esté realmente enfocado antes de escribir
-            // Puede que sea necesario esperar un poco más si el campo es dinámico
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            wait.Until(d => campoBusqueda.Equals(driver.SwitchTo().ActiveElement()));  // Verifica que el campo esté enfocado
-
-            // Paso 3: Limpiar el campo y luego escribir el dato
-            campoBusqueda.Clear();  // Limpiar cualquier valor previo en el campo de búsqueda
-            campoBusqueda.SendKeys(datoCliente);  // Ingresar el dato (ejemplo: número de documento)
-
-            // Si el campo está listo, enviar la tecla Enter
-            campoBusqueda.SendKeys(Keys.Enter);
-        }
-
         public void PaymentMethod(string option)
         {
             option = option.ToUpper();
@@ -344,37 +263,6 @@ namespace SigesCore.Hooks.VentasPage
             Thread.Sleep(4000);
         }
 
-        /*
-        public void CardPayment(string typeBank, string typeCard, string info)
-
-        {
-            string medioPagoSeleccionado = VerMedioPago();
-
-            switch (medioPagoSeleccionado)
-            {
-                case "TDEB":
-
-                    SelectOption(bankFieldTdeb, typeBank); // SELECCION BANCO
-                    SelectOption(cardFieldTdeb, typeCard); // SELECCION TARJETA
-                    utilityPage.enterField(infoMethod1FieldTdeb, info); // AGREGA INFO
-                    Thread.Sleep(4000);
-
-                    break;
-
-                case "TCRE":
-
-                    SelectOption(bankFieldTcred, typeBank); // SELECCION BANCO
-                    SelectOption(cardFieldTcred, typeCard); // SELECCION TARJETA
-
-                    utilityPage.enterField(infoMethod1FieldTcred, info); // AGREGA INFO
-                    Thread.Sleep(4000);
-
-                    break;
-                default:
-                    throw new ArgumentException($"El tipo de pago {medioPagoSeleccionado} no es válido.");
-            }
-        }*/
-        
         public void EnterCardDetails(string typeBank, string typeCard, string info)
         {
             string option = utilityPage.ViewPaymentMethod();  // Obtiene el tipo de medio de pago seleccionado
@@ -428,9 +316,84 @@ namespace SigesCore.Hooks.VentasPage
 
         public void SaveSale()
         {
-            utilityPage.buttonClickeable(Extras.saveSale);
+            utilityPage.buttonClickeable(AdditionalElements.SaveSaleButton);
             Thread.Sleep(5000);
         }
-
     }
 }
+
+/*
+       public void PaymentMethod(string option)
+       {
+           option = option.ToUpper();
+
+           // Espera explícita para asegurarse de que el elemento 'PayMethod.payment' esté visible
+           utilityPage.elementExists(PayMethod.payment);
+
+           WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+
+           switch (option)
+           {
+               case "Contado":
+                   // Espera explícita para asegurar que el botón 'contado' esté clickeable
+                   wait.Until(ExpectedConditions.ElementToBeClickable(PayMethod.contado));
+                   utilityPage.buttonClickeable(PayMethod.contado);
+                   break;
+
+               case "Rapido":
+                   // Espera explícita para asegurar que el botón 'rapido' esté clickeable
+                   wait.Until(ExpectedConditions.ElementToBeClickable(PayMethod.rapido));
+                   utilityPage.buttonClickeable(PayMethod.rapido);
+                   break;
+
+               case "Configurado":
+                   // Espera explícita para asegurar que el botón 'configurado' esté clickeable
+                   wait.Until(ExpectedConditions.ElementToBeClickable(PayMethod.configurado));
+                   utilityPage.buttonClickeable(PayMethod.configurado);
+                   break;
+
+               default:
+                   throw new ArgumentException($"El {option} no es válido");
+           }
+       }
+              public void Creditorapido()
+       {
+           utilityPage.buttonClickeable(PayMethod.rapido);
+       }
+
+       By registrado = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/selector-actor-comercial[1]/ng-form[1]/div[1]/div[1]/div[1]/a[3]");
+       By fieldRegistrado = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/selector-actor-comercial[1]/ng-form[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1]");
+       public void ClickClienteRegistrado(string valor)
+       {
+           utilityPage.buttonClickeable(registrado);
+           Thread.Sleep(2000);
+           utilityPage.buttonClickeable(fieldRegistrado);
+           Thread.Sleep(2000);
+           utilityPage.enterDate(fieldRegistrado, valor);
+       }
+
+       public void BuscarClienteRegistrado(string datoCliente)
+       {
+           // Paso 1: Hacer clic en el botón de búsqueda de clientes
+           var botonBuscarCliente = driver.FindElement(registrado);
+           botonBuscarCliente.Click();
+
+           // Esperar que el campo de búsqueda sea visible y esté habilitado
+           utilityPage.WaitForElementVisible(fieldRegistrado);
+           var campoBusqueda = driver.FindElement(fieldRegistrado);
+
+           // Paso 2: Hacer clic en el campo de búsqueda
+           campoBusqueda.Click();
+
+           // Esperar a que el campo esté realmente enfocado antes de escribir
+           // Puede que sea necesario esperar un poco más si el campo es dinámico
+           WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+           wait.Until(d => campoBusqueda.Equals(driver.SwitchTo().ActiveElement()));  // Verifica que el campo esté enfocado
+
+           // Paso 3: Limpiar el campo y luego escribir el dato
+           campoBusqueda.Clear();  // Limpiar cualquier valor previo en el campo de búsqueda
+           campoBusqueda.SendKeys(datoCliente);  // Ingresar el dato (ejemplo: número de documento)
+
+           // Si el campo está listo, enviar la tecla Enter
+           campoBusqueda.SendKeys(Keys.Enter);
+       }*/

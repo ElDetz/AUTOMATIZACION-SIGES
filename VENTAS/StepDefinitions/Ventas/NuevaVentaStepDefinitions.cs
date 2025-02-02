@@ -24,6 +24,7 @@ namespace SigesCore.StepDefinitions.Ventas
             this.newSale = new NuevaVentaPage(driver);
             this.UtilityPage = new UtilityPage(driver);
         }
+
         [Given(@"Inicio de sesion con usuario '([^']*)' y contrasena '([^']*)'")]
         public void GivenInicioDeSesionConUsuarioYContrasena(string email, string password)
         {
@@ -38,22 +39,10 @@ namespace SigesCore.StepDefinitions.Ventas
             newSale.SelectModule(modulo);
         }
 
-        /*[When(@"Agregar concepto Agregar concepto por codigo de barra '([^']*)'")]
-        public void WhenAgregarConceptoAgregarConceptoPorCodigoDeBarra(string valor)
-        {
-            newSale.barCodeConcept(valor);
-        }*/
-
-        /*[When(@"Agregar concepto por seleccion '([^']*)'")]
-        public void WhenAgregarConceptoPorSeleccion(string value)
-        {
-            newSale.SelectConcept(value);
-        }*/
-
         [When(@"Agregar concepto por '([^']*)' y valor '([^']*)'")]
-        public void WhenAgregarConceptoPorYValor(string option, string valor)
+        public void WhenAgregarConceptoPorYValor(string option, string value)
         {
-            newSale.TypeSelectConcept(option, valor);
+            newSale.TypeSelectConcept(option, value);
         }
 
         [When(@"Ingresar cantidad '([^']*)'")]
@@ -61,12 +50,6 @@ namespace SigesCore.StepDefinitions.Ventas
         {
             newSale.QuantityConcept(quantity);
         }
-
-        /*[When(@"Agregar concepto por '([^']*)' '([^']*)'")]
-        public void WhenAgregarConceptoPor(string method, string value)
-        {
-            newSale.AddConcept(method, value);
-        }*/
 
         [When(@"Activar IGV '([^']*)'")]
         public void WhenActivarIGV(string option)
