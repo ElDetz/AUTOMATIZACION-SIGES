@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\Ventas\FacturacionAtencionSimple.feature.cs" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\Ventas\FeatureNuevaVenta - Copia.feature.cs" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\Ventas\FeatureVentaCaja - Copia.feature.cs" />
   </ItemGroup>
 
   <ItemGroup>

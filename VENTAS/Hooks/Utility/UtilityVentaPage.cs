@@ -7,12 +7,12 @@ using System.IO;
 
 namespace SigesCore.Hooks.Utility
 {
-    public class UtilityNuevaVentaPage
+    public class UtilityVentaPage
     {
         private IWebDriver driver;
         WebDriverWait wait;
 
-        public UtilityNuevaVentaPage(IWebDriver driver, int timeoutInSeconds = 150)
+        public UtilityVentaPage(IWebDriver driver, int timeoutInSeconds = 150)
         {
             if (driver == null)
             {
@@ -88,8 +88,6 @@ namespace SigesCore.Hooks.Utility
                 throw new NoSuchElementException($"El elemento con el localizador {locator} no se hizo visible dentro del tiempo de espera.");
             }
         }
-
-        // Ingreso Modulo
        
         public void WaitExistsVisible(By pathExists, By pathOverlay)
         {
@@ -117,12 +115,12 @@ namespace SigesCore.Hooks.Utility
             driver.FindElement(component).SendKeys(Keys.Enter);
         }
 
-        public void Registered(By buttonRegistered, By FieldRegistered, string option)
+        public void Registered(By buttonRegistered, By fieldRegistered, string option)
         {
             ClickUility(buttonRegistered);
             Thread.Sleep(4000);
-            ClickUility(FieldRegistered);
-            DataEntryAndEnter(FieldRegistered, option);
+            ClickUility(fieldRegistered);
+            DataEntryAndEnter(fieldRegistered, option);
         }
 
         public void Quantity(By quantity, string value)

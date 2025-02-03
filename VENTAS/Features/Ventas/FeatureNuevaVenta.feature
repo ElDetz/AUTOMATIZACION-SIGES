@@ -10,7 +10,7 @@ Scenario: Registro de una venta
 	And Ingresar cantidad '5'
 	And Activar IGV 'SI'
 	And Activar Detalle Unificado 'SI'
-	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Seleccionar tipo de cliente 'RUC' '72380461'
 	And Seleccionar tipo de comprobante 'BOLETA'
 	And Seleccionar el medio de pago 'TDEB'
 	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556'

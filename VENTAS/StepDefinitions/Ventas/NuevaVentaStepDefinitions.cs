@@ -16,13 +16,14 @@ namespace SigesCore.StepDefinitions.Ventas
         private IWebDriver driver;
         LoginPage login;
         NuevaVentaPage newSale;
-        UtilityNuevaVentaPage UtilityPage;
+        VentaCajaPage cashierMode;
+        UtilityVentaPage UtilityPage;
         public NuevaVentaStepDefinitions(IWebDriver driver)
         {
             this.driver = driver;
             this.login = new LoginPage(driver);
             this.newSale = new NuevaVentaPage(driver);
-            this.UtilityPage = new UtilityNuevaVentaPage(driver);
+            this.UtilityPage = new UtilityVentaPage(driver);
         }
 
         [Given(@"Inicio de sesion con usuario '([^']*)' y contrasena '([^']*)'")]
@@ -61,6 +62,18 @@ namespace SigesCore.StepDefinitions.Ventas
         public void WhenActivarDetalleUnificado(string option)
         {
             CheckboxHelper.EnableUnifiedDetail(option, driver);
+        }
+
+        [When(@"Seleccionar punto de venta '([^']*)'")] //STEP DE VENTA MODO CAJA
+        public void WhenSeleccionarPuntoDeVenta(string option)
+        {
+            cashierMode.SelectPointSale(option);
+        }
+
+        [When(@"Seleccionar vendedor '([^']*)'")] //STEP DE VENTA MODO CAJA
+        public void WhenSeleccionarVendedor(string option)
+        {
+            cashierMode.SelectSeller(option);
         }
 
         /*[When(@"Click en Cliente registrado '([^']*)'")]

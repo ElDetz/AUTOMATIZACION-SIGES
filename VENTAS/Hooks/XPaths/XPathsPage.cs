@@ -150,5 +150,12 @@ namespace SigesCore.Hooks.XPaths
         public static readonly By SaveSaleButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]");
     }
 
+    public class CashMode
+    {
+        public static readonly By PointSelection = By.XPath("");
+
+        public static readonly By SellerSelection = By.XPath("");
+    }
+
 
 }

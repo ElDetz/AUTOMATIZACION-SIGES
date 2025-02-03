@@ -121,7 +121,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 13
- testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de cliente \'RUC\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 14
  testRunner.And("Seleccionar tipo de comprobante \'BOLETA\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
