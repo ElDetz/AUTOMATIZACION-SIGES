@@ -4,6 +4,9 @@ using TechTalk.SpecFlow;
 using SigesCore.Hooks.LoginPage;
 using SigesCore.Hooks.VentasPage;
 using System.Net;
+using SigesCore.Hooks.Utility;
+using SigesCore.Hooks.XPaths;
+using static SigesCore.Hooks.VentasPage.NuevaVentaPage;
 
 namespace SigesCore.StepDefinitions.Ventas
 {
@@ -13,12 +16,16 @@ namespace SigesCore.StepDefinitions.Ventas
         private IWebDriver driver;
         LoginPage login;
         NuevaVentaPage newSale;
+        VentaCajaPage cashierMode;
+        UtilityVentaPage UtilityPage;
         public NuevaVentaStepDefinitions(IWebDriver driver)
         {
             this.driver = driver;
             this.login = new LoginPage(driver);
             this.newSale = new NuevaVentaPage(driver);
+            this.UtilityPage = new UtilityVentaPage(driver);
         }
+
         [Given(@"Inicio de sesion con usuario '([^']*)' y contrasena '([^']*)'")]
         public void GivenInicioDeSesionConUsuarioYContrasena(string email, string password)
         {
@@ -27,52 +34,88 @@ namespace SigesCore.StepDefinitions.Ventas
             login.LoginToApplication(email, password);
         }
 
-        [When(@"Click en venta luego nueva venta")]
-        public void WhenClickEnVentaLuegoNuevaVenta()
+        [When(@"Seleccionar Venta y luego ""([^""]*)""")]
+        public void WhenSeleccionarVentaYLuego(string modulo)
         {
-            newSale.Buttons();
+            newSale.SelectModule(modulo);
         }
 
-        [When(@"Agregar concepto por codigo de barra '([^']*)'")]
-        public void WhenAgregarConceptoPorCodigoDeBarra(string codeBarra)
+        [When(@"Agregar concepto por '([^']*)' y valor '([^']*)'")]
+        public void WhenAgregarConceptoPorYValor(string option, string value)
         {
-            newSale.BarCodeConcept(codeBarra);
+            newSale.TypeSelectConcept(option, value);
         }
 
-        [When(@"Seleccionar familia '([^']*)', concepto '([^']*)' y cantidad '([^']*)'")]
-        public void WhenSeleccionarFamiliaConceptoYCantidad(string family, string concept, string quantity)
+        [When(@"Ingresar cantidad '([^']*)'")]
+        public void WhenIngresarCantidad(string quantity)
         {
-            newSale.Concept(family, concept, quantity);
-        }
-        
-        public void WhenAgregarConceptoPorCodigoDeBarraSeleccionarFamiliaConceptoYCantidad(string p0, string aBRA, string p2, string p3)
-        {
-            throw new PendingStepException();
+            newSale.QuantityConcept(quantity);
         }
 
-
-        [When(@"Ingresar dni '([^']*)' y activar IGV")]
-        public void WhenIngresarDniEActivarIGV(string dni)
+        [When(@"Activar IGV '([^']*)'")]
+        public void WhenActivarIGV(string option)
         {
-            newSale.DateConcept(dni);
+            CheckboxHelper.EnableIGV(option, driver);
         }
 
-        [When(@"Tipo documento '([^']*)'")]
-        public void WhenTipoDocumento(string doc)
+        [When(@"Activar Detalle Unificado '([^']*)'")]
+        public void WhenActivarDetalleUnificado(string option)
         {
-            newSale.TypeDoc(doc);
+            CheckboxHelper.EnableUnifiedDetail(option, driver);
         }
 
-        [When(@"Medio de pago '([^']*)' y '([^']*)' y '([^']*)'")]
-        public void WhenMedioDePagoYY(string bank, string card, string info)
+        [When(@"Seleccionar punto de venta '([^']*)'")] //STEP DE VENTA MODO CAJA
+        public void WhenSeleccionarPuntoDeVenta(string option)
         {
-            newSale.PaymentMethod1(bank, card, info);
+            cashierMode.SelectPointSale(option);
+        }
+
+        [When(@"Seleccionar vendedor '([^']*)'")] //STEP DE VENTA MODO CAJA
+        public void WhenSeleccionarVendedor(string option)
+        {
+            cashierMode.SelectSeller(option);
+        }
+
+        /*[When(@"Click en Cliente registrado '([^']*)'")]
+        public void WhenClickEnClienteRegistrado(string valor)
+        {
+            newSale.BuscarClienteRegistrado(valor);
+        }*/
+
+        [When(@"Seleccionar tipo de cliente '([^']*)' '([^']*)'")]
+        public void WhenSeleccionarTipoDeCliente(string option, string value)
+        {
+            newSale.SelectCustomerType(option, value);
+        }
+
+        [When(@"Seleccionar tipo de comprobante '([^']*)'")]
+        public void WhenSeleccionarTipoDeComprobante(string option)
+        {
+            newSale.SelectInvoiceType(option);   
+        }
+
+        /*[When(@"Seleccionar credito rapido")]
+        public void WhenSeleccionarCreditoRapido()
+        {
+            newSale.Creditorapido();
+        }*/
+
+        [When(@"Seleccionar el medio de pago '([^']*)'")]
+        public void WhenSeleccionarElMedioDePago(string option)
+        {
+            newSale.PaymentMethod(option);
+        }
+
+        [When(@"Rellene datos de la tarjeta '([^']*)' , '([^']*)' y '([^']*)'")]
+        public void WhenRelleneDatosDeLaTarjetaY(string bank, string card, string info)
+        {
+            newSale.EnterCardDetails(bank, card, info);
         }
 
         [Then(@"Guardar venta")]
         public void ThenGuardarVenta()
         {
-            throw new PendingStepException();
+            newSale.SaveSale();
         }
     }
 }
