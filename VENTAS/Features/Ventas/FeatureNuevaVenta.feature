@@ -20,7 +20,7 @@ Scenario: Registro de una venta con pago al contado
 	And Seleccionar el medio de pago 'TDEB'
 	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556'
 	Then Guardar venta
-
+	 
 Scenario: Registro de una venta con crédito rápido
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
