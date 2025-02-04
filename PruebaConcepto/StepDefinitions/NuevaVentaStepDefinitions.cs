@@ -35,10 +35,16 @@ namespace PruebaConcepto.StepDefinitions
             registroVentaPage.CompleteFields(codeBarra,dni);
         }
 
+        [When(@"Tipo de comprobante '([^']*)'")]
+        public void WhenTipoDeComprobante(string _comprobante)
+        {
+            registroVentaPage.tipoComprobante(_comprobante);
+        }
+
         [When(@"Tipo de pago '([^']*)'")]
         public void WhenTipoDePago(string _PaymentType)
         {
-            //registroVentaPage.PaymentType(_PaymentType);
+            registroVentaPage.PaymentType(_PaymentType);
         }
 
         [When(@"Datos del pago '([^']*)' y '([^']*)' y '([^']*)'")]

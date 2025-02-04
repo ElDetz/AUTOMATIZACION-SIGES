@@ -10,7 +10,7 @@ namespace RESTAURANTE.Hoks.Pages
         private IWebDriver driver;
         WebDriverWait wait;
 
-        public UtilityPage(IWebDriver driver, int timeoutInSeconds = 150)
+        public UtilityPage(IWebDriver driver, int timeoutInSeconds = 20)
         {
             if (driver == null)
             {
@@ -29,6 +29,7 @@ namespace RESTAURANTE.Hoks.Pages
         By preparacionField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[2]/a[1]");
         
         By cajaField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[3]/a[1]");
+
         //By cajaField = By.XPath("//ul[@class='treeview-menu']//a[normalize-space(text())='Caja']");
 
         By complementosField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[3]/a[1]");
@@ -36,6 +37,8 @@ namespace RESTAURANTE.Hoks.Pages
 
         // MENU DESPEGABLE
         By SelecOptions = By.CssSelector(".select2-results__options");
+
+
 
         public void WaitForOverlayToDisappear(By overlayLocator)
         {
@@ -63,7 +66,34 @@ namespace RESTAURANTE.Hoks.Pages
 
             wait.Until(ExpectedConditions.ElementIsVisible(_path)); // Espera hasta que el elemento sea visible
             driver.FindElement(_path).Clear(); 
-            driver.FindElement(_path).SendKeys(_field); 
+            driver.FindElement(_path).SendKeys(_field);
+        }
+
+        public void enterField2(By _path, string _field)
+        {
+            if (driver.FindElements(_path).Count == 0)
+            {
+                throw new NoSuchElementException($"El elemento con el localizador {_path} no se encontró.");
+            }
+
+            wait.Until(ExpectedConditions.ElementIsVisible(_path)); // Espera hasta que el elemento sea visible
+            driver.FindElement(_path).Clear();
+            driver.FindElement(_path).SendKeys(_field);
+            driver.FindElement(_path).SendKeys(Keys.Enter);
+        }
+
+        public void VisibilidadElement(By _path)
+        {
+            try
+            {
+                wait.Until(ExpectedConditions.ElementIsVisible(_path)); 
+
+                //buttonClickeable(_button);
+            }
+            catch (WebDriverTimeoutException)
+            {
+                throw new NoSuchElementException($"El elemento con el localizador {_path} visibilidad no se encontró dentro del tiempo esperado.");
+            }
         }
 
         public void elementExists(By _button)
@@ -103,18 +133,45 @@ namespace RESTAURANTE.Hoks.Pages
             }
         }
 
-        /*
-        public void elementVisible(By _button)
+        // Esperar a que la ventana modal esté visible
+        public IWebElement WaitForModal(string modalId, int timeout = 10)
         {
-            if (driver.FindElements(_button).Count == 0)
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeout));
+            return wait.Until(ExpectedConditions.ElementIsVisible(By.Id(modalId)));
+        }
+        
+        // Clic en un botón dentro del modal
+        public void ClickButtonInModal(By buttonLocator)
+        {
+            wait.Until(ExpectedConditions.ElementIsVisible(buttonLocator));
+            wait.Until(ExpectedConditions.ElementToBeClickable(buttonLocator)); // Espera hasta que el elemento sea clickeable
+            driver.FindElement(buttonLocator).Click();
+        }
+
+        public void addFieldModal(IWebElement _element, By _path, string _field)
+        {
+            if (driver.FindElements(_path).Count == 0)
             {
-                throw new NoSuchElementException($"El elemento con el localizador {_button} no se encontró.");
+                throw new NoSuchElementException($"El elemento con el localizador {_path} no se encontró.");
             }
 
-            wait.Until(ExpectedConditions.ElementToBeClickable(_button)); // Espera hasta que el elemento sea visible
-            driver.FindElement(_button).Click();
+            wait.Until(ExpectedConditions.ElementIsVisible(_path)); // Espera hasta que el elemento sea visible
+            _element.FindElement(_path).Clear();
+            _element.FindElement(_path).SendKeys(_field);
         }
-        */
+
+        public void enterFieldModal(IWebElement _element, By _path, string _field)
+        {
+            if (driver.FindElements(_path).Count == 0)
+            {
+                throw new NoSuchElementException($"El elemento con el localizador {_path} no se encontró.");
+            }
+
+            wait.Until(ExpectedConditions.ElementIsVisible(_path)); // Espera hasta que el elemento sea visible
+            _element.FindElement(_path).Clear();
+            _element.FindElement(_path).SendKeys(_field);
+            _element.FindElement(_path).SendKeys(Keys.Enter);
+        }
 
         // Ingreso Modulo
         public void enterModulo(string _modulo)
@@ -156,27 +213,33 @@ namespace RESTAURANTE.Hoks.Pages
             //Thread.Sleep(4000);
         }
 
-        public void SelecOption(By _path, string _option)
+        public void SelecOption(IWebElement _element, By _path, string option)
         {
             try
             {
-                // Espera que el elemento del menú sea visible
-                WaitForElementVisible(_path);
+                wait.Until(ExpectedConditions.ElementIsVisible(_path));
+                wait.Until(ExpectedConditions.ElementToBeClickable(_path));
 
-                // Haz clic en el campo Select2 para abrir el menú desplegable
-                IWebElement dropdown = driver.FindElement(_path);
-                dropdown.Click();
+                _element.FindElement(_path).Click();
 
-                // Espera a que las opciones sean visibles
-                WaitForElementVisible(SelecOptions);
+                /*
+                // Abre el menú desplegable
+                IWebElement dropdown = _element.FindElement(_path);
+                //dropdown.Click();
+                IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+                js.ExecuteScript("arguments[0].click();", dropdown);
+                */
 
-                // Selecciona la opción correspondiente (busca por texto visible en el <li>)
-                IWebElement optionElement = driver.FindElement(By.XPath($"//li[contains(text(), '{_option}')]"));
+                // Espera explícita para que las opciones sean visibles
+                wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".select2-results__options")));
+
+                // Selecciona la opción deseada
+                IWebElement optionElement = _element.FindElement(By.XPath($"//li[contains(text(), '{option}')]"));
                 optionElement.Click();
             }
             catch (NoSuchElementException ex)
             {
-                Console.WriteLine($"Error: No se encontró la opción '{_option}' en el menú desplegable. Detalle: {ex.Message}");
+                Console.WriteLine($"Error: No se encontró la opción '{option}' en el menú desplegable. Detalle: {ex.Message}");
             }
         }
 
