@@ -262,12 +262,12 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
                 case "DEPCU":
 
                     // Llenar los datos bancarios del formulario de facturación
-                    facturacionPage.DatosBanco(modalFacturacion, _bankAccountDEPCU, _cuentaBancaria, _infoDEPCU, _info);
+                    facturacionPage.datosBanco(modalFacturacion, _bankAccountDEPCU, _cuentaBancaria, _infoDEPCU, _info);
                     Thread.Sleep(4000);
                     break;
 
                 case "TRANFON":
-                    facturacionPage.datosBanco(_bankAccountTRANFON, _cuentaBancaria, _infoDEPCU, _info);
+                    facturacionPage.datosBanco(modalFacturacion, _bankAccountTRANFON, _cuentaBancaria, _infoDEPCU, _info);
                     break;
                 default:
                     throw new ArgumentException($"El modo de pago {modoPagoSeleccionado} no es válido.");
@@ -279,14 +279,16 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
         public void PaymentCard(string _bank, string _card, string _info)
         {
             string modoPagoSeleccionado = VerModoPago();
+            IWebElement modalFacturacion = inicioModal();
+
             switch (modoPagoSeleccionado)
             {
                 case "TDEB":
-                    facturacionPage.datosCard(_bankTDEB, _bank, _cardTDEB, _card, _infoTDEB, _info);
+                    facturacionPage.datosCard(modalFacturacion, _bankTDEB, _bank, _cardTDEB, _card, _infoTDEB, _info);
                     break;
-                    
+
                 case "TCRE":
-                    facturacionPage.datosCard(_bankTCRED, _bank, _cardTCRED, _card, _infoTCRED, _info);
+                    facturacionPage.datosCard(modalFacturacion, _bankTCRED, _bank, _cardTCRED, _card, _infoTCRED, _info);
                     break;
                 default:
                     throw new ArgumentException($"El modo de pago {modoPagoSeleccionado} no es válido.");

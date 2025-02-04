@@ -228,15 +228,25 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
         }
 
         //MODO DE PAGO TARJETA TDEB TCRE
-        public void datosCard(By _bankField, string _bank, By _cardField, string _card, By _infoField, string _info)
+        public void datosBanco(IWebElement _modal, By _bankAccountDEPCU, string _cuentaBancaria, By _infoField, string _info)
         {
-            /*
-            utilityPage.SelecOption(_bankField, _bank); // SELECCION BANCO
-            utilityPage.SelecOption(_cardField, _card); // SELECCION TARJETA
-            utilityPage.SelecOption(_infoField, _info); // AGREGA INFO
-            */
+            
+            utilityPage.SelecOption(_modal, _bankAccountDEPCU, _cuentaBancaria); // SELECCION BANCO
+
+            utilityPage.addFieldModal(_modal, _infoField, _info);
+
         }
 
-        
+        //MODO DE PAGO TARJETA TDEB TCRE
+        public void datosCard(IWebElement _modal, By _bankField, string _bank, By _cardField, string _card, By _infoField, string _info)
+        {
+            
+            utilityPage.SelecOption(_modal, _bankField, _bank); // SELECCION BANCO
+            utilityPage.SelecOption(_modal, _cardField, _card); // SELECCION TARJETA
+            utilityPage.addFieldModal(_modal, _infoField, _info); ; // AGREGA INFO
+            
+        }
+
+
     }
 }
