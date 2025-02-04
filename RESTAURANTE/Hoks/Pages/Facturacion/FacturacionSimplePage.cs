@@ -19,11 +19,13 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
             this.driver = driver;
             this.utilityPage = new UtilityPage(driver);
             this.facturacionPage = new FacturacionPage(driver);
+
         }
 
         private By overlayLocator = By.ClassName("block-ui-overlay");
 
-        By fieldLocator;
+        private By fieldLocator;
+        private By _modalFacturacion = By.Id("facturacionVenta-0");
 
         private By clienteField = By.XPath("//input[@id='DocumentoIdentidad']");
         private By aliasField = By.XPath("//input[@ng-model='$ctrl.facturacion.Orden.Cliente.Alias']");
@@ -59,18 +61,36 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
         By tcreButton = By.XPath("//label[@id='labelMedioPago-0-19']");
         By efButton = By.XPath("//label[@id='labelMedioPago-0-281']");
 
+        // DEPCU
+        By _bankAccountDEPCU = By.XPath("");
+        By _infoDEPCU = By.XPath("");
+
+        // TRANFON
+        By _bankAccountTRANFON = By.XPath("");
+        By _infoTRANFON = By.XPath("");
+
         // TDEB
-        By _bankTdeb = By.XPath("//body/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[7]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[1]/span[1]/span[1]");
-        By _cardTdeb = By.XPath("//body/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[7]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[2]/span[1]/span[1]");
-        By _infoTdeb = By.XPath("//body/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[7]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/textarea[1]");
+        By _bankTDEB = By.XPath("//body/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[7]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[1]/span[1]/span[1]");
+        By _cardTDEB = By.XPath("//body/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[7]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[2]/span[1]/span[1]");
+        By _infoTDEB = By.XPath("//body/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[7]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/textarea[1]");
 
         // TCRED
-        By _bankTcred = By.XPath("");
-        By _cardTcred = By.XPath("");
-        By _infoTcred = By.XPath("");
+        By _bankTCRED = By.XPath("");
+        By _cardTCRED = By.XPath("");
+        By _infoTCRED = By.XPath("");
+
+        //  EF
+        By _observation = By.XPath("");
 
         // BOTON FACTURAR
         By facturar = By.XPath("//button[contains(text(),'FACTURAR')]");
+
+        public IWebElement inicioModal()
+        {
+            // Encontrar el modal FACTURACION
+            IWebElement modalFacturacion = driver.FindElement(_modalFacturacion);
+            return modalFacturacion;
+        }
 
 
         // EXTRAE EL MODO DE PAGO SELECCIONADO
@@ -231,19 +251,23 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
         }
 
         // DATOS DE PAGO BANCO - 2 CAMPOS
-        public void PaymentCard(string _cuentaBancaria, string _info)
+        public void PaymentBank(string _cuentaBancaria, string _info)
         {
             string modoPagoSeleccionado = VerModoPago();
+
+            IWebElement modalFacturacion = inicioModal();
+
             switch (modoPagoSeleccionado)
             {
                 case "DEPCU":
-                    facturacionPage.datosBanco(_cuentaBancaria, _info);
+
+                    // Llenar los datos bancarios del formulario de facturación
+                    facturacionPage.DatosBanco(modalFacturacion, _bankAccountDEPCU, _cuentaBancaria, _infoDEPCU, _info);
                     Thread.Sleep(4000);
                     break;
 
                 case "TRANFON":
-                    facturacionPage.datosBanco(_cuentaBancaria, _info);
-                    Thread.Sleep(4000);
+                    facturacionPage.datosBanco(_bankAccountTRANFON, _cuentaBancaria, _infoDEPCU, _info);
                     break;
                 default:
                     throw new ArgumentException($"El modo de pago {modoPagoSeleccionado} no es válido.");
@@ -258,14 +282,11 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
             switch (modoPagoSeleccionado)
             {
                 case "TDEB":
-                    facturacionPage.datosCard(_bankTdeb, _bank, _cardTdeb, _card, _infoTdeb, _info);
-                    Thread.Sleep(4000);
+                    facturacionPage.datosCard(_bankTDEB, _bank, _cardTDEB, _card, _infoTDEB, _info);
                     break;
-
+                    
                 case "TCRE":
-                    facturacionPage.datosCard(_bankTcred, _bank, _cardTcred, _card, _infoTcred, _info);
-                    Thread.Sleep(4000);
-                    Thread.Sleep(4000);
+                    facturacionPage.datosCard(_bankTCRED, _bank, _cardTCRED, _card, _infoTCRED, _info);
                     break;
                 default:
                     throw new ArgumentException($"El modo de pago {modoPagoSeleccionado} no es válido.");
