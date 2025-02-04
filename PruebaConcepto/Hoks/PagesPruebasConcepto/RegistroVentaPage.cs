@@ -33,7 +33,7 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
         By newSaleButton = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[1]/a[1]");
         By codeBarraField = By.XPath("//input[@id='idCodigoBarra']");
         By dniField = By.XPath("//input[@id='DocumentoIdentidad']");
-
+        By comprobanteField= By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[6]/selector-comprobante[1]/div[1]/ng-form[1]/div[1]/div[1]/span[1]/span[1]/span[1]");
 
         //METODO 1
 
@@ -149,6 +149,13 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
                 Console.WriteLine($"Error: No se encontró la opción '{option}' en el menú desplegable. Detalle: {ex.Message}");
             }
         }
+
+        public void tipoComprobante(string _comprobante)
+        {
+            SelecOption(comprobanteField, _comprobante); // SELECCION COMPROBANTE
+            Thread.Sleep(4000);
+        }
+
 
         // METODO DE PAGO TARJETA
         public void PaymentMethod1( string typeBank, string typeCard, string info)

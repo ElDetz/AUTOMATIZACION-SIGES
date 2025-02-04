@@ -1,8 +1,10 @@
 using System;
+using Microsoft.VisualBasic;
 using OpenQA.Selenium;
 using RESTAURANTE.Features.Facturacion;
 using RESTAURANTE.Hoks.Pages;
 using RESTAURANTE.Hoks.Pages.Facturacion;
+using TechTalk.SpecFlow.Assist;
 
 namespace RESTAURANTE.StepDefinitions.Facturacion
 {
@@ -32,6 +34,19 @@ namespace RESTAURANTE.StepDefinitions.Facturacion
             // Realizar el inicio de sesión
             loginPage.LoginToApplication(_user, _password);
         }
+
+        [Given(@"Inicio de sesion con usuario")]
+        public void GivenInicioDeSesionConUsuario(Table table)
+        {
+            driver.Url = "https://tintoymadero-qa.sigesonline.com/";
+
+            dynamic data = table.CreateInstance<dynamic>();
+
+            // Realizar el inicio de sesión
+            loginPage.LoginToApplication(data.Username, data.Password);
+        }
+
+
         [Given(@"Se ingresa al modulo '([^']*)'")]
         public void GivenSeIngresaAlModulo(string _modulo)
         {
@@ -44,29 +59,46 @@ namespace RESTAURANTE.StepDefinitions.Facturacion
             facturacionPage.typeFactura(_typeFactura);
         }
 
-        [When(@"Se ingresa los datos de la factura '([^']*)' '([^']*)'")]
-        public void WhenSeIngresaLosDatosDeLaFactura(string _clientType, string _clientValue)
+        [When(@"Ingresa el cliente '([^']*)' '([^']*)'")]
+        public void WhenIngresaElCliente(string _clientType, string _clientValue)
         {
-            facturacionSimplePage.invoiceData(_clientType, _clientValue);
+            facturacionSimplePage.AddClient(_clientType, _clientValue);
         }
 
-        [When(@"Datos de la factura")]
-        public void WhenDatosDeLaFactura()
+        [When(@"Selecciona el tipo de comprobante '([^']*)'")]
+        public void WhenSeleccionaElTipoDeFactura(string _comprobante)
+        {
+            // facturacionSimplePage.typeComprobante(_comprobante);
+        }
+
+        [When(@"Ingresa alguna observacion '([^']*)'")]
+        public void WhenIngresaAlgunaObservacion(string _observacion)
+        {
+            facturacionSimplePage.AddObservacion(_observacion);
+        }
+
+        [When(@"Selecciona el modo de pago '([^']*)'")]
+        public void WhenSeleccionaElModoDePago(string _moodPago)
         {
             facturacionSimplePage.moodPay(_moodPago);
         }
 
-        [When(@"Datos de pago '([^']*)' '([^']*)' '([^']*)'")]
-        public void WhenDatosDePago(string _bank, string _card, string _info)
+        [When(@"Se ingresa datos del pago '([^']*)' '([^']*)'")]
+        public void WhenSeIngresaDatosDelPago(string _cuentaBancaria, string _informacion)
         {
-            facturacionSimplePage.PaymentCard(_bank,_card, _info);
+            facturacionSimplePage.PaymentBank(_cuentaBancaria, _informacion);
         }
 
+        [When(@"Se ingresa datos del pago '([^']*)' '([^']*)' '([^']*)'")]
+        public void WhenDatosDePago(string _banco, string _tarjeta, string _informacion)
+        {
+            facturacionSimplePage.PaymentCard(_banco, _tarjeta, _informacion);
+        }
 
         [Then(@"Factura exitoso")]
         public void ThenFacturaExitoso()
         {
-           
+            facturacionSimplePage.Facturar();
         }
     }
 }
