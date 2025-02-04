@@ -71,6 +71,7 @@ namespace SigesCore.Hooks.Utility
             {
                 throw new NoSuchElementException($"El elemento con el localizador {button} no se encontró.");
             }
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
             wait.Until(ExpectedConditions.ElementToBeClickable(button)); // Espera hasta que el elemento sea clickeable
             driver.FindElement(button).Click();
@@ -129,6 +130,21 @@ namespace SigesCore.Hooks.Utility
             EnterField(quantity, value);
             Thread.Sleep(2000);
             driver.FindElement(quantity).SendKeys(Keys.Enter);
+        }
+
+        public void CashPayment()
+        {
+            ClickButton(PaymentTypePath.CashPaymentOption);
+        }
+
+        public void QuickCreditPayment()
+        {
+            ClickButton(PaymentTypePath.QuickPaymentOption);
+        }
+
+        public void ConfiguredCreditPayment()
+        {
+            ClickButton(PaymentTypePath.ConfiguredPaymentOption);
         }
 
         public void PaymentMethodUtility(By path, string option)
@@ -217,6 +233,46 @@ namespace SigesCore.Hooks.Utility
         {
             Thread.Sleep(4000);
             SelectOption(Concept.ConceptSelection, value);
+        }
+
+        public void EnterDateClick(By pathInput, By pathName, string value)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            IWebElement Input = wait.Until(ExpectedConditions.ElementToBeClickable(pathInput));
+            IWebElement Name = wait.Until(ExpectedConditions.ElementToBeClickable(pathName));
+            Input.Click();
+            Input.SendKeys(value);
+            Name.Click();
+        }
+
+        public void SelectInvoiceType(By path, string option)
+        {
+            option = option.ToUpper();
+            ElementExists(path);
+
+            switch (option)
+            {
+                case "BOLETA":
+
+                    SelectOption(path, option);
+                    Thread.Sleep(4000);
+                    break;
+
+                case "FACTURA":
+
+                    SelectOption(path, option);
+                    Thread.Sleep(4000);
+                    break;
+
+                case "NOTA":
+
+                    SelectOption(path, option);
+                    Thread.Sleep(4000);
+                    break;
+
+                default:
+                    throw new ArgumentException($"El {option} no es válido");
+            }
         }
     }
 }

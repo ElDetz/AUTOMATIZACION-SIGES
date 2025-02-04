@@ -16,7 +16,6 @@ namespace SigesCore.StepDefinitions.Ventas
         private IWebDriver driver;
         LoginPage login;
         NuevaVentaPage newSale;
-        VentaCajaPage cashierMode;
         UtilityVentaPage UtilityPage;
         public NuevaVentaStepDefinitions(IWebDriver driver)
         {
@@ -52,6 +51,12 @@ namespace SigesCore.StepDefinitions.Ventas
             newSale.QuantityConcept(quantity);
         }
 
+        [When(@"Ingresar precio unitario '([^']*)'")]
+        public void WhenIngresarPrecioUnitario(string quantity)
+        {
+            newSale.UnitPrice(quantity);
+        }
+
         [When(@"Activar IGV '([^']*)'")]
         public void WhenActivarIGV(string option)
         {
@@ -64,41 +69,49 @@ namespace SigesCore.StepDefinitions.Ventas
             CheckboxHelper.EnableUnifiedDetail(option, driver);
         }
 
-        [When(@"Seleccionar punto de venta '([^']*)'")] //STEP DE VENTA MODO CAJA
-        public void WhenSeleccionarPuntoDeVenta(string option)
-        {
-            cashierMode.SelectPointSale(option);
-        }
-
-        [When(@"Seleccionar vendedor '([^']*)'")] //STEP DE VENTA MODO CAJA
-        public void WhenSeleccionarVendedor(string option)
-        {
-            cashierMode.SelectSeller(option);
-        }
-
-        /*[When(@"Click en Cliente registrado '([^']*)'")]
-        public void WhenClickEnClienteRegistrado(string valor)
-        {
-            newSale.BuscarClienteRegistrado(valor);
-        }*/
-
         [When(@"Seleccionar tipo de cliente '([^']*)' '([^']*)'")]
         public void WhenSeleccionarTipoDeCliente(string option, string value)
         {
             newSale.SelectCustomerType(option, value);
         }
 
+        //STEP DE VENTA POR CONTIGENCIA
+        /* [When(@"Ingresar fecha de emisión de la venta '([^']*)'")] 
+         public void WhenIngresarFechaDeEmisionDeLaVenta(string value)
+         {
+             newSale.IssueDate(value);
+         }*/
+
         [When(@"Seleccionar tipo de comprobante '([^']*)'")]
         public void WhenSeleccionarTipoDeComprobante(string option)
         {
-            newSale.SelectInvoiceType(option);   
+            newSale.SelectInvoiceTypeNewSale(option);   
         }
 
-        /*[When(@"Seleccionar credito rapido")]
+        /*[When(@"Seleccionar Credito rapido")]
         public void WhenSeleccionarCreditoRapido()
         {
-            newSale.Creditorapido();
+            newSale.CreditoConfigurado();
         }*/
+
+        [When(@"Seleccionar tipo de pago ""([^""]*)""")]
+        public void WhenSeleccionarTipoDePago(string option)
+        {
+            newSale.SelectPaymentType(option);
+        }
+
+        [When(@"Ingresar monto inicial '([^']*)'")]
+        public void WhenIngresarMontoInicial(string value)
+        {
+            newSale.Initial(value);
+        }
+
+        [When(@"Ingresar el número de coutas '([^']*)'")]
+        public void WhenIngresarElNumeroDeCoutas(string value)
+        {
+            newSale.Cuota(value);
+        }
+
 
         [When(@"Seleccionar el medio de pago '([^']*)'")]
         public void WhenSeleccionarElMedioDePago(string option)
@@ -109,7 +122,7 @@ namespace SigesCore.StepDefinitions.Ventas
         [When(@"Rellene datos de la tarjeta '([^']*)' , '([^']*)' y '([^']*)'")]
         public void WhenRelleneDatosDeLaTarjetaY(string bank, string card, string info)
         {
-            newSale.EnterCardDetails(bank, card, info);
+            newSale.EnterCardDetailsNewSale(bank, card, info);
         }
 
         [Then(@"Guardar venta")]
