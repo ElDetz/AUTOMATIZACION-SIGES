@@ -75,30 +75,38 @@ namespace SigesCore.StepDefinitions.Ventas
             newSale.SelectCustomerType(option, value);
         }
 
-        //STEP DE VENTA POR CONTIGENCIA
-        /* [When(@"Ingresar fecha de emisión de la venta '([^']*)'")] 
+        //STEP PROPIO DE VENTA POR CONTIGENCIA
+        [When(@"Ingresar fecha de emisión de la venta '([^']*)'")] 
          public void WhenIngresarFechaDeEmisionDeLaVenta(string value)
          {
-             newSale.IssueDate(value);
-         }*/
+             newSale.IssueDateContingency(value);
+         }
 
-        [When(@"Seleccionar tipo de comprobante '([^']*)'")]
-        public void WhenSeleccionarTipoDeComprobante(string option)
+        [When(@"Seleccionar tipo de comprobante '([^']*)' en el módulo de ""([^""]*)""")]
+        public void WhenSeleccionarTipoDeComprobanteEnElModuloDe(string option, string module)
         {
-            newSale.SelectInvoiceTypeNewSale(option);   
+            newSale.SelectInvoiceType(option, module);
         }
 
-        /*[When(@"Seleccionar Credito rapido")]
-        public void WhenSeleccionarCreditoRapido()
+        //STEP PROPIO DE VENTA POR CONTIGENCIA
+        [When(@"Ingresar el número de documento '([^']*)'")]
+        public void WhenIngresarElNumeroDeDocumento(string value)
         {
-            newSale.CreditoConfigurado();
-        }*/
+            newSale.DocumentNumberContingency(value);
+        }
 
         [When(@"Seleccionar tipo de pago ""([^""]*)""")]
         public void WhenSeleccionarTipoDePago(string option)
         {
             newSale.SelectPaymentType(option);
         }
+
+        [When(@"Ingresar monto inicial de crédito rapido '([^']*)' en el módulo de ""([^""]*)""")]
+        public void WhenIngresarMontoInicialDeCreditoRapidoEnElModuloDe(string value, string module)
+        {
+            newSale.InitialQuickPayment(value, module);
+        }
+
 
         [When(@"Ingresar monto inicial '([^']*)'")]
         public void WhenIngresarMontoInicial(string value)
@@ -112,17 +120,28 @@ namespace SigesCore.StepDefinitions.Ventas
             newSale.Cuota(value);
         }
 
+        [When(@"Ingresar fecha '([^']*)'")]
+        public void WhenIngresarFecha(string value)
+        {
+            newSale.DateCuota(value);
+        }
+
+        [When(@"Click en generar coutas")]
+        public void WhenClickEnGenerarCoutas()
+        {
+            newSale.GenerateQuota();
+        }
 
         [When(@"Seleccionar el medio de pago '([^']*)'")]
         public void WhenSeleccionarElMedioDePago(string option)
         {
             newSale.PaymentMethod(option);
         }
-
-        [When(@"Rellene datos de la tarjeta '([^']*)' , '([^']*)' y '([^']*)'")]
-        public void WhenRelleneDatosDeLaTarjetaY(string bank, string card, string info)
+      
+        [When(@"Rellene datos de la tarjeta '([^']*)' , '([^']*)' y '([^']*)' en el módulo de ""([^""]*)""")]
+        public void WhenRelleneDatosDeLaTarjetaYEnElModuloDe(string bank, string card, string info, string module)
         {
-            newSale.EnterCardDetailsNewSale(bank, card, info);
+            newSale.EnterCardDetails(bank, card, info, module);
         }
 
         [Then(@"Guardar venta")]

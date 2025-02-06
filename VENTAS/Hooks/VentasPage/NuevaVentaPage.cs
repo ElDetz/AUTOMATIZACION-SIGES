@@ -1,4 +1,5 @@
 ﻿using FluentAssertions.Equivalency;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -29,6 +30,7 @@ namespace SigesCore.Hooks.VentasPage
             this.utilityPage = new UtilityVentaPage(driver);
         }
 
+        //SELECCIÓN DE MÓDULO Y SUBMÓDULO
         public void SelectModule(string option)
         {
             utilityPage.ClickButton(SalesModule.SalesMenu);
@@ -80,6 +82,7 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
+        //AGREGACIÓN DE CONCEPTO
         public void TypeSelectConcept(string option, string value)
         {
             option = option.ToUpper();
@@ -99,16 +102,19 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
+        //INGRESAR CANTIDAD
         public void QuantityConcept(string value)
         {
             utilityPage.Quantity(Concept.QuantityInputField, value);
         }
 
+        //INGRESAR PRECIO UNITARIO
         public void UnitPrice(string value)
         {
             utilityPage.Quantity(Concept.UnitPriceInputField, value);
         }
 
+        //SELECCIONAR IGV Y DET.UNIF
         public class CheckboxHelper
         {
             public static void CheckOption(By locator, string option, IWebDriver driver)
@@ -138,8 +144,6 @@ namespace SigesCore.Hooks.VentasPage
                     throw new ArgumentException($"Opción no válida: {option}. Use 'SI' o 'NO'.");
                 }
             }
-
-            // Métodos específicos para llamar en los Steps
             public static void EnableIGV(string option, IWebDriver driver)
             {
                 CheckOption(CheckBox.CheckboxIGV, option, driver);
@@ -151,6 +155,7 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
+        //SELECIONAR EL TIPO DE CLIENTE
         public void SelectCustomerType(string option, string value)
         {
             option = option.ToUpper();
@@ -188,13 +193,14 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
-        //FUNCIÓN DE VENTA POR CONTINGENCIA
+        //INGRESAR FECHA DE EMISIÓN (PROPIO DE VENTA POR CONTINGENCIA)
 
-        public void IssueDate(string value) 
+        public void IssueDateContingency(string value) 
         {
-            utilityPage.EnterDateClick(Dates.IssueDateField, Dates.IssueDateName, value);
+            utilityPage.EnterDateClick(Dates.IssueDateFieldContingency, Dates.IssueDateNameContingency, value);
         }
 
+        /*
         public void SelectInvoiceTypeNewSale(string value)
         {
             utilityPage.SelectInvoiceType(Voucher.DocNewSaleField, value);
@@ -203,8 +209,33 @@ namespace SigesCore.Hooks.VentasPage
         public void SelectInvoiceTypeContingency(string value)
         {
             utilityPage.SelectInvoiceType(Voucher.DocContingencyField, value);
+        }*/
+
+        //SELECCIONAR TIPO DE COMPROBANTE
+        public void SelectInvoiceType(string option, string module)
+        {
+            if (module == "Nueva Venta" || module == "Venta Modo Caja")
+            {
+                utilityPage.SelectInvoiceType(Voucher.DocNewSaleField, option);
+            }
+
+            else if (module == "Venta por Contingencia")
+            {
+                utilityPage.SelectInvoiceType(Voucher.DocContingencyField, option);
+            }
+            else
+            {
+                throw new ArgumentException($"Módulo '{module}' no reconocido.");
+            }
         }
 
+        //INGRESAR EL NRO DEL COMPROBANTE (PROPIO DE VENTA POR CONTINGENCIA)
+        public void DocumentNumberContingency (string value)
+        {
+            utilityPage.EnterField(Dates.DocNumberContingency, value);
+        }
+
+        //falta
         public void SelectPaymentType(string option)
         {
             switch (option.ToLower())
@@ -226,7 +257,8 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
-        public void PaymentTypeUtility(By path, string option)
+        /*
+        public void PaymentTypeUtility3(By path, string option)
         {
             switch (option)
             {
@@ -250,7 +282,8 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
-        public void PaymentType(string option)
+      
+        public void PaymentType3(string option)
         {
             option = option.ToUpper();
 
@@ -278,6 +311,36 @@ namespace SigesCore.Hooks.VentasPage
             //Thread.Sleep(4000);
         }
 
+        //INGRESAR LA INICIAL (PROPIO PARA CRÉDITO CONFIGURADO)
+        /* public void InitialQuickPaymentNewSale(string value)
+         {
+             utilityPage.EnterField(QuickCreedit.InitialMountNewSale, value);
+         }
+
+        //INGRESAR LA INICIAL(PROPIO PARA CRÉDITO CONFIGURADO)
+        public void InitialQuickPaymentContingency(string value) 
+        {
+            utilityPage.EnterField(QuickCreedit.InitialMountContingency, value);
+        }*/
+
+        //INGRESAR LA INICIAL(PROPIO PARA CRÉDITO RÁPIDO)
+        public void InitialQuickPayment(string value, string module)
+        {
+            if (module == "Nueva Venta" || module == "Venta Modo Caja")
+            {
+                utilityPage.EnterField(QuickCreedit.InitialMountNewSale, value);
+            }
+            else if (module == "Venta por Contingencia")
+            {
+                utilityPage.EnterField(QuickCreedit.InitialMountContingency, value);
+            }
+            else
+            {
+                throw new ArgumentException($"Módulo '{module}' no reconocido.");
+            }
+        }
+
+        //SELECIONAR MEDIO DE PAGO
         public void PaymentMethod(string option)
         {
             option = option.ToUpper();
@@ -321,6 +384,7 @@ namespace SigesCore.Hooks.VentasPage
             Thread.Sleep(4000);
         }
 
+        //INGRESAR DETALLES DEL PAGO (NUEVA VENTA)
         public void EnterCardDetailsNewSale(string typeBank, string typeCard, string info)
         {
             string option = utilityPage.ViewPaymentMethod();  // Obtiene el tipo de medio de pago seleccionado
@@ -331,7 +395,7 @@ namespace SigesCore.Hooks.VentasPage
                 case "TDEB":
 
                     utilityPage.SelectOption(DebitPaymentNewSale.BankSelector, typeBank);
-                    utilityPage.SelectOption(DebitPaymentNewSale.BankSelector, typeCard);
+                    utilityPage.SelectOption(DebitPaymentNewSale.CardSelector, typeCard);
                     utilityPage.EnterField(DebitPaymentNewSale.PaymentDetails, info);
                     Thread.Sleep(4000);
                     break;
@@ -372,10 +436,10 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
-        //FUNCIÓN DE VENTA POR CONTINGENCIA
+        //INGRESAR DETALLES DEL PAGO (VENTA POR CONTINGENCIA)
         public void EnterCardDetailsContingency(string typeBank, string typeCard, string info) 
         {
-            string option = utilityPage.ViewPaymentMethod();  // Obtiene el tipo de medio de pago seleccionado
+            string option = utilityPage.ViewPaymentMethod();
             option = option.ToUpper();
 
             switch (option)
@@ -383,7 +447,7 @@ namespace SigesCore.Hooks.VentasPage
                 case "TDEB":
 
                     utilityPage.SelectOption(DebitPaymentContingency.BankSelector, typeBank);
-                    utilityPage.SelectOption(DebitPaymentContingency.BankSelector, typeCard);
+                    utilityPage.SelectOption(DebitPaymentContingency.CardSelector, typeCard);
                     utilityPage.EnterField(DebitPaymentContingency.PaymentDetails, info);
                     Thread.Sleep(4000);
                     break;
@@ -424,6 +488,26 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
+        //INGRESAR DETALLES DEL PAGO
+
+        public void EnterCardDetails(string bank, string card, string info, string module)
+        {
+            if (module == "Nueva Venta" || module == "Venta Modo Caja")
+            {
+                EnterCardDetailsNewSale(bank, card, info);
+            }
+
+            else if (module == "Venta por Contingencia")
+            {
+                EnterCardDetailsContingency(bank, card, info);
+            }
+            else
+            {
+                throw new ArgumentException($"Módulo '{module}' no reconocido.");
+            }
+        }
+
+        //INGRESAR LA INICIAL(PROPIO PARA CRÉDITO CONFIGURADO)
         public void Initial(string value)
         {
             
@@ -431,24 +515,53 @@ namespace SigesCore.Hooks.VentasPage
          
             utilityPage.ElementExists(ConfiguredCreditPopup.InitialField);
 
-            utilityPage.WaitForOverlayToDisappear(ConfiguredCreditPopup.overlayLocator);
+            utilityPage.WaitForOverlayToDisappear(AdditionalElements.OverlayElement);
 
             utilityPage.EnterDateClick(ConfiguredCreditPopup.InitialField, ConfiguredCreditPopup.InitialName, value);
         }
 
+        //INGRESAR EL NRO DE COUTAS (PROPIO PARA CRÉDITO CONFIGURADO)
         public void Cuota(string value)
         {
             utilityPage.EnterField(ConfiguredCreditPopup.CoutaField, value);
         }
 
-        public void FechaCuota(string value)
+        //INGRESAR EL DÍA DE PAGO DE COUTAS (PROPIO PARA CRÉDITO CONFIGURADO)
+        public void DateCuota(string value)
         {
-            utilityPage.EnterDateClick(ConfiguredCreditPopup.CoutaField, ConfiguredCreditPopup.CoutaName, value);
+            Thread.Sleep(4000);
+            IWebElement modalFacturacion = driver.FindElement(ConfiguredCreditPopup.Modal);
+
+            IWebElement dropdown = modalFacturacion.FindElement(By.Id("diavencimiento"));
+            Console.WriteLine("Campo seleccion encontrada");
+            IReadOnlyCollection<IWebElement> dropdownOptions = dropdown.FindElements(By.TagName("option"));
+            Console.WriteLine("Slecciones extraidas");
+            foreach (IWebElement option in dropdownOptions)
+            {
+                if (option.Text.Equals(value))
+                    option.Click();
+            }
+            string selectedOption = "";
+            foreach (IWebElement option in dropdownOptions)
+            {
+                if (option.Selected)
+                    selectedOption = option.Text;
+            }
+            Assert.That(selectedOption, Is.EqualTo(value));
+            Thread.Sleep(4000);
         }
 
+        //GENERAR COUTAS (PROPIO PARA CRÉDITO CONFIGURADO)
+        public void GenerateQuota()
+        {
+            var botonGenerarCuota = driver.FindElement(By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[6]/button[1]"));
+            botonGenerarCuota.Click();
+        }
+
+        //GUARDAR VENTA
         public void SaveSale()
         {
-            utilityPage.ClickButton(AdditionalElements.SaveSaleButton);
+            utilityPage.ClickButton(SaveSalePath.SaveSaleButton);
             Thread.Sleep(5000);
         }
     }

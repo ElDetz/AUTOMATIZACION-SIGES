@@ -224,6 +224,29 @@ namespace SigesCore.Hooks.Utility
             }
         }
 
+        public void SelectOption2(By path, string option)
+        {
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                wait.Until(ExpectedConditions.ElementIsVisible(path));
+
+                IWebElement dropdown = driver.FindElement(path);
+                dropdown.Click();
+
+                wait.Until(ExpectedConditions.ElementIsVisible(AdditionalElements.SelectODropdownOptionsConfigured));
+
+                IWebElement optionElement = driver.FindElement(By.XPath($"//li[contains(text(), '{option}')]"));
+                optionElement.Click();
+            }
+            catch (NoSuchElementException ex)
+            {
+                Console.WriteLine($"Error: No se encontró la opción '{option}' en el menú desplegable. Detalle: {ex.Message}");
+            }
+
+
+        }
+
         public void BarCodeConcept(string value)
         {
             EnterDate(Concept.BarcodeInputField, value);
