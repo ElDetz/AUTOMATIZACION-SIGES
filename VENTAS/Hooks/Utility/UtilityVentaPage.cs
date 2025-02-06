@@ -4,7 +4,6 @@ using SeleniumExtras.WaitHelpers;
 using SigesCore.Hooks.XPaths;
 using System.IO;
 
-
 namespace SigesCore.Hooks.Utility
 {
     public class UtilityVentaPage
@@ -77,7 +76,6 @@ namespace SigesCore.Hooks.Utility
             driver.FindElement(button).Click();
         }
 
-        // Esperar que el menú desplegable sea visible
         public void WaitForElementVisible(By locator)
         {
             try
@@ -199,7 +197,6 @@ namespace SigesCore.Hooks.Utility
                     return label.Text;
                 }
             }
-            // Si no se selecciona nada, retorna una cadena vacía o lanza una excepción si es necesario
             return string.Empty;
         }
 
@@ -222,29 +219,6 @@ namespace SigesCore.Hooks.Utility
             {
                 Console.WriteLine($"Error: No se encontró la opción '{option}' en el menú desplegable. Detalle: {ex.Message}");
             }
-        }
-
-        public void SelectOption2(By path, string option)
-        {
-            try
-            {
-                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-                wait.Until(ExpectedConditions.ElementIsVisible(path));
-
-                IWebElement dropdown = driver.FindElement(path);
-                dropdown.Click();
-
-                wait.Until(ExpectedConditions.ElementIsVisible(AdditionalElements.SelectODropdownOptionsConfigured));
-
-                IWebElement optionElement = driver.FindElement(By.XPath($"//li[contains(text(), '{option}')]"));
-                optionElement.Click();
-            }
-            catch (NoSuchElementException ex)
-            {
-                Console.WriteLine($"Error: No se encontró la opción '{option}' en el menú desplegable. Detalle: {ex.Message}");
-            }
-
-
         }
 
         public void BarCodeConcept(string value)
@@ -296,6 +270,116 @@ namespace SigesCore.Hooks.Utility
                 default:
                     throw new ArgumentException($"El {option} no es válido");
             }
+        }
+
+        public void EnterCardDetailsNewSale(string typeBank, string typeCard, string info)
+        {
+            string option = ViewPaymentMethod();  // Obtiene el tipo de medio de pago seleccionado
+            option = option.ToUpper();
+
+            switch (option)
+            {
+                case "TDEB":
+
+                    SelectOption(DebitPaymentNewSale.BankSelector, typeBank);
+                    SelectOption(DebitPaymentNewSale.CardSelector, typeCard);
+                    EnterField(DebitPaymentNewSale.PaymentDetails, info);
+                    Thread.Sleep(4000);
+                    break;
+
+                case "TCRE":
+
+                    SelectOption(CreditPaymentNewSale.BankSelector, typeBank);
+                    SelectOption(CreditPaymentNewSale.CardSelector, typeCard);
+                    EnterField(CreditPaymentNewSale.PaymentDetails, info);
+                    Thread.Sleep(4000);
+                    break;
+
+                case "DEPCU":
+
+                    SelectOption(DepositNewSale.BankSelector, typeBank);
+                    EnterField(DepositNewSale.PaymentDetails, info);
+                    Thread.Sleep(4000);
+                    break;
+
+                case "TRANFON":
+
+                    SelectOption(TransferNewSale.BankSelector, typeBank);
+                    EnterField(TransferNewSale.PaymentDetails, info);
+                    Thread.Sleep(4000);
+                    break;
+
+                case "EF":
+
+                    EnterField(CashNewSale.Received, info);
+                    Thread.Sleep(4000);
+                    break;
+
+                case "PTS":
+                    break;
+
+                default:
+                    throw new ArgumentException($"El tipo de pago {option} no es válido.");
+            }
+        }
+
+        //INGRESAR DETALLES DEL PAGO (VENTA POR CONTINGENCIA)
+        public void EnterCardDetailsContingency(string typeBank, string typeCard, string info)
+        {
+            string option = ViewPaymentMethod();
+            option = option.ToUpper();
+
+            switch (option)
+            {
+                case "TDEB":
+
+                    SelectOption(DebitPaymentContingency.BankSelector, typeBank);
+                    SelectOption(DebitPaymentContingency.CardSelector, typeCard);
+                    EnterField(DebitPaymentContingency.PaymentDetails, info);
+                    Thread.Sleep(4000);
+                    break;
+
+                case "TCRE":
+
+                    SelectOption(CreditPaymentNewSale.BankSelector, typeBank);
+                    SelectOption(CreditPaymentNewSale.CardSelector, typeCard);
+                    EnterField(CreditPaymentNewSale.PaymentDetails, info);
+                    Thread.Sleep(4000);
+                    break;
+
+                case "DEPCU":
+
+                    SelectOption(DepositNewSale.BankSelector, typeBank);
+                    EnterField(DepositNewSale.PaymentDetails, info);
+                    Thread.Sleep(4000);
+                    break;
+
+                case "TRANFON":
+
+                    SelectOption(TransferNewSale.BankSelector, typeBank);
+                    EnterField(TransferNewSale.PaymentDetails, info);
+                    Thread.Sleep(4000);
+                    break;
+
+                case "EF":
+
+                    EnterField(CashNewSale.Received, info);
+                    Thread.Sleep(4000);
+                    break;
+
+                case "PTS":
+                    break;
+
+                default:
+                    throw new ArgumentException($"El tipo de pago {option} no es válido.");
+            }
+        }
+
+        public void WaitForModalAndVerifyField(By path)
+        {
+            IWebElement modalContainer = driver.FindElement(ConfiguredCreditPopup.Modal);
+            ElementExists(path);
+            WaitForOverlayToDisappear(AdditionalElements.OverlayElement);
         }
     }
 }

@@ -120,6 +120,12 @@ namespace SigesCore.StepDefinitions.Ventas
             newSale.Cuota(value);
         }
 
+        [When(@"Ingresar el número de coutas sin inicial '([^']*)'")]
+        public void WhenIngresarElNumeroDeCoutasSinInicial(string value)
+        {
+            newSale.CoutasWithoutInitial(value);
+        }
+
         [When(@"Ingresar fecha '([^']*)'")]
         public void WhenIngresarFecha(string value)
         {
@@ -127,9 +133,15 @@ namespace SigesCore.StepDefinitions.Ventas
         }
 
         [When(@"Click en generar coutas")]
-        public void WhenClickEnGenerarCoutas()
+        public void WhenClickEnGenerarCouta()
         {
             newSale.GenerateQuota();
+        }
+
+        [When(@"Click en Aceptar")]
+        public void WhenClickEnAceptar()
+        {
+            newSale.Aceptar();
         }
 
         [When(@"Seleccionar el medio de pago '([^']*)'")]

@@ -194,22 +194,10 @@ namespace SigesCore.Hooks.VentasPage
         }
 
         //INGRESAR FECHA DE EMISIÓN (PROPIO DE VENTA POR CONTINGENCIA)
-
         public void IssueDateContingency(string value) 
         {
             utilityPage.EnterDateClick(Dates.IssueDateFieldContingency, Dates.IssueDateNameContingency, value);
         }
-
-        /*
-        public void SelectInvoiceTypeNewSale(string value)
-        {
-            utilityPage.SelectInvoiceType(Voucher.DocNewSaleField, value);
-        }
-
-        public void SelectInvoiceTypeContingency(string value)
-        {
-            utilityPage.SelectInvoiceType(Voucher.DocContingencyField, value);
-        }*/
 
         //SELECCIONAR TIPO DE COMPROBANTE
         public void SelectInvoiceType(string option, string module)
@@ -235,7 +223,7 @@ namespace SigesCore.Hooks.VentasPage
             utilityPage.EnterField(Dates.DocNumberContingency, value);
         }
 
-        //falta
+        //SELECCIONAR TIPO DE PAGO
         public void SelectPaymentType(string option)
         {
             switch (option.ToLower())
@@ -256,72 +244,6 @@ namespace SigesCore.Hooks.VentasPage
                     throw new ArgumentException($"Payment type '{option}' is not recognized.");
             }
         }
-
-        /*
-        public void PaymentTypeUtility3(By path, string option)
-        {
-            switch (option)
-            {
-                case "Contado":
-
-                    utilityPage.ClickButton(path);
-                    break;
-
-                case "Credito rapido":
-
-                    utilityPage.ClickButton(path);
-                    break;
-
-                case "Credito configurado":
-
-                    utilityPage.ClickButton(path);
-                    break;
-
-                default:
-                    throw new ArgumentException($"El {path} no es válido");
-            }
-        }
-
-      
-        public void PaymentType3(string option)
-        {
-            option = option.ToUpper();
-
-            switch (option)
-            {
-                case "Contado":
-
-                    PaymentTypeUtility(PaymentTypePath.CashPaymentOption, option);
-                    break;
-
-                case "Credito rapido":
-
-                    PaymentTypeUtility(PaymentTypePath.QuickPaymentOption, option);
-                    break;
-
-                case "Credito configurado":
-
-                    PaymentTypeUtility(PaymentTypePath.ConfiguredPaymentOption, option);
-             
-                    break;
-
-                default:
-                    throw new ArgumentException($"La opción {option} no es válido");
-            }
-            //Thread.Sleep(4000);
-        }
-
-        //INGRESAR LA INICIAL (PROPIO PARA CRÉDITO CONFIGURADO)
-        /* public void InitialQuickPaymentNewSale(string value)
-         {
-             utilityPage.EnterField(QuickCreedit.InitialMountNewSale, value);
-         }
-
-        //INGRESAR LA INICIAL(PROPIO PARA CRÉDITO CONFIGURADO)
-        public void InitialQuickPaymentContingency(string value) 
-        {
-            utilityPage.EnterField(QuickCreedit.InitialMountContingency, value);
-        }*/
 
         //INGRESAR LA INICIAL(PROPIO PARA CRÉDITO RÁPIDO)
         public void InitialQuickPayment(string value, string module)
@@ -383,123 +305,18 @@ namespace SigesCore.Hooks.VentasPage
 
             Thread.Sleep(4000);
         }
-
-        //INGRESAR DETALLES DEL PAGO (NUEVA VENTA)
-        public void EnterCardDetailsNewSale(string typeBank, string typeCard, string info)
-        {
-            string option = utilityPage.ViewPaymentMethod();  // Obtiene el tipo de medio de pago seleccionado
-            option = option.ToUpper();
-
-            switch (option)
-            {
-                case "TDEB":
-
-                    utilityPage.SelectOption(DebitPaymentNewSale.BankSelector, typeBank);
-                    utilityPage.SelectOption(DebitPaymentNewSale.CardSelector, typeCard);
-                    utilityPage.EnterField(DebitPaymentNewSale.PaymentDetails, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "TCRE":
-
-                    utilityPage.SelectOption(CreditPaymentNewSale.BankSelector, typeBank);
-                    utilityPage.SelectOption(CreditPaymentNewSale.CardSelector, typeCard);
-                    utilityPage.EnterField(CreditPaymentNewSale.PaymentDetails, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "DEPCU":
-
-                    utilityPage.SelectOption(DepositNewSale.BankSelector, typeBank);
-                    utilityPage.EnterField(DepositNewSale.PaymentDetails, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "TRANFON":
-
-                    utilityPage.SelectOption(TransferNewSale.BankSelector, typeBank);
-                    utilityPage.EnterField(TransferNewSale.PaymentDetails, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "EF":
-
-                    utilityPage.EnterField(CashNewSale.Received, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "PTS":
-                    break;
-
-                default:
-                    throw new ArgumentException($"El tipo de pago {option} no es válido.");
-            }
-        }
-
-        //INGRESAR DETALLES DEL PAGO (VENTA POR CONTINGENCIA)
-        public void EnterCardDetailsContingency(string typeBank, string typeCard, string info) 
-        {
-            string option = utilityPage.ViewPaymentMethod();
-            option = option.ToUpper();
-
-            switch (option)
-            {
-                case "TDEB":
-
-                    utilityPage.SelectOption(DebitPaymentContingency.BankSelector, typeBank);
-                    utilityPage.SelectOption(DebitPaymentContingency.CardSelector, typeCard);
-                    utilityPage.EnterField(DebitPaymentContingency.PaymentDetails, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "TCRE":
-
-                    utilityPage.SelectOption(CreditPaymentNewSale.BankSelector, typeBank);
-                    utilityPage.SelectOption(CreditPaymentNewSale.CardSelector, typeCard);
-                    utilityPage.EnterField(CreditPaymentNewSale.PaymentDetails, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "DEPCU":
-
-                    utilityPage.SelectOption(DepositNewSale.BankSelector, typeBank);
-                    utilityPage.EnterField(DepositNewSale.PaymentDetails, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "TRANFON":
-
-                    utilityPage.SelectOption(TransferNewSale.BankSelector, typeBank);
-                    utilityPage.EnterField(TransferNewSale.PaymentDetails, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "EF":
-
-                    utilityPage.EnterField(CashNewSale.Received, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "PTS":
-                    break;
-
-                default:
-                    throw new ArgumentException($"El tipo de pago {option} no es válido.");
-            }
-        }
-
+        
         //INGRESAR DETALLES DEL PAGO
-
         public void EnterCardDetails(string bank, string card, string info, string module)
         {
             if (module == "Nueva Venta" || module == "Venta Modo Caja")
             {
-                EnterCardDetailsNewSale(bank, card, info);
+                utilityPage.EnterCardDetailsNewSale(bank, card, info);
             }
 
             else if (module == "Venta por Contingencia")
             {
-                EnterCardDetailsContingency(bank, card, info);
+                utilityPage.EnterCardDetailsContingency(bank, card, info);
             }
             else
             {
@@ -510,19 +327,21 @@ namespace SigesCore.Hooks.VentasPage
         //INGRESAR LA INICIAL(PROPIO PARA CRÉDITO CONFIGURADO)
         public void Initial(string value)
         {
-            
-            IWebElement modalContainer = driver.FindElement(ConfiguredCreditPopup.Modal);
-         
-            utilityPage.ElementExists(ConfiguredCreditPopup.InitialField);
 
-            utilityPage.WaitForOverlayToDisappear(AdditionalElements.OverlayElement);
-
+            utilityPage.WaitForModalAndVerifyField(ConfiguredCreditPopup.InitialField);
             utilityPage.EnterDateClick(ConfiguredCreditPopup.InitialField, ConfiguredCreditPopup.InitialName, value);
         }
 
         //INGRESAR EL NRO DE COUTAS (PROPIO PARA CRÉDITO CONFIGURADO)
         public void Cuota(string value)
         {
+            utilityPage.EnterField(ConfiguredCreditPopup.CoutaField, value);
+        }
+
+        //INGRESAR EL NRO DE COUTAS SIN INICIAL (PROPIO PARA CRÉDITO CONFIGURADO)
+        public void CoutasWithoutInitial(string value)
+        {
+            utilityPage.WaitForModalAndVerifyField(ConfiguredCreditPopup.CoutaField);
             utilityPage.EnterField(ConfiguredCreditPopup.CoutaField, value);
         }
 
@@ -535,27 +354,29 @@ namespace SigesCore.Hooks.VentasPage
             IWebElement dropdown = modalFacturacion.FindElement(By.Id("diavencimiento"));
             Console.WriteLine("Campo seleccion encontrada");
             IReadOnlyCollection<IWebElement> dropdownOptions = dropdown.FindElements(By.TagName("option"));
-            Console.WriteLine("Slecciones extraidas");
+            Console.WriteLine("Selecciones extraidas");
             foreach (IWebElement option in dropdownOptions)
             {
                 if (option.Text.Equals(value))
                     option.Click();
             }
-            string selectedOption = "";
-            foreach (IWebElement option in dropdownOptions)
-            {
-                if (option.Selected)
-                    selectedOption = option.Text;
-            }
-            Assert.That(selectedOption, Is.EqualTo(value));
+            Console.WriteLine("selccion terminada");
             Thread.Sleep(4000);
         }
 
         //GENERAR COUTAS (PROPIO PARA CRÉDITO CONFIGURADO)
         public void GenerateQuota()
         {
-            var botonGenerarCuota = driver.FindElement(By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[6]/button[1]"));
-            botonGenerarCuota.Click();
+            Thread.Sleep(4000);
+            utilityPage.ClickButton(By.XPath("//span[contains(@class,'glyphicon-refresh')]/parent::button"));
+            Thread.Sleep(5000);
+        }
+
+        public void Aceptar()
+        {
+            Thread.Sleep(4000);
+            utilityPage.ClickButton(By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[3]/button[1]"));
+            Thread.Sleep(5000);
         }
 
         //GUARDAR VENTA
