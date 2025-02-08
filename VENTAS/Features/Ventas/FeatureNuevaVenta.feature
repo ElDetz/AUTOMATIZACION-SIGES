@@ -51,7 +51,7 @@ Scenario: Registro de una nueva venta con pago al crédito rápido sin inicial
 Scenario: Registro de una nueva venta con pago al crédito configurado
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
-	And Agregar concepto por 'seleccion' y valor '88010-1'
+	And Agregar concepto por 'barra' y valor '88010-1'
 	And Ingresar cantidad '5'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -96,6 +96,8 @@ Scenario: Registro de una venta modo caja con pago al contado
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
 	And Activar Detalle Unificado 'SI'
+	And Seleccionar un punto de venta 'PRINCIPAL'
+	And Seleccionar un vendedor 'KETHY'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Venta Modo Caja"
 	And Seleccionar tipo de pago "contado"
@@ -111,6 +113,8 @@ Scenario: Registro de una venta modo caja con pago al crédito rápido
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
 	And Activar Detalle Unificado 'SI'
+	And Seleccionar un punto de venta 'PRINCIPAL'
+	And Seleccionar un vendedor 'KETHY'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Venta Modo Caja"
 	And Seleccionar tipo de pago "credito rapido"
@@ -127,6 +131,8 @@ Scenario: Registro de una venta modo caja con pago al crédito rápido sin inici
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
 	And Activar Detalle Unificado 'SI'
+	And Seleccionar un punto de venta 'PRINCIPAL'
+	And Seleccionar un vendedor 'KETHY'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Venta Modo Caja"
 	And Seleccionar tipo de pago "credito rapido"
@@ -140,6 +146,8 @@ Scenario: Registro de una venta modo caja con pago al crédito configurado
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
 	And Activar Detalle Unificado 'SI'
+	And Seleccionar un punto de venta 'PRINCIPAL'
+	And Seleccionar un vendedor 'KETHY'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Venta Modo Caja"
 	And Seleccionar tipo de pago "credito configurado"
@@ -160,6 +168,8 @@ Scenario: Registro de una venta modo caja con pago al crédito configurado
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
 	And Activar Detalle Unificado 'SI'
+	And Seleccionar un punto de venta 'PRINCIPAL'
+	And Seleccionar un vendedor 'KETHY'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Venta Modo Caja"
 	And Ingresar el número de documento '10'

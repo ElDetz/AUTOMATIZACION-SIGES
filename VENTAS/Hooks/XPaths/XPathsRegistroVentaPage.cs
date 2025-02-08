@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.Win32;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,9 +76,14 @@ namespace SigesCore.Hooks.XPaths
         public static readonly By IssueDateNameContingency = By.XPath("//body[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[6]/label[1]");
 
         public static readonly By DocNumberContingency = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[7]/selector-comprobante[1]/div[1]/ng-form[1]/div[3]/input[1]");
-
     }
 
+    public class CashSales
+    {
+        public static readonly By PointSalePath = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[3]/div[1]/span[1]/span[1]/span[1]");
+
+        public static readonly By SellerPath = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[3]/div[2]/span[1]/span[1]/span[1]");
+    }
     public class Voucher
     {
         public static readonly By DocNewSaleField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[6]/selector-comprobante[1]/div[1]/ng-form[1]/div[1]/div[1]/span[1]/span[1]/span[1]");
@@ -205,7 +211,13 @@ namespace SigesCore.Hooks.XPaths
 
         public static readonly By PaymentDay = By.Id("select2-diavencimiento-container");
 
-        public static readonly By GenerateQuotaButton = By.XPath("//button[@ng-click='$ctrl.generarCuota()' and @title='Generar cuota(s)']");
+        public static readonly By GenerateQuotaButton = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[6]/button[1]");
+
+        public static readonly By ExpirationDate = By.Id("diavencimiento");
+
+        public static readonly By Option = By.TagName("option");
+
+        public static readonly By Accept = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[3]/button[1]");
     }
 
     public class SaveSalePath

@@ -230,6 +230,7 @@ namespace SigesCore.Hooks.Utility
         {
             Thread.Sleep(4000);
             SelectOption(Concept.ConceptSelection, value);
+            Thread.Sleep(5000);
         }
 
         public void EnterDateClick(By pathInput, By pathName, string value)

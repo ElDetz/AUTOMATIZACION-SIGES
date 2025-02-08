@@ -4,8 +4,6 @@ using TechTalk.SpecFlow;
 using SigesCore.Hooks.LoginPage;
 using SigesCore.Hooks.VentasPage;
 using System.Net;
-using SigesCore.Hooks.Utility;
-using SigesCore.Hooks.XPaths;
 using static SigesCore.Hooks.VentasPage.NuevaVentaPage;
 
 namespace SigesCore.StepDefinitions.Ventas
@@ -16,13 +14,12 @@ namespace SigesCore.StepDefinitions.Ventas
         private IWebDriver driver;
         LoginPage login;
         NuevaVentaPage newSale;
-        UtilityVentaPage UtilityPage;
+
         public NuevaVentaStepDefinitions(IWebDriver driver)
         {
             this.driver = driver;
             this.login = new LoginPage(driver);
             this.newSale = new NuevaVentaPage(driver);
-            this.UtilityPage = new UtilityVentaPage(driver);
         }
 
         [Given(@"Inicio de sesion con usuario '([^']*)' y contrasena '([^']*)'")]
@@ -67,6 +64,20 @@ namespace SigesCore.StepDefinitions.Ventas
         public void WhenActivarDetalleUnificado(string option)
         {
             CheckboxHelper.EnableUnifiedDetail(option, driver);
+        }
+
+        //STEP PROPIO DE VENTA MODO CAJA
+        [When(@"Seleccionar un punto de venta '([^']*)'")]
+        public void WhenSeleccionarUnPuntoDeVenta(string option)
+        {
+            newSale.PointSale(option);
+        }
+
+        //STEP PROPIO DE VENTA MODO CAJA
+        [When(@"Seleccionar un vendedor '([^']*)'")]
+        public void WhenSeleccionarUnVendedor(string option)
+        {
+            newSale.Seller(option);
         }
 
         [When(@"Seleccionar tipo de cliente '([^']*)' '([^']*)'")]
@@ -141,7 +152,7 @@ namespace SigesCore.StepDefinitions.Ventas
         [When(@"Click en Aceptar")]
         public void WhenClickEnAceptar()
         {
-            newSale.Aceptar();
+            newSale.Accept();
         }
 
         [When(@"Seleccionar el medio de pago '([^']*)'")]

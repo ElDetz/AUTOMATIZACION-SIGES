@@ -1,5 +1,6 @@
 ﻿using FluentAssertions.Equivalency;
 using NUnit.Framework;
+using NUnit.Framework.Internal.Execution;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -155,6 +156,17 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
+        //SELECIONAR EL PUNTO DE VENTA (PROPIO DE VENTA POR CAJA)
+        public void PointSale(string option)
+        {
+            utilityPage.SelectOption(CashSales.PointSalePath, option);
+        }
+
+        //SELECIONAR EL PUNTO DE VENTA(PROPIO DE VENTA POR CAJA)
+        public void Seller(string option)
+        {
+            utilityPage.SelectOption(CashSales.SellerPath, option);
+        }
         //SELECIONAR EL TIPO DE CLIENTE
         public void SelectCustomerType(string option, string value)
         {
@@ -351,32 +363,29 @@ namespace SigesCore.Hooks.VentasPage
             Thread.Sleep(4000);
             IWebElement modalFacturacion = driver.FindElement(ConfiguredCreditPopup.Modal);
 
-            IWebElement dropdown = modalFacturacion.FindElement(By.Id("diavencimiento"));
+            IWebElement dropdown = modalFacturacion.FindElement(ConfiguredCreditPopup.ExpirationDate);
             Console.WriteLine("Campo seleccion encontrada");
-            IReadOnlyCollection<IWebElement> dropdownOptions = dropdown.FindElements(By.TagName("option"));
+            IReadOnlyCollection<IWebElement> dropdownOptions = dropdown.FindElements(ConfiguredCreditPopup.Option);
             Console.WriteLine("Selecciones extraidas");
             foreach (IWebElement option in dropdownOptions)
             {
                 if (option.Text.Equals(value))
                     option.Click();
             }
-            Console.WriteLine("selccion terminada");
+            Console.WriteLine("seleccion terminada");
             Thread.Sleep(4000);
         }
 
         //GENERAR COUTAS (PROPIO PARA CRÉDITO CONFIGURADO)
         public void GenerateQuota()
         {
-            Thread.Sleep(4000);
-            utilityPage.ClickButton(By.XPath("//span[contains(@class,'glyphicon-refresh')]/parent::button"));
-            Thread.Sleep(5000);
+            utilityPage.ClickButton(ConfiguredCreditPopup.GenerateQuotaButton);
         }
 
-        public void Aceptar()
+        //BOTÓN ACEPTAR (PROPIO PARA CRÉDITO CONFIGURADO) 
+        public void Accept()
         {
-            Thread.Sleep(4000);
-            utilityPage.ClickButton(By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[3]/button[1]"));
-            Thread.Sleep(5000);
+            utilityPage.ClickButton(ConfiguredCreditPopup.Accept);
         }
 
         //GUARDAR VENTA
