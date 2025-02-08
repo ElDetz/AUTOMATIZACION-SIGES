@@ -75,14 +75,14 @@ namespace RESTAURANTE.Features.Facturacion
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Factura de Atencion Simple - CP0001")]
+        [NUnit.Framework.DescriptionAttribute("Factura de Atencion Simple - EFECTIVO")]
         [NUnit.Framework.CategoryAttribute("FacturaAtencionSimple")]
-        public virtual void FacturaDeAtencionSimple_CP0001()
+        public virtual void FacturaDeAtencionSimple_EFECTIVO()
         {
             string[] tagsOfScenario = new string[] {
                     "FacturaAtencionSimple"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Factura de Atencion Simple - CP0001", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Factura de Atencion Simple - EFECTIVO", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -104,45 +104,43 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 9
- testRunner.Given("Inicio de sesion con usuario \'admin@tintoymadero.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("Inicio de sesión con usuario \'admin@tintoymadero.com\' y contraseña \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 10
- testRunner.And("Se ingresa al modulo \'Caja\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Se ingresa al módulo \'Caja\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
- testRunner.And("Selecciona el tipo de factura \'SIMPLE\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Se selecciona el tipo de factura \'SIMPLE\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 12
- testRunner.When("Ingresa el cliente \'DNI\' \'72935878\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "TipoCliente",
+                            "ValorCliente",
+                            "TipoComprobante",
+                            "Observacion",
+                            "MedioPago"});
+                table4.AddRow(new string[] {
+                            "DNI",
+                            "72935878",
+                            "NOTA DE VENTA (INTERNA)",
+                            "OBSERVACIÓN",
+                            "EF"});
 #line 13
-    testRunner.And("Selecciona el tipo de comprobante \'NOTA DE VENTA (INTERNA)\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 14
- testRunner.And("Ingresa alguna observacion \'OBSERVACION\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 15
- testRunner.And("Selecciona el modo de pago \'DEPCU\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 16
- testRunner.And("Se ingresa datos del pago \'\' \'\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("Se ingresan los detalles de la factura:", ((string)(null)), table4, "When ");
 #line hidden
 #line 17
- testRunner.Then("Factura exitoso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Se realiza la facturación", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Factura de Atencion Simple - CP0004")]
-        [NUnit.Framework.CategoryAttribute("FacturaAtencionSimple")]
-        public virtual void FacturaDeAtencionSimple_CP0004()
+        [NUnit.Framework.DescriptionAttribute("Factura de Atencion Simple - TDEB")]
+        public virtual void FacturaDeAtencionSimple_TDEB()
         {
-            string[] tagsOfScenario = new string[] {
-                    "FacturaAtencionSimple"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Factura de Atencion Simple - CP0004", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Factura de Atencion Simple - TDEB", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -164,46 +162,49 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 21
- testRunner.Given("Inicio de sesion con usuario \'admin@tintoymadero.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("Inicio de sesión con usuario \'admin@tintoymadero.com\' y contraseña \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 22
- testRunner.And("Se ingresa al modulo \'Caja\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Se ingresa al módulo \'Caja\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 23
- testRunner.And("Selecciona el tipo de factura \'SIMPLE\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Se selecciona el tipo de factura \'SIMPLE\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 24
- testRunner.When("Ingresa el cliente \'DNI\' \'72935878\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "TipoCliente",
+                            "ValorCliente",
+                            "TipoComprobante",
+                            "Observacion",
+                            "MedioPago"});
+                table5.AddRow(new string[] {
+                            "DNI",
+                            "72935878",
+                            "BOLETA DE VENTA ELECTRONICA",
+                            "OBSERVACIÓN",
+                            "TDEB"});
 #line 25
- testRunner.And("Selecciona el tipo de comprobante \'BOLETA DE VENTA ELECTRONICA\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 26
- testRunner.And("Ingresa alguna observacion \'OBSERVACION\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 27
- testRunner.And("Selecciona el modo de pago \'TCRE\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 28
- testRunner.And("Se ingresa datos del pago \'\' \'\' \'\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("Se ingresan los detalles de la factura:", ((string)(null)), table5, "When ");
 #line hidden
 #line 29
- testRunner.Then("Factura exitoso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("Se ingresan datos del pago \'INTERBANK\' \'AMERICAN EXPRESS\' \'10001\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 30
+ testRunner.Then("Se realiza la facturación", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Factura de Atencion Simple - CP0010")]
+        [NUnit.Framework.DescriptionAttribute("Factura de Atencion Simple - TARJETA")]
         [NUnit.Framework.CategoryAttribute("FacturaAtencionSimple")]
-        public virtual void FacturaDeAtencionSimple_CP0010()
+        public virtual void FacturaDeAtencionSimple_TARJETA()
         {
             string[] tagsOfScenario = new string[] {
                     "FacturaAtencionSimple"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Factura de Atencion Simple - CP0010", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 32
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Factura de Atencion Simple - TARJETA", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 34
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -223,86 +224,43 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 33
- testRunner.Given("Inicio de sesion con usuario \'admin@tintoymadero.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 34
- testRunner.And("Se ingresa al modulo \'Caja\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 35
- testRunner.And("Selecciona el tipo de factura \'SIMPLE\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("Inicio de sesion con usuario \'admin@tintoymadero.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 36
- testRunner.When("Ingresa el cliente \'RUC\' \'20602394060\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 37
- testRunner.And("Ingresa alguna observacion \'OBSERVACION\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 38
-    testRunner.And("Selecciona el tipo de comprobante \'BOLETA DE VENTA ELECTRONICA\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 39
- testRunner.And("Selecciona el modo de pago \'EF\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 40
- testRunner.Then("Factura exitoso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Factura de Atencion Simple - CP0008")]
-        [NUnit.Framework.CategoryAttribute("FacturaAtencionSimple")]
-        public virtual void FacturaDeAtencionSimple_CP0008()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "FacturaAtencionSimple"};
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Factura de Atencion Simple - CP0008", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 43
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 44
- testRunner.Given("Inicio de sesion con usuario \'admin@tintoymadero.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 45
  testRunner.And("Se ingresa al modulo \'Caja\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 46
+#line 37
  testRunner.And("Selecciona el tipo de factura \'SIMPLE\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 47
- testRunner.When("Ingresa el cliente \'DNI\' \'72935878\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 38
+ testRunner.When("Ingresar detalles de la factura \'DNI\' \'72935878\' \'FACTURA ELECTRONICA\' \'OBSERVACI" +
+                        "ON\' \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 48
+#line 39
+    testRunner.And("Selecciona el tipo de comprobante \'NOTA DE VENTA (INTERNA)\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 40
  testRunner.And("Ingresa alguna observacion \'OBSERVACION\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 49
-    testRunner.And("Selecciona el tipo de comprobante \'FACTURA ELECTRONICA\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 41
+ testRunner.And("Selecciona el modo de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 50
- testRunner.And("Selecciona el modo de pago \'EF\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Banco_Cuenta",
+                            "TipoTarjeta",
+                            "MontoRecibido",
+                            "Informacion"});
+                table6.AddRow(new string[] {
+                            "001103180100023457",
+                            "-",
+                            "-",
+                            "10012"});
+#line 42
+  testRunner.And("Se ingresan los datos del pago:", ((string)(null)), table6, "And ");
 #line hidden
-#line 51
- testRunner.Then("Factura exitoso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 45
+ testRunner.Then("Realizar facturacion", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

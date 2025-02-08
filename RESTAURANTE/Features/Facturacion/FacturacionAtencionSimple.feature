@@ -5,50 +5,43 @@
 	NOTA DE VENTA (INTERNA)
 
 @FacturaAtencionSimple
-Scenario: Factura de Atencion Simple - CP0001
+Scenario: Factura de Atencion Simple - EFECTIVO
+	Given Inicio de sesión con usuario 'admin@tintoymadero.com' y contraseña 'calidad'
+	And Se ingresa al módulo 'Caja'
+	And Se selecciona el tipo de factura 'SIMPLE'
+	
+	When Se ingresan los detalles de la factura:
+	| TipoCliente | ValorCliente	| TipoComprobante				| Observacion	| MedioPago |
+	| DNI         | 72935878		| NOTA DE VENTA (INTERNA)		| OBSERVACIÓN	| EF	    |
+
+	Then Se realiza la facturación
+
+	
+Scenario: Factura de Atencion Simple - TDEB
+	Given Inicio de sesión con usuario 'admin@tintoymadero.com' y contraseña 'calidad'
+	And Se ingresa al módulo 'Caja'
+	And Se selecciona el tipo de factura 'SIMPLE'
+	
+	When Se ingresan los detalles de la factura:
+	| TipoCliente | ValorCliente	| TipoComprobante				| Observacion	| MedioPago |
+	| DNI         | 72935878		| BOLETA DE VENTA ELECTRONICA	| OBSERVACIÓN	| TDEB	    |
+
+	And Se ingresan datos del pago 'INTERBANK' 'AMERICAN EXPRESS' '10001'
+	Then Se realiza la facturación
+	
+
+@FacturaAtencionSimple
+Scenario: Factura de Atencion Simple - TARJETA
 	Given Inicio de sesion con usuario 'admin@tintoymadero.com' y contrasena 'calidad'
 	And Se ingresa al modulo 'Caja'
 	And Selecciona el tipo de factura 'SIMPLE'
-	When Ingresa el cliente 'DNI' '72935878'
+	When Ingresar detalles de la factura 'DNI' '72935878' 'FACTURA ELECTRONICA' 'OBSERVACION' 'TDEB'
     And Selecciona el tipo de comprobante 'NOTA DE VENTA (INTERNA)'
 	And Ingresa alguna observacion 'OBSERVACION'
-	And Selecciona el modo de pago 'DEPCU'
-	And Se ingresa datos del pago '' ''
-	Then Factura exitoso
-
-@FacturaAtencionSimple
-Scenario: Factura de Atencion Simple - CP0004
-	Given Inicio de sesion con usuario 'admin@tintoymadero.com' y contrasena 'calidad'
-	And Se ingresa al modulo 'Caja'
-	And Selecciona el tipo de factura 'SIMPLE'
-	When Ingresa el cliente 'DNI' '72935878'
-	And Selecciona el tipo de comprobante 'BOLETA DE VENTA ELECTRONICA'
-	And Ingresa alguna observacion 'OBSERVACION'
-	And Selecciona el modo de pago 'TCRE'
-	And Se ingresa datos del pago '' '' ''
-	Then Factura exitoso
-
-@FacturaAtencionSimple
-Scenario: Factura de Atencion Simple - CP0010
-	Given Inicio de sesion con usuario 'admin@tintoymadero.com' y contrasena 'calidad'
-	And Se ingresa al modulo 'Caja'
-	And Selecciona el tipo de factura 'SIMPLE'
-	When Ingresa el cliente 'RUC' '20602394060'
-	And Ingresa alguna observacion 'OBSERVACION'
-    And Selecciona el tipo de comprobante 'BOLETA DE VENTA ELECTRONICA'
-	And Selecciona el modo de pago 'EF'
-	Then Factura exitoso
-
-@FacturaAtencionSimple
-Scenario: Factura de Atencion Simple - CP0008
-	Given Inicio de sesion con usuario 'admin@tintoymadero.com' y contrasena 'calidad'
-	And Se ingresa al modulo 'Caja'
-	And Selecciona el tipo de factura 'SIMPLE'
-	When Ingresa el cliente 'DNI' '72935878'
-	And Ingresa alguna observacion 'OBSERVACION'
-    And Selecciona el tipo de comprobante 'FACTURA ELECTRONICA'
-	And Selecciona el modo de pago 'EF'
-	Then Factura exitoso
-
+	And Selecciona el modo de pago 'TDEB'
+		And Se ingresan los datos del pago:
+	| Banco_Cuenta         | TipoTarjeta       | MontoRecibido | Informacion |
+	| 001103180100023457   | -                 | -		       | 10012       |
+	Then Realizar facturacion
 
 

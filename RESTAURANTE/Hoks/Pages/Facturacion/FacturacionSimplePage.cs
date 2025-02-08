@@ -1,5 +1,6 @@
 ﻿using FluentAssertions.Equivalency;
 using NUnit.Framework;
+using NUnit.Framework.Internal.Execution;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
@@ -11,49 +12,31 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
     public class FacturacionSimplePage
     {
         private IWebDriver driver;
-        UtilityPage utilityPage;
+        Utilities utilities;
         FacturacionPage facturacionPage;
 
         public FacturacionSimplePage(IWebDriver driver)
         {
             this.driver = driver;
-            this.utilityPage = new UtilityPage(driver);
+            this.utilities = new Utilities(driver);
             this.facturacionPage = new FacturacionPage(driver);
 
         }
 
         private By overlayLocator = By.ClassName("block-ui-overlay");
-
-        private By fieldLocator;
         private By _modalFacturacion = By.Id("facturacionVenta-0");
+        private By fieldLocator;
 
-        private By clienteField = By.XPath("//input[@id='DocumentoIdentidad']");
+        //CLIENTE
+        private By docIdentidadField = By.XPath("//input[@id='DocumentoIdentidad']");
         private By aliasField = By.XPath("//input[@ng-model='$ctrl.facturacion.Orden.Cliente.Alias']");
+
+        // COMPROBANTE
+        private By comprobanteSelect = By.Name("TipoComprobante");
 
         //OBSERVACION
         private By observacionField = By.Id("observacion");
-
-        // COMPROBANTE
-        //By docField = By.XPath("//select[@name='TipoComprobante']");
-        By SelecOptions = By.CssSelector(".select2-results__options");
-        //By docField = By.XPath("//body/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[6]/selector-comprobante[1]/div[1]/ng-form[1]/div[1]/div[1]/span[1]");
-        //By docField = By.XPath("//span[@id='select2-TipoComprobante-fl-container']");
-
-        //By docField = By.XPath("/html[1]/body[1]/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[6]/selector-comprobante[1]/div[1]/ng-form[1]/div[1]/div[1]/span[1]/span[1]/span[1]");
-
-
-        //By docField = By.XPath("//body/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[6]/selector-comprobante[1]/div[1]/ng-form[1]/div[1]/div[1]/span[1]/span[1]/span[1]");
-
-        By docField = By.Id("select2-TipoComprobante-az-container");
-
-        //By docField = By.XPath("//select[@name='TipoComprobante']");
-
-        //By docField = By.ClassName("select2-selection--single");
-
-
-        // COMPROBANTE
-        By comprobanteField = By.XPath("//body/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[6]/selector-comprobante[1]/div[1]/ng-form[1]/div[1]/div[1]/span[1]/span[1]/span[1]");
-
+       
         // MODO DE PAGO
         By dpcuButton = By.XPath("//label[@id='labelMedioPago-0-14']");
         By tranfonButton = By.XPath("//label[@id='labelMedioPago-0-16']");
@@ -63,15 +46,18 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
 
         // DEPCU
         By _bankAccountDEPCU = By.XPath("");
-        By _infoDEPCU = By.XPath("");
+        By _infoDEPCU = By.Id("informacion");
 
         // TRANFON
         By _bankAccountTRANFON = By.XPath("");
-        By _infoTRANFON = By.XPath("");
+        By _infoTRANFON = By.Id("informacion");
 
-        // TDEB
-        By _bankTDEB = By.XPath("//body/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[7]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[1]/span[1]/span[1]");
+        // TDEB 
+        // By _bankTDEB = By.Id("idEntidadFinancera");
+        By _bankTDEB = By.XPath("//select[@id='idEntidadFinancera']");
+
         By _cardTDEB = By.XPath("//body/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[7]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/span[2]/span[1]/span[1]");
+
         By _infoTDEB = By.XPath("//body/div[5]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[7]/editor-pago[1]/div[1]/div[1]/div[1]/div[1]/editor-traza-pago[1]/div[1]/div[6]/div[1]/textarea[1]");
 
         // TCRED
@@ -80,10 +66,10 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
         By _infoTCRED = By.XPath("");
 
         //  EF
+        By _recibido = By.XPath("");
         By _observation = By.XPath("");
 
-        // BOTON FACTURAR
-        By facturar = By.XPath("//button[contains(text(),'FACTURAR')]");
+        
 
         public IWebElement inicioModal()
         {
@@ -118,12 +104,8 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
         }
 
 
-        public void AddClient(string _clientType, string _clientValue)
+        public void EnterBillingDetails(string _clientType, string _clientValue, string _comprobante, string _observacion, string _moodPago)
         {
-            // ESPERA PARA RELLENAR CAMPOS
-            utilityPage.elementExists(clienteField);
-            utilityPage.WaitForOverlayToDisappear(overlayLocator);
-
             // Encontrar el modal FACTURACION
             IWebElement modalFacturacion = driver.FindElement(By.Id("facturacionVenta-0"));
 
@@ -131,92 +113,114 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
             switch (_clientType)
             {
                 case "VARIOS":
-                    // No se hace nada
                     return;
 
                 case "DNI":
                 case "RUC":
-                    // Si es DNI o RUC, se utiliza enterFieldModal
-                    fieldLocator = clienteField;
-                    utilityPage.enterFieldModal(modalFacturacion, fieldLocator, _clientValue);
+
+                    fieldLocator = docIdentidadField; // CAMPO DOC INDENTIDAD
                     break;
 
                 case "ALIAS":
-                    // Si es ALIAS, se utiliza addFieldModal
-                    fieldLocator = aliasField;
-                    utilityPage.addFieldModal(modalFacturacion, fieldLocator, _clientValue);
+
+                    fieldLocator = aliasField; // CAMPO ALIAS
                     break;
 
                 default:
                     throw new ArgumentException($"El {_clientType} no es válido");
             }
 
+            utilities.enterFieldModal(modalFacturacion, fieldLocator, _clientValue);
             Console.WriteLine("CLIENTE INGRESADO");
             Thread.Sleep(4000);
 
+            // COMPROBANTE
+            var dropdown1 = new SelectElement(modalFacturacion.FindElement(comprobanteSelect));
+            dropdown1.SelectByText(_comprobante);
+            Assert.That(dropdown1.SelectedOption.Text, Is.EqualTo(_comprobante));
+
+            Console.WriteLine("COMPROBANTE SELECCIONADO");
+            Thread.Sleep(4000);
+
+            // OBSERVACION
+            utilities.elementExists(observacionField);
+            utilities.WaitForOverlayToDisappear(overlayLocator);
+
+            utilities.addFieldModal(modalFacturacion, observacionField, _observacion);
+            Console.WriteLine("OBSERVACION AGREGADA");
+            Thread.Sleep(4000);
+
+            // Diccionario que mapea el modo de pago al botón correspondiente
+            var moodPagoButtons = new Dictionary<string, By>
+            {
+                { "DEPCU", dpcuButton },
+                { "TRANFON", tranfonButton },
+                { "TDEB", tdebButton },
+                { "TCRE", tcreButton },
+                { "EF", efButton }
+            };
+
+            // Verificar si el modo de pago existe en el diccionario
+            if (moodPagoButtons.ContainsKey(_moodPago))
+            {
+                // Llamar al método moodPay con el botón correspondiente
+                utilities.ClickButtonInModal(modalFacturacion, moodPagoButtons[_moodPago]);
+            }
+            else
+            {
+                // Lanzar excepción si el modo de pago no es válido
+                throw new ArgumentException($"El {_moodPago} no es válido");
+            }
+            Console.WriteLine("MODO DE PAGO SELECCIONADA");
+            Thread.Sleep(4000);
         }
 
         // TIPO COMPROBANTE DE PAGO
         public void typeComprobante(string _comprobante)
         {
-            By comprobanteField1 = By.XPath("//span[contains(@class,'select2-selection__rendered')]");
-            // ESPERA
-            utilityPage.elementExists(comprobanteField1);
-            utilityPage.WaitForOverlayToDisappear(overlayLocator);
-            Console.WriteLine("Campo seleccion encontrada");
 
+            Thread.Sleep(4000);
             // Encontrar el modal FACTURACION
             IWebElement modalFacturacion = driver.FindElement(By.Id("facturacionVenta-0"));
 
-            utilityPage.SelecOption(modalFacturacion, comprobanteField1, _comprobante);
+            /*
+            IWebElement dropdown = modalFacturacion.FindElement(By.Name("TipoComprobante"));
+            Console.WriteLine("Campo seleccion encontrada");
+            IReadOnlyCollection<IWebElement> dropdownOptions = dropdown.FindElements(By.TagName("option"));
+            Console.WriteLine("Slecciones extraidas");
+            foreach (IWebElement option in dropdownOptions)
+            {
+                if (option.Text.Equals(_comprobante))
+                    option.Click();
+            }
+            string selectedOption = "";
+            foreach (IWebElement option in dropdownOptions)
+            {
+                if (option.Selected)
+                    selectedOption = option.Text;
+            }
+            Assert.That(selectedOption, Is.EqualTo(_comprobante));
+            */
+
+            var dropdown1 = new SelectElement(modalFacturacion.FindElement(By.Name("TipoComprobante")));
+            dropdown1.SelectByText(_comprobante);
+            Assert.That(dropdown1.SelectedOption.Text, Is.EqualTo(_comprobante));
+
             Console.WriteLine("Seleccion realizada");
             Thread.Sleep(4000);
-
-
-
-            /*
-            By comprobante1 = By.XPath("//span[contains(@class,'select2-selection__rendered')]");
-            // By comprobante1 = By.Name("TipoComprobante");
-
-            string option = "FACTURA ELECTRONICA";
-
-            // Encontrar el modal COMPROBANTE
-            IWebElement modalComprobante = driver.FindElement(By.Id("SelectorComprobanteFacturacion"));
-            Console.WriteLine("Modal COMPROBANTE");
-
-            utilityPage.elementExists(comprobante1);
-            Console.WriteLine("BOTÓN EXISTENTE");
-            utilityPage.VisibilidadElement(comprobante1);
-            Console.WriteLine("BOTÓN VISIBLE");
-
-            modalComprobante.FindElement(comprobante1).Click();
-            Console.WriteLine("CLICK MENU");
-
-            // Abre el menú desplegable
-            IWebElement dropdown = modalComprobante.FindElement(comprobante1);
-            dropdown.Click();
-
-            // Espera explícita para que las opciones sean visibles
-            utilityPage.VisibilidadElement(SelecOptions);
-            Console.WriteLine("MENU DESGLOSADO");
-
-            // Selecciona la opción deseada
-            IWebElement optionElement = modalComprobante.FindElement(By.XPath($"//li[contains(text(), '{option}')]"));
-            optionElement.Click();
-            Thread.Sleep(4000);
-            */
+        
         }
 
         public void AddObservacion(string _observacion)
         {
             // ESPERA PARA RELLENAR CAMPOS
-            utilityPage.elementExists(observacionField);
-            utilityPage.WaitForOverlayToDisappear(overlayLocator);
+            utilities.elementExists(observacionField);
+            utilities.WaitForOverlayToDisappear(overlayLocator);
 
             // Encontrar el modal FACTURACION
             IWebElement modalFacturacion = driver.FindElement(By.Id("facturacionVenta-0"));
 
-            utilityPage.addFieldModal(modalFacturacion, observacionField, _observacion);
+            utilities.addFieldModal(modalFacturacion, observacionField, _observacion);
             Console.WriteLine("OBSERVACION AGREGADA");
             Thread.Sleep(4000);
 
@@ -239,7 +243,7 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
             if (moodPagoButtons.ContainsKey(_moodPago))
             {
                 // Llamar al método moodPay con el botón correspondiente
-                facturacionPage.moodPay(moodPagoButtons[_moodPago]);
+                // facturacionPage.moodPay(moodPagoButtons[_moodPago]);
             }
             else
             {
@@ -255,6 +259,8 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
         {
             string modoPagoSeleccionado = VerModoPago();
 
+            Console.WriteLine($"{modoPagoSeleccionado}");
+
             IWebElement modalFacturacion = inicioModal();
 
             switch (modoPagoSeleccionado)
@@ -262,7 +268,11 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
                 case "DEPCU":
 
                     // Llenar los datos bancarios del formulario de facturación
-                    facturacionPage.datosBanco(modalFacturacion, _bankAccountDEPCU, _cuentaBancaria, _infoDEPCU, _info);
+                    // facturacionPage.datosBanco(modalFacturacion, _bankAccountDEPCU, _cuentaBancaria, _infoDEPCU, _info);
+
+                    
+
+
                     Thread.Sleep(4000);
                     break;
 
@@ -279,14 +289,115 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
         public void PaymentCard(string _bank, string _card, string _info)
         {
             string modoPagoSeleccionado = VerModoPago();
-            IWebElement modalFacturacion = inicioModal();
 
+            Console.WriteLine($"EL MODO DE PAGO SELECCIONADO EN EL PASO ANTERIOR ES {modoPagoSeleccionado}");
+
+            // IWebElement modalFacturacion = inicioModal();
+            // Encontrar el modal FACTURACION
+
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+
+            /*
+            IWebElement modalFacturacion = driver.FindElement(By.Id("facturacionVenta-0"));
+            IWebElement modalPago = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("EditorPago")));
+            */
+            IWebElement modalFacturacion = driver.FindElement(By.Id("facturacionVenta-0"));
+            // IWebElement modalPago = modalFacturacion.FindElement(By.Id("EditorPago"));
+            IWebElement modalPago = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("EditorPago")));
+            Console.WriteLine("MODAL Pago");
+            Thread.Sleep(4000);
+            // Esperar hasta que el elemento sea interactuable
+            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("idEntidadFinancera")));
+
+            Console.WriteLine("ELEMENTO CLICKEABLE");
+            Thread.Sleep(2000);
             switch (modoPagoSeleccionado)
             {
                 case "TDEB":
-                    facturacionPage.datosCard(modalFacturacion, _bankTDEB, _bank, _cardTDEB, _card, _infoTDEB, _info);
-                    break;
 
+                    var dropdown1 = new SelectElement(modalPago.FindElement(By.Id("idEntidadFinancera")));
+                    Console.WriteLine("ENCONTRADO");
+                    Thread.Sleep(4000);
+                    dropdown1.SelectByValue("385");
+                    Assert.That(dropdown1.SelectedOption.Text, Is.EqualTo("385"));
+
+
+                    // utilities.SelecOption(modalFacturacion, comprobanteField1, _comprobante);
+                    Console.WriteLine("Seleccion realizada");
+                    Thread.Sleep(4000);
+
+
+                    /*
+                    IWebElement select2Container = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(".select2-selection")));
+                    select2Container.Click(); // Abre el dropdown
+
+
+                    IWebElement option = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath($"//li[contains(text(), '{_bank}')]")));
+                    option.Click();
+                    */
+
+                    /*
+                    utilities.SelecOption();
+                    //facturacionPage.datosCard(modalFacturacion, _bankTDEB, _bank, _cardTDEB, _card, _infoTDEB, _info);
+                    WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                    IWebElement dropdownElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("idEntidadFinancera")));
+                    Console.WriteLine("Es visible");
+                    var dropdown2 = new SelectElement(modalPago.FindElement(By.Id("idEntidadFinancera")));
+                    Console.WriteLine("Campo selección encontrada");
+                    Thread.Sleep(4000);
+                    dropdown2.SelectByText(_bank);
+                    Assert.That(dropdown2.SelectedOption.Text, Is.EqualTo(_bank));
+                    Thread.Sleep(4000);
+                    */
+                    /*
+                    IWebElement dropdown = modalPago.FindElement(By.Id("idEntidadFinancera"));
+                    Console.WriteLine("Campo selección encontrada");
+                    Thread.Sleep(4000);
+                    /*
+                    // Espera explícita para que el dropdown esté interactuable
+                    WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+                    wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(dropdown));
+                    */
+                    /*
+                    SelectElement select = new SelectElement(dropdown);
+                    Console.WriteLine($"Valor de _bank: '{_bank}' (longitud: {_bank.Length})");
+                    Thread.Sleep(4000);
+                    // Intentar seleccionar por texto
+                    try
+                    {
+                        select.SelectByText(_bank.Trim());
+                    }
+                    catch (NoSuchElementException)
+                    {
+                        Console.WriteLine("No se encontró la opción por texto, intentando por valor...");
+                        select.SelectByValue("385"); // Ajusta el valor correcto
+                    }
+
+                    // Si `SelectElement` no funciona, intentar con JavaScript
+                    if (select.SelectedOption.Text != _bank.Trim())
+                    {
+                        Console.WriteLine("Intentando con JavaScript...");
+                        IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+                        js.ExecuteScript("arguments[0].value = '385';", dropdown);
+                        js.ExecuteScript("arguments[0].dispatchEvent(new Event('change'))", dropdown);
+                    }
+
+                    // Confirmar la selección
+                    string selectedOption = select.SelectedOption.Text;
+                    Console.WriteLine($"Opción seleccionada: {selectedOption}");
+                    Assert.That(selectedOption, Is.EqualTo(_bank.Trim()));
+                    */
+
+                    /*
+                    foreach (IWebElement option in dropdownOptions)
+                    {
+                        if (option.Text.Equals(_bank))
+                            option.Click();
+                        Console.WriteLine("CLICK");
+                    }*/
+
+
+                    break;
                 case "TCRE":
                     facturacionPage.datosCard(modalFacturacion, _bankTCRED, _bank, _cardTCRED, _card, _infoTCRED, _info);
                     break;
@@ -296,11 +407,12 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
             Thread.Sleep(4000);
         }
 
-        public void Facturar()
-        {
-            utilityPage.buttonClickeable(facturar);
-            //ClickButton(saveSaleButton); // GUARDAR VENTA
-            Thread.Sleep(4000);
-        }
+        
+        /*
+                    WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+
+                    wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(dropdown));
+                    Console.WriteLine("CARGADAS");
+                    */
     }
 }

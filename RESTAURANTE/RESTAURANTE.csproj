@@ -25,4 +25,20 @@
     <Folder Include="Support\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Features\Facturacion\FacturacionAtencionCtaDividida.feature.cs">
+      <Visible>true</Visible>
+      <DependentUpon>FacturacionAtencionCtaDividida.feature</DependentUpon>
+      <DesignTime>true</DesignTime>
+      <AutoGen>true</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\Facturacion\FacturacionAtencionCtaDividida.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+  </ItemGroup>
+
 </Project>

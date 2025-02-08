@@ -5,12 +5,12 @@ using SeleniumExtras.WaitHelpers;
 
 namespace RESTAURANTE.Hoks.Pages
 {
-    public class UtilityPage
+    public class Utilities
     {
         private IWebDriver driver;
         WebDriverWait wait;
 
-        public UtilityPage(IWebDriver driver, int timeoutInSeconds = 20)
+        public Utilities(IWebDriver driver, int timeoutInSeconds = 30)
         {
             if (driver == null)
             {
@@ -23,18 +23,7 @@ namespace RESTAURANTE.Hoks.Pages
 
         //By restauranteField = By.XPath("//span[contains(text(),'Restaurante')]");
 
-        By restauranteField = By.XPath("//a[@class='menu-lista-cabecera']/span[text()='Restaurante']");
-
-        By atencionField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[1]/a[1]");
-        By preparacionField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[2]/a[1]");
-        
-        By cajaField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[3]/a[1]");
-
-        //By cajaField = By.XPath("//ul[@class='treeview-menu']//a[normalize-space(text())='Caja']");
-
-        By complementosField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[3]/a[1]");
-        By reportesField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[5]/a[1]");
-
+       
         // MENU DESPEGABLE
         By SelecOptions = By.CssSelector(".select2-results__options");
 
@@ -132,37 +121,19 @@ namespace RESTAURANTE.Hoks.Pages
                 throw new NoSuchElementException($"El elemento con el localizador {locator} no se hizo visible dentro del tiempo de espera.");
             }
         }
-
-        // Esperar a que la ventana modal esté visible
-        public IWebElement WaitForModal(string modalId, int timeout = 10)
-        {
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeout));
-            return wait.Until(ExpectedConditions.ElementIsVisible(By.Id(modalId)));
-        }
         
-        // Clic en un botón dentro del modal
-        public void ClickButtonInModal(By buttonLocator)
+        
+        // MODALES
+        public void ClickButtonInModal(IWebElement _element, By buttonLocator)
         {
             wait.Until(ExpectedConditions.ElementIsVisible(buttonLocator));
             wait.Until(ExpectedConditions.ElementToBeClickable(buttonLocator)); // Espera hasta que el elemento sea clickeable
-            driver.FindElement(buttonLocator).Click();
-        }
-
-        public void addFieldModal(IWebElement _element, By _path, string _field)
-        {
-            if (driver.FindElements(_path).Count == 0)
-            {
-                throw new NoSuchElementException($"El elemento con el localizador {_path} no se encontró.");
-            }
-
-            wait.Until(ExpectedConditions.ElementIsVisible(_path)); // Espera hasta que el elemento sea visible
-            _element.FindElement(_path).Clear();
-            _element.FindElement(_path).SendKeys(_field);
+            _element.FindElement(buttonLocator).Click();
         }
 
         public void enterFieldModal(IWebElement _element, By _path, string _field)
         {
-            if (driver.FindElements(_path).Count == 0)
+            if (_element.FindElements(_path).Count == 0)
             {
                 throw new NoSuchElementException($"El elemento con el localizador {_path} no se encontró.");
             }
@@ -173,45 +144,18 @@ namespace RESTAURANTE.Hoks.Pages
             _element.FindElement(_path).SendKeys(Keys.Enter);
         }
 
-        // Ingreso Modulo
-        public void enterModulo(string _modulo)
+        public void addFieldModal(IWebElement _element, By _path, string _field)
         {
-            // Clic en "Restaurante"
-            buttonClickeable(restauranteField);
-
-            switch (_modulo)
+            if (_element.FindElements(_path).Count == 0)
             {
-                case "Atencion":
-
-                    buttonClickeable(atencionField);
-                    break;
-
-                case "Preparacion":
-
-                    buttonClickeable(preparacionField);
-                    break;
-
-                case "Caja":
-
-                    buttonClickeable(cajaField);
-                    break;
-
-                case "Complementos":
-
-                    buttonClickeable(complementosField);
-                    break;
-
-                case "Reportes":
-
-                    buttonClickeable(reportesField);
-                    break;
-
-                default:
-                    throw new ArgumentException($"El {_modulo} no es válido.");
+                throw new NoSuchElementException($"El elemento con el localizador {_path} no se encontró.");
             }
 
-            //Thread.Sleep(4000);
+            wait.Until(ExpectedConditions.ElementIsVisible(_path)); // Espera hasta que el elemento sea visible
+            _element.FindElement(_path).Clear();
+            _element.FindElement(_path).SendKeys(_field);
         }
+
 
         public void SelecOption(IWebElement _element, By _path, string option)
         {
