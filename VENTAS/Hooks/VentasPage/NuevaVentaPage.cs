@@ -380,12 +380,14 @@ namespace SigesCore.Hooks.VentasPage
         public void GenerateQuota()
         {
             utilityPage.ClickButton(ConfiguredCreditPopup.GenerateQuotaButton);
+            Thread.Sleep(2000);
         }
 
         //BOTÓN ACEPTAR (PROPIO PARA CRÉDITO CONFIGURADO) 
         public void Accept()
         {
             utilityPage.ClickButton(ConfiguredCreditPopup.Accept);
+            Thread.Sleep(2000);
         }
 
         //GUARDAR VENTA

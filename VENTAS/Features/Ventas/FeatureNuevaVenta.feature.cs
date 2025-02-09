@@ -109,7 +109,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
- testRunner.And("Agregar concepto por \'seleccion\' y valor \'88010-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
  testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -121,7 +121,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 14
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 15
  testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -180,7 +180,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 25
- testRunner.And("Agregar concepto por \'seleccion\' y valor \'88010-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 26
  testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -192,7 +192,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 29
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 30
  testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -254,7 +254,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 41
- testRunner.And("Agregar concepto por \'seleccion\' y valor \'88010-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 42
  testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -266,7 +266,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 45
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 46
  testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -318,7 +318,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 54
- testRunner.And("Agregar concepto por \'barra\' y valor \'88010-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 55
  testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -330,7 +330,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 58
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 59
  testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -401,10 +401,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 73
- testRunner.When("Seleccionar Venta y luego \"Venta Por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 74
- testRunner.And("Agregar concepto por \'seleccion\' y valor \'88010-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 75
  testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -416,7 +416,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 78
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 79
  testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -425,24 +425,21 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 81
- testRunner.And("Ingresar el número de documento \'10\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 82
  testRunner.And("Seleccionar tipo de pago \"credito configurado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 83
+#line 82
  testRunner.And("Ingresar el número de coutas sin inicial \'3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 84
+#line 83
  testRunner.And("Ingresar fecha \'1 de cada mes\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 85
+#line 84
  testRunner.And("Click en generar coutas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 86
+#line 85
  testRunner.And("Click en Aceptar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 87
+#line 86
  testRunner.Then("Guardar venta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -458,7 +455,7 @@ this.ScenarioInitialize(scenarioInfo);
                     "VentaModoCaja"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Registro de una venta modo caja con pago al contado", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 91
+#line 90
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -478,50 +475,50 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 92
+#line 91
  testRunner.Given("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 93
+#line 92
  testRunner.When("Seleccionar Venta y luego \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+#line 93
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
 #line 94
- testRunner.And("Agregar concepto por \'seleccion\' y valor \'88010-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar cantidad \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 95
- testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 96
  testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 97
+#line 96
  testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 98
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 97
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 99
+#line 98
  testRunner.And("Seleccionar un punto de venta \'PRINCIPAL\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 100
+#line 99
  testRunner.And("Seleccionar un vendedor \'KETHY\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 101
+#line 100
  testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 102
+#line 101
  testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 103
+#line 102
  testRunner.And("Seleccionar tipo de pago \"contado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 104
+#line 103
  testRunner.And("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 105
+#line 104
  testRunner.And("Rellene datos de la tarjeta \'BBVA\' , \'MASTER\' y \'206556\' en el módulo de \"Venta M" +
                         "odo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 106
+#line 105
  testRunner.Then("Guardar venta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -535,7 +532,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Registro de una venta modo caja con pago al crédito rápido", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 108
+#line 107
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -555,47 +552,53 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 109
+#line 108
  testRunner.Given("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 110
+#line 109
  testRunner.When("Seleccionar Venta y luego \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+#line 110
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
 #line 111
- testRunner.And("Agregar concepto por \'seleccion\' y valor \'88010-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar cantidad \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 112
- testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 113
  testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 114
+#line 113
  testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 114
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
 #line 115
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar un punto de venta \'PRINCIPAL\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 116
- testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar un vendedor \'KETHY\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 117
- testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 118
- testRunner.And("Seleccionar tipo de pago \"credito rapido\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 119
- testRunner.And("Ingresar monto inicial de crédito rapido \'20\' en el módulo de \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de pago \"credito rapido\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 120
- testRunner.And("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar monto inicial de crédito rapido \'20\' en el módulo de \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 121
+ testRunner.And("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 122
  testRunner.And("Rellene datos de la tarjeta \'BBVA\' , \'MASTER\' y \'206556\' en el módulo de \"Venta M" +
                         "odo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 122
+#line 123
  testRunner.Then("Guardar venta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -609,7 +612,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Registro de una venta modo caja con pago al crédito rápido sin inicial", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 124
+#line 125
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -629,37 +632,43 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 125
+#line 126
  testRunner.Given("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 126
+#line 127
  testRunner.When("Seleccionar Venta y luego \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 127
- testRunner.And("Agregar concepto por \'seleccion\' y valor \'88010-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 128
- testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 129
- testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar cantidad \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 130
- testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 131
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 132
- testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 133
- testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar un punto de venta \'PRINCIPAL\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 134
- testRunner.And("Seleccionar tipo de pago \"credito rapido\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar un vendedor \'KETHY\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 135
+ testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 136
+ testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 137
+ testRunner.And("Seleccionar tipo de pago \"credito rapido\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 138
  testRunner.Then("Guardar venta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -673,7 +682,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Registro de una venta modo caja con pago al crédito configurado", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 137
+#line 140
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -693,59 +702,65 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 138
+#line 141
  testRunner.Given("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 139
+#line 142
  testRunner.When("Seleccionar Venta y luego \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 140
- testRunner.And("Agregar concepto por \'seleccion\' y valor \'88010-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 141
- testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 142
- testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 143
- testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 144
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar cantidad \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 145
- testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 146
- testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 147
- testRunner.And("Seleccionar tipo de pago \"credito configurado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 148
- testRunner.And("Ingresar monto inicial \'20\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar un punto de venta \'PRINCIPAL\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 149
- testRunner.And("Ingresar el número de coutas \'3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar un vendedor \'KETHY\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 150
- testRunner.And("Ingresar fecha \'1 de cada mes\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 151
- testRunner.And("Click en generar coutas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 152
- testRunner.And("Click en Aceptar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de pago \"credito configurado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 153
- testRunner.And("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar monto inicial \'20\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 154
+ testRunner.And("Ingresar el número de coutas \'3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 155
+ testRunner.And("Ingresar fecha \'1 de cada mes\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 156
+ testRunner.And("Click en generar coutas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 157
+ testRunner.And("Click en Aceptar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 158
+ testRunner.And("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 159
  testRunner.And("Rellene datos de la tarjeta \'BBVA\' , \'MASTER\' y \'206556\' en el módulo de \"Venta M" +
                         "odo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 155
+#line 160
  testRunner.Then("Guardar venta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -759,7 +774,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Registro de una modo caja con pago al crédito configurado sin inicial", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 157
+#line 162
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -779,52 +794,55 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 158
+#line 163
  testRunner.Given("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 159
- testRunner.When("Seleccionar Venta y luego \"Venta Por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 160
- testRunner.And("Agregar concepto por \'seleccion\' y valor \'88010-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 161
- testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 162
- testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 163
- testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 164
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("Seleccionar Venta y luego \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 165
- testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 166
- testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar cantidad \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 167
- testRunner.And("Ingresar el número de documento \'10\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 168
- testRunner.And("Seleccionar tipo de pago \"credito configurado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 169
- testRunner.And("Ingresar el número de coutas sin inicial \'3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 170
- testRunner.And("Ingresar fecha \'1 de cada mes\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar un punto de venta \'PRINCIPAL\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 171
- testRunner.And("Click en generar coutas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar un vendedor \'KETHY\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 172
- testRunner.And("Click en Aceptar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 173
+ testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta Modo Caja\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 174
+ testRunner.And("Seleccionar tipo de pago \"credito configurado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 175
+ testRunner.And("Ingresar el número de coutas sin inicial \'3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 176
+ testRunner.And("Ingresar fecha \'1 de cada mes\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 177
+ testRunner.And("Click en generar coutas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 178
+ testRunner.And("Click en Aceptar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 179
  testRunner.Then("Guardar venta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -840,7 +858,7 @@ this.ScenarioInitialize(scenarioInfo);
                     "VentaContingencia"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Registro de una venta por contigencia con pago al contado", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 177
+#line 183
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -860,50 +878,50 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 178
+#line 184
  testRunner.Given("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 179
+#line 185
  testRunner.When("Seleccionar Venta y luego \"Venta Por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 180
- testRunner.And("Agregar concepto por \'seleccion\' y valor \'88010-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 181
- testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 182
- testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 183
- testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 184
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 185
- testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 186
- testRunner.And("Ingresar fecha de emisión de la venta \'30/01/2025\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 187
- testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 188
- testRunner.And("Ingresar el número de documento \'B002-10\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 189
- testRunner.And("Seleccionar tipo de pago \"contado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 190
- testRunner.And("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 191
+ testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 192
+ testRunner.And("Ingresar fecha de emisión de la venta \'30/01/2025\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 193
+ testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 194
+ testRunner.And("Ingresar el número de documento \'B002-10\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 195
+ testRunner.And("Seleccionar tipo de pago \"contado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 196
+ testRunner.And("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 197
  testRunner.And("Rellene datos de la tarjeta \'BBVA\' , \'MASTER\' y \'206556\' en el módulo de \"Venta p" +
                         "or Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 192
+#line 198
  testRunner.Then("Guardar venta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -917,7 +935,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Registro de una venta por contigencia con pago al crédito rápido", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 194
+#line 200
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -937,55 +955,55 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 195
+#line 201
  testRunner.Given("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 196
+#line 202
  testRunner.When("Seleccionar Venta y luego \"Venta Por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 197
- testRunner.And("Agregar concepto por \'seleccion\' y valor \'88010-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 198
- testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 199
- testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 200
- testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 201
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 202
- testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 203
- testRunner.And("Ingresar fecha de emisión de la venta \'1/01/2025\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 204
+ testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 205
+ testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 206
+ testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 207
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 208
+ testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 209
+ testRunner.And("Ingresar fecha de emisión de la venta \'1/01/2025\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 210
  testRunner.And("Seleccionar tipo de comprobante \'BOLETA\' en el módulo de \"Venta por Contingencia\"" +
                         "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 205
+#line 211
  testRunner.And("Ingresar el número de documento \'10\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 206
+#line 212
  testRunner.And("Seleccionar tipo de pago \"credito rapido\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 207
+#line 213
  testRunner.And("Ingresar monto inicial de crédito rapido \'20\' en el módulo de \"Venta por Continge" +
                         "ncia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 208
+#line 214
  testRunner.And("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 209
+#line 215
  testRunner.And("Rellene datos de la tarjeta \'BBVA\' , \'MASTER\' y \'206556\' en el módulo de \"Venta p" +
                         "or Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 210
+#line 216
  testRunner.Then("Guardar venta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -999,7 +1017,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Registro de una venta por contigencia con pago al crédito rápido sin inicial", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 212
+#line 218
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -1019,43 +1037,43 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 213
+#line 219
  testRunner.Given("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 214
+#line 220
  testRunner.When("Seleccionar Venta y luego \"Venta Por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 215
- testRunner.And("Agregar concepto por \'seleccion\' y valor \'88010-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 216
- testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 217
- testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 218
- testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 219
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 220
- testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 221
- testRunner.And("Ingresar fecha de emisión de la venta \'30/01/2025\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 222
- testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 223
- testRunner.And("Ingresar el número de documento \'B002-10\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 224
- testRunner.And("Seleccionar tipo de pago \"credito rapido\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 225
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 226
+ testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 227
+ testRunner.And("Ingresar fecha de emisión de la venta \'30/01/2025\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 228
+ testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 229
+ testRunner.And("Ingresar el número de documento \'B002-10\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 230
+ testRunner.And("Seleccionar tipo de pago \"credito rapido\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 231
  testRunner.Then("Guardar venta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1069,7 +1087,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Registro de una venta por contigencia con pago al crédito configurado", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 227
+#line 233
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -1089,65 +1107,65 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 228
+#line 234
  testRunner.Given("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 229
+#line 235
  testRunner.When("Seleccionar Venta y luego \"Venta Por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 230
- testRunner.And("Agregar concepto por \'seleccion\' y valor \'88010-1\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 231
- testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 232
- testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 233
- testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 234
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 235
- testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 236
- testRunner.And("Ingresar fecha de emisión de la venta \'30/01/2025\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 237
- testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 238
- testRunner.And("Ingresar el número de documento \'10\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 239
- testRunner.And("Seleccionar tipo de pago \"credito configurado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 240
- testRunner.And("Ingresar monto inicial \'20\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 241
- testRunner.And("Ingresar el número de coutas \'3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 242
- testRunner.And("Ingresar fecha \'1 de cada mes\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar fecha de emisión de la venta \'30/01/2025\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 243
- testRunner.And("Click en generar coutas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 244
- testRunner.And("Click en Aceptar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar el número de documento \'10\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 245
- testRunner.And("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de pago \"credito configurado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 246
+ testRunner.And("Ingresar monto inicial \'20\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 247
+ testRunner.And("Ingresar el número de coutas \'3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 248
+ testRunner.And("Ingresar fecha \'1 de cada mes\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 249
+ testRunner.And("Click en generar coutas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 250
+ testRunner.And("Click en Aceptar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 251
+ testRunner.And("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 252
  testRunner.And("Rellene datos de la tarjeta \'BBVA\' , \'MASTER\' y \'206556\' en el módulo de \"Venta p" +
                         "or Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 247
+#line 253
  testRunner.Then("Guardar venta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1163,7 +1181,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Registro de una venta por contigencia con pago al crédito configurado sin inicial" +
                     "", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 249
+#line 255
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -1183,55 +1201,240 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 250
+#line 256
  testRunner.Given("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 251
+#line 257
  testRunner.When("Seleccionar Venta y luego \"Venta Por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 252
- testRunner.And("Agregar concepto por \'seleccion\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 253
- testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 254
- testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 255
- testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 256
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 257
- testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 258
- testRunner.And("Ingresar fecha de emisión de la venta \'30/01/2025\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 259
- testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 260
- testRunner.And("Ingresar el número de documento \'10\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 261
- testRunner.And("Seleccionar tipo de pago \"credito configurado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 262
- testRunner.And("Ingresar el número de coutas sin inicial \'3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 263
- testRunner.And("Ingresar fecha \'1 de cada mes\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 264
- testRunner.And("Click en generar coutas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar fecha de emisión de la venta \'30/01/2025\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 265
- testRunner.And("Click en Aceptar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Venta por Contingencia\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 266
+ testRunner.And("Ingresar el número de documento \'10\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 267
+ testRunner.And("Seleccionar tipo de pago \"credito configurado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 268
+ testRunner.And("Ingresar el número de coutas sin inicial \'3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 269
+ testRunner.And("Ingresar fecha \'1 de cada mes\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 270
+ testRunner.And("Click en generar coutas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 271
+ testRunner.And("Click en Aceptar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 272
+ testRunner.Then("Guardar venta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Registro de una venta con guía de remisión")]
+        [NUnit.Framework.CategoryAttribute("VentaGuiaRemisión")]
+        public virtual void RegistroDeUnaVentaConGuiaDeRemision()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "VentaGuiaRemisión"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Registro de una venta con guía de remisión", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 276
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 277
+ testRunner.Given("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 278
+ testRunner.When("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 279
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 280
+ testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 281
+ testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 282
+ testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 283
+ testRunner.And("Activar Detalle Unificado \'NO\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 284
+ testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 285
+ testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 286
+ testRunner.And("Click en el botón Guía", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 287
+ testRunner.And("Ingresar la fecha de inicio de traslado \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 288
+ testRunner.And("Ingresar el peso bruto total \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 289
+ testRunner.And("Ingresar el número de bultos \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 290
+ testRunner.And("Ingresar el RUC del transportista \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 291
+ testRunner.And("Seleccionar la modalidad del transporte", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 292
+ testRunner.And("Ingresar el ubigeo de la dirección de origen \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 293
+ testRunner.And("Ingresar el Detalle de la dirección de origen \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 294
+ testRunner.And("Ingresar el ubigeo de la dirección de destino \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 295
+ testRunner.And("Ingresar el Detalle de la dirección de destino \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 296
+ testRunner.And("Click en el botón aceptar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 297
+ testRunner.And("Seleccionar tipo de pago \"contado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 298
+ testRunner.And("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 299
+ testRunner.And("Rellene datos de la tarjeta \'BBVA\' , \'MASTER\' y \'206556\' en el módulo de \"Nueva V" +
+                        "enta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 300
+ testRunner.Then("Guardar venta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Registro de una venta con detalle unificado")]
+        [NUnit.Framework.CategoryAttribute("VentaDetalleUnificado")]
+        public virtual void RegistroDeUnaVentaConDetalleUnificado()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "VentaDetalleUnificado"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Registro de una venta con detalle unificado", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 304
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 305
+ testRunner.Given("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 306
+ testRunner.When("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 307
+ testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 308
+ testRunner.And("Agregar concepto por \'barra\' y valor \'400000437\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 309
+ testRunner.And("Agregar concepto por \'barra\' y valor \'400001310\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 310
+ testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 311
+ testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 312
+ testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 313
+ testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 314
+ testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 315
+ testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 316
+ testRunner.And("Seleccionar tipo de pago \"contado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 317
+ testRunner.And("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 318
+ testRunner.And("Rellene datos de la tarjeta \'BBVA\' , \'MASTER\' y \'206556\' en el módulo de \"Nueva V" +
+                        "enta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 319
  testRunner.Then("Guardar venta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
