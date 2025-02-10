@@ -93,6 +93,23 @@ namespace SigesCore.Hooks.XPaths
         public static readonly By DocContingencyField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[7]/selector-comprobante[1]/div[1]/ng-form[1]/div[1]/div[1]/span[1]/span[1]/span[1]");
     }
 
+    public class DispatchGuide
+    {
+        public static readonly By Modal = By.Id("modal-registro-guia-remision");
+
+        public static readonly By DispatchGuideButton = By.XPath("//a[@id='id-registro-guia-remision']");
+
+        public static readonly By StartDateTransferPath = By.XPath("//input[@id='fechaInicioTraslado']");
+
+        public static readonly By TotalGrossWeightPath = By.XPath("//input[@id='pesobrutototal']");
+
+        public static readonly By NumberOfPackagesPath = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/registrador-guia-remision[1]/form[1]/div[1]/div[1]/div[1]/div[1]/div[7]/div[1]/div[2]/input[1]");
+
+        public static readonly By CarrierRUCPath = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/registrador-guia-remision[1]/form[1]/div[1]/div[2]/div[1]/div[1]/selector-actor-comercial[1]/ng-form[1]/div[1]/div[1]/div[1]/input[1]");
+
+        public static readonly By TransportMode = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/registrador-guia-remision[1]/form[1]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1]/span[1]/span[1]");
+    }
+
     public class PaymentTypePath
     {
         public static readonly By CashPaymentOption = By.XPath("//label[@for='radio1' and text()='CO']");

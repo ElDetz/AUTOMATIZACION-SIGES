@@ -1310,40 +1310,42 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 285
- testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de comprobante \'BOLETA\' en el módulo de \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 286
  testRunner.And("Click en el botón Guía", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 287
- testRunner.And("Ingresar la fecha de inicio de traslado \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar la fecha de inicio de traslado \'10/02/2025\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 288
- testRunner.And("Ingresar el peso bruto total \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar el peso bruto total \'50\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 289
- testRunner.And("Ingresar el número de bultos \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar el número de bultos \'3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 290
- testRunner.And("Ingresar el RUC del transportista \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar el RUC del transportista \'10614499015\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 291
- testRunner.And("Seleccionar la modalidad del transporte", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar la modalidad del transporte \"TRANSPORTE PÚBLICO\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 292
- testRunner.And("Ingresar el ubigeo de la dirección de origen \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar el ubigeo de la dirección de origen \"HUANUCO - LEONCIO PRADO - HERMILIO " +
+                        "VALDIZAN\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 293
- testRunner.And("Ingresar el Detalle de la dirección de origen \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar el detalle de la dirección de origen \"AV. AGRICULTURA\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 294
- testRunner.And("Ingresar el ubigeo de la dirección de destino \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar el ubigeo de la dirección de destino \"HUANUCO - LEONCIO PRADO - DANIEL A" +
+                        "LOMIA ROBLES\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 295
- testRunner.And("Ingresar el Detalle de la dirección de destino \' \'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar el detalle de la dirección de destino \"JR. SVEN ERICSON N° 109\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 296
- testRunner.And("Click en el botón aceptar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Click en el botón aceptar guía de remisión", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 297
  testRunner.And("Seleccionar tipo de pago \"contado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -1397,44 +1399,50 @@ this.ScenarioInitialize(scenarioInfo);
 #line 306
  testRunner.When("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "barra",
+                            "valor"});
+                table1.AddRow(new string[] {
+                            "1010-3",
+                            "2000"});
+                table1.AddRow(new string[] {
+                            "1020-4",
+                            "1500"});
+                table1.AddRow(new string[] {
+                            "1030-5",
+                            "3000"});
 #line 307
- testRunner.And("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 308
- testRunner.And("Agregar concepto por \'barra\' y valor \'400000437\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 309
- testRunner.And("Agregar concepto por \'barra\' y valor \'400001310\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 310
- testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 311
- testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("Agregar los siguientes conceptos:", ((string)(null)), table1, "When ");
 #line hidden
 #line 312
- testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar cantidad \'5\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 313
- testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar precio unitario \'30\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 314
- testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar IGV \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 315
- testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Activar Detalle Unificado \'SI\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 316
- testRunner.And("Seleccionar tipo de pago \"contado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 317
- testRunner.And("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Nueva Venta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 318
+ testRunner.And("Seleccionar tipo de pago \"contado\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 319
+ testRunner.And("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 320
  testRunner.And("Rellene datos de la tarjeta \'BBVA\' , \'MASTER\' y \'206556\' en el módulo de \"Nueva V" +
                         "enta\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 319
+#line 321
  testRunner.Then("Guardar venta", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

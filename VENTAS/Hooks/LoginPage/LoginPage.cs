@@ -13,11 +13,11 @@ namespace SigesCore.Hooks.LoginPage
     public class LoginPage
     {
         private IWebDriver driver;
-        UtilityVentaPage utilityPage;
+        UtilityVenta utilityPage;
         public LoginPage(IWebDriver driver)
         {
             this.driver = driver;
-            this.utilityPage = new UtilityVentaPage(driver);
+            this.utilityPage = new UtilityVenta(driver);
         }
 
         public void LoginToApplication(string email, string password)

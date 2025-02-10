@@ -106,6 +106,72 @@ namespace SigesCore.StepDefinitions.Ventas
             newSale.DocumentNumberContingency(value);
         }
 
+        [When(@"Click en el botón Guía")]
+        public void WhenClickEnElBotonGuia()
+        {
+            newSale.ClickDispatchGuide();
+        }
+
+        [When(@"Ingresar la fecha de inicio de traslado '([^']*)'")]
+        public void WhenIngresarLaFechaDeInicioDeTraslado(string value)
+        {
+            newSale.StartDateTransfer(value); 
+        }
+
+        [When(@"Ingresar el peso bruto total '([^']*)'")]
+        public void WhenIngresarElPesoBrutoTotal(string value)
+        {
+            newSale.TotalGrossWeight(value);
+        }
+
+        [When(@"Ingresar el número de bultos '([^']*)'")]
+        public void WhenIngresarElNumeroDeBultos(string value)
+        {
+            newSale.NumberOfPackages(value);
+        }
+
+        [When(@"Ingresar el RUC del transportista '([^']*)'")]
+        public void WhenIngresarElRUCDelTransportista(string value)
+        {
+            newSale.CarrierRUC(value);
+        }
+
+        [When(@"Seleccionar la modalidad del transporte ""([^""]*)""")]
+        public void WhenSeleccionarLaModalidadDelTransporte(string option)
+        {
+            newSale.TransportMode(option);
+        }
+
+        [When(@"Ingresar el ubigeo de la dirección de origen ""([^""]*)""")]
+        public void WhenIngresarElUbigeoDeLaDireccionDeOrigen(string option)
+        {
+            
+        }
+
+        [When(@"Ingresar el detalle de la dirección de origen ""([^""]*)""")]
+        public void WhenIngresarElDetalleDeLaDireccionDeOrigen(string option)
+        {
+            
+        }
+
+        [When(@"Ingresar el ubigeo de la dirección de destino ""([^""]*)""")]
+        public void WhenIngresarElUbigeoDeLaDireccionDeDestino(string p0)
+        {
+            
+        }
+
+        [When(@"Ingresar el detalle de la dirección de destino ""([^""]*)""")]
+        public void WhenIngresarElDetalleDeLaDireccionDeDestino(string option)
+        {
+            
+        }
+
+        [When(@"Click en el botón aceptar guía de remisión")]
+        public void WhenClickEnElBotonAceptarGuiaDeRemision()
+        {
+            
+        }
+
         [When(@"Seleccionar tipo de pago ""([^""]*)""")]
         public void WhenSeleccionarTipoDePago(string option)
         {

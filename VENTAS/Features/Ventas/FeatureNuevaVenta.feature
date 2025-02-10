@@ -282,18 +282,18 @@ Scenario: Registro de una venta con guía de remisión
 	And Activar IGV 'SI'
 	And Activar Detalle Unificado 'NO'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
-	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
+	And Seleccionar tipo de comprobante 'BOLETA' en el módulo de "Nueva Venta"
 	And Click en el botón Guía
-	And Ingresar la fecha de inicio de traslado ' '
-	And Ingresar el peso bruto total ' '
-	And Ingresar el número de bultos ' '
-	And Ingresar el RUC del transportista ' '
-	And Seleccionar la modalidad del transporte
-	And Ingresar el ubigeo de la dirección de origen ' '
-	And Ingresar el Detalle de la dirección de origen ' '
-	And Ingresar el ubigeo de la dirección de destino ' '
-	And Ingresar el Detalle de la dirección de destino ' '
-	And Click en el botón aceptar 
+	And Ingresar la fecha de inicio de traslado '10/02/2025'
+	And Ingresar el peso bruto total '50'
+	And Ingresar el número de bultos '3'
+	And Ingresar el RUC del transportista '10614499015'
+	And Seleccionar la modalidad del transporte "TRANSPORTE PÚBLICO"
+	And Ingresar el ubigeo de la dirección de origen "HUANUCO - LEONCIO PRADO - HERMILIO VALDIZAN"
+	And Ingresar el detalle de la dirección de origen "AV. AGRICULTURA"
+	And Ingresar el ubigeo de la dirección de destino "HUANUCO - LEONCIO PRADO - DANIEL ALOMIA ROBLES"
+	And Ingresar el detalle de la dirección de destino "JR. SVEN ERICSON N° 109"
+	And Click en el botón aceptar guía de remisión
 	And Seleccionar tipo de pago "contado"
 	And Seleccionar el medio de pago 'TDEB'
 	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Nueva Venta"

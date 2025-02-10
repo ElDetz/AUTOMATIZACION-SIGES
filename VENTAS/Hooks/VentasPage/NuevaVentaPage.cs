@@ -23,12 +23,12 @@ namespace SigesCore.Hooks.VentasPage
     {
         private readonly IWebDriver driver;
         WebDriverWait wait;
-        UtilityVentaPage utilityPage;
+        UtilityVenta utilityPage;
 
         public NuevaVentaPage(IWebDriver driver)
         {
             this.driver = driver;
-            this.utilityPage = new UtilityVentaPage(driver);
+            this.utilityPage = new UtilityVenta(driver);
         }
 
         //SELECCIÓN DE MÓDULO Y SUBMÓDULO
@@ -203,6 +203,80 @@ namespace SigesCore.Hooks.VentasPage
                 default:
                     throw new ArgumentException($"El {option} no es válido");
             }
+        }
+
+        //GUÍA DE REMISIÓN
+        public void ClickDispatchGuide ()
+        {
+            utilityPage.ClickButton(DispatchGuide.DispatchGuideButton);
+        }
+
+        public void StartDateTransfer(string value)
+        {
+            utilityPage.WaitForModalAndVerifyField(DispatchGuide.StartDateTransferPath);
+            utilityPage.EnterField(DispatchGuide.StartDateTransferPath, value);
+            driver.FindElement(DispatchGuide.StartDateTransferPath).SendKeys(Keys.Enter);
+            Thread.Sleep(4000);
+        }
+
+        public void TotalGrossWeight(string value)
+        {
+            utilityPage.EnterField(DispatchGuide.TotalGrossWeightPath, value);
+        }
+
+        public void NumberOfPackages(string value)
+        {
+            utilityPage.EnterField(DispatchGuide.NumberOfPackagesPath, value);
+            Thread.Sleep(2000);
+        }
+
+        public void CarrierRUC(string value)
+        {
+            utilityPage.EnterField(DispatchGuide.CarrierRUCPath, value);
+            driver.FindElement(DispatchGuide.CarrierRUCPath).SendKeys(Keys.Enter);
+        }
+
+        public void TransportMode(string value)
+        {
+            Thread.Sleep(4000);
+            IWebElement modalFacturacion = driver.FindElement(DispatchGuide.Modal);
+
+            IWebElement dropdown = modalFacturacion.FindElement(DispatchGuide.TransportMode);
+            Console.WriteLine("Campo seleccion encontrada");
+            IReadOnlyCollection<IWebElement> dropdownOptions = dropdown.FindElements(ConfiguredCreditPopup.Option);
+            Console.WriteLine("Selecciones extraidas");
+            foreach (IWebElement option in dropdownOptions)
+            {
+                if (option.Text.Equals(value))
+                    option.Click();
+            }
+            Console.WriteLine("seleccion terminada");
+            Thread.Sleep(4000);
+        }
+
+        public void OriginAddressUbigeo(string option)
+        {
+            // Implementation here
+        }
+
+        public void OriginAddressDetail(string option)
+        {
+            // Implementation here
+        }
+
+        public void DestinationAddressUbigeo(string option)
+        {
+            // Implementation here
+        }
+
+        public void DestinationAddressDetail(string option)
+        {
+            // Implementation here
+        }
+
+        public void AcceptDispatchGuideButton()
+        {
+            // Implementation here
         }
 
         //INGRESAR FECHA DE EMISIÓN (PROPIO DE VENTA POR CONTINGENCIA)

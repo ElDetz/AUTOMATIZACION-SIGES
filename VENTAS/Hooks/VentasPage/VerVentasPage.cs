@@ -14,13 +14,13 @@ namespace SigesCore.Hooks.VentasPage
     {
         private readonly IWebDriver driverViewPayment;
         WebDriverWait wait;
-        UtilityVentaPage utilityPage;
+        UtilityVenta utilityPage;
         UtilityVerVentas utilityViewPage;
 
         public VerVentasPage (IWebDriver driverViewPayment)
         {
             this.driverViewPayment = driverViewPayment;
-            this.utilityPage = new UtilityVentaPage(driverViewPayment);
+            this.utilityPage = new UtilityVenta(driverViewPayment);
         }
 
     }
