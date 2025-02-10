@@ -103,7 +103,6 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
             return string.Empty;// Si no se selecciona nada, retorna una cadena vacía o lanza una excepción si es necesario
         }
 
-
         public void EnterBillingDetails(string _clientType, string _clientValue, string _comprobante, string _observacion, string _moodPago)
         {
             // Encontrar el modal FACTURACION
@@ -211,20 +210,6 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
         
         }
 
-        public void AddObservacion(string _observacion)
-        {
-            // ESPERA PARA RELLENAR CAMPOS
-            utilities.elementExists(observacionField);
-            utilities.WaitForOverlayToDisappear(overlayLocator);
-
-            // Encontrar el modal FACTURACION
-            IWebElement modalFacturacion = driver.FindElement(By.Id("facturacionVenta-0"));
-
-            utilities.addFieldModal(modalFacturacion, observacionField, _observacion);
-            Console.WriteLine("OBSERVACION AGREGADA");
-            Thread.Sleep(4000);
-
-        }
 
         // MODO DE PAGO
         public void moodPay(string _moodPago)

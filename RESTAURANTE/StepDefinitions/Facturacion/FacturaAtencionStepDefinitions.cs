@@ -68,41 +68,6 @@ namespace RESTAURANTE.StepDefinitions.Facturacion
         [When(@"Se ingresan los detalles de la factura:")]
         public void WhenIngresarDetallesDeLaFactura(Table table)
         {
-            foreach (var row in table.Rows)
-            {
-                string tipoCliente = row["TipoCliente"];
-                string valorCliente = row["ValorCliente"];
-                string tipoComprobante = row["TipoComprobante"];
-                string observacion = row["Observacion"];
-                string medioPago = row["MedioPago"];
-
-                facturacionSimplePage.EnterBillingDetails(tipoCliente, valorCliente, tipoComprobante, observacion, medioPago);
-            }
-        }
-
-        [When(@"Selecciona el tipo de comprobante '([^']*)'")]
-        public void WhenSeleccionaElTipoDeFactura(string _comprobante)
-        {
-            //facturacionSimplePage.typeComprobante(_comprobante);
-        }
-
-        [When(@"Ingresa alguna observacion '([^']*)'")]
-        public void WhenIngresaAlgunaObservacion(string _observacion)
-        {
-            //facturacionSimplePage.AddObservacion(_observacion);
-        }
-
-        [When(@"Selecciona el modo de pago '([^']*)'")]
-        public void WhenSeleccionaElModoDePago(string _moodPago)
-        {
-            //facturacionSimplePage.moodPay(_moodPago);
-        }
-
-        // CUENTA DIVIDIDA
-
-        [When(@"Se especifica que la factura será dividida en '([^']*)' cuentas y se ingresan los detalles correspondientes:")]
-        public void WhenSeEspecificaQueLaFacturaSeraDivididaEnCuentasYSeIngresanLosDetallesCorrespondientes(int _n, Table table)
-        {
             int _ncuentas = 0;
             foreach (var row in table.Rows)
             {
@@ -114,11 +79,22 @@ namespace RESTAURANTE.StepDefinitions.Facturacion
 
                 Console.WriteLine($"Procesando cuenta {_ncuentas}: {tipoCliente}, {valorCliente}, {tipoComprobante}, {observacion}, {medioPago}");
 
-                facturacionCtaDivididaPage.EnterBillingDetails(_ncuentas, tipoCliente, valorCliente, tipoComprobante, observacion, medioPago);
+                facturacionPage.EnterBillingDetails(_ncuentas, tipoCliente, valorCliente, tipoComprobante, observacion, medioPago);
 
                 _ncuentas++;
             }
         }
+
+
+        // CUENTA DIVIDIDA
+
+        [Given(@"Se especifica que la factura será dividida en '([^']*)' cuentas")]
+        public void GivenSeEspecificaQueLaFacturaSeraDivididaEnCuentas(int _ncuentas)
+        {
+            facturacionCtaDivididaPage.addCard(_ncuentas);
+        }
+
+
 
         [When(@"Se ingresan los datos del pago:")]
         public void WhenSeIngresanLosDatosDelPago(Table table)

@@ -35,7 +35,7 @@ namespace RESTAURANTE.Features.Facturacion
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Facturacion", "Factura Atencion Cuenta Dividida", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Facturacion", "Factura Atencion Cuenta Dividida", "And Se especifica que la factura será dividida en \'3\' cuentas ", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -111,6 +111,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 8
  testRunner.And("Se selecciona el tipo de factura \'CUENTA DIVIDIDA\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 9
+ testRunner.And("Se especifica que la factura será dividida en \'3\' cuentas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
                 TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                             "TipoCliente",
                             "ValorCliente",
@@ -129,9 +132,8 @@ this.ScenarioInitialize(scenarioInfo);
                             "NOTA DE VENTA (INTERNA)",
                             "OBSERVACIÓN2",
                             "TDEB"});
-#line 9
- testRunner.When("Se especifica que la factura será dividida en \'3\' cuentas y se ingresan los detal" +
-                        "les correspondientes:", ((string)(null)), table2, "When ");
+#line 10
+ testRunner.When("Se ingresan los detalles de la factura:", ((string)(null)), table2, "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                             "Banco_Cuenta",
@@ -148,10 +150,10 @@ this.ScenarioInitialize(scenarioInfo);
                             "AMERICAN EXPRESS",
                             "-",
                             "10010"});
-#line 14
+#line 15
  testRunner.And("Se ingresan los datos del pago:", ((string)(null)), table3, "And ");
 #line hidden
-#line 19
+#line 20
  testRunner.Then("Se realiza la facturación", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

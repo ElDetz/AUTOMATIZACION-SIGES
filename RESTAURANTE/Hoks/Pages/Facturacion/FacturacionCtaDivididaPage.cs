@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using MongoDB.Bson.Serialization.Serializers;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.DevTools.V130.Debugger;
 using OpenQA.Selenium.Support.UI;
@@ -25,8 +26,8 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
 
         }
 
+        private By _modalFacturacion = By.Id("modal-facturador-restaurante");
         private By overlayLocator = By.ClassName("block-ui-overlay");
-        private By _modalFacturacion = By.Id("facturacionVenta-0");
         private By fieldLocator;
 
         //CLIENTE
@@ -41,102 +42,52 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
         //OBSERVACION
         private By observacionField = By.Id("observacion");
 
-        // MODO DE PAGO
-        By dpcuButton = By.XPath("//label[@id='labelMedioPago-0-14']");
-        By tranfonButton = By.XPath("//label[@id='labelMedioPago-0-16']");
-        By tdebButton = By.XPath("//label[@id='labelMedioPago-0-18']");
-        By tcreButton = By.XPath("//label[@id='labelMedioPago-0-19']");
-        By efButton = By.XPath("//label[@id='labelMedioPago-0-281']");
+        // AGREGAR CARD PAGOS
+        private By addCardPagos = By.ClassName("agregar-card-pagos");
+        private By deleteCardPagos = By.ClassName("close");
+        private By dividirMonto = By.XPath("//button[@title='Dividir Monto']");
 
-        public void EnterBillingDetails(int _ncuenta, string _clientType, string _clientValue, string _comprobante, string _observacion, string _moodPago)
+        public void addCard(int _ncuenta)
         {
-            // Encontrar el modal FACTURACION
-            IWebElement modalFacturacion = driver.FindElement(By.Id($"facturacionVenta-{_ncuenta}"));
+            // ENCUENTRA MODAL FACTURACION RESTAURANTE
+            IWebElement modalFacturacion = driver.FindElement(_modalFacturacion);
+            Console.WriteLine("MODAL FACTURACION RESTAURANTE ENCONTRADO");
+            //utilities.ClickButtonInModal(modalFacturacion, addCardPagos);
 
-            // TIPO CLIENTE
-            switch (_clientType)
+            for (int i = 2; i < _ncuenta; i++)
             {
-                case "VARIOS":
-                    return;
+                utilities.ClickButtonInModal(modalFacturacion, addCardPagos);
+                utilities.elementExists(docIdentidadField);
+                utilities.WaitForOverlayToDisappear(overlayLocator);
 
-                case "DNI":
-                case "RUC":
+                // Encontrar la ultima carta
+                IWebElement ultimaCarta = modalFacturacion.FindElement(By.Id($"facturacionVenta-{i}"));
 
-                    fieldLocator = docIdentidadField; // CAMPO DOC INDENTIDAD
-                    break;
-
-                case "ALIAS":
-
-                    fieldLocator = aliasField; // CAMPO ALIAS
-                    break;
-
-                default:
-                    throw new ArgumentException($"El {_clientType} no es válido");
             }
 
-            utilities.enterFieldModal(modalFacturacion, fieldLocator, _clientValue);
-            Console.WriteLine($"CLIENTE CUENTA {_ncuenta} INGRESADO");
-            Thread.Sleep(4000);
 
-            // COMPROBANTE
-            var dropdown = new SelectElement(modalFacturacion.FindElement(comprobanteSelect));
-            dropdown.SelectByText(_comprobante);
-            Assert.That(dropdown.SelectedOption.Text, Is.EqualTo(_comprobante));
+            IWebElement ncard = driver.FindElement(By.Id("elementId")); // Encuentra el elemento
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("arguments[0].scrollIntoView(true);", ncard); // Desplázate hasta el elemento
 
-            Console.WriteLine($"COMPROBANTE CUENTA {_ncuenta} INGRESADO");
-            Thread.Sleep(4000);
 
-            // OBSERVACION
-            utilities.elementExists(observacionField);
-            utilities.WaitForOverlayToDisappear(overlayLocator);
 
-            utilities.addFieldModal(modalFacturacion, observacionField, _observacion);
-            Console.WriteLine($"OBSERVACION CUENTA {_ncuenta} INGRESADO");
-            Thread.Sleep(4000);
+            /*
+            // Desplazarse hacia abajo
+            ((IJavaScriptExecutor)modalFacturacion).ExecuteScript("window.scrollBy(0, 1000);");
 
-            Dictionary<string, By> moodPagoButtons;
-
-            if (_ncuenta == 0)
+            // Desplazarse hacia la derecha
+            ((IJavaScriptExecutor)modalFacturacion).ExecuteScript("window.scrollBy(1000, 0);");
+            */
+            /*
+            // Si _ncuenta es mayor a 2, presionar el botón las veces necesarias
+            for (int i = 0; i < vecesAPresionar; i++)
             {
-                moodPagoButtons = new Dictionary<string, By>
-                {
-                    { "DEPCU", By.XPath($"//label[@id='labelMedioPago-{_ncuenta}-14']") },
-                    { "TRANFON", By.XPath($"//label[@id='labelMedioPago-{_ncuenta}-16']") },
-                    { "TDEB", By.XPath($"//label[@id='labelMedioPago-{_ncuenta}-18']") },
-                    { "TCRE", By.XPath($"//label[@id='labelMedioPago-{_ncuenta}-19']") },
-                    { "EF", By.XPath($"//label[@id='labelMedioPago-{_ncuenta}-281']") }
-                };
+                utilities.ClickButtonInModal(modalFacturacion, addCardPagos);
+                utilities.buttonClickeable(addCardPagos);
             }
-            else
-            {
-                // Diccionario que mapea el modo de pago al botón correspondiente
-                moodPagoButtons = new Dictionary<string, By>
-                {
-                    { "DEPCU", By.XPath($"//label[@id='labelMedioPago--{_ncuenta}-14']") },
-                    { "TRANFON", By.XPath($"//label[@id='labelMedioPago--{_ncuenta}-16']") },
-                    { "TDEB", By.XPath($"//label[@id='labelMedioPago--{_ncuenta}-18']") },
-                    { "TCRE", By.XPath($"//label[@id='labelMedioPago--{_ncuenta}-19']") },
-                    { "EF", By.XPath($"//label[@id='labelMedioPago--{_ncuenta}-281']") }
-                };
-            }
-
-            // Verificar si el modo de pago existe en el diccionario
-            if (moodPagoButtons.ContainsKey(_moodPago))
-            {
-                // Llamar al método moodPay con el botón correspondiente
-                utilities.ClickButtonInModal(modalFacturacion, moodPagoButtons[_moodPago]);
-            }
-            else
-            {
-                // Lanzar excepción si el modo de pago no es válido
-                throw new ArgumentException($"El {_moodPago} no es válido");
-            }
-            Console.WriteLine($"METODO DE PAGO {_ncuenta} INGRESADO");
+            */
             Thread.Sleep(4000);
-
-            Console.WriteLine($"***DETALLES CUENTA {_ncuenta} INGRESADO***");
-            Thread.Sleep(4000);
-
         }
 
     }
