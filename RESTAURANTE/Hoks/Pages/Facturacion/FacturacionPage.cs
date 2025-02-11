@@ -3,6 +3,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using Assert = NUnit.Framework.Assert;
 
 
 namespace RESTAURANTE.Hoks.Pages.Facturacion

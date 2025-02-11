@@ -4,7 +4,6 @@ using OpenQA.Selenium;
 using RESTAURANTE.Features.Facturacion;
 using RESTAURANTE.Hoks.Pages;
 using RESTAURANTE.Hoks.Pages.Facturacion;
-using TechTalk.SpecFlow.Assist;
 
 namespace RESTAURANTE.StepDefinitions.Facturacion
 {
