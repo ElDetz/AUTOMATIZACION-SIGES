@@ -95,7 +95,7 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
         {
             // BOTON FACTURAR - ELECCION DEL PRIMERO
             utilities.elementExists(facturarAtencionButton);
-            utilities.WaitForOverlayToDisappear(overlayLocator);
+            utilities.WaitForOverlayToDisappear();
             utilities.buttonClickeable(facturarAtencionButton);
 
             // ENCUENTRA MODAL FACTURACION RESTAURANTE
@@ -104,7 +104,7 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
 
             // ESPERA Y OVERLAY
             utilities.elementExists(docIdentidadField);
-            utilities.WaitForOverlayToDisappear(overlayLocator);
+            utilities.WaitForOverlayToDisappear();
 
             switch (_typeFactura)
             {
@@ -126,7 +126,7 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
 
             // ESPERA PARA RELLENAR CAMPOS
             utilities.elementExists(docIdentidadField);
-            utilities.WaitForOverlayToDisappear(overlayLocator);
+            utilities.WaitForOverlayToDisappear();
             /*
             List<IWebElement> iframes = driver.FindElements(By.TagName("iframe")).ToList();
             driver.SwitchTo().Frame(iframes[0]);  // Prueba con el primer iframe
@@ -174,7 +174,7 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
 
             // OBSERVACION
             utilities.elementExists(observacionField);
-            utilities.WaitForOverlayToDisappear(overlayLocator);
+            utilities.WaitForOverlayToDisappear();
 
             utilities.addFieldModal(modalFacturacion, observacionField, _observacion);
             Console.WriteLine($"OBSERVACION CUENTA {_ncuenta} INGRESADO");

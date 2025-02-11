@@ -21,8 +21,8 @@
 
   <ItemGroup>
     <Folder Include="Drivers\" />
+    <Folder Include="Features\Atencion\" />
     <Folder Include="Features\Preparacion\" />
-    <Folder Include="StepDefinitions\Preparacion\" />
     <Folder Include="Support\" />
   </ItemGroup>
 

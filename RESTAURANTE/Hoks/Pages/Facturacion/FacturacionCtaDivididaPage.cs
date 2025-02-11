@@ -57,7 +57,7 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
             {
                 utilities.ClickButtonInModal(modalFacturacion, addCardPagos);
                 utilities.elementExists(docIdentidadField);
-                utilities.WaitForOverlayToDisappear(overlayLocator);
+                utilities.WaitForOverlayToDisappear();
 
                 // Encontrar la ultima carta
                 IWebElement ultimaCarta = modalFacturacion.FindElement(By.Id($"facturacionVenta-{i}"));
