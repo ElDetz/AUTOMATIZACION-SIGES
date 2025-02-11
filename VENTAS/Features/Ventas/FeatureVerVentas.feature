@@ -2,31 +2,31 @@
 
 Ver ventas y comprobar sus acciones
 
-@ActivarCanje
+@CanjearComprobante
 
-Scenario: Activar canje
+Scenario: Canjear comprobante
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
-	And Ingresar fecha inicial ''
-	And Ingresar fecha final ''
+	And Ingresar fecha inicial "27/01/2025"
+	And Ingresar fecha final "11/02/2025"
 	And Click en consultar ventas
-	And Buscar venta ''
+	And Buscar venta 'NV02-46'
 	And Activar canje
 	And Seleccionar venta
 	And Click en el botón canjear
-	And Seleccionar el tipo de comprobante ''
+	And Seleccionar el tipo de comprobante "BOLETA DE VENTA ELECTRONICA"
 	And Click en el botón aceptar
-	Then Ver venta canjeada
+	Then Ver comprobante canjeada 'NV02-47'
 
 @NotaDebito
 
 Scenario: Emitir una nota de débito con aumento en el valor
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
-	And Ingresar fecha inicial ''
-	And Ingresar fecha final ''
+	And Ingresar fecha inicial "27/01/2025"
+	And Ingresar fecha final "11/02/2025"
 	And Click en consultar ventas
-	And Buscar venta ''
+	And Buscar venta 'B002-27905'
 	And Ver venta buscada
 	And Click en nota de débito
 	And Seleccionar el tipo de nota de débito ''

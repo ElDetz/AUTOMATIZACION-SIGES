@@ -97,6 +97,8 @@ namespace SigesCore.Hooks.XPaths
     {
         public static readonly By Modal = By.Id("modal-registro-guia-remision");
 
+        public static readonly By Option = By.TagName("option");
+
         public static readonly By DispatchGuideButton = By.XPath("//a[@id='id-registro-guia-remision']");
 
         public static readonly By StartDateTransferPath = By.XPath("//input[@id='fechaInicioTraslado']");
@@ -107,7 +109,23 @@ namespace SigesCore.Hooks.XPaths
 
         public static readonly By CarrierRUCPath = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/registrador-guia-remision[1]/form[1]/div[1]/div[2]/div[1]/div[1]/selector-actor-comercial[1]/ng-form[1]/div[1]/div[1]/div[1]/input[1]");
 
-        public static readonly By TransportMode = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/registrador-guia-remision[1]/form[1]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1]/span[1]/span[1]");
+        public static readonly By DriverDNIPath = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/registrador-guia-remision[1]/form[1]/div[1]/div[2]/div[1]/div[1]/selector-actor-comercial[2]/ng-form[1]/div[1]/div[1]/div[1]/input[1]");
+
+        public static readonly By DriverLicensePath = By.XPath("//input[@id='nLicencia']");
+
+        public static readonly By VehiclePlatePath = By.XPath("//input[@id='marcaPlaca']");
+
+        public static readonly By TransportModePath = By.Id("modalidad");
+
+        public static readonly By OriginAddressUbigeoPath = By.Id("ubigeoOrigen");
+
+        public static readonly By OriginAddressDetailPath = By.XPath("//input[@id='direccionOrigen']");
+
+        public static readonly By DestinationAddressUbigeoPath = By.Id("ubigeoDestino");
+
+        public static readonly By DestinationAddressDetailPath = By.XPath("//input[@id='direccionDestino']");
+
+        public static readonly By AcceptDispatchGuideButtonPath = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[3]/a[2]");
     }
 
     public class PaymentTypePath

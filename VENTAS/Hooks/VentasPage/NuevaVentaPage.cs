@@ -236,47 +236,52 @@ namespace SigesCore.Hooks.VentasPage
             driver.FindElement(DispatchGuide.CarrierRUCPath).SendKeys(Keys.Enter);
         }
 
-        public void TransportMode(string value)
+        public void TransportMode(string option)
         {
-            Thread.Sleep(4000);
-            IWebElement modalFacturacion = driver.FindElement(DispatchGuide.Modal);
+            utilityPage.OptionsSelector(DispatchGuide.Modal, DispatchGuide.TransportModePath, option);
+            Thread.Sleep(2000);
+        }
 
-            IWebElement dropdown = modalFacturacion.FindElement(DispatchGuide.TransportMode);
-            Console.WriteLine("Campo seleccion encontrada");
-            IReadOnlyCollection<IWebElement> dropdownOptions = dropdown.FindElements(ConfiguredCreditPopup.Option);
-            Console.WriteLine("Selecciones extraidas");
-            foreach (IWebElement option in dropdownOptions)
-            {
-                if (option.Text.Equals(value))
-                    option.Click();
-            }
-            Console.WriteLine("seleccion terminada");
-            Thread.Sleep(4000);
+        public void DriverDNI(string option)
+        {
+            utilityPage.EnterField(DispatchGuide.DriverDNIPath, option);
+            driver.FindElement(DispatchGuide.DriverDNIPath).SendKeys(Keys.Enter);
+        }
+
+        public void DriverLicense(string option)
+        {
+            utilityPage.EnterField(DispatchGuide.DriverLicensePath, option);
+        }
+
+        public void VehiclePlate(string option)
+        {
+            utilityPage.EnterField(DispatchGuide.VehiclePlatePath, option);
         }
 
         public void OriginAddressUbigeo(string option)
         {
-            // Implementation here
+            utilityPage.OptionsSelector(DispatchGuide.Modal, DispatchGuide.OriginAddressUbigeoPath, option);
         }
 
         public void OriginAddressDetail(string option)
         {
-            // Implementation here
+            utilityPage.EnterField(DispatchGuide.OriginAddressDetailPath, option);
         }
 
         public void DestinationAddressUbigeo(string option)
         {
-            // Implementation here
+            utilityPage.OptionsSelector(DispatchGuide.Modal, DispatchGuide.DestinationAddressUbigeoPath, option);
         }
 
         public void DestinationAddressDetail(string option)
         {
-            // Implementation here
+            utilityPage.EnterField(DispatchGuide.DestinationAddressDetailPath, option);
         }
 
         public void AcceptDispatchGuideButton()
         {
-            // Implementation here
+            utilityPage.ClickButton(DispatchGuide.AcceptDispatchGuideButtonPath);
+            Thread.Sleep(2000);
         }
 
         //INGRESAR FECHA DE EMISIÓN (PROPIO DE VENTA POR CONTINGENCIA)
@@ -434,20 +439,7 @@ namespace SigesCore.Hooks.VentasPage
         //INGRESAR EL DÍA DE PAGO DE COUTAS (PROPIO PARA CRÉDITO CONFIGURADO)
         public void DateCuota(string value)
         {
-            Thread.Sleep(4000);
-            IWebElement modalFacturacion = driver.FindElement(ConfiguredCreditPopup.Modal);
-
-            IWebElement dropdown = modalFacturacion.FindElement(ConfiguredCreditPopup.ExpirationDate);
-            Console.WriteLine("Campo seleccion encontrada");
-            IReadOnlyCollection<IWebElement> dropdownOptions = dropdown.FindElements(ConfiguredCreditPopup.Option);
-            Console.WriteLine("Selecciones extraidas");
-            foreach (IWebElement option in dropdownOptions)
-            {
-                if (option.Text.Equals(value))
-                    option.Click();
-            }
-            Console.WriteLine("seleccion terminada");
-            Thread.Sleep(4000);
+            utilityPage.OptionsSelector(ConfiguredCreditPopup.Modal, ConfiguredCreditPopup.ExpirationDate, value);
         }
 
         //GENERAR COUTAS (PROPIO PARA CRÉDITO CONFIGURADO)

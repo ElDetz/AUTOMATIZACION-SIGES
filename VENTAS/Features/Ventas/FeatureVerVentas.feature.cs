@@ -74,14 +74,14 @@ namespace SigesCore.Features.Ventas
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Activar canje")]
-        [NUnit.Framework.CategoryAttribute("ActivarCanje")]
-        public virtual void ActivarCanje()
+        [NUnit.Framework.DescriptionAttribute("Canjear comprobante")]
+        [NUnit.Framework.CategoryAttribute("CanjearComprobante")]
+        public virtual void CanjearComprobante()
         {
             string[] tagsOfScenario = new string[] {
-                    "ActivarCanje"};
+                    "CanjearComprobante"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Activar canje", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Canjear comprobante", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -109,16 +109,16 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("Seleccionar Venta y luego \"Ver Ventas\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
- testRunner.And("Ingresar fecha inicial \'\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar fecha inicial \"27/01/2025\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
- testRunner.And("Ingresar fecha final \'\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Ingresar fecha final \"11/02/2025\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
  testRunner.And("Click en consultar ventas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 13
- testRunner.And("Buscar venta \'\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Buscar venta \'NV02-46\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 14
  testRunner.And("Activar canje", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -130,13 +130,13 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("Click en el botón canjear", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 17
- testRunner.And("Seleccionar el tipo de comprobante \'\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Seleccionar el tipo de comprobante \"BOLETA DE VENTA ELECTRONICA\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 18
  testRunner.And("Click en el botón aceptar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 19
- testRunner.Then("Ver venta canjeada", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Ver comprobante canjeada \'NV02-47\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

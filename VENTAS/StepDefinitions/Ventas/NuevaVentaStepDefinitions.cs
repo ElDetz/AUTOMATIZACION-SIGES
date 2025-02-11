@@ -42,6 +42,19 @@ namespace SigesCore.StepDefinitions.Ventas
             newSale.TypeSelectConcept(option, value);
         }
 
+        [When(@"Agregar los siguientes conceptos:")]
+        public void WhenAgregarLosSiguientesConceptos(Table table)
+        {
+            foreach (var row in table.Rows)
+            {
+                string option = row["option"];
+                string value = row["value"];
+
+                newSale.TypeSelectConcept(option, value);
+                Thread.Sleep(1000);
+            }
+        }
+
         [When(@"Ingresar cantidad '([^']*)'")]
         public void WhenIngresarCantidad(string quantity)
         {
@@ -142,34 +155,55 @@ namespace SigesCore.StepDefinitions.Ventas
             newSale.TransportMode(option);
         }
 
+        //STEP PROPIO DE GUÍA DE REMISIÓN POR TRANSPORTE PRIVADO
+        [When(@"Ingresar el DNI del conductor '([^']*)'")]
+        public void WhenIngresarElDNIDelConductor(string value)
+        {
+            newSale.DriverDNI(value);   
+        }
+
+        //STEP PROPIO DE GUÍA DE REMISIÓN POR TRANSPORTE PRIVADO
+        [When(@"Ingresar la licencia del conductor '([^']*)'")]
+        public void WhenIngresarLaLicenciaDelConductor(string value)
+        {
+            newSale.DriverLicense(value);
+        }
+
+        //STEP PROPIO DE GUÍA DE REMISIÓN POR TRANSPORTE PRIVADO
+        [When(@"Ingresar la placa del vehículo '([^']*)'")]
+        public void WhenIngresarLaPlacaDelVehiculo(string value)
+        {
+            newSale.VehiclePlate(value);    
+        }
+
         [When(@"Ingresar el ubigeo de la dirección de origen ""([^""]*)""")]
         public void WhenIngresarElUbigeoDeLaDireccionDeOrigen(string option)
         {
-            
+            newSale.OriginAddressUbigeo(option);
         }
 
         [When(@"Ingresar el detalle de la dirección de origen ""([^""]*)""")]
         public void WhenIngresarElDetalleDeLaDireccionDeOrigen(string option)
         {
-            
+            newSale.OriginAddressDetail(option);
         }
 
         [When(@"Ingresar el ubigeo de la dirección de destino ""([^""]*)""")]
-        public void WhenIngresarElUbigeoDeLaDireccionDeDestino(string p0)
+        public void WhenIngresarElUbigeoDeLaDireccionDeDestino(string option)
         {
-            
+            newSale.DestinationAddressUbigeo(option);
         }
 
         [When(@"Ingresar el detalle de la dirección de destino ""([^""]*)""")]
         public void WhenIngresarElDetalleDeLaDireccionDeDestino(string option)
         {
-            
+            newSale.DestinationAddressDetail(option);
         }
 
         [When(@"Click en el botón aceptar guía de remisión")]
         public void WhenClickEnElBotonAceptarGuiaDeRemision()
         {
-            
+            newSale.AcceptDispatchGuideButton();
         }
 
         [When(@"Seleccionar tipo de pago ""([^""]*)""")]

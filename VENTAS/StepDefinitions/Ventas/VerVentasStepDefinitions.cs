@@ -27,70 +27,64 @@ namespace SigesCore.StepDefinitions.Ventas
             this.viewSale = new VerVentasPage(driver);
         }
 
-        [When(@"Ingresar fecha inicial '([^']*)'")]
-        public void WhenIngresarFechaInicial(string p0)
+        [When(@"Ingresar fecha inicial ""([^""]*)""")]
+        public void WhenIngresarFechaInicial(string value)
         {
-            throw new PendingStepException();
+            viewSale.SetInitialDate(value);
         }
 
-        [When(@"Ingresar fecha final '([^']*)'")]
-        public void WhenIngresarFechaFinal(string p0)
+        [When(@"Ingresar fecha final ""([^""]*)""")]
+        public void WhenIngresarFechaFinal(string value)
         {
-            throw new PendingStepException();
+            viewSale.SetFinalDate(value);   
         }
 
         [When(@"Click en consultar ventas")]
         public void WhenClickEnConsultarVentas()
         {
-            throw new PendingStepException();
+            viewSale.SetSalesQuery();
         }
 
         [When(@"Buscar venta '([^']*)'")]
-        public void WhenBuscarVenta(string p0)
+        public void WhenBuscarVenta(string value)
         {
-            throw new PendingStepException();
+            viewSale.SearchSaleField(value);    
         }
 
         [When(@"Activar canje")]
         public void WhenActivarCanje()
         {
-            throw new PendingStepException();
+            viewSale.ActivateRedeem();
         }
 
         [When(@"Seleccionar venta")]
         public void WhenSeleccionarVenta()
         {
-            throw new PendingStepException();
+            viewSale.SelectSale();
         }
 
         [When(@"Click en el botón canjear")]
         public void WhenClickEnElBotonCanjear()
         {
-            throw new PendingStepException();
+            viewSale.ClickRedeemButton();
         }
 
-        [When(@"Seleccionar el tipo de comprobante '([^']*)'")]
-        public void WhenSeleccionarElTipoDeComprobante(string p0)
+        [When(@"Seleccionar el tipo de comprobante ""([^""]*)""")]
+        public void WhenSeleccionarElTipoDeComprobante(string option)
         {
-            throw new PendingStepException();
+            viewSale.SetVoucherType(option);
         }
 
         [When(@"Click en el botón aceptar")]
         public void WhenClickEnElBotonAceptar()
         {
-            throw new PendingStepException();
+            viewSale.ClickAcceptRedeemButton();
         }
 
-        [Then(@"Ver venta canjeada")]
-        public void ThenVerVentaCanjeada()
+        [Then(@"Ver comprobante canjeada '([^']*)'")]
+        public void ThenVerVentaCanjeada(string value)
         {
-            throw new PendingStepException();
-        }
-
-        [When(@"Ver venta buscada")]
-        public void WhenVerVentaBuscada()
-        {
-            throw new PendingStepException();
+            viewSale.SetRedeemedVoucher(value);
         }
 
         [When(@"Click en nota de débito")]

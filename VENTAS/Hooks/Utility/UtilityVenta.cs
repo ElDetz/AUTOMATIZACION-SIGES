@@ -376,6 +376,24 @@ namespace SigesCore.Hooks.Utility
             }
         }
 
+        public void OptionsSelector(By pathModal, By pathComponent, string value)
+        {
+            Thread.Sleep(4000);
+            IWebElement modalFacturacion = driver.FindElement(pathModal);
+
+            IWebElement dropdown = modalFacturacion.FindElement(pathComponent);
+            Console.WriteLine("Campo seleccion encontrada");
+            IReadOnlyCollection<IWebElement> dropdownOptions = dropdown.FindElements(ConfiguredCreditPopup.Option);
+            Console.WriteLine("Selecciones extraidas");
+            foreach (IWebElement option in dropdownOptions)
+            {
+                if (option.Text.Equals(value))
+                    option.Click();
+            }
+            Console.WriteLine("seleccion terminada");
+            Thread.Sleep(4000);
+        }
+
         public void WaitForModalAndVerifyField(By path)
         {
             IWebElement modalContainer = driver.FindElement(ConfiguredCreditPopup.Modal);
