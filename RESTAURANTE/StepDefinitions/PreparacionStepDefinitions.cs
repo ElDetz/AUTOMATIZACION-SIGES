@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using Reqnroll;
 using RESTAURANTE.Hoks.Pages.Preparacion;
 
-namespace RESTAURANTE.StepDefinitions.Preparacion
+namespace RESTAURANTE.StepDefinitions
 {
     [Binding]
     public class PreparacionStepDefinitions
@@ -14,7 +14,7 @@ namespace RESTAURANTE.StepDefinitions.Preparacion
         public PreparacionStepDefinitions(IWebDriver driver)
         {
             this.driver = driver;
-            this.preparacionPage = new PreparacionPage(driver);
+            preparacionPage = new PreparacionPage(driver);
         }
 
         [Given("Se realiza la busqueda de la ultima orden registrada {int}")]

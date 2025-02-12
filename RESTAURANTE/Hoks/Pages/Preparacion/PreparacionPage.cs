@@ -36,29 +36,95 @@ namespace RESTAURANTE.Hoks.Pages.Preparacion
 
             IWebElement scrollableElement = driver.FindElement(By.ClassName("contenedor-cartillas"));
 
-            /*
-            // Ejecutar JavaScript para hacer scroll dentro del contenedor
-            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-            js.ExecuteScript("arguments[0].scrollLeft += 500;", scrollableElement); // Baja 300px
-            */
-
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
 
-            IWebElement elemento = scrollableElement.FindElement(By.XPath("//h3[contains(text(),'C001 - 125335')]"));
-            js.ExecuteScript("arguments[0].scrollIntoView({block: 'nearest', inline: 'center'});", elemento);
+            IWebElement cartillaOrden = scrollableElement.FindElement(By.XPath("//h3[contains(text(),'C001 - 125339')]"));
+
+            js.ExecuteScript("arguments[0].scrollIntoView({block: 'nearest', inline: 'center'});", cartillaOrden);
             // js.ExecuteScript("arguments[0].scrollIntoView(true);", elemento);
 
-
             // Esperar para visualizar el cambio
-            Thread.Sleep(8000);
+            Thread.Sleep(4000);
+
+            IWebElement itemOrden = scrollableElement.FindElement(By.XPath("//div[contains(text(),'CARTA 1/2 POLLO A LA BRASA')]"));
+
+            Thread.Sleep(2000);
+
+            // Hacer clic en el ítem
+            itemOrden.Click();
+
+
+            /*
+            // Encuentra todas las órdenes que contienen casillas de verificación
+            var ordenes = cartillaOrden.FindElements(By.XPath("//div[contains(@class, 'boton-detalle-orden')]"));
+
+            foreach (var orden in ordenes)
+            {
+                try
+                {
+                    // Verificar si contiene un checkbox
+                    var checkbox = orden.FindElement(By.XPath(".//input[@type='checkbox']"));
+                    if (checkbox != null)
+                    {
+                        // Hacer clic en la orden que contiene la casilla
+                        orden.Click();
+                        Console.WriteLine("Orden clickeada: " + orden.Text);
+                    }
+                }
+                catch (NoSuchElementException)
+                {
+                    // Si no tiene checkbox, continuar con la siguiente orden
+                    continue;
+                }
+            }
+            */
+
+            /*
+
+            // Encuentra todas las casillas de órdenes
+            IReadOnlyCollection<IWebElement> casillas = driver.FindElements(By.XPath("//h3[contains(text(),'C001 - 125335')]"));
+
+            Thread.Sleep(4000);
+            // Encuentra las órdenes dentro de la casilla
+            IReadOnlyCollection<IWebElement> casillas = casilla.FindElements(By.ClassName("boton-detalle-orden"));
+
+            foreach (var casilla in casillas)
+            {
+                try
+                {
+                    // Encuentra las órdenes dentro de la casilla
+                    IReadOnlyCollection<IWebElement> ordenes = scroll.FindElements(By.ClassName("boton-detalle-orden"));
+
+                    foreach (var orden in ordenes)
+                    {
+                        try
+                        {
+                            // Hace clic en la orden
+                            orden.Click();
+                            Thread.Sleep(1000); // Pequeña pausa para evitar fallos
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error al hacer clic en una orden: " + ex.Message);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al encontrar órdenes en la casilla: " + ex.Message);
+                }
+            }
+            */
+            // Esperar para visualizar el cambio
+            Thread.Sleep(4000);
 
             /*
             // IWebElement ultimaCarta = modalFacturacion.FindElement(By.Id($"facturacionVenta-{i}"));
 
-            // Encontrar la ultima orden
-            IWebElement ncard = driver.FindElement(By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[10]"));
-            IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
-            jse.ExecuteScript("arguments[0].scrollIntoView(true);", ncard); // Desplázate hasta el elemento
+            /*
+            // Ejecutar JavaScript para hacer scroll dentro del contenedor
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("arguments[0].scrollLeft += 500;", scrollableElement); // Baja 300px
             */
 
         }

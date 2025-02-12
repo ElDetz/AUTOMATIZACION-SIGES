@@ -44,6 +44,7 @@ namespace RESTAURANTE.Hoks.Pages
         public void enterModulo(string _modulo)
         {
             utilities.buttonClickeable(restaurantField);
+            utilities.WaitForOverlayToDisappear();
 
             switch (_modulo)
             {
@@ -54,6 +55,7 @@ namespace RESTAURANTE.Hoks.Pages
 
                 case "Preparacion":
 
+                    utilities.WaitForElementVisible(preparationField);
                     utilities.buttonClickeable(preparationField);
                     break;
 
