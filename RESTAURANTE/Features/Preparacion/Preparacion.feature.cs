@@ -110,7 +110,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.AndAsync("Se realiza la busqueda de la ultima orden registrada 10", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 10
- await testRunner.WhenAsync("Preparar Orden", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+ await testRunner.WhenAsync("Se procede a \'Preparar\' la orden", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 11
  await testRunner.ThenAsync("Servir ordens", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");

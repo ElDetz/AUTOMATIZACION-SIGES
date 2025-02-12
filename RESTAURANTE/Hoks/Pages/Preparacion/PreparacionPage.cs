@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RESTAURANTE.Hoks.Pages.Facturacion;
+using static OpenQA.Selenium.BiDi.Modules.Input.Wheel;
 
 namespace RESTAURANTE.Hoks.Pages.Preparacion
 {
@@ -20,8 +21,11 @@ namespace RESTAURANTE.Hoks.Pages.Preparacion
             this.utilities = new Utilities(driver);
         }
 
+        // ACCIONES
         private By prepararButton = By.Id("boton-preparar");
         private By servirButton = By.Id("boton-servir");
+        private By refrescarButton = By.XPath("//button[@title='Refrescar']");
+        private By fieldLocator;
 
         public void scrollElement(int _nOrden)
         {
@@ -38,85 +42,56 @@ namespace RESTAURANTE.Hoks.Pages.Preparacion
 
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
 
-            IWebElement cartillaOrden = scrollableElement.FindElement(By.XPath("//h3[contains(text(),'C001 - 125339')]"));
+            // IWebElement cartillaOrden = scrollableElement.FindElement(By.XPath("//div[h3[contains(text(),'C001 - 125339')]]"));
+            IWebElement cartillaEspecifica = scrollableElement.FindElement(By.XPath("//div[contains(@class, 'box-primary') and .//h3[contains(text(),'C001 - 125339')]]"));
+            // IWebElement cartillaEspecifica = scrollableElement.FindElements(By.ClassName("box-primary")).FirstOrDefault(cartilla => cartilla.Text.Contains("C001 - 125339"));
 
-            js.ExecuteScript("arguments[0].scrollIntoView({block: 'nearest', inline: 'center'});", cartillaOrden);
-            // js.ExecuteScript("arguments[0].scrollIntoView(true);", elemento);
-
+            js.ExecuteScript("arguments[0].scrollIntoView({block: 'nearest', inline: 'center'});", cartillaEspecifica);
+            
             // Esperar para visualizar el cambio
             Thread.Sleep(4000);
 
-            IWebElement itemOrden = scrollableElement.FindElement(By.XPath("//div[contains(text(),'CARTA 1/2 POLLO A LA BRASA')]"));
+            // BUSCAR TODAS LAS CARTILLAS
+            // IList<IWebElement> cartillas = scrollableElement.FindElements(By.ClassName("box-primary"));
+
+            // BUSCAR ORDENES EN LA CARTILLA
+            IList<IWebElement> ordenes = cartillaEspecifica.FindElements(By.ClassName("boton-detalle-orden"));
+
+            ordenes[0].Click();
+
+            Thread.Sleep(2000);
+            IWebElement ordenPolloMani = ordenes.FirstOrDefault(o => o.GetAttribute("textContent").Trim().Contains("MENU POLLO CON MANI"));
+            // IWebElement ordenPolloMani = ordenes.FirstOrDefault(o => o.Text.Trim().Contains("MENU POLLO CON MANI"));
+            ordenPolloMani.Click();
+
+
+
+           
+
+            /*
+            foreach (var item in itemsOrden)
+            {
+                Console.WriteLine("Texto encontrado: " + item.Text);
+            }
+            */
+
 
             Thread.Sleep(2000);
 
-            // Hacer clic en el ítem
-            itemOrden.Click();
+   
 
 
-            /*
-            // Encuentra todas las órdenes que contienen casillas de verificación
-            var ordenes = cartillaOrden.FindElements(By.XPath("//div[contains(@class, 'boton-detalle-orden')]"));
-
-            foreach (var orden in ordenes)
-            {
-                try
-                {
-                    // Verificar si contiene un checkbox
-                    var checkbox = orden.FindElement(By.XPath(".//input[@type='checkbox']"));
-                    if (checkbox != null)
-                    {
-                        // Hacer clic en la orden que contiene la casilla
-                        orden.Click();
-                        Console.WriteLine("Orden clickeada: " + orden.Text);
-                    }
-                }
-                catch (NoSuchElementException)
-                {
-                    // Si no tiene checkbox, continuar con la siguiente orden
-                    continue;
-                }
-            }
-            */
+           
 
             /*
 
             // Encuentra todas las casillas de órdenes
             IReadOnlyCollection<IWebElement> casillas = driver.FindElements(By.XPath("//h3[contains(text(),'C001 - 125335')]"));
 
-            Thread.Sleep(4000);
-            // Encuentra las órdenes dentro de la casilla
-            IReadOnlyCollection<IWebElement> casillas = casilla.FindElements(By.ClassName("boton-detalle-orden"));
-
-            foreach (var casilla in casillas)
-            {
-                try
-                {
-                    // Encuentra las órdenes dentro de la casilla
-                    IReadOnlyCollection<IWebElement> ordenes = scroll.FindElements(By.ClassName("boton-detalle-orden"));
-
-                    foreach (var orden in ordenes)
-                    {
-                        try
-                        {
-                            // Hace clic en la orden
-                            orden.Click();
-                            Thread.Sleep(1000); // Pequeña pausa para evitar fallos
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("Error al hacer clic en una orden: " + ex.Message);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error al encontrar órdenes en la casilla: " + ex.Message);
-                }
-            }
+            
             */
             // Esperar para visualizar el cambio
-            Thread.Sleep(4000);
+            Thread.Sleep(10000);
 
             /*
             // IWebElement ultimaCarta = modalFacturacion.FindElement(By.Id($"facturacionVenta-{i}"));
@@ -126,6 +101,31 @@ namespace RESTAURANTE.Hoks.Pages.Preparacion
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("arguments[0].scrollLeft += 500;", scrollableElement); // Baja 300px
             */
+            // js.ExecuteScript("arguments[0].scrollIntoView(true);", elemento);
+
+            
+        }
+
+        public void accionPreparacion (string _accion)
+        {
+
+            switch (_accion)
+            {
+                case "Preparar":
+                    fieldLocator = prepararButton;
+                    break;
+                case "Servir":
+                    fieldLocator = servirButton;
+                    break;
+                default:
+                    throw new ArgumentException($"Accion {_accion} no válido");
+            }
+
+            utilities.buttonClickeable(fieldLocator);
+            Console.WriteLine($"Accion {_accion} realizada");
+
+            //CLICK EN REFRESCAR
+            utilities.buttonClickeable(refrescarButton);
 
         }
     }

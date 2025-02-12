@@ -23,7 +23,8 @@ namespace RESTAURANTE.Hoks.Pages
         // INGRESO MODULO RESTAURANTE
         private By restaurantField = By.XPath("//a[@class='menu-lista-cabecera']/span[text()='Restaurante']");
         private By AttentionField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[1]/a[1]");
-        private By preparationField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[2]/a[1]");
+        private By preparationField = By.CssSelector("a[href='/Restaurante/Preparacion']");
+        // private By preparationField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[2]/a[1]");
         private By boxField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[3]/a[1]");
         private By complementsField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[3]/a[1]");
         private By reportsField = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[2]/ul[1]/li[5]/a[1]");
@@ -45,6 +46,7 @@ namespace RESTAURANTE.Hoks.Pages
         {
             utilities.buttonClickeable(restaurantField);
             utilities.WaitForOverlayToDisappear();
+            Thread.Sleep(4000);
 
             switch (_modulo)
             {

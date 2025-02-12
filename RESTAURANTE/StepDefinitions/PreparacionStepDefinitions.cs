@@ -23,10 +23,10 @@ namespace RESTAURANTE.StepDefinitions
             preparacionPage.scrollElement(_nOrden);
         }
 
-        [When("Preparar Orden")]
-        public void WhenPrepararOrden()
+        [When("Se procede a {string} la orden")]
+        public void WhenSeProcedeALaOrden(string _accion)
         {
-            //throw new PendingStepException();
+            preparacionPage.accionPreparacion(_accion);
         }
 
         [Then("Servir ordens")]
