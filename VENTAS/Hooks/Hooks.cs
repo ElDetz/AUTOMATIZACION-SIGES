@@ -1,10 +1,9 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Gherkin.Model;
-using BoDi;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using Reqnroll.BoDi;
 using SigesCore.Utility;
-using TechTalk.SpecFlow;
 
 namespace AutomatizaciónVentas.Hoks
 {

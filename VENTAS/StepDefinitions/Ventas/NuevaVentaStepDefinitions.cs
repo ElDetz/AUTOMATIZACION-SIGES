@@ -1,6 +1,5 @@
 using OpenQA.Selenium;
 using System;
-using TechTalk.SpecFlow;
 using SigesCore.Hooks.LoginPage;
 using SigesCore.Hooks.VentasPage;
 using System.Net;
