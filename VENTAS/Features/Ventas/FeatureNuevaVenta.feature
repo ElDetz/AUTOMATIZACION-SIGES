@@ -1,36 +1,332 @@
 ﻿Feature: NuevaVenta
 
 Registrar una venta
-And Ingresar fecha de emisión de la venta '30/01/2025'
 
 @NuevaVenta
-Scenario: Registro de una venta con pago al contado
+
+Scenario: Registro de una nueva venta con pago al contado
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
-	And Agregar concepto por 'seleccion' y valor '88010-1'
-	And Ingresar cantidad '5'
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
-	And Activar Detalle Unificado 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
-	And Seleccionar tipo de comprobante 'NOTA'
-	And Seleccionar tipo de pago "Credito configurado"
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
+	And Seleccionar tipo de pago "contado"
+	And Seleccionar el medio de pago 'TDEB'
+	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Nueva Venta"
+	Then Guardar venta
+
+Scenario: Registro de una nueva venta con pago al crédito rápido
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Nueva Venta"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
+	And Seleccionar tipo de pago "credito rapido"
+	And Ingresar monto inicial de crédito rapido '20' en el módulo de "Nueva Venta"
+	And Seleccionar el medio de pago 'TDEB'
+	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Nueva Venta"
+	Then Guardar venta
+
+Scenario: Registro de una nueva venta con pago al crédito rápido sin inicial
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Nueva Venta"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
+	And Seleccionar tipo de pago "credito rapido"
+	Then Guardar venta
+
+Scenario: Registro de una nueva venta con pago al crédito configurado
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Nueva Venta"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
+	And Seleccionar tipo de pago "credito configurado"
 	And Ingresar monto inicial '20'
 	And Ingresar el número de coutas '3'
+	And Ingresar fecha '1 de cada mes'
+	And Click en generar coutas
+	And Click en Aceptar
 	And Seleccionar el medio de pago 'TDEB'
-	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556'
+	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Nueva Venta"
 	Then Guardar venta
-	 
-Scenario: Registro de una venta con crédito rápido
+
+Scenario: Registro de una nueva venta con pago al crédito configurado sin inicial
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
-	And Agregar concepto por 'seleccion' y valor '88010-1'
-	And Ingresar cantidad '5'
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
+	And Seleccionar tipo de pago "credito configurado"
+	And Ingresar el número de coutas sin inicial '3'
+	And Ingresar fecha '1 de cada mes'
+	And Click en generar coutas 
+	And Click en Aceptar
+	Then Guardar venta
+
+@VentaModoCaja
+
+Scenario: Registro de una venta modo caja con pago al contado
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Venta Modo Caja"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar un punto de venta 'PRINCIPAL'
+	And Seleccionar un vendedor 'KETHY'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Venta Modo Caja"
+	And Seleccionar tipo de pago "contado"
+	And Seleccionar el medio de pago 'TDEB'
+	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Venta Modo Caja"
+	Then Guardar venta
+
+Scenario: Registro de una venta modo caja con pago al crédito rápido
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Venta Modo Caja"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar un punto de venta 'PRINCIPAL'
+	And Seleccionar un vendedor 'KETHY'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Venta Modo Caja"
+	And Seleccionar tipo de pago "credito rapido"
+	And Ingresar monto inicial de crédito rapido '20' en el módulo de "Venta Modo Caja"
+	And Seleccionar el medio de pago 'TDEB'
+	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Venta Modo Caja"
+	Then Guardar venta
+
+Scenario: Registro de una venta modo caja con pago al crédito rápido sin inicial
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Venta Modo Caja"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar un punto de venta 'PRINCIPAL'
+	And Seleccionar un vendedor 'KETHY'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Venta Modo Caja"
+	And Seleccionar tipo de pago "credito rapido"
+	Then Guardar venta
+
+Scenario: Registro de una venta modo caja con pago al crédito configurado
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Venta Modo Caja"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar un punto de venta 'PRINCIPAL'
+	And Seleccionar un vendedor 'KETHY'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Venta Modo Caja"
+	And Seleccionar tipo de pago "credito configurado"
+	And Ingresar monto inicial '20'
+	And Ingresar el número de coutas '3'
+	And Ingresar fecha '1 de cada mes'
+	And Click en generar coutas
+	And Click en Aceptar
+	And Seleccionar el medio de pago 'TDEB'
+	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Venta Modo Caja"
+	Then Guardar venta
+
+	Scenario: Registro de una modo caja con pago al crédito configurado sin inicial
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Venta Modo Caja"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar un punto de venta 'PRINCIPAL'
+	And Seleccionar un vendedor 'KETHY'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Venta Modo Caja"
+	And Seleccionar tipo de pago "credito configurado"
+	And Ingresar el número de coutas sin inicial '3'
+	And Ingresar fecha '1 de cada mes'
+	And Click en generar coutas 
+	And Click en Aceptar
+	Then Guardar venta
+
+@VentaContingencia
+
+Scenario: Registro de una venta por contigencia con pago al contado
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Venta Por Contingencia"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Ingresar fecha de emisión de la venta '30/01/2025'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Venta por Contingencia"
+	And Ingresar el número de documento 'B002-10'
+	And Seleccionar tipo de pago "contado"
+	And Seleccionar el medio de pago 'TDEB'
+	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Venta por Contingencia"
+	Then Guardar venta
+
+Scenario: Registro de una venta por contigencia con pago al crédito rápido
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Venta Por Contingencia"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Ingresar fecha de emisión de la venta '1/01/2025'
+	And Seleccionar tipo de comprobante 'BOLETA' en el módulo de "Venta por Contingencia"
+	And Ingresar el número de documento '10'
+	And Seleccionar tipo de pago "credito rapido"
+	And Ingresar monto inicial de crédito rapido '20' en el módulo de "Venta por Contingencia"
+	And Seleccionar el medio de pago 'TDEB'
+	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Venta por Contingencia"
+	Then Guardar venta
+
+Scenario: Registro de una venta por contigencia con pago al crédito rápido sin inicial
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Venta Por Contingencia"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Ingresar fecha de emisión de la venta '30/01/2025'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Venta por Contingencia"
+	And Ingresar el número de documento 'B002-10'
+	And Seleccionar tipo de pago "credito rapido"
+	Then Guardar venta
+
+Scenario: Registro de una venta por contigencia con pago al crédito configurado
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Venta Por Contingencia"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Ingresar fecha de emisión de la venta '30/01/2025'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Venta por Contingencia"
+	And Ingresar el número de documento '10'
+	And Seleccionar tipo de pago "credito configurado"
+	And Ingresar monto inicial '20'
+	And Ingresar el número de coutas '3'
+	And Ingresar fecha '1 de cada mes'
+	And Click en generar coutas
+	And Click en Aceptar
+	And Seleccionar el medio de pago 'TDEB'
+	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Venta por Contingencia"
+	Then Guardar venta
+
+Scenario: Registro de una venta por contigencia con pago al crédito configurado sin inicial
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Venta Por Contingencia"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Ingresar fecha de emisión de la venta '30/01/2025'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Venta por Contingencia"
+	And Ingresar el número de documento '10'
+	And Seleccionar tipo de pago "credito configurado"
+	And Ingresar el número de coutas sin inicial '3'
+	And Ingresar fecha '1 de cada mes'
+	And Click en generar coutas 
+	And Click en Aceptar
+	Then Guardar venta
+
+@VentaGuiaRemisión
+
+Scenario: Registro de una venta con guía de remisión con transporte público
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Nueva Venta"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Seleccionar tipo de comprobante 'BOLETA' en el módulo de "Nueva Venta"
+	And Click en el botón Guía
+	And Ingresar la fecha de inicio de traslado '10/02/2025'
+	And Ingresar el peso bruto total '50'
+	And Ingresar el número de bultos '3'
+	And Ingresar el RUC del transportista '10614499015'
+	And Seleccionar la modalidad del transporte "TRANSPORTE PÚBLICO"
+	And Ingresar el ubigeo de la dirección de origen "HUANUCO - LEONCIO PRADO - HERMILIO VALDIZAN"
+	And Ingresar el detalle de la dirección de origen "AV. AGRICULTURA"
+	And Ingresar el ubigeo de la dirección de destino "HUANUCO - LEONCIO PRADO - DANIEL ALOMIA ROBLES"
+	And Ingresar el detalle de la dirección de destino "JR. SVEN ERICSON N° 109"
+	And Click en el botón aceptar guía de remisión
+	And Seleccionar tipo de pago "contado"
+	And Seleccionar el medio de pago 'TDEB'
+	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Nueva Venta"
+	Then Guardar venta
+
+Scenario: Registro de una venta con guía de remisión con transporte privada
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Nueva Venta"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Seleccionar tipo de comprobante 'BOLETA' en el módulo de "Nueva Venta"
+	And Click en el botón Guía
+	And Ingresar la fecha de inicio de traslado '10/02/2025'
+	And Ingresar el peso bruto total '50'
+	And Ingresar el número de bultos '3'
+	And Seleccionar la modalidad del transporte "TRANSPORTE PRIVADO"
+	And Ingresar el DNI del conductor '71310154'
+	And Ingresar la licencia del conductor 'M-71310154'
+	And Ingresar la placa del vehículo '2232-8S'
+	And Ingresar el ubigeo de la dirección de origen "HUANUCO - LEONCIO PRADO - HERMILIO VALDIZAN"
+	And Ingresar el detalle de la dirección de origen "AV. AGRICULTURA"
+	And Ingresar el ubigeo de la dirección de destino "HUANUCO - LEONCIO PRADO - DANIEL ALOMIA ROBLES"
+	And Ingresar el detalle de la dirección de destino "JR. SVEN ERICSON N° 109"
+	And Click en el botón aceptar guía de remisión
+	And Seleccionar tipo de pago "contado"
+	And Seleccionar el medio de pago 'TDEB'
+	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Nueva Venta"
+	Then Guardar venta
+
+@VentaDetalleUnificado
+
+Scenario: Registro de una venta con detalle unificado
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Nueva Venta"
+	When Agregar los siguientes conceptos:
+    | option | value |
+    | BARRA  | 1010-3 |
+    | SELECCION  | 400001474 |
+    | SELECCION  | 400000437 |
+	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
 	And Activar Detalle Unificado 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
-	And Seleccionar tipo de comprobante 'NOTA'
-	And Seleccionar tipo de pago "credito rapido"
-	And Ingresar monto inicial '20'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
+	And Seleccionar tipo de pago "contado"
+	And Seleccionar el medio de pago 'EF'
+	And Rellene datos de la tarjeta '' , '' y '200' en el módulo de "Nueva Venta"
 	Then Guardar venta

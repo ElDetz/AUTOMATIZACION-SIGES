@@ -27,11 +27,12 @@ namespace RESTAURANTE.Hoks.Pages
         // MENU DESPEGABLE
         By SelecOptions = By.CssSelector(".select2-results__options");
 
+        // OVERLAY
+        private By overlayLocator = By.ClassName("block-ui-overlay");
 
-
-        public void WaitForOverlayToDisappear(By overlayLocator)
+        public void WaitForOverlayToDisappear()
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
+            // WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
             wait.Until(driver =>
             {
                 try

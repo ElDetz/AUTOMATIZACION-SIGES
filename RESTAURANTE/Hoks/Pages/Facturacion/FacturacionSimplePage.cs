@@ -144,7 +144,7 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
 
             // OBSERVACION
             utilities.elementExists(observacionField);
-            utilities.WaitForOverlayToDisappear(overlayLocator);
+            utilities.WaitForOverlayToDisappear();
 
             utilities.addFieldModal(modalFacturacion, observacionField, _observacion);
             Console.WriteLine("OBSERVACION AGREGADA");

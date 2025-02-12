@@ -10,7 +10,7 @@ namespace RESTAURANTE.StepDefinitions.Facturacion
     [Binding]
     public class FacturaAtencionStepDefinitions
     {
-        private IWebDriver driver;
+        IWebDriver driver;
         AccessPage accessPage;
         FacturacionPage facturacionPage;
         FacturacionSimplePage facturacionSimplePage;

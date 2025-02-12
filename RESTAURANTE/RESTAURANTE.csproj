@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
@@ -21,8 +21,8 @@
 
   <ItemGroup>
     <Folder Include="Drivers\" />
+    <Folder Include="Features\Atencion\" />
     <Folder Include="Features\Preparacion\" />
-    <Folder Include="StepDefinitions\Preparacion\" />
     <Folder Include="Support\" />
   </ItemGroup>
 
