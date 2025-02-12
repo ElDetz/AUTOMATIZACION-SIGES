@@ -134,6 +134,7 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
             */
         }
 
+        
         public void EnterBillingDetails(int _ncuenta, string _clientType, string _clientValue, string _comprobante, string _observacion, string _moodPago)
         {
             // Encontrar el modal FACTURACION

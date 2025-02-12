@@ -38,7 +38,5 @@ Scenario: Registrar venta con CO Cuenta Bancaria
 @NuevaVenta
 Scenario: Registrar venta con CO Efectivo
     Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
-    When Datos de la venta '88008-1' y '72935878'
-    And Tipo de pago 'EF'
-    And Datos del pago 'Pago realizado'
-    Then Registro exitoso
+    When Prueba '71310154'
+    

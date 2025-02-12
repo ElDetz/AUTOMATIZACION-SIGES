@@ -84,6 +84,34 @@ namespace PruebaConcepto.Hoks.PagesPruebaConcepto
             driver.FindElement(_button).Click();
         }
 
+        By Almacen = By.XPath("//span[contains(text(),'Almacén')]");
+        By guiasderemision = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[7]/ul[1]/li[4]/a[1]");
+        By nuevo = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[6]/button[1]");
+        By documento = By.Id("DocumentoIdentidad");
+
+
+        public void nuevaguia(string dni)
+        {
+
+            ClickButton(Almacen);
+            Thread.Sleep(4000);
+
+            ClickButton(guiasderemision);
+            Thread.Sleep(4000);
+
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector("div.block-ui-overlay")));
+
+            ClickButton(nuevo);
+            Thread.Sleep(4000);
+
+            // Encontrar el modal FACTURACION
+            IWebElement modalFacturacion = driver.FindElement(By.Id("modal-registro-guia-remision"));
+
+            EnterField(documento, dni);
+            Thread.Sleep(4000);
+
+        }
         // Método para realizar el inicio de sesión completo
         public void CompleteFields(string codeBarra, string dni)
         {
