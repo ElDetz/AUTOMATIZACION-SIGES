@@ -19,5 +19,5 @@ Scenario: Preparacion de varias ordenes
 Scenario: Preparacion de todos los items de una orden
 	Given Inicio de sesión con usuario 'admin@tintoymadero.com' y contraseña 'calidad'
 	And Se ingresa al módulo 'Preparacion'
-	When Se procede a 'Servir' todos los items de la orden 'C001 - 125340'
+	When Se procede a 'Preparar' todos los items de la orden 'C001 - 125340'
 	Then 

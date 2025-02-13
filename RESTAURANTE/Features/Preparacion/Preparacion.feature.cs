@@ -157,7 +157,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.AndAsync("Se ingresa al módulo \'Preparacion\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 22
- await testRunner.WhenAsync("Se procede a \'Servir\' todos los items de la orden \'C001 - 125340\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+ await testRunner.WhenAsync("Se procede a \'Preparar\' todos los items de la orden \'C001 - 125340\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 23
  await testRunner.ThenAsync("", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
