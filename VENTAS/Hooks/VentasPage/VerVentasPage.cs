@@ -24,23 +24,19 @@ namespace SigesCore.Hooks.VentasPage
             this.utilityPage = new UtilityVenta(driverViewPayment);
         }
 
-        // Fecha inicial
         public void SetInitialDate(string value)
         {
             Thread.Sleep(4000);
-            //utilityPage.WaitExistsVisible(RedeemVoucher.initialDate, AdditionalElements.OverlayElement);
             utilityPage.EnterField(RedeemVoucher.initialDate, value);
             driverViewPayment.FindElement(RedeemVoucher.initialDate).SendKeys(Keys.Enter);
         }
 
-        // Fecha final
         public void SetFinalDate(string value)
         {
             utilityPage.EnterField(RedeemVoucher.finalDate, value);
             driverViewPayment.FindElement(RedeemVoucher.finalDate).SendKeys(Keys.Enter);
         }
 
-        // Consulta ventas
         public void SetSalesQuery()
         {
             utilityPage.ClickButton(RedeemVoucher.salesQueryButton);
@@ -98,6 +94,65 @@ namespace SigesCore.Hooks.VentasPage
             Thread.Sleep(2000);
         }
 
+        public void SeeSale()
+        {
+            utilityPage.ClickButton(Additional.seeSalePath);
+            Thread.Sleep(4000);
+        }
 
+        public void ClickTypeNote(string option)
+        {
+            option = option.ToUpper();
+            utilityPage.ElementExists(DebitNote.debitNoteButton);
+            switch (option)
+            {
+                case "DÉBITO":
+                    utilityPage.ClickButton(DebitNote.debitNoteButton);
+                    break;
+
+                case "CRÉDITO":
+                    utilityPage.ClickButton(CreditNote.creditNoteButton);
+                    break;
+
+                default:
+                    throw new ArgumentException($"El {option} no es válido");
+            }
+        }
+
+        public void TypeDebitNote(string option)
+        {
+            utilityPage.OptionsSelector(DebitNote.modal, DebitNote.TypeDebitNotePath, option);
+        }
+
+        public void DocumentType(string option)
+        {
+            utilityPage.OptionsSelector(DebitNote.modal, DebitNote.documentTypePath, option);
+        }
+
+        public void ReasonDebitNote(string value)
+        {
+            utilityPage.EnterField(DebitNote.reasonDebitNotePath, value);
+        }
+
+        public void noteAmount(string value)
+        {
+            utilityPage.EnterField(DebitNote.noteAmountPath, value);
+        }
+        
+        public void TotalAmount(string value)
+        {
+            utilityPage.EnterField(DebitNote.totalAmountPath, value);
+        }
+
+        public void quantityCreditNote(string value)
+        {
+            utilityPage.EnterField(CreditNote.quantityPath, value);
+        }
+
+        public void SaveNote()
+        {
+            utilityPage.ClickButton(DebitNote.saveNotePath);
+            Thread.Sleep(4000);
+        }
     }
 }

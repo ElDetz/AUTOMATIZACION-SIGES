@@ -18,6 +18,8 @@ namespace SigesCore.Hooks.XPaths
 
         public static readonly By salesQueryButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[4]/button[1]");
 
+        public static readonly By searchDocument = By.XPath("//thead/tr[2]/th[4]/input[1]");
+
         public static readonly By searchSale = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/label[1]/input[1]");
 
         public static readonly By activateRedeemPath = By.XPath("//input[@id='canjeComprobante']");
@@ -33,12 +35,28 @@ namespace SigesCore.Hooks.XPaths
 
     public class DebitNote
     {
+        public static readonly By modal = By.Id("modal-ver-venta");
 
+        public static readonly By debitNoteButton = By.XPath("//button[contains(text(),'NOTA DE DÉBITO')]");
+
+        public static readonly By TypeDebitNotePath = By.Id("tipoDeNota");
+
+        public static readonly By documentTypePath = By.Id("documentoParaNota");
+
+        public static readonly By reasonDebitNotePath = By.XPath("//textarea[@id='motivo']");
+
+        public static readonly By noteAmountPath = By.XPath("//input[@id='montoNota']");
+
+        public static readonly By totalAmountPath = By.XPath("//tbody/tr[1]/td[4]/input[1]");
+
+        public static readonly By saveNotePath = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[5]/registrador-nota[1]/div[1]/div[1]/div[1]/div[2]/div[2]/button[2]");
     }
 
     public class CreditNote
     {
+        public static readonly By creditNoteButton = By.XPath("//button[contains(text(),'NOTA DE CRÉDITO')]");
 
+        public static readonly By quantityPath = By.XPath("//tbody/tr[1]/td[8]/input[1]");
     }
 
     public class InvalidateSale
@@ -65,4 +83,11 @@ namespace SigesCore.Hooks.XPaths
     {
 
     }
+
+    public class Additional
+    {
+        public static readonly By seeSalePath = By.XPath("//tbody/tr[1]/td[13]/a[1]");
+    }
+
+    
 }

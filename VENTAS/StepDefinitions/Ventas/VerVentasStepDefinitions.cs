@@ -87,89 +87,84 @@ namespace SigesCore.StepDefinitions.Ventas
             viewSale.SetRedeemedVoucher(value);
         }
 
-        [When(@"Click en nota de débito")]
-        public void WhenClickEnNotaDeDebito()
+        [When("Ver venta buscada")]
+        public void WhenVerVentaBuscada()
         {
-            throw new PendingStepException();
+            viewSale.SeeSale();
         }
 
-        [When(@"Seleccionar el tipo de nota de débito '([^']*)'")]
-        public void WhenSeleccionarElTipoDeNotaDeDebito(string p0)
+        [When("Elegir tipo de nota {string}")]
+        public void WhenElegirTipoDeNota(string option)
         {
-            throw new PendingStepException();
+            viewSale.ClickTypeNote(option);
         }
 
-        [When(@"Seleccionar el documento '([^']*)'")]
-        public void WhenSeleccionarElDocumento(string p0)
+        [When("Seleccionar el tipo de nota {string}")]
+        public void WhenSeleccionarElTipoDeNotaDeDebito(string option)
         {
-            throw new PendingStepException();
+            viewSale.TypeDebitNote(option);
         }
 
-        [When(@"Escribir el motivo de la nota '([^']*)'")]
-        public void WhenEscribirElMotivoDeLaNota(string p0)
+        [When("Seleccionar el documento {string}")]
+        public void WhenSeleccionarElDocumento(string option)
         {
-            throw new PendingStepException();
+            viewSale.DocumentType(option);
         }
 
-        [When(@"Ingresar el aumento de valor de la nota '([^']*)'")]
-        public void WhenIngresarElAumentoDeValorDeLaNota(string p0)
+        [When("Escribir el motivo de la nota {string}")]
+        public void WhenEscribirElMotivoDeLaNota(string value)
         {
-            throw new PendingStepException();
-        }
-
-        [When(@"Guardar nota de débito")]
-        public void WhenGuardarNotaDeDebito()
-        {
-            throw new PendingStepException();
-        }
-
-        [Then(@"Ver la nota de débito emitida")]
-        public void ThenVerLaNotaDeDebitoEmitida()
-        {
-            throw new PendingStepException();
+            viewSale.ReasonDebitNote(value);
         }
 
         [When(@"Ingresar el interés total '([^']*)'")]
-        public void WhenIngresarElInteresTotal(string p0)
+        public void WhenIngresarElInteresTotal(string value)
         {
-            throw new PendingStepException();
+            viewSale.noteAmount(value);
         }
 
-        [When(@"Click en nota de crédito")]
-        public void WhenClickEnNotaDeCredito()
+        [When(@"Ingresar el aumento de valor de la nota '([^']*)'")]
+        public void WhenIngresarElAumentoDeValorDeLaNota(string value)
         {
-            throw new PendingStepException();
+            viewSale.TotalAmount(value);
         }
 
-        [When(@"Seleccionar el tipo de nota de crédito '([^']*)'")]
-        public void WhenSeleccionarElTipoDeNotaDeCredito(string p0)
+        [When(@"Guardar nota")]
+        public void WhenGuardarNotaDeDebito()
         {
-            throw new PendingStepException();
+            viewSale.SaveNote();
         }
 
-        [When(@"Guardar nota de crédito")]
-        public void WhenGuardarNotaDeCredito()
+        [Then("Ver la nota emitida {string}")]
+        public void ThenVerLaNotaDeDebitoEmitida(string value)
         {
-            throw new PendingStepException();
-        }
-
-        [Then(@"Ver la nota de crédito emitida")]
-        public void ThenVerLaNotaDeCreditoEmitida()
-        {
-            throw new PendingStepException();
+            viewSale.SearchSaleField(value);
         }
 
         [When(@"Ingresar el descuento global '([^']*)'")]
-        public void WhenIngresarElDescuentoGlobal(string p0)
+        public void WhenIngresarElDescuentoGlobal(string value)
         {
-            throw new PendingStepException();
+            viewSale.noteAmount(value);
         }
 
         [When(@"Ingresar el total de descuento '([^']*)'")]
-        public void WhenIngresarElTotalDeDescuento(string p0)
+        public void WhenIngresarElTotalDeDescuento(string value)
         {
-            throw new PendingStepException();
+            viewSale.TotalAmount(value);
         }
+
+        [When("Ingresar la cantidad {string}")]
+        public void WhenIngresarLaCantidad(string value)
+        {
+            viewSale.quantityCreditNote(value);
+        }
+
+        [Then("Ver la nota emitida")]
+        public void ThenVerLaNotaEmitida()
+        {
+            viewSale.SeeSale();
+        }
+
 
         [When(@"Click en el botón invalidar")]
         public void WhenClickEnElBotonInvalidar()
