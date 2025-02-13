@@ -109,19 +109,6 @@ namespace RESTAURANTE.Hoks.Pages
             wait.Until(ExpectedConditions.ElementToBeClickable(_button)); // Espera hasta que el elemento sea clickeable
             driver.FindElement(_button).Click();
         }
-
-        // Esperar que el menú desplegable sea visible
-        public void WaitForElementVisible(By locator)
-        {
-            try
-            {
-                wait.Until(ExpectedConditions.ElementIsVisible(locator));
-            }
-            catch (WebDriverTimeoutException)
-            {
-                throw new NoSuchElementException($"El elemento con el localizador {locator} no se hizo visible dentro del tiempo de espera.");
-            }
-        }
         
         
         // MODALES

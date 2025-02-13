@@ -1,6 +1,7 @@
 using System;
 using OpenQA.Selenium;
 using Reqnroll;
+using RESTAURANTE.Hoks.Pages.Facturacion;
 using RESTAURANTE.Hoks.Pages.Preparacion;
 
 namespace RESTAURANTE.StepDefinitions
@@ -17,16 +18,30 @@ namespace RESTAURANTE.StepDefinitions
             preparacionPage = new PreparacionPage(driver);
         }
 
-        [Given("Se realiza la busqueda de la ultima orden registrada {int}")]
-        public void GivenSeRealizaLaBusquedaDeLaUltimaOrdenRegistrada(int _nOrden)
+
+        [When("Se procede a {string} las siguientes ordenes:")]
+        public void WhenSeProcedeAElSiguientePedido(string _accion, DataTable dataTable)
         {
-            preparacionPage.scrollElement(_nOrden);
+
+            foreach (var row in dataTable.Rows)
+            {
+                string _orden = row["ORDEN"];
+                string _item = row["ITEM"];
+
+                Console.WriteLine($"Procesando orden {_orden}: {_item}");
+
+                preparacionPage.seleccionOrden( _orden, _item);
+            }
+
+            preparacionPage.accionRealizar(_accion);
+
         }
 
-        [When("Se procede a {string} la orden")]
-        public void WhenSeProcedeALaOrden(string _accion)
+        [When("Se procede a {string} todos los items de la orden {string}")]
+        public void WhenSeProcedeATodosLosItemsDeLaOrden(string _accion, string _nOrden)
         {
-            preparacionPage.accionPreparacion(_accion);
+            preparacionPage.seleccionOrdenes(_nOrden);
+            preparacionPage.accionRealizar(_accion);
         }
 
         [Then("Servir ordens")]
