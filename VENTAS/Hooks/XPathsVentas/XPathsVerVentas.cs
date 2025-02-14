@@ -59,35 +59,50 @@ namespace SigesCore.Hooks.XPaths
         public static readonly By quantityPath = By.XPath("//tbody/tr[1]/td[8]/input[1]");
     }
 
-    public class InvalidateSale
+    public class InvalidateDocumentClass
     {
+        public static readonly By invalidateButton = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/button[1]");
+
+        public static readonly By observation = By.XPath("//body/div[6]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]/div[1]/div[3]/textarea[1]");
+
+        public static readonly By accept = By.XPath("//a[contains(text(),'SI')]");
+    }
+
+    public class CloneDocumentClass
+    {
+        public static readonly By cloneButton = By.XPath("//a[contains(text(),'CLONAR')]");     
+    }
+
+    public class PrintDocumentClass
+    {
+        public static readonly By print = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/button[1]");
+    }
+
+    public class DownloadDocumentClass
+    {
+        public static readonly By pdfButton = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/a[1]");
+
+        public static readonly By dropdown = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/a[2]");
+
+        public static readonly By xmlButton = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/a[1]");
+
+        public static readonly By zipButton = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/a[2]");
 
     }
 
-    public class CloneSale
+    public class SendDocumentClass
     {
+        public static readonly By sendButton = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/button[2]");
 
-    }
+        public static readonly By inputEmail = By.XPath("//input[@id='correoImput']");
 
-    public class PrintSale
-    {
+        public static readonly By addEmailPath = By.XPath("//tbody/tr[2]/td[2]/a[1]");
 
-    }
-
-    public class DownloadSale
-    {
-
-    }
-
-    public class SendSale
-    {
-
+        public static readonly By send = By.XPath("//body/div[6]/div[1]/div[1]/div[1]/div[3]/button[1]");
     }
 
     public class Additional
     {
         public static readonly By seeSalePath = By.XPath("//tbody/tr[1]/td[13]/a[1]");
     }
-
-    
 }

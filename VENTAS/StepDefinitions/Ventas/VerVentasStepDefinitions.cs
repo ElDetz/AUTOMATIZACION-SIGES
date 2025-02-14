@@ -81,10 +81,10 @@ namespace SigesCore.StepDefinitions.Ventas
             viewSale.ClickAcceptRedeemButton();
         }
 
-        [Then(@"Ver comprobante canjeada '([^']*)'")]
-        public void ThenVerVentaCanjeada(string value)
+        [Then("Ver comprobante")]
+        public void ThenVerComprobante()
         {
-            viewSale.SetRedeemedVoucher(value);
+            viewSale.SeeSale();
         }
 
         [When("Ver venta buscada")]
@@ -120,7 +120,7 @@ namespace SigesCore.StepDefinitions.Ventas
         [When(@"Ingresar el interés total '([^']*)'")]
         public void WhenIngresarElInteresTotal(string value)
         {
-            viewSale.noteAmount(value);
+            viewSale.NoteAmount(value);
         }
 
         [When(@"Ingresar el aumento de valor de la nota '([^']*)'")]
@@ -133,12 +133,6 @@ namespace SigesCore.StepDefinitions.Ventas
         public void WhenGuardarNotaDeDebito()
         {
             viewSale.SaveNote();
-        }
-
-        [Then("Ver la nota emitida {string}")]
-        public void ThenVerLaNotaDeDebitoEmitida(string value)
-        {
-            viewSale.SearchSaleField(value);
         }
 
         [When(@"Ingresar el descuento global '([^']*)'")]
@@ -159,83 +153,64 @@ namespace SigesCore.StepDefinitions.Ventas
             viewSale.quantityCreditNote(value);
         }
 
-        [Then("Ver la nota emitida")]
-        public void ThenVerLaNotaEmitida()
-        {
-            viewSale.SeeSale();
-        }
-
-
         [When(@"Click en el botón invalidar")]
         public void WhenClickEnElBotonInvalidar()
         {
-            throw new PendingStepException();
+            viewSale.ClickInvalidateDocument();
         }
 
-        [When(@"Ingresar la observación '([^']*)'")]
-        public void WhenIngresarLaObservacion(string p0)
+        [When("Ingresar la observación {string}")]
+        public void WhenIngresarLaObservacion(string value)
         {
-            throw new PendingStepException();
+            viewSale.Observation(value);
         }
 
-        [When(@"Click en opción sí")]
-        public void WhenClickEnOpcionSi()
+        [When("Click en opción sí para invalidar documento")]
+        public void WhenClickEnOpcionSiParaInvalidarDocumento()
         {
-            throw new PendingStepException();
-        }
-
-        [Then(@"Ver venta invalidada")]
-        public void ThenVerVentaInvalidada()
-        {
-            throw new PendingStepException();
+            viewSale.AcceptInvalidation();
         }
 
         [When(@"Click en el botón clonar")]
         public void WhenClickEnElBotonClonar()
         {
-            throw new PendingStepException();
-        }
-
-        [Then(@"Guardar Venta")]
-        public void ThenGuardarVenta()
-        {
-            throw new PendingStepException();
+            viewSale.CloneSale();
         }
 
         [Then(@"Click en el botón imprimir")]
         public void ThenClickEnElBotonImprimir()
         {
-            throw new PendingStepException();
+            viewSale.PrintDocument();
         }
 
-        [Then(@"Click en el botón descargar")]
-        public void ThenClickEnElBotonDescargar()
+        [Then("Seleccionar el tipo de descarga {string}")]
+        public void ThenSeleccionarElTipoDeDescarga(string option)
         {
-            throw new PendingStepException();
+            viewSale.DownloadType(option);
         }
 
         [When(@"Click en el botón enviar")]
         public void WhenClickEnElBotonEnviar()
         {
-            throw new PendingStepException();
+            viewSale.SendDocument();
         }
 
         [When(@"Ingresar correo '([^']*)'")]
-        public void WhenIngresarCorreo(string p0)
+        public void WhenIngresarCorreo(string value)
         {
-            throw new PendingStepException();
+            viewSale.EmailField(value);
         }
 
-        [When(@"Click en el botón agregar correo")]
-        public void WhenClickEnElBotonAgregarCorreo()
+        [When("Click en el botón agregar el correo")]
+        public void WhenClickEnElBotonAgregarElCorreo()
         {
-            throw new PendingStepException();
+            viewSale.AddEmail();
         }
 
-        [Then(@"Enviar documento de venta")]
-        public void ThenEnviarDocumentoDeVenta()
+        [Then("Enviar comprobante de venta")]
+        public void ThenEnviarComprobanteDeVenta()
         {
-            throw new PendingStepException();
+            viewSale.Send();
         }
     }
 }

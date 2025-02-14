@@ -29,8 +29,8 @@ Scenario: Registro de una nueva venta con pago al crédito rápido
 	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
 	And Seleccionar tipo de pago "credito rapido"
 	And Ingresar monto inicial de crédito rapido '20' en el módulo de "Nueva Venta"
-	And Seleccionar el medio de pago 'TDEB'
-	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Nueva Venta"
+	And Seleccionar el medio de pago 'EF'
+	And Rellene datos de la tarjeta '' , '' y '20' en el módulo de "Nueva Venta"
 	Then Guardar venta
 
 Scenario: Registro de una nueva venta con pago al crédito rápido sin inicial

@@ -134,7 +134,7 @@ namespace SigesCore.Hooks.VentasPage
             utilityPage.EnterField(DebitNote.reasonDebitNotePath, value);
         }
 
-        public void noteAmount(string value)
+        public void NoteAmount(string value)
         {
             utilityPage.EnterField(DebitNote.noteAmountPath, value);
         }
@@ -153,6 +153,82 @@ namespace SigesCore.Hooks.VentasPage
         {
             utilityPage.ClickButton(DebitNote.saveNotePath);
             Thread.Sleep(4000);
+        }
+
+        public void ClickInvalidateDocument()
+        {
+            utilityPage.ClickButton(InvalidateDocumentClass.invalidateButton);
+        }
+
+        public void Observation(string value)
+        {
+            utilityPage.EnterField(InvalidateDocumentClass.observation, value);
+        }
+
+        public void AcceptInvalidation()
+        {
+            utilityPage.ClickButton(InvalidateDocumentClass.accept);
+            Thread.Sleep(4000);
+        }
+
+        public void CloneSale()
+        {
+            utilityPage.ClickButton(CloneDocumentClass.cloneButton);
+            Thread.Sleep(4000);
+        }
+
+        public void PrintDocument()
+        {
+            utilityPage.ClickButton(PrintDocumentClass.print);
+        }
+
+        public void DownloadType(string option)
+        {
+            option = option.ToUpper();
+
+            if (option == "PDF")
+            {
+                utilityPage.ClickButton(DownloadDocumentClass.pdfButton);
+                Thread.Sleep(4000);
+            }
+            else if (option == "XML" || option == "ZIP")
+            {
+                utilityPage.ClickButton(DownloadDocumentClass.dropdown);
+                if (option == "XML")
+                {
+                    utilityPage.ClickButton(DownloadDocumentClass.xmlButton);
+                }
+                else
+                {
+                    utilityPage.ClickButton(DownloadDocumentClass.zipButton);
+                }
+            }
+            else
+            {
+                throw new ArgumentException($"El {option} no es válido");
+            }
+        }
+
+        public void SendDocument()
+        {
+            utilityPage.ClickButton(SendDocumentClass.sendButton);
+        }
+
+        public void EmailField(string value)
+        {
+            utilityPage.EnterField(SendDocumentClass.inputEmail, value);
+            Thread.Sleep(2000);
+        }
+
+        public void AddEmail()
+        {
+            utilityPage.ClickButton(SendDocumentClass.addEmailPath);
+            Thread.Sleep(2000);
+        }
+
+        public void Send()
+        {
+            utilityPage.ClickButton(SendDocumentClass.send);
         }
     }
 }
