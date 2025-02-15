@@ -1,7 +1,11 @@
 ﻿Feature: FeaturePedidos
 
 Realizar pedidos
-
+	And Agregar concepto por 'barra' y valor '400001351'
+	And Ingresar la cantidad '2'
+	And Activar IGV 'SI'
+	And Activar Detalle Unificado 'NO'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
 @RealizarPedido
 
 Scenario: Realizar un nuevo pedido
@@ -9,13 +13,10 @@ Scenario: Realizar un nuevo pedido
 	When Seleccionar Pedido
 	And Seleccionar ver pedido
 	And Click en nuevo pedido
-	And Seleccionar concepto "1010-3 | 1010-3 PISO PVC 18CM X 122CM X 4MM"
-	And Ingresar la cantidad de concepto '2'
-	And Con IGV 'SI'
-	And Con Detalle Unificado 'NO'
-	And Seleccionar el cliente 'DNI' '72380461'
-	And Seleccionar el comprobante "BOLETA"
-	And Seleccionar el tipo de entrega 'INMEDIATA'
+	And Agregar concepto "400000891"
+	And Agregar documento "72380461"
+	And Seleccionar tipo de comprobante "NOTA DE VENTA (INTERNA)"
+	And Seleccionar el tipo de entrega 'DIFERIDA'
 	Then Guardar pedido
 
 @ConfirmarPedido
@@ -25,10 +26,11 @@ Scenario: Confirmar pedido
 	When Seleccionar Pedido
 	And Seleccionar ver pedido
 	And Digitar fecha inicial "27/01/2025"
-	And Digitar fecha final "12/02/2025"
+	And Digitar fecha final "14/02/2025"
 	And Click en consultar pedidos
-	And Buscar pedido '0001-20088'
+	And Buscar venta '0001-20094'
 	And Click en confirmar pedido
+	And Seleccionar comprobante "NOTA DE VENTA (INTERNA)"
 	Then Guardar pedido
 
 @InvalidarPedido
@@ -38,7 +40,7 @@ Scenario: Invalidar pedido
 	And Digitar fecha inicial "27/01/2025"
 	And Digitar fecha final "12/02/2025"
 	And Click en consultar pedidos
-	And Buscar pedido '0001-20088'
+	And Buscar venta '0001-20093'
 	And Click en invalidar pedido
 	And Ingresar la observación de invalidación "observación"
 	Then Click en aceptar invalidación

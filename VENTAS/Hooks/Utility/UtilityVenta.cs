@@ -52,6 +52,15 @@ namespace SigesCore.Hooks.Utility
             driver.FindElement(path).SendKeys(field);
         }
 
+        public void EnterFieldModal(By pathModal, By pathComponent, string value)
+        {
+            Thread.Sleep(3000);
+            IWebElement orderModal = driver.FindElement(pathModal);
+            orderModal.FindElement(pathComponent).Clear();
+            orderModal.FindElement(pathComponent).SendKeys(value);
+            orderModal.FindElement(pathComponent).SendKeys(Keys.Enter);
+        }
+
         public void ElementExists(By button)
         {
             try

@@ -41,6 +41,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RESTAURANTE\RESTAURANTE.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Features\Ventas\FeatureNuevaVenta.feature.cs">
       <DependentUpon>FeatureNuevaVenta.feature</DependentUpon>
     </Compile>

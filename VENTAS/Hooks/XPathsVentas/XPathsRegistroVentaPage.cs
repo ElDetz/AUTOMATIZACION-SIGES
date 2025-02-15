@@ -42,7 +42,7 @@ namespace SigesCore.Hooks.XPaths
 
     public class Concept
     {
-        public static readonly By BarcodeInputField = By.XPath("//input[@id='idCodigoBarra']");
+        public static readonly By BarcodeInputField = By.Id("idCodigoBarra");
 
         public static readonly By DataEntryField = By.XPath("//input[@class='select2-search__field']");
 
@@ -63,7 +63,7 @@ namespace SigesCore.Hooks.XPaths
 
     public class Dates
     {
-        public static readonly By ClientField = By.XPath("//input[@id='DocumentoIdentidad']");
+        public static readonly By ClientField = By.Id("DocumentoIdentidad");
 
         public static readonly By AliasField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[5]/input[1]");
 

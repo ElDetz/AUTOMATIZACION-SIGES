@@ -189,11 +189,10 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.AndAsync("Ingresar monto inicial de crédito rapido \'20\' en el módulo de \"Nueva Venta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 32
- await testRunner.AndAsync("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Seleccionar el medio de pago \'EF\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 33
- await testRunner.AndAsync("Rellene datos de la tarjeta \'BBVA\' , \'MASTER\' y \'206556\' en el módulo de \"Nueva V" +
-                        "enta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Rellene datos de la tarjeta \'\' , \'\' y \'20\' en el módulo de \"Nueva Venta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 34
  await testRunner.ThenAsync("Guardar venta", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");

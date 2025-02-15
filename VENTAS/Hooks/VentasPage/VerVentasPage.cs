@@ -16,7 +16,6 @@ namespace SigesCore.Hooks.VentasPage
         private readonly IWebDriver driverViewPayment;
         WebDriverWait wait;
         UtilityVenta utilityPage;
-        UtilityVerVentas utilityViewPage;
 
         public VerVentasPage (IWebDriver driverViewPayment)
         {

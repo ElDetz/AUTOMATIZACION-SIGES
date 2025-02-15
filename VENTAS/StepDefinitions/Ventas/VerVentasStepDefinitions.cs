@@ -138,7 +138,7 @@ namespace SigesCore.StepDefinitions.Ventas
         [When(@"Ingresar el descuento global '([^']*)'")]
         public void WhenIngresarElDescuentoGlobal(string value)
         {
-            viewSale.noteAmount(value);
+            viewSale.NoteAmount(value);
         }
 
         [When(@"Ingresar el total de descuento '([^']*)'")]
