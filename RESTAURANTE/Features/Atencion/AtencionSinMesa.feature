@@ -1,18 +1,20 @@
 ﻿Feature: AtencionSinMesa
 
 A short summary of the feature
-
-A short summary of the feature
-
+| Orden		| Concepto										| Cantidad	| Anotacion			|
+| CODIGO	| 7												| -			| -					|
+| ITEM		| CARTA LOMO FINO A LA CHORRILLANA				| 2			| -					|
 @AtencionSinMesa
 Scenario: Atencion de una orden sin mesa
 	Given Inicio de sesión con usuario 'admin@tintoymadero.com' y contraseña 'calidad'
 	And Se ingresa al módulo 'Atencion'
-	When Se seleciona la mesa '10' las siguientes ordenes:
+	And Se seleciona el tipo de atencion 'SIN MESA' 
+	And Se seleciona el modo 'DELIVERY'
+	And Se ingresa el cliente 'LEONARDO'
+	And Se selecciona el mozo 'JAVIER STANLY CISNEROS SANCHEZ'
+	When Se ingresa las siguientes ordenes: 
+	| Orden		| Concepto												| Cantidad	| Anotacion			|
+	| ITEM		| ADICIONAL 1/2 PORCIÓN DE CANCHITA						| 2			|					|
+	| CODIGO	| 7														| -			| -					|
 
-
-@tag1
-Scenario: [scenario name]
-	Given [context]
-	When [action]
 	Then [outcome]

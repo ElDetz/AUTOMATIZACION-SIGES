@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace RESTAURANTE.Features.Preparacion
+namespace RESTAURANTE.Features.Atencion
 {
     using Reqnroll;
     using System;
@@ -20,18 +20,20 @@ namespace RESTAURANTE.Features.Preparacion
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Preparacion")]
+    [NUnit.Framework.DescriptionAttribute("AtencionSinMesa")]
     [NUnit.Framework.FixtureLifeCycleAttribute(NUnit.Framework.LifeCycle.InstancePerTestCase)]
-    public partial class PreparacionFeature
+    public partial class AtencionSinMesaFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Preparacion", "Preparacion", "A short summary of the feature", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Atencion", "AtencionSinMesa", "A short summary of the feature\r\n| Orden\t\t| Concepto\t\t\t\t\t\t\t\t\t\t| Cantidad\t| Anotaci" +
+                "on\t\t\t|\r\n| CODIGO\t| 7\t\t\t\t\t\t\t\t\t\t\t\t| -\t\t\t| -\t\t\t\t\t|\r\n| ITEM\t\t| CARTA LOMO FINO A LA " +
+                "CHORRILLANA\t\t\t\t| 2\t\t\t| -\t\t\t\t\t|", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
-#line 1 "Preparacion.feature"
+#line 1 "AtencionSinMesa.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
@@ -83,65 +85,15 @@ namespace RESTAURANTE.Features.Preparacion
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Preparacion de varias ordenes")]
-        [NUnit.Framework.CategoryAttribute("Preparacion")]
-        public async System.Threading.Tasks.Task PreparacionDeVariasOrdenes()
+        [NUnit.Framework.DescriptionAttribute("Atencion de una orden sin mesa")]
+        [NUnit.Framework.CategoryAttribute("AtencionSinMesa")]
+        public async System.Threading.Tasks.Task AtencionDeUnaOrdenSinMesa()
         {
             string[] tagsOfScenario = new string[] {
-                    "Preparacion"};
+                    "AtencionSinMesa"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Preparacion de varias ordenes", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 6
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 7
- await testRunner.GivenAsync("Inicio de sesión con usuario \'admin@tintoymadero.com\' y contraseña \'calidad\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Atencion de una orden sin mesa", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 8
- await testRunner.AndAsync("Se ingresa al módulo \'Preparacion\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-                global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
-                            "ORDEN",
-                            "ITEM"});
-                table9.AddRow(new string[] {
-                            "C001 - 125340",
-                            "SALCHIPAPA SALCHIPAPA ESPECIAL"});
-                table9.AddRow(new string[] {
-                            "C001 - 125340",
-                            "CARTA MOLLEJAS A LA PARRILLA"});
-                table9.AddRow(new string[] {
-                            "C001 - 125340",
-                            "CARTA PIQUEO DE LOMO FINO"});
-                table9.AddRow(new string[] {
-                            "C001 - 125339",
-                            "CARTA BROCHETA DE LOMO"});
-#line 9
- await testRunner.WhenAsync("Se procede a \'Preparar\' las siguientes ordenes:", ((string)(null)), table9, "When ");
-#line hidden
-#line 16
- await testRunner.ThenAsync("", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Preparacion de todos los items de una orden")]
-        [NUnit.Framework.CategoryAttribute("Preparacion")]
-        public async System.Threading.Tasks.Task PreparacionDeTodosLosItemsDeUnaOrden()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "Preparacion"};
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Preparacion de todos los items de una orden", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 19
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -151,17 +103,44 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 20
+#line 9
  await testRunner.GivenAsync("Inicio de sesión con usuario \'admin@tintoymadero.com\' y contraseña \'calidad\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 21
- await testRunner.AndAsync("Se ingresa al módulo \'Preparacion\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 10
+ await testRunner.AndAsync("Se ingresa al módulo \'Atencion\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 22
- await testRunner.WhenAsync("Se procede a \'Preparar\' todos los items de la orden \'C001 - 125348\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 11
+ await testRunner.AndAsync("Se seleciona el tipo de atencion \'SIN MESA\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 23
- await testRunner.ThenAsync("", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 12
+ await testRunner.AndAsync("Se seleciona el modo \'DELIVERY\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 13
+ await testRunner.AndAsync("Se ingresa el cliente \'LEONARDO\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 14
+ await testRunner.AndAsync("Se selecciona el mozo \'JAVIER STANLY CISNEROS SANCHEZ\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
+                            "Orden",
+                            "Concepto",
+                            "Cantidad",
+                            "Anotacion"});
+                table2.AddRow(new string[] {
+                            "ITEM",
+                            "ADICIONAL 1/2 PORCIÓN DE CANCHITA",
+                            "2",
+                            ""});
+                table2.AddRow(new string[] {
+                            "CODIGO",
+                            "7",
+                            "-",
+                            "-"});
+#line 15
+ await testRunner.WhenAsync("Se ingresa las siguientes ordenes:", ((string)(null)), table2, "When ");
+#line hidden
+#line 20
+ await testRunner.ThenAsync("[outcome]", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

@@ -47,7 +47,7 @@ namespace RESTAURANTE.Hoks.Pages
             });
         }
 
-        public void enterField(By _path, string _field)
+        public void InputTexto(By _path, string _field)
         {
             if (driver.FindElements(_path).Count == 0)
             {
@@ -59,7 +59,7 @@ namespace RESTAURANTE.Hoks.Pages
             driver.FindElement(_path).SendKeys(_field);
         }
 
-        public void enterField2(By _path, string _field)
+        public void SubmitTexto(By _path, string _field)
         {
             if (driver.FindElements(_path).Count == 0)
             {
@@ -106,6 +106,7 @@ namespace RESTAURANTE.Hoks.Pages
                 throw new NoSuchElementException($"El elemento con el localizador {_button} no se encontró.");
             }
 
+            WaitForOverlayToDisappear(); // OVERLAY
             wait.Until(ExpectedConditions.ElementToBeClickable(_button)); // Espera hasta que el elemento sea clickeable
             driver.FindElement(_button).Click();
         }
@@ -119,7 +120,7 @@ namespace RESTAURANTE.Hoks.Pages
             _element.FindElement(buttonLocator).Click();
         }
 
-        public void enterFieldModal(IWebElement _element, By _path, string _field)
+        public void InputTextoModal(IWebElement _element, By _path, string _field)
         {
             if (_element.FindElements(_path).Count == 0)
             {

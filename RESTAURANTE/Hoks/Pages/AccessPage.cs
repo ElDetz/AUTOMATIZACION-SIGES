@@ -34,8 +34,8 @@ namespace RESTAURANTE.Hoks.Pages
         public void LoginToApplication(string _user, string _password)
         {
             driver.Url = "https://tintoymadero-qa.sigesonline.com/";
-            utilities.enterField(usernameField, _user); // campo user
-            utilities.enterField(passwordField, _password); // campo contraseña
+            utilities.InputTexto(usernameField, _user); // campo user
+            utilities.InputTexto(passwordField, _password); // campo contraseña
 
             utilities.buttonClickeable(loginButton); // boton login
             utilities.buttonClickeable(acceptButton); // boton aceptar
@@ -51,14 +51,16 @@ namespace RESTAURANTE.Hoks.Pages
             switch (_modulo)
             {
                 case "Atencion":
-
+                    Console.WriteLine("MODULO ATENCION");
+                    utilities.VisibilidadElement(AttentionField);
                     utilities.buttonClickeable(AttentionField);
+
                     break;
 
                 case "Preparacion":
-
                     utilities.VisibilidadElement(preparationField);
                     utilities.buttonClickeable(preparationField);
+   
                     break;
 
                 case "Caja":
@@ -79,6 +81,8 @@ namespace RESTAURANTE.Hoks.Pages
                 default:
                     throw new ArgumentException($"El {_modulo} no es válido.");
             }
+
+            Thread.Sleep(4000);
         }
     }
 }

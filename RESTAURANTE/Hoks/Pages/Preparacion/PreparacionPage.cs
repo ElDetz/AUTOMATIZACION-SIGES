@@ -84,7 +84,7 @@ namespace RESTAURANTE.Hoks.Pages.Preparacion
         }
         public void seleccionOrdenes(string _nOrden)
         {
-            seleccionAmbiente("");
+            //seleccionAmbiente("");
 
             utilities.elementExists(ambientePrincipal);
             Console.WriteLine("BOTON ENCONTRADO");
