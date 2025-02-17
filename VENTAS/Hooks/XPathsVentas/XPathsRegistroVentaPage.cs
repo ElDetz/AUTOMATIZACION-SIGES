@@ -93,6 +93,13 @@ namespace SigesCore.Hooks.XPaths
         public static readonly By DocContingencyField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[7]/selector-comprobante[1]/div[1]/ng-form[1]/div[1]/div[1]/span[1]/span[1]/span[1]");
     }
 
+    public class Delivery
+    {
+        public static readonly By immediate = By.XPath("//label[@for='radioEntrega1']");
+
+        public static readonly By deferredLabel = By.XPath("//label[@for='radioEntrega2']");
+    }
+
     public class DispatchGuide
     {
         public static readonly By Modal = By.Id("modal-registro-guia-remision");

@@ -1335,6 +1335,69 @@ this.ScenarioInitialize(scenarioInfo);
             }
             await this.ScenarioCleanupAsync();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Registro de una nueva venta con entrega diferida o inmediata")]
+        [NUnit.Framework.CategoryAttribute("TipoEntrega")]
+        public async System.Threading.Tasks.Task RegistroDeUnaNuevaVentaConEntregaDiferidaOInmediata()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "TipoEntrega"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Registro de una nueva venta con entrega diferida o inmediata", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 336
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 337
+ await testRunner.GivenAsync("Inicio de sesion con usuario \'admin@plazafer.com\' y contrasena \'calidad\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 338
+ await testRunner.WhenAsync("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 339
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 340
+ await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 341
+ await testRunner.AndAsync("Ingresar precio unitario \'30\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 342
+ await testRunner.AndAsync("Activar IGV \'SI\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 343
+ await testRunner.AndAsync("Seleccionar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 344
+ await testRunner.AndAsync("Seleccionar tipo de comprobante \'NOTA\' en el módulo de \"Nueva Venta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 345
+ await testRunner.AndAsync("Seleccionar tipo de entrega \'INMEDIATA\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 346
+ await testRunner.AndAsync("Seleccionar tipo de pago \"contado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 347
+ await testRunner.AndAsync("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 348
+ await testRunner.AndAsync("Rellene datos de la tarjeta \'BBVA\' , \'MASTER\' y \'206556\' en el módulo de \"Nueva V" +
+                        "enta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 349
+ await testRunner.ThenAsync("Guardar venta", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
     }
 }
 #pragma warning restore

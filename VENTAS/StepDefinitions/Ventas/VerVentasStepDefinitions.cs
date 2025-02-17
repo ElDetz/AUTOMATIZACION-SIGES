@@ -15,15 +15,11 @@ namespace SigesCore.StepDefinitions.Ventas
     public class VerVentasStepDefinitions
     {
         private IWebDriver driver;
-        LoginPage login;
-        NuevaVentaPage newSale;
         VerVentasPage viewSale;
 
         public VerVentasStepDefinitions(IWebDriver driver)
         {
             this.driver = driver;
-            this.login = new LoginPage(driver);
-            this.newSale = new NuevaVentaPage(driver);
             this.viewSale = new VerVentasPage(driver);
         }
 

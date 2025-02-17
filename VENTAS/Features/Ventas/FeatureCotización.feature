@@ -8,10 +8,8 @@ Scenario: Realizar una nueva cotización
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Cotización
 	And Click en nueva cotización
-	And Seleccionar concepto "1010-3 | 1010-3 PISO PVC 18CM X 122CM X 4MM"
-	And Ingresar la cantidad de concepto '2'
-	And Con IGV 'SI'
-	And Seleccionar el cliente 'DNI' '72380461'
+	And Agregar concepto "400000891"
+	And Agregar tipo de cliente 'DNI' '72380461'
 	And Ingresar la fecha de vencimiento ' '
 	Then Guardar cotización
 

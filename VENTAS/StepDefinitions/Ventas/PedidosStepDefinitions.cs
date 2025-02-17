@@ -15,17 +15,11 @@ namespace SigesCore.StepDefinitions.Ventas
     public class PedidosStepDefinitions
     {
         private IWebDriver driver;
-        LoginPage login;
-        NuevaVentaPage newSale;
-        VerVentasPage viewSale;
         PedidosPage orders;
 
         public PedidosStepDefinitions(IWebDriver driver)
         {
             this.driver = driver;
-            this.login = new LoginPage(driver);
-            this.newSale = new NuevaVentaPage(driver);
-            this.viewSale = new VerVentasPage(driver);
             this.orders = new PedidosPage(driver);
         }
 
@@ -53,10 +47,10 @@ namespace SigesCore.StepDefinitions.Ventas
             orders.Concept(value);
         }
 
-        [When("Agregar documento {string}")]
-        public void WhenAgregarDocumento(string value)
+        [When("Agregar tipo de cliente {string} {string}")]
+        public void WhenAgregarElTipoDeCliente(string option, string value)
         {
-            orders.Client(value);
+            orders.CustomerType(option, value);
         }
 
         [When("Seleccionar tipo de comprobante {string}")]
@@ -65,7 +59,7 @@ namespace SigesCore.StepDefinitions.Ventas
             orders.SelectInvoiceType(option);
         }
 
-        [When("Seleccionar el tipo de entrega {string}")]
+        [When("Elegir tipo de entrega {string}")]
         public void WhenSeleccionarElTipoDeEntrega(string option)
         {
             orders.SelectDeliveryType(option);
@@ -99,6 +93,24 @@ namespace SigesCore.StepDefinitions.Ventas
         public void WhenSeleccionarComprobante(string value)
         {
             orders.InvoiceType(value);
+        }
+
+        [When("Click en invalidar pedido")]
+        public void WhenClickEnInvalidarPedido()
+        {
+            orders.InvalidateOrder();
+        }
+
+        [When("Ingresar la observación de invalidación {string}")]
+        public void WhenIngresarLaObservacionDeInvalidacion(string value)
+        {
+            orders.AddObservation(value);
+        }
+
+        [Then("Click en aceptar invalidación")]
+        public void ThenClickEnAceptarInvalidacion()
+        {
+            orders.ClickAcceptInvalidation();
         }
 
         [Then("Guardar pedido")]

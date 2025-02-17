@@ -26,11 +26,9 @@ namespace SigesCore.Hooks.XPaths
 
         public static readonly By voucher = By.Id("comprobantePredeterminado");
 
-        public static readonly By inmediate = By.XPath("//input[@id='entrega-inmediata-pedido']");
+        public static readonly By inmediate = By.XPath("//label[@for='entrega-inmediata-pedido']");
 
-        public static readonly By deferred = By.XPath("//input[@id='entrega-diferida-pedido']");
-
-        public static readonly By CashPaymentOption = By.XPath("//label[@for='radio1' and text()='CO']");
+        public static readonly By deferredLabel = By.XPath("//label[@for='entrega-diferida-pedido']");
 
         public static readonly By save = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[3]/button[1]");
     }
@@ -48,5 +46,23 @@ namespace SigesCore.Hooks.XPaths
         public static readonly By confirmOrderPath = By.XPath("//tbody/tr[1]/td[9]/a[3]");
 
         public static readonly By voucher = By.Id("comprobante");
+    }
+
+    public class InvalidateOrderClass
+    {
+        public static readonly By invalidateOrderButton = By.XPath("//tbody/tr[1]/td[9]/a[2]");
+
+        public static readonly By observation = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]/div[1]/div[1]/textarea[1]");
+
+        public static readonly By accept = By.XPath("//body/div[4]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]/div[1]/div[3]/div[1]/a[1]");
+    }
+
+    public class NewQuoteClass
+    {
+        public static readonly By quote = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[4]/button[1]");
+
+        public static readonly By observation = By.XPath("");
+
+        public static readonly By accept = By.XPath("");
     }
 }

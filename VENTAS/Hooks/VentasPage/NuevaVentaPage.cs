@@ -314,6 +314,24 @@ namespace SigesCore.Hooks.VentasPage
             utilityPage.EnterField(Dates.DocNumberContingency, value);
         }
 
+        //SELECCIÓN DE TIPO DE ENTREGA
+        public void SelectDeliveryType(string option)
+        {
+            option = option.ToUpper();
+            if (option == "INMEDIATA")
+            {
+                utilityPage.ClickButton(Delivery.immediate);
+            }
+            else if (option == "DIFERIDA")
+            {
+                utilityPage.ClickButton(Delivery.deferredLabel);
+            }
+            else
+            {
+                throw new ArgumentException($"El {option} no es válido");
+            }
+        }
+
         //SELECCIONAR TIPO DE PAGO
         public void SelectPaymentType(string option)
         {

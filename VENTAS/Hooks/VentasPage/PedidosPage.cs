@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions.Equivalency;
 using static OpenQA.Selenium.BiDi.Modules.BrowsingContext.Locator;
+using SeleniumExtras.WaitHelpers;
 
 namespace SigesCore.Hooks.VentasPage
 {
@@ -19,12 +20,11 @@ namespace SigesCore.Hooks.VentasPage
         private readonly IWebDriver driverOrder;
         WebDriverWait wait;
         UtilityVenta utilityPage;
-        Utilities utilitiesRestaurant;
 
-        public PedidosPage(IWebDriver driverViewPayment)
+        public PedidosPage(IWebDriver driverOrder)
         {
-            this.driverOrder = driverViewPayment;
-            this.utilityPage = new UtilityVenta(driverViewPayment);
+            this.driverOrder = driverOrder;
+            this.utilityPage = new UtilityVenta(driverOrder);
         }
 
         public void ClickOrder()
@@ -48,9 +48,22 @@ namespace SigesCore.Hooks.VentasPage
             utilityPage.EnterFieldModal(NewOrders.modal, NewOrders.concept, value);
         }
 
-        public void Client(string value)
+        public void CustomerType(string option, string value)
         {
-            utilityPage.EnterFieldModal(NewOrders.modal, NewOrders.client, value);
+            option = option.ToUpper();
+
+            if (option == "DNI" || option == "RUC")
+            {
+                utilityPage.EnterFieldModal(NewOrders.modal, NewOrders.client, value);
+            }
+            else if (option == "ALIAS")
+            {
+                utilityPage.EnterFieldModal(NewOrders.modal, NewOrders.alias, value);
+            }
+            else
+            {
+                throw new ArgumentException($"El {option} no es válido");
+            }
         }
 
         public void SelectInvoiceType(string option)
@@ -64,11 +77,11 @@ namespace SigesCore.Hooks.VentasPage
             option = option.ToUpper();
             if (option == "INMEDIATA")
             {
-                utilitiesRestaurant.ClickButtonInModal(orderModal, NewOrders.inmediate);
+                orderModal.FindElement(NewOrders.deferredLabel).Click();
             }
             else if (option == "DIFERIDA")
             {
-                utilitiesRestaurant.ClickButtonInModal(orderModal, NewOrders.deferred);
+                orderModal.FindElement(NewOrders.inmediate).Click();
             }
             else
             {
@@ -95,16 +108,34 @@ namespace SigesCore.Hooks.VentasPage
             Thread.Sleep(4000);
         }
 
+        public void InvoiceType(string option)
+        {
+            utilityPage.OptionsSelector(ConfirmOrderClass.modal, ConfirmOrderClass.voucher, option);
+        }
+
         public void ConfirmOrder()
         {
             utilityPage.ClickButton(ConfirmOrderClass.confirmOrderPath);
             Thread.Sleep(4000);
         }
 
-        public void InvoiceType(string option)
+        public void InvalidateOrder()
         {
-            utilityPage.OptionsSelector(ConfirmOrderClass.modal, ConfirmOrderClass.voucher, option);
+            utilityPage.ClickButton(InvalidateOrderClass.invalidateOrderButton);
         }
+
+        public void AddObservation(string value)
+        {
+            utilityPage.EnterField(InvalidateOrderClass.observation, value);
+            Thread.Sleep(2000);
+        }
+
+        public void ClickAcceptInvalidation()
+        {
+            utilityPage.ClickButton(InvalidateOrderClass.accept);
+            Thread.Sleep(4000);
+        }
+
         public void SaveOrder()
         {
             utilityPage.ClickButton(NewOrders.save);

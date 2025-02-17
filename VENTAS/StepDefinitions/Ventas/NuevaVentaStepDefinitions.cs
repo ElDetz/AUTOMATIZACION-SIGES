@@ -205,6 +205,12 @@ namespace SigesCore.StepDefinitions.Ventas
             newSale.AcceptDispatchGuideButton();
         }
 
+        [When("Seleccionar tipo de entrega {string}")]
+        public void WhenSeleccionarTipoDeEntrega(string option)
+        {
+            newSale.SelectDeliveryType(option);
+        }
+
         [When(@"Seleccionar tipo de pago ""([^""]*)""")]
         public void WhenSeleccionarTipoDePago(string option)
         {

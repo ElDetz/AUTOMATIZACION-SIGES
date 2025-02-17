@@ -330,3 +330,20 @@ Scenario: Registro de una venta con detalle unificado
 	And Seleccionar el medio de pago 'EF'
 	And Rellene datos de la tarjeta '' , '' y '200' en el módulo de "Nueva Venta"
 	Then Guardar venta
+
+@TipoEntrega
+
+Scenario: Registro de una nueva venta con entrega diferida o inmediata
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Nueva Venta"
+	And Agregar concepto por 'barra' y valor '1010-3'
+	And Ingresar cantidad '2'
+	And Ingresar precio unitario '30'
+	And Activar IGV 'SI'
+	And Seleccionar tipo de cliente 'DNI' '72380461'
+	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
+	And Seleccionar tipo de entrega 'INMEDIATA'
+	And Seleccionar tipo de pago "contado"
+	And Seleccionar el medio de pago 'TDEB'
+	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Nueva Venta"
+	Then Guardar venta
