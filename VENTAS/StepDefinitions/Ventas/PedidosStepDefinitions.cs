@@ -44,13 +44,13 @@ namespace SigesCore.StepDefinitions.Ventas
         [When("Agregar concepto {string}")]
         public void WhenAgregarConcepto(string value)
         {
-            orders.Concept(value);
+            orders.ConceptOrder(value);
         }
 
         [When("Agregar tipo de cliente {string} {string}")]
         public void WhenAgregarElTipoDeCliente(string option, string value)
         {
-            orders.CustomerType(option, value);
+            orders.CustomerTypeOrder(option, value);
         }
 
         [When("Seleccionar tipo de comprobante {string}")]
@@ -113,7 +113,7 @@ namespace SigesCore.StepDefinitions.Ventas
             orders.ClickAcceptInvalidation();
         }
 
-        [Then("Guardar pedido")]
+        [Then("Guardar pedido o cotización")]
         public void ThenGuardarPedido()
         {
             orders.SaveOrder();

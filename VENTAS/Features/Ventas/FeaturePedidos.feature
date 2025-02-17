@@ -20,7 +20,7 @@ Scenario: Realizar un nuevo pedido
 	And Agregar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante "NOTA DE VENTA (INTERNA)"
 	And Elegir tipo de entrega 'DIFERIDA'
-	Then Guardar pedido
+	Then Guardar pedido o cotización
 
 @ConfirmarPedido
 
@@ -33,7 +33,7 @@ Scenario: Confirmar pedido
 	And Click en consultar pedidos
 	And Buscar venta '0001-20094'
 	And Click en confirmar pedido
-	Then Guardar pedido
+	Then Guardar pedido o cotización
 
 @InvalidarPedido
 Scenario: Invalidar pedido

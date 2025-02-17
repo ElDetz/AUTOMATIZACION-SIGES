@@ -409,5 +409,23 @@ namespace SigesCore.Hooks.Utility
             ElementExists(path);
             WaitForOverlayToDisappear(AdditionalElements.OverlayElement);
         }
+
+        public void CustomerType(By pathModal, By pathCustomer, By pathAlias, string option, string value)
+        {
+            option = option.ToUpper();
+
+            if (option == "DNI" || option == "RUC")
+            {
+                EnterFieldModal(pathModal, pathCustomer, value);
+            }
+            else if (option == "ALIAS")
+            {
+                EnterFieldModal(pathModal, pathAlias, value);
+            }
+            else
+            {
+                throw new ArgumentException($"El {option} no es válido");
+            }
+        }
     }
 }

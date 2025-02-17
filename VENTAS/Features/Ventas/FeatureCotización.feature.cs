@@ -110,16 +110,16 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.AndAsync("Click en nueva cotización", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 11
- await testRunner.AndAsync("Agregar concepto \"400000891\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto para cotización \"400000891\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 12
- await testRunner.AndAsync("Agregar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar tipo de cliente para cotización \'DNI\' \'72380461\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 13
- await testRunner.AndAsync("Ingresar la fecha de vencimiento \' \'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Ingresar la fecha de vencimiento \'10/03/2025\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 14
- await testRunner.ThenAsync("Guardar cotización", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.ThenAsync("Guardar pedido o cotización", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -154,33 +154,33 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.AndAsync("Digitar fecha inicial \"27/01/2025\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 22
- await testRunner.AndAsync("Digitar fecha final \"12/02/2025\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Digitar fecha final \"17/02/2025\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 23
- await testRunner.AndAsync("Click en consultar cotizaciones", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Click en consultar pedidos", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 24
- await testRunner.AndAsync("Buscar cotización \'0002 - 25612\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Buscar venta \'0002 - 25614\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 25
  await testRunner.AndAsync("Click en pregenerar pedido", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 26
- await testRunner.ThenAsync("Guardar pedido cotizado", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.ThenAsync("Guardar pedido pregenerado", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Pregenerar cotización")]
+        [NUnit.Framework.DescriptionAttribute("Pregenerar venta")]
         [NUnit.Framework.CategoryAttribute("PregenerarVenta")]
-        public async System.Threading.Tasks.Task PregenerarCotizacion()
+        public async System.Threading.Tasks.Task PregenerarVenta()
         {
             string[] tagsOfScenario = new string[] {
                     "PregenerarVenta"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Pregenerar cotización", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Pregenerar venta", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 29
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -204,16 +204,16 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.AndAsync("Digitar fecha final \"12/02/2025\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 34
- await testRunner.AndAsync("Click en consultar cotizaciones", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Click en consultar pedidos", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 35
- await testRunner.AndAsync("Buscar cotización \'0002 - 25612\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Buscar venta \'0002 - 25613\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 36
  await testRunner.AndAsync("Click en pregenerar venta", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 37
- await testRunner.ThenAsync("Guardar venta cotizada", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.ThenAsync("Guardar venta pregenerada", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

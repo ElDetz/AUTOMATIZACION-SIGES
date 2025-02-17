@@ -35,16 +35,46 @@ namespace SigesCore.StepDefinitions.Ventas
             qouta.ClickNewQouta();
         }
 
+        [When("Agregar concepto para cotización {string}")]
+        public void WhenAgregarConceptoParaCotizacion(string value)
+        {
+            qouta.conceptQuota(value);
+        }
+
+        [When("Agregar tipo de cliente para cotización {string} {string}")]
+        public void WhenAgregarTipoDeClienteParaCotizacion(string option, string value)
+        {
+            qouta.CustomerTypeQuota(option, value);
+        }
+
         [When("Ingresar la fecha de vencimiento {string}")]
         public void WhenIngresarLaFechaDeVencimiento(string value)
         {
-            
+            qouta.expirationDateQouta(value);
         }
 
-        [Then("Guardar cotización")]
-        public void ThenGuardarCotizacion()
+        [When("Click en pregenerar pedido")]
+        public void WhenClickEnPregenerarPedido()
         {
-            
+            qouta.ClickPregenerateOrder();
+        }
+
+        [Then("Guardar pedido pregenerado")]
+        public void ThenGuardarPedidoPregenerado()
+        {
+            qouta.SavePregenerateOrder();
+        }
+
+        [When("Click en pregenerar venta")]
+        public void WhenClickEnPregenerarVenta()
+        {
+            qouta.ClickPregenerateSale();
+        }
+
+        [Then("Guardar venta pregenerada")]
+        public void ThenGuardarVentaPregenerada()
+        {
+            qouta.SavePregenerateSale();
         }
     }
 }

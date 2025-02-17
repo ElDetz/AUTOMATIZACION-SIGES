@@ -43,27 +43,14 @@ namespace SigesCore.Hooks.VentasPage
             utilityPage.ClickButton(NewOrders.newOrder);
         }
 
-        public void Concept(string value)
+        public void ConceptOrder(string value)
         {
             utilityPage.EnterFieldModal(NewOrders.modal, NewOrders.concept, value);
         }
 
-        public void CustomerType(string option, string value)
+        public void CustomerTypeOrder(string option, string value)
         {
-            option = option.ToUpper();
-
-            if (option == "DNI" || option == "RUC")
-            {
-                utilityPage.EnterFieldModal(NewOrders.modal, NewOrders.client, value);
-            }
-            else if (option == "ALIAS")
-            {
-                utilityPage.EnterFieldModal(NewOrders.modal, NewOrders.alias, value);
-            }
-            else
-            {
-                throw new ArgumentException($"El {option} no es válido");
-            }
+            utilityPage.CustomerType(NewOrders.modal, NewOrders.client, NewOrders.alias, option, value);
         }
 
         public void SelectInvoiceType(string option)

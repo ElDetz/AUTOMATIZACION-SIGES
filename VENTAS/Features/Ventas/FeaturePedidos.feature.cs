@@ -133,7 +133,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.AndAsync("Elegir tipo de entrega \'DIFERIDA\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 23
- await testRunner.ThenAsync("Guardar pedido", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.ThenAsync("Guardar pedido o cotización", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -183,7 +183,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.AndAsync("Click en confirmar pedido", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 36
- await testRunner.ThenAsync("Guardar pedido", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.ThenAsync("Guardar pedido o cotización", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
