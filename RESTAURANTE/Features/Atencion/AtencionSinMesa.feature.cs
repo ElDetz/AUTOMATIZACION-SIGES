@@ -30,8 +30,8 @@ namespace RESTAURANTE.Features.Atencion
         private static string[] featureTags = ((string[])(null));
         
         private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Atencion", "AtencionSinMesa", "A short summary of the feature\r\n| Orden\t\t| Concepto\t\t\t\t\t\t\t\t\t\t| Cantidad\t| Anotaci" +
-                "on\t\t\t|\r\n| CODIGO\t| 7\t\t\t\t\t\t\t\t\t\t\t\t| -\t\t\t| -\t\t\t\t\t|\r\n| ITEM\t\t| CARTA LOMO FINO A LA " +
-                "CHORRILLANA\t\t\t\t| 2\t\t\t| -\t\t\t\t\t|", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+                "on\t\t\t|\r\n| CODIGO\t| 7\t\t\t\t\t\t\t\t\t\t\t\t| -\t\t\t| -\t\t\t\t\t|\r\n| ITEM\t\t| ADICIONAL 1/2 PORCIÓN" +
+                " DE CANCHITA\t\t\t\t\t| 2\t\t\t| -\t\t\t\t\t|", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
 #line 1 "AtencionSinMesa.feature"
 #line hidden
@@ -128,19 +128,37 @@ this.ScenarioInitialize(scenarioInfo);
                             "Anotacion"});
                 table2.AddRow(new string[] {
                             "ITEM",
-                            "ADICIONAL 1/2 PORCIÓN DE CANCHITA",
-                            "2",
+                            "167|VINO FRONTERA BOTELLA 1 UN",
+                            "1",
                             ""});
                 table2.AddRow(new string[] {
                             "CODIGO",
                             "7",
-                            "-",
-                            "-"});
+                            "",
+                            ""});
+                table2.AddRow(new string[] {
+                            "ITEM",
+                            "167|VINO FRONTERA BOTELLA 1 UN",
+                            "2",
+                            ""});
+                table2.AddRow(new string[] {
+                            "CODIGO",
+                            "17",
+                            "",
+                            ""});
+                table2.AddRow(new string[] {
+                            "ITEM",
+                            "167|VINO FRONTERA BOTELLA 1 UN",
+                            "3",
+                            ""});
 #line 15
  await testRunner.WhenAsync("Se ingresa las siguientes ordenes:", ((string)(null)), table2, "When ");
 #line hidden
-#line 20
- await testRunner.ThenAsync("[outcome]", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 23
+ await testRunner.AndAsync("Se realiza la accion de \'Guardar\' la Orden", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 24
+ await testRunner.ThenAsync("Orden Tomada", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

@@ -3,7 +3,7 @@
 A short summary of the feature
 | Orden		| Concepto										| Cantidad	| Anotacion			|
 | CODIGO	| 7												| -			| -					|
-| ITEM		| CARTA LOMO FINO A LA CHORRILLANA				| 2			| -					|
+| ITEM		| ADICIONAL 1/2 PORCIÓN DE CANCHITA					| 2			| -					|
 @AtencionSinMesa
 Scenario: Atencion de una orden sin mesa
 	Given Inicio de sesión con usuario 'admin@tintoymadero.com' y contraseña 'calidad'
@@ -14,7 +14,11 @@ Scenario: Atencion de una orden sin mesa
 	And Se selecciona el mozo 'JAVIER STANLY CISNEROS SANCHEZ'
 	When Se ingresa las siguientes ordenes: 
 	| Orden		| Concepto												| Cantidad	| Anotacion			|
-	| ITEM		| ADICIONAL 1/2 PORCIÓN DE CANCHITA						| 2			|					|
-	| CODIGO	| 7														| -			| -					|
+	| ITEM		| 167\|VINO FRONTERA BOTELLA 1 UN						| 1			|					|
+	| CODIGO	| 7														| 			| 					|
+	| ITEM		| 167\|VINO FRONTERA BOTELLA 1 UN						| 2			|					|
+	| CODIGO	| 17													| 			| 					|
+	| ITEM		| 167\|VINO FRONTERA BOTELLA 1 UN						| 3			|					|
 
-	Then [outcome]
+	And Se realiza la accion de 'Guardar' la Orden
+	Then Orden Tomada

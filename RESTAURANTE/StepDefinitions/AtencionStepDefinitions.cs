@@ -62,6 +62,8 @@ namespace RESTAURANTE.StepDefinitions
         [When("Se ingresa las siguientes ordenes:")]
         public void WhenSeIngresaLasSiguientesOrdenes(DataTable dataTable)
         {
+            Console.WriteLine($"Procesando orden {dataTable.Rows}");
+
             foreach (var row in dataTable.Rows)
             {
                 string _orden = row["Orden"];
@@ -75,7 +77,7 @@ namespace RESTAURANTE.StepDefinitions
                 {
                     case "CODIGO":
                         atencionSinMesaPage.CodigoItem(_concepto, _anotacion);
-                        return;
+                        break;
 
                     case "ITEM":
                         atencionSinMesaPage.SeleccionItem(_concepto, _cantidad, _anotacion);
@@ -84,14 +86,22 @@ namespace RESTAURANTE.StepDefinitions
                     default:
                         throw new ArgumentException($"La {_orden} no es correcta");
                 }
+                Thread.Sleep(4000);
             }
         }
 
+        [When("Se realiza la accion de {string} la Orden")]
+        public void WhenSeRealizaLaAccionDeLaOrden(string _accion)
+        {
+            // atencionSinMesaPage.AgregarAnotacion(_accion);
+            atencionSinMesaPage.AnotacionItem(_accion);
+            // atencionSinMesaPage.AccionOrden(_accion);
+        }
 
-        [Then("[outcome]")]
+        [Then("Orden Tomada")]
         public void ThenOutcome()
         {
-            throw new PendingStepException();
+            // 
         }
     }
 }
