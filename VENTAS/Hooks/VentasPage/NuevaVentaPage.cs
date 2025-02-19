@@ -477,6 +477,7 @@ namespace SigesCore.Hooks.VentasPage
         //GUARDAR VENTA
         public void SaveSale()
         {
+            Thread.Sleep(3000);
             utilityPage.ClickButton(SaveSalePath.SaveSaleButton);
             Thread.Sleep(5000);
         }

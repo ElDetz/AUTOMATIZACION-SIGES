@@ -29,54 +29,101 @@ namespace SigesCore.Hooks.VentasPage
 
         public void ClickQouta()
         {
-            utilityPage.ClickButton(NewQouta.qouta);
+            utilityPage.ClickButton(NewQuote.qoute);
         }
 
         public void ClickNewQouta()
         {
-            Thread.Sleep(10000);
-            utilityPage.ClickButton(NewQouta.newQouta);
+            Thread.Sleep(3000);
+            utilityPage.ClickButton(NewQuote.newQoute);
         }
 
-        public void conceptQuota(string value)
+        public void ConceptQuota(string value)
         {
-            utilityPage.EnterFieldModal(NewQouta.modal, NewOrders.concept, value);
+            utilityPage.EnterFieldModal(NewQuote.modal, NewOrders.concept, value);
+        }
+
+        public void QuantityconceptQuota(string value)
+        {
+            utilityPage.CleanFieldModal(NewQuote.modal, NewOrders.quantity, value);
+        }
+
+        public void UnitPriceConceptQuota(string value)
+        {
+            utilityPage.CleanFieldModal(NewQuote.modal, NewQuote.unitPrice, value);
+        }
+
+        public void IGVQuota(string option)
+        {
+            utilityPage.CheckBox(NewQuote.modal, NewQuote.igv, option);
         }
 
         public void CustomerTypeQuota(string option, string value)
         {
-            utilityPage.CustomerType(NewQouta.modal, NewOrders.client, NewOrders.alias, option, value);
+            utilityPage.CustomerType(NewQuote.modal, NewOrders.client, NewOrders.alias, option, value);
         }
         
-        public void expirationDateQouta(string value)
+        public void ExpirationDateQouta(string value)
         {
-            utilityPage.EnterFieldModal(NewQouta.modal, NewQouta.expirationDate, value);
+            utilityPage.EnterFieldModal(NewQuote.modal, NewQuote.expirationDate, value);
         }
 
         public void ClickPregenerateOrder()
         {
-            utilityPage.ClickButton(NewQouta.pregenerateOrderPath);
-            Thread.Sleep(15000);
-        }
-
-        public void SavePregenerateOrder()
-        {
-            IWebElement orderModal = driverQuota.FindElement(NewQouta.modal);
-            orderModal.FindElement(PregenerateOrder.saveOrder).Click();
-            Thread.Sleep(2000);
+            utilityPage.ClickButton(NewQuote.pregenerateOrderPath);
+            Thread.Sleep(12000);
         }
 
         public void ClickPregenerateSale()
         {
-            utilityPage.ClickButton(NewQouta.pregenerateSalePath);
+            utilityPage.ClickButton(NewQuote.pregenerateSalePath);
             Thread.Sleep(7000);
+        }
+
+        public void UnifiedDetailOrderModal(string option)
+        {
+            NewWindow();
+            utilityPage.CheckBox(NewOrders.modal, NewOrders.unifDetail, option);
+        }
+
+        public void CustomerTypeOrderModal(string option, string value)
+        {
+            NewWindow();
+            utilityPage.CustomerType(NewOrders.modal, NewOrders.client, NewOrders.alias, option, value);
+            Thread.Sleep(3000);
+        }
+
+        public void SaveOrderFromQuote()
+        {
+            NewWindow();
+            driverQuota.FindElement(NewOrders.save).Click();
+            Thread.Sleep(2000);
         }
 
         public void SavePregenerateSale()
         {
-            IWebElement orderModal = driverQuota.FindElement(NewQouta.modal);
-            orderModal.FindElement(PregenerateSale.saveSale).Click();
-            Thread.Sleep(3000);
+            NewWindow();
+            driverQuota.FindElement(SaveSalePath.SaveSaleButton).Click();
+            Thread.Sleep(4000);
+        }
+
+        public void NewWindow()
+        {
+            WebDriverWait wait = new WebDriverWait(driverQuota, TimeSpan.FromSeconds(10));
+            string originalWindow = driverQuota.CurrentWindowHandle;
+
+            // Esperar hasta que haya más de una pestaña abierta
+            wait.Until(d => driverQuota.WindowHandles.Count > 1);
+
+            // Cambiar a la nueva pestaña
+            foreach (string window in driverQuota.WindowHandles)
+            {
+                if (window != originalWindow)
+                {
+                    driverQuota.SwitchTo().Window(window);
+                    break;
+                }
+            }
         }
     }
 }

@@ -38,7 +38,7 @@ namespace SigesCore.Hooks.Utility
             });
         }
 
-        public void EnterField(By path, string field)
+        public void EnterField(By path, string value)
         {
             if (driver.FindElements(path).Count == 0)
             {
@@ -49,7 +49,7 @@ namespace SigesCore.Hooks.Utility
             driver.FindElement(path).SendKeys(Keys.Control + "a");
             driver.FindElement(path).SendKeys(Keys.Delete);
             driver.FindElement(path).Clear();
-            driver.FindElement(path).SendKeys(field);
+            driver.FindElement(path).SendKeys(value);
         }
 
         public void EnterFieldModal(By pathModal, By pathComponent, string value)
@@ -59,6 +59,16 @@ namespace SigesCore.Hooks.Utility
             orderModal.FindElement(pathComponent).Clear();
             orderModal.FindElement(pathComponent).SendKeys(value);
             orderModal.FindElement(pathComponent).SendKeys(Keys.Enter);
+        }
+
+        public void CleanFieldModal(By pathModal, By pathComponent, string value)
+        {
+            Thread.Sleep(3000);
+            IWebElement orderModal = driver.FindElement(pathModal);
+            orderModal.FindElement(pathComponent).SendKeys(Keys.Control + "a");
+            orderModal.FindElement(pathComponent).SendKeys(Keys.Delete);
+            orderModal.FindElement(pathComponent).Clear();
+            orderModal.FindElement(pathComponent).SendKeys(value);
         }
 
         public void ElementExists(By button)
@@ -421,6 +431,27 @@ namespace SigesCore.Hooks.Utility
             else if (option == "ALIAS")
             {
                 EnterFieldModal(pathModal, pathAlias, value);
+            }
+            else if (option == "VARIOS")
+            {
+            }
+            else
+            {
+                throw new ArgumentException($"El {option} no es válido");
+            }
+        }
+
+        public void CheckBox(By pathModal, By pathComponent, string option)
+        {
+            IWebElement orderModal = driver.FindElement(pathModal);
+            option = option.ToUpper();
+            if (option == "SI")
+            {
+                orderModal.FindElement(pathComponent).Click();
+            }
+            else if (option == "NO")
+            {
+
             }
             else
             {

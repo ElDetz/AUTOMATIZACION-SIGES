@@ -1287,20 +1287,20 @@ this.ScenarioInitialize(scenarioInfo);
 #line 317
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
                             "option",
                             "value"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "BARRA",
                             "1010-3"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "SELECCION",
                             "400001474"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "SELECCION",
                             "400000437"});
 #line 318
- await testRunner.WhenAsync("Agregar los siguientes conceptos:", ((string)(null)), table1, "When ");
+ await testRunner.WhenAsync("Agregar los siguientes conceptos:", ((string)(null)), table2, "When ");
 #line hidden
 #line 323
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");

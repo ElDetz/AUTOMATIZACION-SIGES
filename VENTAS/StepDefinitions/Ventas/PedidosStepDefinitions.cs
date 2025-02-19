@@ -8,6 +8,7 @@ using SigesCore.Hooks.VentasPage;
 using System.Net;
 using SigesCore.Hooks.Utility;
 using OpenQA.Selenium;
+using Reqnroll;
 
 namespace SigesCore.StepDefinitions.Ventas
 {
@@ -45,6 +46,41 @@ namespace SigesCore.StepDefinitions.Ventas
         public void WhenAgregarConcepto(string value)
         {
             orders.ConceptOrder(value);
+        }
+
+        [When("Agregar conceptos para pedido:")]
+        public void WhenAgregarConceptosParaPedido(DataTable table)
+        {
+            foreach (var row in table.Rows)
+            {
+                string value = row["value"];
+
+                orders.ConceptOrder(value);
+            }
+        }
+
+        [When("Agregar cantidad {string}")]
+        public void WhenAgregarCantidad(string value)
+        {
+            orders.QuantityconceptOrder(value);
+        }
+
+        [When("Agregar precio unitario {string}")]
+        public void WhenAgregarPrecioUnitario(string value)
+        {
+            orders.UnitPriceConceptOrder(value);
+        }
+
+        [When("Seleccionar IGV {string}")]
+        public void WhenSeleccionarIGV(string option)
+        {
+            orders.IGVOrder(option);
+        }
+
+        [When("Seleccionar DET.UNIF. {string}")]
+        public void WhenSeleccionarDET_UNIF_(string option)
+        {
+            orders.UnifiedDetailOrder(option);
         }
 
         [When("Agregar tipo de cliente {string} {string}")]

@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using FluentAssertions.Equivalency;
 using static OpenQA.Selenium.BiDi.Modules.BrowsingContext.Locator;
 using SeleniumExtras.WaitHelpers;
+using FluentAssertions.Execution;
+using OpenQA.Selenium.DevTools.V130.Debugger;
 
 namespace SigesCore.Hooks.VentasPage
 {
@@ -48,9 +50,30 @@ namespace SigesCore.Hooks.VentasPage
             utilityPage.EnterFieldModal(NewOrders.modal, NewOrders.concept, value);
         }
 
+        public void QuantityconceptOrder(string value)
+        {
+            utilityPage.CleanFieldModal(NewOrders.modal, NewOrders.quantity, value);
+        }
+
+        public void UnitPriceConceptOrder(string value)
+        {
+            utilityPage.CleanFieldModal(NewOrders.modal, NewOrders.unitPrice, value);
+        }
+
+        public void IGVOrder(string option)
+        {
+            utilityPage.CheckBox(NewOrders.modal, NewOrders.igv, option);
+        }
+
+        public void UnifiedDetailOrder(string option)
+        {
+            utilityPage.CheckBox(NewOrders.modal, NewOrders.unifDetail, option);
+        }
+
         public void CustomerTypeOrder(string option, string value)
         {
             utilityPage.CustomerType(NewOrders.modal, NewOrders.client, NewOrders.alias, option, value);
+            Thread.Sleep(3000);
         }
 
         public void SelectInvoiceType(string option)
@@ -64,11 +87,11 @@ namespace SigesCore.Hooks.VentasPage
             option = option.ToUpper();
             if (option == "INMEDIATA")
             {
-                orderModal.FindElement(NewOrders.deferredLabel).Click();
+                orderModal.FindElement(NewOrders.inmediate).Click();
             }
             else if (option == "DIFERIDA")
             {
-                orderModal.FindElement(NewOrders.inmediate).Click();
+                orderModal.FindElement(NewOrders.deferred).Click();
             }
             else
             {
@@ -121,12 +144,12 @@ namespace SigesCore.Hooks.VentasPage
         {
             utilityPage.ClickButton(InvalidateOrderClass.accept);
             Thread.Sleep(4000);
+            // utilityPage.ClickButton(NewOrders.save);
         }
 
         public void SaveOrder()
         {
-            utilityPage.ClickButton(NewOrders.save);
-            Thread.Sleep(4000);
+            driverOrder.FindElement(NewOrders.save).Click();
         }
     }
 }
