@@ -16,7 +16,7 @@ Scenario: Realizar un nuevo pedido
 	And Seleccionar DET.UNIF. 'SI'
 	And Agregar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante "NOTA DE VENTA (INTERNA)"
-	And Elegir tipo de entrega 'INMEDIATA'
+	And Elegir tipo de entrega 'DIFERIDA'
 	Then Guardar pedido o cotización
 
 Scenario: Realizar un nuevo pedido con con detalle unificado

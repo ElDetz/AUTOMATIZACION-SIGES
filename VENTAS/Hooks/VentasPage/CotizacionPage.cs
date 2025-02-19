@@ -112,10 +112,8 @@ namespace SigesCore.Hooks.VentasPage
             WebDriverWait wait = new WebDriverWait(driverQuota, TimeSpan.FromSeconds(10));
             string originalWindow = driverQuota.CurrentWindowHandle;
 
-            // Esperar hasta que haya más de una pestaña abierta
             wait.Until(d => driverQuota.WindowHandles.Count > 1);
 
-            // Cambiar a la nueva pestaña
             foreach (string window in driverQuota.WindowHandles)
             {
                 if (window != originalWindow)

@@ -113,6 +113,12 @@ namespace SigesCore.StepDefinitions.Ventas
             viewSale.ReasonDebitNote(value);
         }
 
+        [When("Seleccionar el tipo de entrega {string}")]
+        public void WhenSeleccionarElTipoDeEntrega(string option)
+        {
+            viewSale.DeliveryTypeNoteCredit(option);
+        }
+
         [When(@"Ingresar el interés total '([^']*)'")]
         public void WhenIngresarElInteresTotal(string value)
         {

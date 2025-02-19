@@ -458,5 +458,23 @@ namespace SigesCore.Hooks.Utility
                 throw new ArgumentException($"El {option} no es válido");
             }
         }
+
+        public void SelectDeliveryType(By pathModal, By pathImmediate, By pathDeferred, string option)
+        {
+            IWebElement orderModal = driver.FindElement(pathModal);
+            option = option.ToUpper();
+            if (option == "INMEDIATA")
+            {
+                orderModal.FindElement(pathImmediate).Click();
+            }
+            else if (option == "DIFERIDA")
+            {
+                orderModal.FindElement(pathDeferred).Click();
+            }
+            else
+            {
+                throw new ArgumentException($"El {option} no es válido");
+            }
+        }
     }
 }

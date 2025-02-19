@@ -134,7 +134,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.AndAsync("Seleccionar tipo de comprobante \"NOTA DE VENTA (INTERNA)\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 19
- await testRunner.AndAsync("Elegir tipo de entrega \'INMEDIATA\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Elegir tipo de entrega \'DIFERIDA\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 20
  await testRunner.ThenAsync("Guardar pedido o cotización", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");

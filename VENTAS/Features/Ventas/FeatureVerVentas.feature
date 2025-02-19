@@ -8,7 +8,7 @@ Scenario: Canjear comprobante
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
 	And Ingresar fecha inicial "27/01/2025"
-	And Ingresar fecha final "11/02/2025"
+	And Ingresar fecha final "19/02/2025"
 	And Click en consultar ventas
 	And Buscar venta 'NV02-46'
 	And Activar canje
@@ -24,7 +24,7 @@ Scenario: Emitir una nota de débito con aumento en el valor
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
 	And Ingresar fecha inicial "27/01/2025"
-	And Ingresar fecha final "12/02/2025"
+	And Ingresar fecha final "19/02/2025"
 	And Click en consultar ventas
 	And Buscar venta 'B002-27905'
 	And Ver venta buscada
@@ -58,14 +58,15 @@ Scenario: Emitir una nota de crédito por anulación de la operación
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
 	And Ingresar fecha inicial "27/01/2025"
-	And Ingresar fecha final "12/02/2025"
+	And Ingresar fecha final "19/02/2025"
 	And Click en consultar ventas
-	And Buscar venta 'B002-27900'
+	And Buscar venta 'B002-27922'
 	And Ver venta buscada
 	And Elegir tipo de nota 'CRÉDITO'
 	And Seleccionar el tipo de nota "ANULACIÓN DE LA OPERACIÓN"
 	And Seleccionar el documento "NOTA DE CREDITO"
 	And Escribir el motivo de la nota "Anulación"
+	And Seleccionar el tipo de entrega 'DIFERIDA'
 	And Guardar nota
 	Then Ver comprobante
 
@@ -73,7 +74,7 @@ Scenario: Emitir una nota de crédito por descuento global
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
 	And Ingresar fecha inicial "27/01/2025"
-	And Ingresar fecha final "12/02/2025"
+	And Ingresar fecha final "19/02/2025"
 	And Click en consultar ventas
 	And Buscar venta 'B002-27903'
 	And Ver venta buscada
@@ -81,7 +82,7 @@ Scenario: Emitir una nota de crédito por descuento global
 	And Seleccionar el tipo de nota "DESCUENTO GLOBAL"
 	And Seleccionar el documento "NOTA DE CREDITO"
 	And Escribir el motivo de la nota "Descuento"
-	And Ingresar el descuento global '30'
+	And Ingresar el descuento global '0.1'
 	And Guardar nota
 	Then Ver comprobante
 
@@ -89,7 +90,7 @@ Scenario: Emitir una nota de crédito por descuento por Item
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
 	And Ingresar fecha inicial "27/01/2025"
-	And Ingresar fecha final "12/02/2025"
+	And Ingresar fecha final "19/02/2025"
 	And Click en consultar ventas
 	And Buscar venta 'B002-27899'
 	And Ver venta buscada
@@ -101,26 +102,11 @@ Scenario: Emitir una nota de crédito por descuento por Item
 	And Guardar nota
 	Then Ver comprobante
 
-Scenario: Emitir una nota de crédito por devolución total
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
-	When Seleccionar Venta y luego "Ver Ventas"
-	And Ingresar fecha inicial "27/01/2025"
-	And Ingresar fecha final "12/02/2025"
-	And Click en consultar ventas
-	And Buscar venta 'B002-27898'
-	And Ver venta buscada
-	And Elegir tipo de nota 'CRÉDITO'
-	And Seleccionar el tipo de nota "DEVOLUCIÓN TOTAL"
-	And Seleccionar el documento "NOTA DE CREDITO"
-	And Escribir el motivo de la nota "Devolución total"
-	And Guardar nota
-	Then Ver comprobante
-
 Scenario: Emitir una nota de crédito por devolución por Item
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
 	And Ingresar fecha inicial "27/01/2025"
-	And Ingresar fecha final "12/02/2025"
+	And Ingresar fecha final "19/02/2025"
 	And Click en consultar ventas
 	And Buscar venta 'F002-8174'
 	And Ver venta buscada
@@ -129,6 +115,22 @@ Scenario: Emitir una nota de crédito por devolución por Item
 	And Seleccionar el documento "NOTA DE CREDITO"
 	And Escribir el motivo de la nota "Devolución por ítem"
 	And Ingresar la cantidad '1'
+	And Guardar nota
+	Then Ver comprobante
+
+Scenario: Emitir una nota de crédito por devolución total
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Ver Ventas"
+	And Ingresar fecha inicial "27/01/2025"
+	And Ingresar fecha final "19/02/2025"
+	And Click en consultar ventas
+	And Buscar venta 'F002-8175'
+	And Ver venta buscada
+	And Elegir tipo de nota 'CRÉDITO'
+	And Seleccionar el tipo de nota "DEVOLUCIÓN TOTAL"
+	And Seleccionar el documento "NOTA DE CREDITO"
+	And Escribir el motivo de la nota "Devolución total"
+	And Seleccionar el tipo de entrega 'DIFERIDA'
 	And Guardar nota
 	Then Ver comprobante
 

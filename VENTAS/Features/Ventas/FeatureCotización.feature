@@ -52,7 +52,7 @@ Scenario: Pregenerar pedido con cliente identificado o alias
 	And Buscar venta '0002 - 25620'
 	And Click en pregenerar pedido
 	And Identificar cliente 'DNI' '72380461'
-	Then Guardar pedido pregenerado
+	Then Guardar pedido o cotización
 
 Scenario: Pregenerar pedido con detalle unificado
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
@@ -62,9 +62,9 @@ Scenario: Pregenerar pedido con detalle unificado
 	And Click en consultar pedidos
 	And Buscar venta '0002 - 25613'
 	And Click en pregenerar pedido
-	And Identificar cliente 'DNI' '72380461'
 	And Seleccionar el DET.UNIF. 'SI'
-	Then Guardar pedido pregenerado
+	And Agregar tipo de cliente 'DNI' '72380461'
+	Then Guardar pedido o cotización
 
 @PregenerarVenta
 Scenario: Pregenerar venta

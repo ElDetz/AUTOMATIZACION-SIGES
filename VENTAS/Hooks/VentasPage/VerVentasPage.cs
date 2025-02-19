@@ -133,6 +133,11 @@ namespace SigesCore.Hooks.VentasPage
             utilityPage.EnterField(DebitNote.reasonDebitNotePath, value);
         }
 
+        public void DeliveryTypeNoteCredit(string option)
+        {
+            utilityPage.SelectDeliveryType(DebitNote.modal, CreditNote.immediate, CreditNote.deferred, option);
+        }
+
         public void NoteAmount(string value)
         {
             utilityPage.EnterField(DebitNote.noteAmountPath, value);

@@ -83,20 +83,7 @@ namespace SigesCore.Hooks.VentasPage
 
         public void SelectDeliveryType(string option)
         {
-            IWebElement orderModal = driverOrder.FindElement(NewOrders.modal);
-            option = option.ToUpper();
-            if (option == "INMEDIATA")
-            {
-                orderModal.FindElement(NewOrders.inmediate).Click();
-            }
-            else if (option == "DIFERIDA")
-            {
-                orderModal.FindElement(NewOrders.deferred).Click();
-            }
-            else
-            {
-                throw new ArgumentException($"El {option} no es válido");
-            }
+            utilityPage.SelectDeliveryType(NewOrders.modal, NewOrders.inmediate, NewOrders.deferred, option);
         }
 
         public void InitialDate(string value)
@@ -144,12 +131,12 @@ namespace SigesCore.Hooks.VentasPage
         {
             utilityPage.ClickButton(InvalidateOrderClass.accept);
             Thread.Sleep(4000);
-            // utilityPage.ClickButton(NewOrders.save);
         }
 
         public void SaveOrder()
         {
             driverOrder.FindElement(NewOrders.save).Click();
+            Thread.Sleep(3000);
         }
     }
 }

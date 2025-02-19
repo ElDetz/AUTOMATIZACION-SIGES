@@ -57,6 +57,10 @@ namespace SigesCore.Hooks.XPaths
         public static readonly By creditNoteButton = By.XPath("//button[contains(text(),'NOTA DE CRÉDITO')]");
 
         public static readonly By quantityPath = By.XPath("//tbody/tr[1]/td[8]/input[1]");
+
+        public static readonly By immediate = By.XPath("//label[@for='radioNota1']");
+
+        public static readonly By deferred = By.XPath("//label[@for='radioNota2']");
     }
 
     public class InvalidateDocumentClass

@@ -280,7 +280,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.AndAsync("Identificar cliente \'DNI\' \'72380461\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 55
- await testRunner.ThenAsync("Guardar pedido pregenerado", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.ThenAsync("Guardar pedido o cotización", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -325,13 +325,13 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.AndAsync("Click en pregenerar pedido", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 65
- await testRunner.AndAsync("Identificar cliente \'DNI\' \'72380461\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 66
  await testRunner.AndAsync("Seleccionar el DET.UNIF. \'SI\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
+#line 66
+ await testRunner.AndAsync("Agregar tipo de cliente \'DNI\' \'72380461\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
 #line 67
- await testRunner.ThenAsync("Guardar pedido pregenerado", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.ThenAsync("Guardar pedido o cotización", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
