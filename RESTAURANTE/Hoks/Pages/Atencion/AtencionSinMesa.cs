@@ -1,11 +1,15 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using RazorEngine.Compilation.ImpromptuInterface.Optimization;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace RESTAURANTE.Hoks.Pages.Atencion
@@ -40,6 +44,35 @@ namespace RESTAURANTE.Hoks.Pages.Atencion
         private By _anotacionItem = By.XPath("//button[@title='Agregar una Anotacion']");
         private By _eliminarItem = By.XPath("//button[@title='Eliminar Item de Orden']");
         private By _guardarOrden = By.XPath("//p[@title='Guardar Orden']");
+
+
+        public string Formato(string accion, string input)
+        {
+            switch (accion.ToLower())
+            {
+                case "nombre":
+                    // Si el string comienza con números seguidos de '|', lo eliminamos
+                    return Regex.IsMatch(input, @"^\d+\|")
+                        ? Regex.Replace(input, @"^\d+\|", "").Trim()
+                        : input.Trim();
+
+                case "numero":
+                    // Expresión regular para capturar solo el número al inicio antes del "|"
+                    Match match = Regex.Match(input, @"^(\d+)\|");
+
+                    // Si hay coincidencia, devuelve el número; de lo contrario, devuelve "N/A"
+                    return match.Success ? match.Groups[1].Value : "N/A";
+
+                case "decimal":
+                    if (decimal.TryParse(input, out decimal numero))
+                    {
+                        return numero.ToString("0.00"); // Convierte a dos decimales
+                    }
+                    return input;
+                default:
+                    return "Acción inválida";
+            }
+        }
 
         public void SeleccionModoAtencion(string _modoAtencion)
         {
@@ -87,13 +120,13 @@ namespace RESTAURANTE.Hoks.Pages.Atencion
             Thread.Sleep(5000);
         }
 
-        public void CodigoItem(string _concepto, string _anotacion)
+        public void CodigoItem(string _concepto)
         {
             utilities.SubmitTexto(_codeBarraItem, _concepto);
-            Thread.Sleep(5000);
+            Thread.Sleep(2000);
         }
 
-        public void SeleccionItem(string _concepto, string _cantidad, string _anotacion)
+        public void SeleccionItem(string _concepto, string _cantidad)
         {
             // ITEM POR SELECT
             var dropdown = new SelectElement(driver.FindElement(_selectItem));
@@ -106,6 +139,63 @@ namespace RESTAURANTE.Hoks.Pages.Atencion
             Thread.Sleep(2000);
             // CHECK
             utilities.buttonClickeable(_agregarItem);
+            Thread.Sleep(2000);
+        }
+
+        public void AccionItem(string _accion, string _item, string _cantidad, string _anotacion)
+        {
+            // Encuentra la tabla por su ID
+            IWebElement tabla = driver.FindElement(By.Id("acordionAnotacion"));
+            IList<IWebElement> filas = tabla.FindElements(By.TagName("tr"));
+
+            foreach (var fila in filas)
+            {
+                try
+                {
+                    IWebElement ordenElemento = fila.FindElement(By.CssSelector("td:nth-child(1)"));
+                    string orden = ordenElemento.Text;
+
+                    IWebElement descripcionElemento = fila.FindElement(By.CssSelector("td:nth-child(2)"));
+                    string descripcion = descripcionElemento.Text;
+
+                    IWebElement cantidadElemento = fila.FindElement(By.CssSelector("td:nth-child(3)"));
+                    string cantidad = cantidadElemento.Text;
+
+                    if (descripcion.Contains(_item) && cantidad.Contains(Formato("decimal", _cantidad)))
+                    {
+                        int ordenNumero = int.Parse(orden); // Convertimos a entero
+                        // Encuentra y hace clic en el botón de anotación
+                        utilities.ScrollViewElement(fila);
+                        Thread.Sleep(2000);
+                        switch (_accion)
+                        {
+                            case "Agregar anotacion":
+                                IWebElement botonAnotacion = fila.FindElement(By.CssSelector("a.btn-info"));
+                                botonAnotacion.Click();
+
+                                IWebElement inputAnotacion = driver.FindElement(By.Id($"input-anotacion{ordenNumero - 1}"));
+                                inputAnotacion.SendKeys(_anotacion);
+                                Thread.Sleep(2000);
+                                botonAnotacion.Click();
+                                break;
+                            case "Eliminar":
+                                IWebElement botonEliminar = fila.FindElement(By.CssSelector("button.btn-danger"));
+                                botonEliminar.Click();
+                                break;
+                            default:
+                                throw new ArgumentException($"LA ACCION {_accion} NO ES VALIDO");
+                        }
+                        Thread.Sleep(2000);
+                        utilities.ScrollViewTop();
+
+                        break; // Sale del bucle al encontrar el botón
+                    }
+                }
+                catch (NoSuchElementException)
+                {
+                    continue; // Si la fila no tiene una descripción válida, sigue con la siguiente
+                }
+            }            
         }
 
         public void AccionOrden(string _accion)
@@ -115,151 +205,7 @@ namespace RESTAURANTE.Hoks.Pages.Atencion
             Thread.Sleep(4000);
         }
 
-        public void AgregarAnotacion(string _accion)
-        {
-            // Encuentra la tabla por su ID
-            IWebElement tabla = driver.FindElement(By.Id("acordionAnotacion"));
-
-            // Encuentra todas las filas dentro de la tabla
-            IList<IWebElement> filas = tabla.FindElements(By.TagName("tr"));
-
-            foreach (var fila in filas)
-            {
-                try
-                {
-                    // Encuentra la celda de la descripción dentro de la fila
-                    IWebElement descripcionElemento = fila.FindElement(By.CssSelector("td:nth-child(2)"));
-                    string descripcion = descripcionElemento.Text;
-
-                    // Si la fila contiene la orden específica
-                    if (descripcion.Contains("VINO FRONTERA BOTELLA 1 UN"))
-                    {
-                        // Encuentra y hace clic en el botón de anotación
-                        IWebElement botonAnotacion = fila.FindElement(By.CssSelector("a.btn-info"));
-                        botonAnotacion.Click();
-                        Console.WriteLine("Botón de anotación presionado.");
-
-                        Thread.Sleep(1000);
-                        // Encuentra el campo de anotación en la fila actual
-                        IWebElement inputAnotacion = driver.FindElement(By.CssSelector("input[id^='input-anotacion']"));
-
-                        // Escribir la anotación
-                        inputAnotacion.SendKeys("Sin mayonesa, por favor.");
-                        Console.WriteLine("Anotación ingresada.");
-                        break; // Termina el bucle al encontrar la fila
-                    }
-                }
-                catch (NoSuchElementException)
-                {
-                    continue; // Si la fila no tiene una descripción válida, sigue con la siguiente
-                }
-            }
-            Thread.Sleep(4000);
-
-        }
-
-        public void AnotacionItem(string _accion)
-        {
-            // Encuentra la tabla por su ID
-            IWebElement tabla = driver.FindElement(By.Id("acordionAnotacion"));
-
-            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-            // js.ExecuteScript("arguments[0].scrollIntoView({block: 'nearest', inline: 'center'});", tabla);
-            // js.ExecuteScript("window.scrollTo(0, document.body.scrollHeight);");
-            Thread.Sleep(2000);
-
-            // Encuentra todas las filas dentro de la tabla
-            IList<IWebElement> filas = tabla.FindElements(By.TagName("tr"));
-
-            foreach (var fila in filas)
-            {
-                try
-                {
-                    // IDENTIFICA EL ORDEN DE FILA
-                    IWebElement ordenElemento = fila.FindElement(By.CssSelector("td:nth-child(1)"));
-                    string orden = ordenElemento.Text;
-
-                    // Encuentra la celda de la descripción dentro de la fila
-                    IWebElement descripcionElemento = fila.FindElement(By.CssSelector("td:nth-child(2)"));
-                    string descripcion = descripcionElemento.Text;
-
-                    // Encuentra la celda de cantidad dentro de la fila
-                    IWebElement cantidadElemento = fila.FindElement(By.CssSelector("td:nth-child(3)"));
-                    string cantidad = cantidadElemento.Text;
-
-                    // Si la fila contiene la orden específica
-                    if (descripcion.Contains("VINO FRONTERA BOTELLA 1 UN") && cantidad.Contains("3.00"))
-                    {
-                        int ordenNumero = int.Parse(orden); // Convertimos a entero
-
-                        Console.WriteLine($"EL ORDEN ES {ordenNumero}");
-
-                        // Encuentra y hace clic en el botón de anotación
-                        IWebElement botonAnotacion = fila.FindElement(By.CssSelector("a.btn-info"));
-                        js.ExecuteScript("arguments[0].scrollIntoView(true);", botonAnotacion);
-                        Thread.Sleep(2000);
-                        botonAnotacion.Click();
-                        Console.WriteLine("Botón de anotación presionado.");
-
-                        Thread.Sleep(2000);
-                        /*
-                        js.ExecuteScript("arguments[0].scrollIntoView(true);", inputAnotacion);
-                        Thread.Sleep(2000);
-
-                        */
-                        // Escribir la anotación
-
-                        // Encuentra el campo de anotación en la fila actual
-                        IWebElement inputAnotacion = driver.FindElement(By.Id($"input-anotacion{ordenNumero-1}"));
-                        // js.ExecuteScript("arguments[0].scrollIntoView(true);", inputAnotacion);
-                        Thread.Sleep(2000);
-                        // utilities.addFieldModal(inputAnotacion, By.CssSelector("input[id^='input-anotacion']"), "Sin mayonesa, por favor.");
-                        inputAnotacion.SendKeys("Sin mayonesa, por favor.");
-                        Console.WriteLine("Anotación ingresada.");
-                        break; // Termina el bucle al encontrar la fila
 
 
-                    }
-                }
-                catch (NoSuchElementException)
-                {
-                    continue; // Si la fila no tiene una descripción válida, sigue con la siguiente
-                }
-            }
-            Thread.Sleep(4000);
-        }
-
-        public void ElimarItem(string _accion)
-        {
-            // Encuentra la tabla por su ID
-            IWebElement tabla = driver.FindElement(By.Id("acordionAnotacion"));
-
-            // Encuentra todas las filas dentro de la tabla
-            IList<IWebElement> filas = tabla.FindElements(By.TagName("tr"));
-
-            foreach (var fila in filas)
-            {
-                try
-                {
-                    // Encuentra la celda de la descripción dentro de la fila
-                    IWebElement descripcionElemento = fila.FindElement(By.CssSelector("td:nth-child(2)"));
-                    string descripcion = descripcionElemento.Text;
-
-                    // Si la fila contiene la orden específica
-                    if (descripcion.Contains("SALCHIPAPA SALCHIPAPA ESPECIAL"))
-                    {
-                        // Encuentra y hace clic en el botón de anotación
-                        IWebElement botonAnotacion = fila.FindElement(By.CssSelector("a.btn-info"));
-                        botonAnotacion.Click();
-                        Console.WriteLine("Botón de anotación presionado.");
-                        break; // Termina el bucle al encontrar la fila
-                    }
-                }
-                catch (NoSuchElementException)
-                {
-                    continue; // Si la fila no tiene una descripción válida, sigue con la siguiente
-                }
-            }
-        }
     }
 }   

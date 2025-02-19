@@ -184,14 +184,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
                             "Username",
                             "Password"});
-                table3.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "admin@tintoymadero.com",
                             "calidad"});
 #line 27
- await testRunner.GivenAsync("Inicio de sesion con usuario", ((string)(null)), table3, "Given ");
+ await testRunner.GivenAsync("Inicio de sesion con usuario", ((string)(null)), table5, "Given ");
 #line hidden
 #line 30
  await testRunner.AndAsync("Se ingresa al modulo \'Caja\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");

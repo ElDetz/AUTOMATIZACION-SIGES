@@ -5,6 +5,7 @@ using RESTAURANTE.Hoks.Pages.Preparacion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -76,15 +77,20 @@ namespace RESTAURANTE.StepDefinitions
                 switch (_orden)
                 {
                     case "CODIGO":
-                        atencionSinMesaPage.CodigoItem(_concepto, _anotacion);
+                        atencionSinMesaPage.CodigoItem(atencionSinMesaPage.Formato("numero", _concepto));
                         break;
 
                     case "ITEM":
-                        atencionSinMesaPage.SeleccionItem(_concepto, _cantidad, _anotacion);
+                        atencionSinMesaPage.SeleccionItem(_concepto, _cantidad);
                         break;
 
                     default:
-                        throw new ArgumentException($"La {_orden} no es correcta");
+                        throw new ArgumentException($"ORDEN NO INGRESADA: {_orden}");
+                }
+                
+                if (!string.IsNullOrWhiteSpace(_anotacion))
+                {
+                    atencionSinMesaPage.AccionItem("Agregar anotacion", atencionSinMesaPage.Formato("nombre", _concepto), _cantidad, _anotacion);
                 }
                 Thread.Sleep(4000);
             }
@@ -94,14 +100,27 @@ namespace RESTAURANTE.StepDefinitions
         public void WhenSeRealizaLaAccionDeLaOrden(string _accion)
         {
             // atencionSinMesaPage.AgregarAnotacion(_accion);
-            atencionSinMesaPage.AnotacionItem(_accion);
+            // atencionSinMesaPage.AnotacionItem(_accion);
             // atencionSinMesaPage.AccionOrden(_accion);
         }
 
-        [Then("Orden Tomada")]
-        public void ThenOutcome()
+        [When("Se realiza la siguiente modificacion a la orden:")]
+        public void WhenSeRealizaLaSiguienteModificacionALaOrden(DataTable dataTable)
         {
-            // 
+            foreach (var row in dataTable.Rows)
+            {
+                string _accion = row["Accion"];
+                string _item = row["Concepto"];
+                string _cantidad = row["Cantidad"];
+                string _anotacion = row["Anotacion"];
+                atencionSinMesaPage.AccionItem(_accion, _item, _cantidad, _anotacion);
+            }
+        }
+
+        [Then("Se procede a {string} la orden")]
+        public void ThenOutcome(string _accion)
+        {
+            atencionSinMesaPage.AccionOrden(_accion);
         }
     }
 }

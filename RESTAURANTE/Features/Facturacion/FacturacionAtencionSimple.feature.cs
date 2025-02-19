@@ -111,20 +111,20 @@ this.ScenarioInitialize(scenarioInfo);
 #line 11
  await testRunner.AndAsync("Se selecciona el tipo de factura \'SIMPLE\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-                global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
                             "TipoCliente",
                             "ValorCliente",
                             "TipoComprobante",
                             "Observacion",
                             "MedioPago"});
-                table6.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "DNI",
                             "72935878",
                             "NOTA DE VENTA (INTERNA)",
                             "OBSERVACIÓN",
                             "EF"});
 #line 13
- await testRunner.WhenAsync("Se ingresan los detalles de la factura:", ((string)(null)), table6, "When ");
+ await testRunner.WhenAsync("Se ingresan los detalles de la factura:", ((string)(null)), table8, "When ");
 #line hidden
 #line 17
  await testRunner.ThenAsync("Se realiza la facturación", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
@@ -159,20 +159,20 @@ this.ScenarioInitialize(scenarioInfo);
 #line 23
  await testRunner.AndAsync("Se selecciona el tipo de factura \'SIMPLE\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-                global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
                             "TipoCliente",
                             "ValorCliente",
                             "TipoComprobante",
                             "Observacion",
                             "MedioPago"});
-                table7.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "DNI",
                             "72935878",
                             "BOLETA DE VENTA ELECTRONICA",
                             "OBSERVACIÓN",
                             "TDEB"});
 #line 25
- await testRunner.WhenAsync("Se ingresan los detalles de la factura:", ((string)(null)), table7, "When ");
+ await testRunner.WhenAsync("Se ingresan los detalles de la factura:", ((string)(null)), table9, "When ");
 #line hidden
 #line 29
  await testRunner.AndAsync("Se ingresan datos del pago \'INTERBANK\' \'AMERICAN EXPRESS\' \'10001\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -225,18 +225,18 @@ this.ScenarioInitialize(scenarioInfo);
 #line 41
  await testRunner.AndAsync("Selecciona el modo de pago \'TDEB\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table10 = new global::Reqnroll.Table(new string[] {
                             "Banco_Cuenta",
                             "TipoTarjeta",
                             "MontoRecibido",
                             "Informacion"});
-                table8.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "001103180100023457",
                             "-",
                             "-",
                             "10012"});
 #line 42
-  await testRunner.AndAsync("Se ingresan los datos del pago:", ((string)(null)), table8, "And ");
+  await testRunner.AndAsync("Se ingresan los datos del pago:", ((string)(null)), table10, "And ");
 #line hidden
 #line 45
  await testRunner.ThenAsync("Realizar facturacion", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");

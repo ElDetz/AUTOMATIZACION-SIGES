@@ -113,44 +113,44 @@ this.ScenarioInitialize(scenarioInfo);
 #line 9
  await testRunner.AndAsync("Se especifica que la factura será dividida en \'3\' cuentas", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-                global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
                             "TipoCliente",
                             "ValorCliente",
                             "TipoComprobante",
                             "Observacion",
                             "MedioPago"});
-                table4.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "ALIAS",
                             "72935878",
                             "FACTURA ELECTRONICA",
                             "OBSERVACIÓN1",
                             "DEPCU"});
-                table4.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "ALIAS",
                             "CHIQUI",
                             "NOTA DE VENTA (INTERNA)",
                             "OBSERVACIÓN2",
                             "TDEB"});
 #line 10
- await testRunner.WhenAsync("Se ingresan los detalles de la factura:", ((string)(null)), table4, "When ");
+ await testRunner.WhenAsync("Se ingresan los detalles de la factura:", ((string)(null)), table6, "When ");
 #line hidden
-                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
                             "Banco_Cuenta",
                             "TipoTarjeta",
                             "MontoRecibido",
                             "Informacion"});
-                table5.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "001103180100023457",
                             "-",
                             "-",
                             "-"});
-                table5.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "INTERBANK",
                             "AMERICAN EXPRESS",
                             "-",
                             "10010"});
 #line 15
- await testRunner.AndAsync("Se ingresan los datos del pago:", ((string)(null)), table5, "And ");
+ await testRunner.AndAsync("Se ingresan los datos del pago:", ((string)(null)), table7, "And ");
 #line hidden
 #line 20
  await testRunner.ThenAsync("Se realiza la facturación", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");

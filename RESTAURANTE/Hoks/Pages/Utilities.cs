@@ -145,6 +145,20 @@ namespace RESTAURANTE.Hoks.Pages
             _element.FindElement(_path).SendKeys(_field);
         }
 
+        // SCROLL
+        public void ScrollViewElement(IWebElement _path)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("arguments[0].scrollIntoView(true);", _path);
+            Thread.Sleep(2000);
+        }
+
+        public void ScrollViewTop()
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("window.scrollTo(0, 0);");
+            Thread.Sleep(2000);
+        }
 
         public void SelecOption(IWebElement _element, By _path, string option)
         {

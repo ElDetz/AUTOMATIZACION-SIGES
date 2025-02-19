@@ -107,23 +107,23 @@ this.ScenarioInitialize(scenarioInfo);
 #line 8
  await testRunner.AndAsync("Se ingresa al módulo \'Preparacion\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-                global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table11 = new global::Reqnroll.Table(new string[] {
                             "ORDEN",
                             "ITEM"});
-                table9.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "C001 - 125340",
                             "SALCHIPAPA SALCHIPAPA ESPECIAL"});
-                table9.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "C001 - 125340",
                             "CARTA MOLLEJAS A LA PARRILLA"});
-                table9.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "C001 - 125340",
                             "CARTA PIQUEO DE LOMO FINO"});
-                table9.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "C001 - 125339",
                             "CARTA BROCHETA DE LOMO"});
 #line 9
- await testRunner.WhenAsync("Se procede a \'Preparar\' las siguientes ordenes:", ((string)(null)), table9, "When ");
+ await testRunner.WhenAsync("Se procede a \'Preparar\' las siguientes ordenes:", ((string)(null)), table11, "When ");
 #line hidden
 #line 16
  await testRunner.ThenAsync("", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
