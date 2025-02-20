@@ -130,17 +130,27 @@ this.ScenarioInitialize(scenarioInfo);
                             "ITEM",
                             "8|CARTA ANTICUCHO A LA PARRILLA",
                             "1",
-                            "Sin ensalada"});
+                            "Anotacion 1"});
                 table2.AddRow(new string[] {
                             "CODIGO",
                             "9|CARTA MOLLEJAS A LA PARRILLA",
-                            "4",
+                            "1",
                             ""});
                 table2.AddRow(new string[] {
                             "ITEM",
+                            "23|CARTA MILANESA DE POLLO",
+                            "2",
+                            ""});
+                table2.AddRow(new string[] {
+                            "CODIGO",
                             "8|CARTA ANTICUCHO A LA PARRILLA",
-                            "4",
-                            "Sin ensalada"});
+                            "1",
+                            "Anotacion 3"});
+                table2.AddRow(new string[] {
+                            "ITEM",
+                            "17|CARTA TEQUEÑOS EN SALSA DE HUACAMOLE",
+                            "2",
+                            "Anotacion 4"});
 #line 16
  await testRunner.WhenAsync("Se ingresa las siguientes ordenes:", ((string)(null)), table2, "When ");
 #line hidden
@@ -152,17 +162,17 @@ this.ScenarioInitialize(scenarioInfo);
                 table3.AddRow(new string[] {
                             "Agregar anotacion",
                             "CARTA MOLLEJAS A LA PARRILLA",
-                            "4",
-                            "Extra Grande"});
+                            "1",
+                            "Anotacion 2"});
                 table3.AddRow(new string[] {
                             "Eliminar",
-                            "CARTA ANTICUCHO A LA PARRILLA",
-                            "1",
+                            "CARTA MILANESA DE POLLO",
+                            "2",
                             ""});
-#line 22
+#line 24
  await testRunner.AndAsync("Se realiza la siguiente modificacion a la orden:", ((string)(null)), table3, "And ");
 #line hidden
-#line 27
+#line 29
  await testRunner.ThenAsync("Se procede a \'Guardar\' la orden", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -178,7 +188,7 @@ this.ScenarioInitialize(scenarioInfo);
                     "AtencionSinMesa"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Atencion de una orden sin mesa - AL PASO", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 30
+#line 32
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -188,22 +198,22 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 31
+#line 33
  await testRunner.GivenAsync("Inicio de sesión con usuario \'admin@tintoymadero.com\' y contraseña \'calidad\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 32
+#line 34
  await testRunner.AndAsync("Se ingresa al módulo \'Atencion\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 33
+#line 35
  await testRunner.AndAsync("Se seleciona el tipo de atencion \'SIN MESA\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 34
+#line 36
  await testRunner.AndAsync("Se seleciona el modo \'AL PASO\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 35
+#line 37
  await testRunner.AndAsync("Se ingresa el cliente \'LEONARDO\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 36
+#line 38
  await testRunner.AndAsync("Se selecciona el mozo \'JAVIER STANLY CISNEROS SANCHEZ\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
                 global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
@@ -226,11 +236,57 @@ this.ScenarioInitialize(scenarioInfo);
                             "8|CARTA ANTICUCHO A LA PARRILLA",
                             "4",
                             "Sin ensalada"});
-#line 37
+#line 39
  await testRunner.WhenAsync("Se ingresa las siguientes ordenes:", ((string)(null)), table4, "When ");
 #line hidden
-#line 43
+#line 45
  await testRunner.ThenAsync("Se procede a \'Guardar\' la orden", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Buscar orden")]
+        [NUnit.Framework.CategoryAttribute("AtencionSinMesa")]
+        public async System.Threading.Tasks.Task BuscarOrden()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "AtencionSinMesa"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Buscar orden", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 48
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 49
+ await testRunner.GivenAsync("Inicio de sesión con usuario \'admin@tintoymadero.com\' y contraseña \'calidad\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 50
+ await testRunner.AndAsync("Se ingresa al módulo \'Atencion\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 51
+ await testRunner.AndAsync("Se seleciona el tipo de atencion \'SIN MESA\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
+                            "Alias",
+                            "Modo",
+                            "Total"});
+                table5.AddRow(new string[] {
+                            "LEONARDO",
+                            "DELIVERY",
+                            "246.00"});
+#line 52
+ await testRunner.AndAsync("Se selecciona el siguiente pedido:", ((string)(null)), table5, "And ");
+#line hidden
+#line 55
+ await testRunner.AndAsync("Se realiza la accion de \'Atender\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

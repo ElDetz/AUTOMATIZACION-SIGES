@@ -96,14 +96,6 @@ namespace RESTAURANTE.StepDefinitions
             }
         }
 
-        [When("Se realiza la accion de {string} la Orden")]
-        public void WhenSeRealizaLaAccionDeLaOrden(string _accion)
-        {
-            // atencionSinMesaPage.AgregarAnotacion(_accion);
-            // atencionSinMesaPage.AnotacionItem(_accion);
-            // atencionSinMesaPage.AccionOrden(_accion);
-        }
-
         [When("Se realiza la siguiente modificacion a la orden:")]
         public void WhenSeRealizaLaSiguienteModificacionALaOrden(DataTable dataTable)
         {
@@ -115,6 +107,26 @@ namespace RESTAURANTE.StepDefinitions
                 string _anotacion = row["Anotacion"];
                 atencionSinMesaPage.AccionItem(_accion, _item, _cantidad, _anotacion);
             }
+        }
+
+        [Given("Se selecciona el siguiente pedido:")]
+        public void GivenSeSeleccionaElSiguientePedido(DataTable dataTable)
+        {
+            foreach (var row in dataTable.Rows)
+            {
+                string _alias = row["Alias"];
+                string _modo = row["Modo"];
+                string _total = row["Total"];
+                atencionSinMesaPage.BusquedaOrden(_alias, _modo, _total);
+            }
+        }
+
+        [Given("Se realiza la accion de {string}")]
+        public void GivenSeRealizaLaAccionDe(string _accion)
+        {
+            atencionSinMesaPage.AccionTabla(_accion, "");
+
+            // atencionSinMesaPage.AccionPedido(_accion);
         }
 
         [Then("Se procede a {string} la orden")]
