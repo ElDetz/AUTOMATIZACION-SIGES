@@ -8,9 +8,9 @@ Scenario: Canjear comprobante
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
 	And Ingresar fecha inicial "27/01/2025"
-	And Ingresar fecha final "19/02/2025"
+	And Ingresar fecha final "20/02/2025"
 	And Click en consultar ventas
-	And Buscar venta 'NV02-46'
+	And Buscar venta 'NV02-53'
 	And Activar canje
 	And Seleccionar venta
 	And Click en el botón canjear
@@ -157,7 +157,7 @@ Scenario: Clonar una venta
 	And Ingresar fecha inicial "27/01/2025"
 	And Ingresar fecha final "13/02/2025"
 	And Click en consultar ventas
-	And Buscar venta 'B002-27909'
+	And Buscar venta 'B002-27908'
 	And Ver venta buscada
 	And Click en el botón clonar
 	Then Guardar venta

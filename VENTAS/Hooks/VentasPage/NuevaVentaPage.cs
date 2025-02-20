@@ -31,51 +31,31 @@ namespace SigesCore.Hooks.VentasPage
             this.utilityPage = new UtilityVenta(driver);
         }
 
-        //SELECCIÓN DE MÓDULO Y SUBMÓDULO
+        // SELECCIÓN DE MÓDULO Y SUBMÓDULO
         public void SelectModule(string option)
         {
-            utilityPage.ClickButton(SalesModule.SalesMenu);
+            utilityPage.ClickButton(SalesModule.btnSalesMenu);
 
             switch (option)
             {
                 case "Nueva Venta":
 
-                    utilityPage.ClickButton(SalesModule.NewSaleLink);
+                    utilityPage.ClickButton(SalesModule.btnNewSale);
                     break;
 
                 case "Venta Modo Caja":
 
-                    utilityPage.ClickButton(SalesModule.SaleCashModeLink);
+                    utilityPage.ClickButton(SalesModule.btnSaleCashMode);
                     break;
 
                 case "Venta Por Contingencia":
 
-                    utilityPage.ClickButton(SalesModule.ContingencySaleLink);
+                    utilityPage.ClickButton(SalesModule.btnContingencySale);
                     break;
 
                 case "Ver Ventas":
 
-                    utilityPage.ClickButton(SalesModule.ViewSalesLink);
-                    break;
-
-                case "Reportes Vendedor":
-
-                    utilityPage.ClickButton(SalesModule.SellerReportLink);
-                    break;
-
-                case "Reportes Puntos":
-
-                    utilityPage.ClickButton(SalesModule.PointsReportLink);
-                    break;
-
-                case "Reportes Gerente":
-
-                    utilityPage.ClickButton(SalesModule.ManagerReportLink);
-                    break;
-
-                case "Reportes":
-
-                    utilityPage.ClickButton(SalesModule.ReportsMenu);
+                    utilityPage.ClickButton(SalesModule.btnViewSales);
                     break;
 
                 default:
@@ -83,11 +63,11 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
-        //AGREGACIÓN DE CONCEPTO
+        // AGREGACIÓN DE CONCEPTO
         public void TypeSelectConcept(string option, string value)
         {
             option = option.ToUpper();
-            utilityPage.ElementExists(Concept.BarcodeInputField);
+            utilityPage.ElementExists(Concept.txtBarCode);
             switch (option)
             {
                 case "BARRA":
@@ -103,19 +83,19 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
-        //INGRESAR CANTIDAD
+        // INGRESAR CANTIDAD
         public void QuantityConcept(string value)
         {
-            utilityPage.Quantity(Concept.QuantityInputField, value);
+            utilityPage.Quantity(Concept.txtQuantity, value);
         }
 
-        //INGRESAR PRECIO UNITARIO
+        // INGRESAR PRECIO UNITARIO
         public void UnitPrice(string value)
         {
-            utilityPage.Quantity(Concept.UnitPriceInputField, value);
+            utilityPage.Quantity(Concept.txtUnitPrice, value);
         }
 
-        //SELECCIONAR IGV Y DET.UNIF
+        // SELECCIONAR IGV Y DET.UNIF
         public class CheckboxHelper
         {
             public static void CheckOption(By locator, string option, IWebDriver driver)
@@ -145,149 +125,53 @@ namespace SigesCore.Hooks.VentasPage
                     throw new ArgumentException($"Opción no válida: {option}. Use 'SI' o 'NO'.");
                 }
             }
+
             public static void EnableIGV(string option, IWebDriver driver)
             {
-                CheckOption(CheckBox.CheckboxIGV, option, driver);
+                CheckOption(CheckBox.chkIGV, option, driver);
             }
 
             public static void EnableUnifiedDetail(string option, IWebDriver driver)
             {
-                CheckOption(CheckBox.CheckboxUnifiedDetail, option, driver);
+                CheckOption(CheckBox.chkUnifiedDetail, option, driver);
             }
         }
 
-        //SELECIONAR EL PUNTO DE VENTA (PROPIO DE VENTA POR CAJA)
+        //SELECCIONAR EL PUNTO DE VENTA (PROPIO DE VENTA POR CAJA)
         public void PointSale(string option)
         {
             utilityPage.SelectOption(CashSales.PointSalePath, option);
         }
 
-        //SELECIONAR EL PUNTO DE VENTA(PROPIO DE VENTA POR CAJA)
+        // SELECCIONAR EL PUNTO DE VENTA(PROPIO DE VENTA POR CAJA)
         public void Seller(string option)
         {
             utilityPage.SelectOption(CashSales.SellerPath, option);
         }
-        //SELECIONAR EL TIPO DE CLIENTE
+
+        // SELECCIONAR EL TIPO DE CLIENTE
         public void SelectCustomerType(string option, string value)
         {
             option = option.ToUpper();
-            utilityPage.ElementExists(Dates.ClientField);
+            utilityPage.ElementExists(Dates.chkTypeClient);
 
             switch (option)
             {
                 case "VARIOS":
-
                     break;
 
                 case "DNI":
-
-                    utilityPage.EnterField(Dates.ClientField, value);
-                    driver.FindElement(Dates.ClientField).SendKeys(Keys.Enter);
-                    Thread.Sleep(4000);
-                    break;
-
                 case "RUC":
-
-                    utilityPage.EnterField(Dates.ClientField, value);
-                    driver.FindElement(Dates.ClientField).SendKeys(Keys.Enter);
-                    Thread.Sleep(4000);
+                    utilityPage.TypeCliente(Dates.chkTypeClient, value);
                     break;
 
                 case "ALIAS":
-
-                    utilityPage.EnterField(Dates.AliasField, value);
-                    driver.FindElement(Dates.AliasField).SendKeys(Keys.Enter);
-                    Thread.Sleep(4000);
+                    utilityPage.TypeCliente(Dates.txtAlias, value);
                     break;
 
                 default:
-                    throw new ArgumentException($"El {option} no es válido");
+                    throw new ArgumentException($"La {option} no es válido");
             }
-        }
-
-        //GUÍA DE REMISIÓN
-        public void ClickDispatchGuide ()
-        {
-            utilityPage.ClickButton(DispatchGuide.DispatchGuideButton);
-        }
-
-        public void StartDateTransfer(string value)
-        {
-            utilityPage.WaitForModalAndVerifyField(DispatchGuide.StartDateTransferPath);
-            utilityPage.EnterField(DispatchGuide.StartDateTransferPath, value);
-            driver.FindElement(DispatchGuide.StartDateTransferPath).SendKeys(Keys.Enter);
-            Thread.Sleep(4000);
-        }
-
-        public void TotalGrossWeight(string value)
-        {
-            utilityPage.EnterField(DispatchGuide.TotalGrossWeightPath, value);
-        }
-
-        public void NumberOfPackages(string value)
-        {
-            utilityPage.EnterField(DispatchGuide.NumberOfPackagesPath, value);
-            Thread.Sleep(2000);
-        }
-
-        public void CarrierRUC(string value)
-        {
-            utilityPage.EnterField(DispatchGuide.CarrierRUCPath, value);
-            driver.FindElement(DispatchGuide.CarrierRUCPath).SendKeys(Keys.Enter);
-        }
-
-        public void TransportMode(string option)
-        {
-            utilityPage.OptionsSelector(DispatchGuide.Modal, DispatchGuide.TransportModePath, option);
-            Thread.Sleep(2000);
-        }
-
-        public void DriverDNI(string option)
-        {
-            utilityPage.EnterField(DispatchGuide.DriverDNIPath, option);
-            driver.FindElement(DispatchGuide.DriverDNIPath).SendKeys(Keys.Enter);
-        }
-
-        public void DriverLicense(string option)
-        {
-            utilityPage.EnterField(DispatchGuide.DriverLicensePath, option);
-        }
-
-        public void VehiclePlate(string option)
-        {
-            utilityPage.EnterField(DispatchGuide.VehiclePlatePath, option);
-        }
-
-        public void OriginAddressUbigeo(string option)
-        {
-            utilityPage.OptionsSelector(DispatchGuide.Modal, DispatchGuide.OriginAddressUbigeoPath, option);
-        }
-
-        public void OriginAddressDetail(string option)
-        {
-            utilityPage.EnterField(DispatchGuide.OriginAddressDetailPath, option);
-        }
-
-        public void DestinationAddressUbigeo(string option)
-        {
-            utilityPage.OptionsSelector(DispatchGuide.Modal, DispatchGuide.DestinationAddressUbigeoPath, option);
-        }
-
-        public void DestinationAddressDetail(string option)
-        {
-            utilityPage.EnterField(DispatchGuide.DestinationAddressDetailPath, option);
-        }
-
-        public void AcceptDispatchGuideButton()
-        {
-            utilityPage.ClickButton(DispatchGuide.AcceptDispatchGuideButtonPath);
-            Thread.Sleep(2000);
-        }
-
-        //INGRESAR FECHA DE EMISIÓN (PROPIO DE VENTA POR CONTINGENCIA)
-        public void IssueDateContingency(string value) 
-        {
-            utilityPage.EnterDateClick(Dates.IssueDateFieldContingency, Dates.IssueDateNameContingency, value);
         }
 
         //SELECCIONAR TIPO DE COMPROBANTE
@@ -308,13 +192,107 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
-        //INGRESAR EL NRO DEL COMPROBANTE (PROPIO DE VENTA POR CONTINGENCIA)
+        // GUÍA DE REMISIÓN
+        public void ClickDispatchGuide()
+        {
+            utilityPage.ClickButton(DispatchGuide.DispatchGuideButton);
+        }
+
+        // FECHA DE INICIO DE TRASLADO
+        public void StartDateTransfer(string value)
+        {
+            Thread.Sleep(3000);
+            //utilityPage.EnterDate(DispatchGuide.StartDateTransferPath, value);
+            utilityPage.EnterField(DispatchGuide.StartDateTransferPath, value);
+        }
+
+        // PESO BRUTO TOTAL
+        public void TotalGrossWeight(string value)
+        {
+            utilityPage.EnterField(DispatchGuide.TotalGrossWeightPath, value);
+        }
+
+        // NÚMERO DE BULTOS
+        public void NumberOfPackages(string value)
+        {
+            utilityPage.EnterField(DispatchGuide.NumberOfPackagesPath, value);
+        }
+
+        // RUC DE TRANSPORTISTA
+        public void CarrierRUC(string value)
+        {
+            utilityPage.EnterDate(DispatchGuide.CarrierRUCPath, value);
+        }
+
+        // MODALIDAD DE TRANSPORTE
+        public void TransportMode(string option)
+        {
+            utilityPage.OptionsSelector(DispatchGuide.Modal, DispatchGuide.TransportModePath, option);
+        }
+
+        // INGRESO DEL NRO DE DNI DEL CONDUCTOR
+        public void DriverDNI(string option)
+        {
+            utilityPage.EnterField(DispatchGuide.DriverDNIPath, option);
+            driver.FindElement(DispatchGuide.DriverDNIPath).SendKeys(Keys.Enter);
+        }
+
+        // INGRESO DEL NRO DE LICENCIA DEL CONDUCTOR
+        public void DriverLicense(string option)
+        {
+            utilityPage.EnterField(DispatchGuide.DriverLicensePath, option);
+        }
+
+        // INGRESO DE LA PLACA DEL VEHÍCULO
+        public void VehiclePlate(string option)
+        {
+            utilityPage.EnterField(DispatchGuide.VehiclePlatePath, option);
+        }
+
+        // UBIGEO DE DIRECCIÓN DE ORIGEN
+        public void OriginAddressUbigeo(string option)
+        {
+            utilityPage.OptionsSelector(DispatchGuide.Modal, DispatchGuide.OriginAddressUbigeoPath, option);
+        }
+
+        // DETALLE DE DIRECCIÓN DE ORIGEN
+        public void OriginAddressDetail(string option)
+        {
+            utilityPage.EnterField(DispatchGuide.OriginAddressDetailPath, option);
+        }
+
+        // UBIGEO DE DIRECCIÓN DE DESTINO
+        public void DestinationAddressUbigeo(string option)
+        {
+            utilityPage.OptionsSelector(DispatchGuide.Modal, DispatchGuide.DestinationAddressUbigeoPath, option);
+        }
+
+        // DETALLE DE DIRECCIÓN DE DESTINO
+        public void DestinationAddressDetail(string option)
+        {
+            utilityPage.EnterField(DispatchGuide.DestinationAddressDetailPath, option);
+        }
+
+        // CLICK EN ACEPTAR REGISTRO DE GUÍA DE REMISIÓN
+        public void AcceptDispatchGuideButton()
+        {
+            utilityPage.ClickButton(DispatchGuide.AcceptDispatchGuideButtonPath);
+            Thread.Sleep(2000);
+        }
+
+        // INGRESAR FECHA DE EMISIÓN (PROPIO DE VENTA POR CONTINGENCIA)
+        public void IssueDateContingency(string value) 
+        {
+            utilityPage.EnterDateClick(Dates.IssueDateFieldContingency, Dates.IssueDateNameContingency, value);
+        }
+
+        // INGRESAR EL NRO DEL COMPROBANTE (PROPIO DE VENTA POR CONTINGENCIA)
         public void DocumentNumberContingency (string value)
         {
             utilityPage.EnterField(Dates.DocNumberContingency, value);
         }
 
-        //SELECCIÓN DE TIPO DE ENTREGA
+        // SELECCIÓN DE TIPO DE ENTREGA
         public void SelectDeliveryType(string option)
         {
             option = option.ToUpper();
@@ -332,7 +310,7 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
-        //SELECCIONAR TIPO DE PAGO
+        // SELECCIONAR TIPO DE PAGO
         public void SelectPaymentType(string option)
         {
             switch (option.ToLower())
@@ -354,7 +332,7 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
-        //INGRESAR LA INICIAL(PROPIO PARA CRÉDITO RÁPIDO)
+        // INGRESAR LA INICIAL DEL MONTO A PAGAR (FUNCIÓN PROPIO PARA CRÉDITO RÁPIDO)
         public void InitialQuickPayment(string value, string module)
         {
             if (module == "Nueva Venta" || module == "Venta Modo Caja")
@@ -371,7 +349,7 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
-        //SELECIONAR MEDIO DE PAGO
+        // SELECCIONAR EL MEDIO DE PAGO
         public void PaymentMethod(string option)
         {
             option = option.ToUpper();
@@ -411,11 +389,10 @@ namespace SigesCore.Hooks.VentasPage
                 default:
                     throw new ArgumentException($"La opción {option} no es válido");
             }
-
             Thread.Sleep(4000);
         }
         
-        //INGRESAR DETALLES DEL PAGO
+        // INGRESAR DETALLES DEL PAGO
         public void EnterCardDetails(string bank, string card, string info, string module)
         {
             if (module == "Nueva Venta" || module == "Venta Modo Caja")
@@ -433,15 +410,13 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
-        //INGRESAR LA INICIAL(PROPIO PARA CRÉDITO CONFIGURADO)
+        // INGRESAR LA INICIAL(PROPIO PARA CRÉDITO CONFIGURADO)
         public void Initial(string value)
         {
-
-            utilityPage.WaitForModalAndVerifyField(ConfiguredCreditPopup.InitialField);
-            utilityPage.EnterDateClick(ConfiguredCreditPopup.InitialField, ConfiguredCreditPopup.InitialName, value);
+            utilityPage.WaitModalAndEnterField(ConfiguredCreditPopup.Modal, ConfiguredCreditPopup.InitialField, value);
         }
 
-        //INGRESAR EL NRO DE COUTAS (PROPIO PARA CRÉDITO CONFIGURADO)
+        // INGRESAR EL NRO DE COUTAS (PROPIO PARA CRÉDITO CONFIGURADO)
         public void Cuota(string value)
         {
             utilityPage.EnterField(ConfiguredCreditPopup.CoutaField, value);
@@ -450,8 +425,7 @@ namespace SigesCore.Hooks.VentasPage
         //INGRESAR EL NRO DE COUTAS SIN INICIAL (PROPIO PARA CRÉDITO CONFIGURADO)
         public void CoutasWithoutInitial(string value)
         {
-            utilityPage.WaitForModalAndVerifyField(ConfiguredCreditPopup.CoutaField);
-            utilityPage.EnterField(ConfiguredCreditPopup.CoutaField, value);
+            utilityPage.WaitModalAndEnterField(ConfiguredCreditPopup.Modal,ConfiguredCreditPopup.CoutaField, value);
         }
 
         //INGRESAR EL DÍA DE PAGO DE COUTAS (PROPIO PARA CRÉDITO CONFIGURADO)
@@ -464,7 +438,6 @@ namespace SigesCore.Hooks.VentasPage
         public void GenerateQuota()
         {
             utilityPage.ClickButton(ConfiguredCreditPopup.GenerateQuotaButton);
-            Thread.Sleep(2000);
         }
 
         //BOTÓN ACEPTAR (PROPIO PARA CRÉDITO CONFIGURADO) 
@@ -477,9 +450,8 @@ namespace SigesCore.Hooks.VentasPage
         //GUARDAR VENTA
         public void SaveSale()
         {
-            Thread.Sleep(3000);
             utilityPage.ClickButton(SaveSalePath.SaveSaleButton);
-            Thread.Sleep(5000);
+            Thread.Sleep(7000);
         }
     }
 }

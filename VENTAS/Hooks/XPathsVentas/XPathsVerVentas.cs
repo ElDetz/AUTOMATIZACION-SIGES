@@ -45,7 +45,7 @@ namespace SigesCore.Hooks.XPaths
 
         public static readonly By reasonDebitNotePath = By.XPath("//textarea[@id='motivo']");
 
-        public static readonly By noteAmountPath = By.XPath("//input[@id='montoNota']");
+        public static readonly By totalinterestPath = By.XPath("//input[@id='montoNota']");
 
         public static readonly By totalAmountPath = By.XPath("//tbody/tr[1]/td[4]/input[1]");
 

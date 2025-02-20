@@ -152,7 +152,7 @@ namespace SigesCore.StepDefinitions.Ventas
         [When("Ingresar la cantidad {string}")]
         public void WhenIngresarLaCantidad(string value)
         {
-            viewSale.quantityCreditNote(value);
+            viewSale.QuantityCreditNote(value);
         }
 
         [When(@"Click en el botón invalidar")]

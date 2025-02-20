@@ -23,82 +23,71 @@ namespace SigesCore.Hooks.VentasPage
             this.utilityPage = new UtilityVenta(driverViewPayment);
         }
 
+        // INGRESO DE FECHA INICIAL 
         public void SetInitialDate(string value)
         {
             Thread.Sleep(4000);
             utilityPage.EnterField(RedeemVoucher.initialDate, value);
-            driverViewPayment.FindElement(RedeemVoucher.initialDate).SendKeys(Keys.Enter);
         }
 
+        // INGRESO DE FECHA FINAL
         public void SetFinalDate(string value)
         {
             utilityPage.EnterField(RedeemVoucher.finalDate, value);
-            driverViewPayment.FindElement(RedeemVoucher.finalDate).SendKeys(Keys.Enter);
         }
 
+        // CLICK EN CONSULTAR VENTAS
         public void SetSalesQuery()
         {
             utilityPage.ClickButton(RedeemVoucher.salesQueryButton);
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
         }
 
-        // Botón busca venta
+        // BUSCAR UNA VENTA POR SU CÓDIGO
         public void SearchSaleField(string value)
         {
             utilityPage.EnterField(RedeemVoucher.searchSale, value);
-            Thread.Sleep(2000);
         }
 
-        // Activa canje
+        // ACTIVAR CHECKBOX DE CANJE
         public void ActivateRedeem()
         {
-            var checkboxElement = driverViewPayment.FindElement(RedeemVoucher.activateRedeemPath);
-            checkboxElement.Click();
-            Thread.Sleep(2000);
+            driverViewPayment.FindElement(RedeemVoucher.activateRedeemPath).Click();
         }
 
-        // Selecciona venta
+        // SELECCIONAR LA VENTA BUSCADA
         public void SelectSale()
         {
-            var checkboxElement = driverViewPayment.FindElement(RedeemVoucher.selectedSalePath);
-            checkboxElement.Click();
-            Thread.Sleep(2000);
+            driverViewPayment.FindElement(RedeemVoucher.selectedSalePath).Click();
         }
 
-        // Botón canjear
+        // CLICK EN EL BOTÓN CANJEAR
         public void ClickRedeemButton()
         {
             utilityPage.ClickButton(RedeemVoucher.redeemButton);
-            Thread.Sleep(2000);
         }
 
-        // Tipo comprobante
+        // SELECCIONAR EL TIPO DE COMPROBANTE
         public void SetVoucherType(string option)
         {
             utilityPage.OptionsSelector(RedeemVoucher.modal, RedeemVoucher.voucherType, option);
-            Thread.Sleep(2000);
         }
 
-        // Botón aceptar canje
+        // CLICK EN EL BOTÓN ACEPTAR
         public void ClickAcceptRedeemButton()
         {
             utilityPage.ClickButton(RedeemVoucher.acceptRedeemButton);
             Thread.Sleep(4000);
         }
 
-        // Comprobante canjeada
-        public void SetRedeemedVoucher(string value)
-        {
-            SearchSaleField(value);
-            Thread.Sleep(2000);
-        }
-
+        // VER UNA VENTA (PRIMERA VENTA DE LA TABLA)
         public void SeeSale()
         {
             utilityPage.ClickButton(Additional.seeSalePath);
-            Thread.Sleep(4000);
+            Thread.Sleep(5000);
         }
 
+        // SELECCIONAR EL TIPO DE NOTA
         public void ClickTypeNote(string option)
         {
             option = option.ToUpper();
@@ -118,74 +107,88 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
+        // SELECCIONAR EL TIPO DE NOTA DE DÉBITO (NOTA DE DÉBITO)
         public void TypeDebitNote(string option)
         {
             utilityPage.OptionsSelector(DebitNote.modal, DebitNote.TypeDebitNotePath, option);
         }
 
+        // SELECCIONAR NOTA DE DÉBITO (NOTA DE DÉBITO)
         public void DocumentType(string option)
         {
             utilityPage.OptionsSelector(DebitNote.modal, DebitNote.documentTypePath, option);
         }
 
+        // INGRESO DEL MOTIVO DE LA NOTA (NOTA DE DÉBITO)
         public void ReasonDebitNote(string value)
         {
             utilityPage.EnterField(DebitNote.reasonDebitNotePath, value);
         }
 
+        // INGRESO DEL MOTIVO DE LA NOTA (NOTA DE DÉBITO)
         public void DeliveryTypeNoteCredit(string option)
         {
             utilityPage.SelectDeliveryType(DebitNote.modal, CreditNote.immediate, CreditNote.deferred, option);
         }
 
-        public void NoteAmount(string value)
-        {
-            utilityPage.EnterField(DebitNote.noteAmountPath, value);
-        }
-        
+        // INGRESO DEL TOTAL AUMENTO DEL VALOR (NOTA DE DÉBITO)
         public void TotalAmount(string value)
         {
             utilityPage.EnterField(DebitNote.totalAmountPath, value);
         }
 
-        public void quantityCreditNote(string value)
+        // INGRESO  DEL INTERÉS TOTAL (NOTA DE DÉBITO)
+        public void NoteAmount(string value)
+        {
+            utilityPage.EnterField(DebitNote.totalinterestPath, value);
+        }
+
+        // INGRESAR LA CANTIDAD PARA DEVOLUCIÓN POR ÍTEM (NOTA DE CRÉDITO)
+        public void QuantityCreditNote(string value)
         {
             utilityPage.EnterField(CreditNote.quantityPath, value);
         }
 
+        // CLICK PARA GUARDA LA NOTA
         public void SaveNote()
         {
             utilityPage.ClickButton(DebitNote.saveNotePath);
             Thread.Sleep(4000);
         }
 
+        // CLICK EN INVALIDAR EL DOCUMENTO
         public void ClickInvalidateDocument()
         {
             utilityPage.ClickButton(InvalidateDocumentClass.invalidateButton);
         }
 
+        // INGRESO DE LA OBSERVACIÓN
         public void Observation(string value)
         {
             utilityPage.EnterField(InvalidateDocumentClass.observation, value);
         }
 
+        // CLICK EN 'SI' PARA ACEPTAR LA INVALIDACIÓN
         public void AcceptInvalidation()
         {
             utilityPage.ClickButton(InvalidateDocumentClass.accept);
             Thread.Sleep(4000);
         }
 
+        // CLICK EN CLONAR UNA VENTA
         public void CloneSale()
         {
             utilityPage.ClickButton(CloneDocumentClass.cloneButton);
             Thread.Sleep(4000);
         }
 
+        // CLICK EN IMPRIMIR DOCUMENTO
         public void PrintDocument()
         {
             utilityPage.ClickButton(PrintDocumentClass.print);
         }
 
+        // CLICK EN DESCARGAR DOCUMENTO EN DIFERENTES FORMATOS
         public void DownloadType(string option)
         {
             option = option.ToUpper();
@@ -213,23 +216,26 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
+        // CLICK EN ENVIAR EL DOCUMENTO
         public void SendDocument()
         {
             utilityPage.ClickButton(SendDocumentClass.sendButton);
         }
 
+        // INGRESAR EL CORREO ELECTRÓNICO
         public void EmailField(string value)
         {
             utilityPage.EnterField(SendDocumentClass.inputEmail, value);
-            Thread.Sleep(2000);
         }
 
+        // AGREGAR EL CORREO INGRESADO
         public void AddEmail()
         {
             utilityPage.ClickButton(SendDocumentClass.addEmailPath);
             Thread.Sleep(2000);
         }
 
+        // CLICK EN ENVIAR EL COMPROBANTE POR CORREO
         public void Send()
         {
             utilityPage.ClickButton(SendDocumentClass.send);

@@ -45,7 +45,7 @@ namespace SigesCore.Hooks.Utility
                 throw new NoSuchElementException($"El elemento con el localizador {path} no se encontró.");
             }
 
-            wait.Until(ExpectedConditions.ElementIsVisible(path)); // Espera hasta que el elemento sea visible
+            wait.Until(ExpectedConditions.ElementIsVisible(path));
             driver.FindElement(path).SendKeys(Keys.Control + "a");
             driver.FindElement(path).SendKeys(Keys.Delete);
             driver.FindElement(path).Clear();
@@ -75,7 +75,7 @@ namespace SigesCore.Hooks.Utility
         {
             try
             {
-                wait.Until(ExpectedConditions.ElementExists(button)); // Espera hasta que el elemento exista en el DOM
+                wait.Until(ExpectedConditions.ElementExists(button)); 
             }
             catch (WebDriverTimeoutException)
             {
@@ -91,7 +91,7 @@ namespace SigesCore.Hooks.Utility
             }
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
-            wait.Until(ExpectedConditions.ElementToBeClickable(button)); // Espera hasta que el elemento sea clickeable
+            wait.Until(ExpectedConditions.ElementToBeClickable(button)); 
             driver.FindElement(button).Click();
         }
 
@@ -162,6 +162,12 @@ namespace SigesCore.Hooks.Utility
         public void ConfiguredCreditPayment()
         {
             ClickButton(PaymentTypePath.ConfiguredPaymentOption);
+        }
+
+        public void TypeCliente(By pathClient, string value)
+        {
+            EnterField(pathClient, value);
+            driver.FindElement(pathClient).SendKeys(Keys.Enter);
         }
 
         public void PaymentMethodUtility(By path, string option)
@@ -242,13 +248,13 @@ namespace SigesCore.Hooks.Utility
 
         public void BarCodeConcept(string value)
         {
-            EnterDate(Concept.BarcodeInputField, value);
+            EnterDate(Concept.txtBarCode, value);
         }
 
         public void SelectConcept(string value)
         {
             Thread.Sleep(4000);
-            SelectOption(Concept.ConceptSelection, value);
+            SelectOption(Concept.selConceptSelection, value);
             Thread.Sleep(5000);
         }
 
@@ -399,25 +405,26 @@ namespace SigesCore.Hooks.Utility
         {
             Thread.Sleep(4000);
             IWebElement modalFacturacion = driver.FindElement(pathModal);
-
             IWebElement dropdown = modalFacturacion.FindElement(pathComponent);
-            Console.WriteLine("Campo seleccion encontrada");
             IReadOnlyCollection<IWebElement> dropdownOptions = dropdown.FindElements(ConfiguredCreditPopup.Option);
-            Console.WriteLine("Selecciones extraidas");
             foreach (IWebElement option in dropdownOptions)
             {
                 if (option.Text.Equals(value))
                     option.Click();
             }
-            Console.WriteLine("seleccion terminada");
-            Thread.Sleep(4000);
         }
 
-        public void WaitForModalAndVerifyField(By path)
+        public void WaitForModalAndVerifyField(By pathModal,By pathComponent)
         {
-            IWebElement modalContainer = driver.FindElement(ConfiguredCreditPopup.Modal);
-            ElementExists(path);
+            IWebElement modalContainer = driver.FindElement(pathModal);
+            ElementExists(pathComponent);
             WaitForOverlayToDisappear(AdditionalElements.OverlayElement);
+        }
+
+        public void WaitModalAndEnterField(By pathModal, By pathComponent, string value)
+        {
+            WaitForModalAndVerifyField(pathModal, pathComponent);
+            EnterField(pathComponent, value);
         }
 
         public void CustomerType(By pathModal, By pathCustomer, By pathAlias, string option, string value)
