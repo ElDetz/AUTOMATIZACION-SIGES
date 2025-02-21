@@ -107,7 +107,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 10
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 11
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -165,7 +165,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 24
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 25
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -225,7 +225,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 39
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 40
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -276,10 +276,10 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 51
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 52
- await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Ingresar cantidad \'10\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 53
  await testRunner.AndAsync("Ingresar precio unitario \'30\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -297,7 +297,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.AndAsync("Seleccionar tipo de pago \"credito configurado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 58
- await testRunner.AndAsync("Ingresar monto inicial \'20\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Ingresar monto inicial \'10\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 59
  await testRunner.AndAsync("Ingresar el número de coutas \'3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -349,7 +349,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 70
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 71
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -414,7 +414,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Venta Modo Caja\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 88
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 89
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -478,7 +478,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Venta Modo Caja\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 104
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 105
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -545,7 +545,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Venta Modo Caja\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 121
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 122
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -602,7 +602,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Venta Modo Caja\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 135
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 136
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -681,7 +681,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Venta Modo Caja\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 156
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 157
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -752,7 +752,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Venta Por Contingencia\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 176
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 177
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -816,7 +816,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Venta Por Contingencia\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 192
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 193
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -885,7 +885,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Venta Por Contingencia\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 209
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 210
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -942,7 +942,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Venta Por Contingencia\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 223
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 224
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -1023,7 +1023,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Venta Por Contingencia\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 244
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 245
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -1094,7 +1094,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 264
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 265
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -1187,7 +1187,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 289
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 290
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -1292,7 +1292,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "value"});
                 table2.AddRow(new string[] {
                             "BARRA",
-                            "1010-3"});
+                            "108300559"});
                 table2.AddRow(new string[] {
                             "SELECCION",
                             "400001474"});
@@ -1362,7 +1362,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.WhenAsync("Seleccionar Venta y luego \"Nueva Venta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 339
- await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'1010-3\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Agregar concepto por \'barra\' y valor \'108300559\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 340
  await testRunner.AndAsync("Ingresar cantidad \'2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");

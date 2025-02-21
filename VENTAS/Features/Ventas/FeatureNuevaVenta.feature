@@ -7,7 +7,7 @@ Registrar una venta
 Scenario: Registro de una nueva venta con pago al contado
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -21,7 +21,7 @@ Scenario: Registro de una nueva venta con pago al contado
 Scenario: Registro de una nueva venta con pago al crédito rápido
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -36,7 +36,7 @@ Scenario: Registro de una nueva venta con pago al crédito rápido
 Scenario: Registro de una nueva venta con pago al crédito rápido sin inicial
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -48,14 +48,14 @@ Scenario: Registro de una nueva venta con pago al crédito rápido sin inicial
 Scenario: Registro de una nueva venta con pago al crédito configurado
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
-	And Agregar concepto por 'barra' y valor '1010-3'
-	And Ingresar cantidad '2'
+	And Agregar concepto por 'barra' y valor '108300559'
+	And Ingresar cantidad '10'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
 	And Seleccionar tipo de pago "credito configurado"
-	And Ingresar monto inicial '20'
+	And Ingresar monto inicial '10'
 	And Ingresar el número de coutas '3'
 	And Ingresar fecha '1 de cada mes'
 	And Click en generar coutas
@@ -67,7 +67,7 @@ Scenario: Registro de una nueva venta con pago al crédito configurado
 Scenario: Registro de una nueva venta con pago al crédito configurado sin inicial
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -85,7 +85,7 @@ Scenario: Registro de una nueva venta con pago al crédito configurado sin inici
 Scenario: Registro de una venta modo caja con pago al contado
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Modo Caja"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -101,7 +101,7 @@ Scenario: Registro de una venta modo caja con pago al contado
 Scenario: Registro de una venta modo caja con pago al crédito rápido
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Modo Caja"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -118,7 +118,7 @@ Scenario: Registro de una venta modo caja con pago al crédito rápido
 Scenario: Registro de una venta modo caja con pago al crédito rápido sin inicial
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Modo Caja"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -132,7 +132,7 @@ Scenario: Registro de una venta modo caja con pago al crédito rápido sin inici
 Scenario: Registro de una venta modo caja con pago al crédito configurado
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Modo Caja"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -153,7 +153,7 @@ Scenario: Registro de una venta modo caja con pago al crédito configurado
 	Scenario: Registro de una modo caja con pago al crédito configurado sin inicial
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Modo Caja"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -173,7 +173,7 @@ Scenario: Registro de una venta modo caja con pago al crédito configurado
 Scenario: Registro de una venta por contigencia con pago al contado
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Por Contingencia"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -189,7 +189,7 @@ Scenario: Registro de una venta por contigencia con pago al contado
 Scenario: Registro de una venta por contigencia con pago al crédito rápido
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Por Contingencia"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -206,7 +206,7 @@ Scenario: Registro de una venta por contigencia con pago al crédito rápido
 Scenario: Registro de una venta por contigencia con pago al crédito rápido sin inicial
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Por Contingencia"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -220,7 +220,7 @@ Scenario: Registro de una venta por contigencia con pago al crédito rápido sin
 Scenario: Registro de una venta por contigencia con pago al crédito configurado
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Por Contingencia"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -241,7 +241,7 @@ Scenario: Registro de una venta por contigencia con pago al crédito configurado
 Scenario: Registro de una venta por contigencia con pago al crédito configurado sin inicial
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Por Contingencia"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -261,7 +261,7 @@ Scenario: Registro de una venta por contigencia con pago al crédito configurado
 Scenario: Registro de una venta con guía de remisión con transporte público
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -286,7 +286,7 @@ Scenario: Registro de una venta con guía de remisión con transporte público
 Scenario: Registro de una venta con guía de remisión con transporte privada
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'
@@ -317,7 +317,7 @@ Scenario: Registro de una venta con detalle unificado
 	When Seleccionar Venta y luego "Nueva Venta"
 	When Agregar los siguientes conceptos:
     | option | value |
-    | BARRA  | 1010-3 |
+    | BARRA  | 108300559 |
     | SELECCION  | 400001474 |
     | SELECCION  | 400000437 |
 	And Ingresar cantidad '2'
@@ -336,7 +336,7 @@ Scenario: Registro de una venta con detalle unificado
 Scenario: Registro de una nueva venta con entrega diferida o inmediata
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
-	And Agregar concepto por 'barra' y valor '1010-3'
+	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
 	And Ingresar precio unitario '30'
 	And Activar IGV 'SI'

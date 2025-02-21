@@ -71,11 +71,13 @@ namespace SigesCore.Hooks.VentasPage
             switch (option)
             {
                 case "BARRA":
-                    utilityPage.BarCodeConcept(value);
+                    utilityPage.EnterDate(Concept.txtBarCode, value);
                     break;
 
                 case "SELECCION":
-                    utilityPage.SelectConcept(value);
+                    Thread.Sleep(4000);
+                    utilityPage.SelectOption(Concept.selConceptSelection, value);
+                    Thread.Sleep(5000);
                     break;
 
                 default:
@@ -86,13 +88,13 @@ namespace SigesCore.Hooks.VentasPage
         // INGRESAR CANTIDAD
         public void QuantityConcept(string value)
         {
-            utilityPage.Quantity(Concept.txtQuantity, value);
+            utilityPage.EnterField(Concept.txtQuantity, value);
         }
 
         // INGRESAR PRECIO UNITARIO
         public void UnitPrice(string value)
         {
-            utilityPage.Quantity(Concept.txtUnitPrice, value);
+            utilityPage.EnterField(Concept.txtUnitPrice, value);
         }
 
         // SELECCIONAR IGV Y DET.UNIF
@@ -162,11 +164,11 @@ namespace SigesCore.Hooks.VentasPage
 
                 case "DNI":
                 case "RUC":
-                    utilityPage.TypeCliente(Dates.chkTypeClient, value);
+                    utilityPage.InputAndEnter(Dates.chkTypeClient, value);
                     break;
 
                 case "ALIAS":
-                    utilityPage.TypeCliente(Dates.txtAlias, value);
+                    utilityPage.InputAndEnter(Dates.txtAlias, value);
                     break;
 
                 default:
@@ -316,15 +318,15 @@ namespace SigesCore.Hooks.VentasPage
             switch (option.ToLower())
             {
                 case "contado":
-                    utilityPage.CashPayment();
+                    utilityPage.ClickButton(PaymentTypePath.CashPaymentOption);
                     break;
 
                 case "credito rapido":
-                    utilityPage.QuickCreditPayment();
+                    utilityPage.ClickButton(PaymentTypePath.QuickPaymentOption);
                     break;
 
                 case "credito configurado":
-                    utilityPage.ConfiguredCreditPayment();
+                    utilityPage.ClickButton(PaymentTypePath.ConfiguredPaymentOption);
                     break;
 
                 default:
