@@ -54,16 +54,25 @@ namespace SigesCore.StepDefinitions.Ventas
             }
         }
 
-        [When(@"Ingresar cantidad '([^']*)'")]
-        public void WhenIngresarCantidad(string quantity)
+        [When(@"Ingresa los siguientes datos del producto:")]
+        public void IngresarDatosDelProducto(Table table)
         {
-            newSale.QuantityConcept(quantity);
-        }
+            string quantity = null;
+            string unitPrice = null;
 
-        [When(@"Ingresar precio unitario '([^']*)'")]
-        public void WhenIngresarPrecioUnitario(string quantity)
-        {
-            newSale.UnitPrice(quantity);
+            foreach (var row in table.Rows)
+            {
+                if (row["Campo"] == "Cantidad")
+                    quantity = row["Valor"];
+
+                if (row["Campo"] == "Precio Unitario")
+                    unitPrice = row["Valor"];
+            }
+
+            if (!string.IsNullOrEmpty(quantity) && !string.IsNullOrEmpty(unitPrice))
+            {
+                newSale.QuantityAndUnitPrice(quantity, unitPrice);
+            }
         }
 
         [When(@"Activar IGV '([^']*)'")]
@@ -203,6 +212,12 @@ namespace SigesCore.StepDefinitions.Ventas
         public void WhenClickEnElBotonAceptarGuiaDeRemision()
         {
             newSale.AcceptDispatchGuideButton();
+        }
+
+        [When("Seleccionar tipo de entrega {string}")]
+        public void WhenSeleccionarTipoDeEntrega(string option)
+        {
+            newSale.SelectDeliveryType(option);
         }
 
         [When(@"Seleccionar tipo de pago ""([^""]*)""")]

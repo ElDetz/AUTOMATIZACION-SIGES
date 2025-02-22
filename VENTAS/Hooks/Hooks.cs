@@ -5,7 +5,7 @@ using OpenQA.Selenium.Chrome;
 using Reqnroll.BoDi;
 using SigesCore.Utility;
 
-namespace AutomatizaciónVentas.Hoks
+namespace AutomatizaciónVentas.Hooks
 {
     [Binding]
     public sealed class Hooks : ExtentReport
@@ -44,7 +44,6 @@ namespace AutomatizaciónVentas.Hoks
         {
             Console.WriteLine("Running after feature...");
         }
-
 
         [BeforeScenario("@Testers")]
         public void BeforeScenarioWithTag()

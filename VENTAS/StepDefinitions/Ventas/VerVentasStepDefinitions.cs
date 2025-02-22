@@ -15,15 +15,11 @@ namespace SigesCore.StepDefinitions.Ventas
     public class VerVentasStepDefinitions
     {
         private IWebDriver driver;
-        LoginPage login;
-        NuevaVentaPage newSale;
         VerVentasPage viewSale;
 
         public VerVentasStepDefinitions(IWebDriver driver)
         {
             this.driver = driver;
-            this.login = new LoginPage(driver);
-            this.newSale = new NuevaVentaPage(driver);
             this.viewSale = new VerVentasPage(driver);
         }
 
@@ -81,166 +77,142 @@ namespace SigesCore.StepDefinitions.Ventas
             viewSale.ClickAcceptRedeemButton();
         }
 
-        [Then(@"Ver comprobante canjeada '([^']*)'")]
-        public void ThenVerVentaCanjeada(string value)
+        [Then("Ver comprobante")]
+        public void ThenVerComprobante()
         {
-            viewSale.SetRedeemedVoucher(value);
+            viewSale.SeeSale();
         }
 
-        [When(@"Click en nota de débito")]
-        public void WhenClickEnNotaDeDebito()
+        [When("Ver venta buscada")]
+        public void WhenVerVentaBuscada()
         {
-            throw new PendingStepException();
+            viewSale.SeeSale();
         }
 
-        [When(@"Seleccionar el tipo de nota de débito '([^']*)'")]
-        public void WhenSeleccionarElTipoDeNotaDeDebito(string p0)
+        [When("Elegir tipo de nota {string}")]
+        public void WhenElegirTipoDeNota(string option)
         {
-            throw new PendingStepException();
+            viewSale.ClickTypeNote(option);
         }
 
-        [When(@"Seleccionar el documento '([^']*)'")]
-        public void WhenSeleccionarElDocumento(string p0)
+        [When("Seleccionar el tipo de nota {string}")]
+        public void WhenSeleccionarElTipoDeNotaDeDebito(string option)
         {
-            throw new PendingStepException();
+            viewSale.TypeDebitNote(option);
         }
 
-        [When(@"Escribir el motivo de la nota '([^']*)'")]
-        public void WhenEscribirElMotivoDeLaNota(string p0)
+        [When("Seleccionar el documento {string}")]
+        public void WhenSeleccionarElDocumento(string option)
         {
-            throw new PendingStepException();
+            viewSale.DocumentType(option);
         }
 
-        [When(@"Ingresar el aumento de valor de la nota '([^']*)'")]
-        public void WhenIngresarElAumentoDeValorDeLaNota(string p0)
+        [When("Escribir el motivo de la nota {string}")]
+        public void WhenEscribirElMotivoDeLaNota(string value)
         {
-            throw new PendingStepException();
+            viewSale.ReasonDebitNote(value);
         }
 
-        [When(@"Guardar nota de débito")]
-        public void WhenGuardarNotaDeDebito()
+        [When("Seleccionar el tipo de entrega {string}")]
+        public void WhenSeleccionarElTipoDeEntrega(string option)
         {
-            throw new PendingStepException();
-        }
-
-        [Then(@"Ver la nota de débito emitida")]
-        public void ThenVerLaNotaDeDebitoEmitida()
-        {
-            throw new PendingStepException();
+            viewSale.DeliveryTypeNoteCredit(option);
         }
 
         [When(@"Ingresar el interés total '([^']*)'")]
-        public void WhenIngresarElInteresTotal(string p0)
+        public void WhenIngresarElInteresTotal(string value)
         {
-            throw new PendingStepException();
+            viewSale.NoteAmount(value);
         }
 
-        [When(@"Click en nota de crédito")]
-        public void WhenClickEnNotaDeCredito()
+        [When(@"Ingresar el aumento de valor de la nota '([^']*)'")]
+        public void WhenIngresarElAumentoDeValorDeLaNota(string value)
         {
-            throw new PendingStepException();
+            viewSale.TotalAmount(value);
         }
 
-        [When(@"Seleccionar el tipo de nota de crédito '([^']*)'")]
-        public void WhenSeleccionarElTipoDeNotaDeCredito(string p0)
+        [When(@"Guardar nota")]
+        public void WhenGuardarNotaDeDebito()
         {
-            throw new PendingStepException();
-        }
-
-        [When(@"Guardar nota de crédito")]
-        public void WhenGuardarNotaDeCredito()
-        {
-            throw new PendingStepException();
-        }
-
-        [Then(@"Ver la nota de crédito emitida")]
-        public void ThenVerLaNotaDeCreditoEmitida()
-        {
-            throw new PendingStepException();
+            viewSale.SaveNote();
         }
 
         [When(@"Ingresar el descuento global '([^']*)'")]
-        public void WhenIngresarElDescuentoGlobal(string p0)
+        public void WhenIngresarElDescuentoGlobal(string value)
         {
-            throw new PendingStepException();
+            viewSale.NoteAmount(value);
         }
 
         [When(@"Ingresar el total de descuento '([^']*)'")]
-        public void WhenIngresarElTotalDeDescuento(string p0)
+        public void WhenIngresarElTotalDeDescuento(string value)
         {
-            throw new PendingStepException();
+            viewSale.TotalAmount(value);
+        }
+
+        [When("Ingresar la cantidad {string}")]
+        public void WhenIngresarLaCantidad(string value)
+        {
+            viewSale.QuantityCreditNote(value);
         }
 
         [When(@"Click en el botón invalidar")]
         public void WhenClickEnElBotonInvalidar()
         {
-            throw new PendingStepException();
+            viewSale.ClickInvalidateDocument();
         }
 
-        [When(@"Ingresar la observación '([^']*)'")]
-        public void WhenIngresarLaObservacion(string p0)
+        [When("Ingresar la observación {string}")]
+        public void WhenIngresarLaObservacion(string value)
         {
-            throw new PendingStepException();
+            viewSale.Observation(value);
         }
 
-        [When(@"Click en opción sí")]
-        public void WhenClickEnOpcionSi()
+        [When("Click en opción sí para invalidar documento")]
+        public void WhenClickEnOpcionSiParaInvalidarDocumento()
         {
-            throw new PendingStepException();
-        }
-
-        [Then(@"Ver venta invalidada")]
-        public void ThenVerVentaInvalidada()
-        {
-            throw new PendingStepException();
+            viewSale.AcceptInvalidation();
         }
 
         [When(@"Click en el botón clonar")]
         public void WhenClickEnElBotonClonar()
         {
-            throw new PendingStepException();
-        }
-
-        [Then(@"Guardar Venta")]
-        public void ThenGuardarVenta()
-        {
-            throw new PendingStepException();
+            viewSale.CloneSale();
         }
 
         [Then(@"Click en el botón imprimir")]
         public void ThenClickEnElBotonImprimir()
         {
-            throw new PendingStepException();
+            viewSale.PrintDocument();
         }
 
-        [Then(@"Click en el botón descargar")]
-        public void ThenClickEnElBotonDescargar()
+        [Then("Seleccionar el tipo de descarga {string}")]
+        public void ThenSeleccionarElTipoDeDescarga(string option)
         {
-            throw new PendingStepException();
+            viewSale.DownloadType(option);
         }
 
         [When(@"Click en el botón enviar")]
         public void WhenClickEnElBotonEnviar()
         {
-            throw new PendingStepException();
+            viewSale.SendDocument();
         }
 
         [When(@"Ingresar correo '([^']*)'")]
-        public void WhenIngresarCorreo(string p0)
+        public void WhenIngresarCorreo(string value)
         {
-            throw new PendingStepException();
+            viewSale.EmailField(value);
         }
 
-        [When(@"Click en el botón agregar correo")]
-        public void WhenClickEnElBotonAgregarCorreo()
+        [When("Click en el botón agregar el correo")]
+        public void WhenClickEnElBotonAgregarElCorreo()
         {
-            throw new PendingStepException();
+            viewSale.AddEmail();
         }
 
-        [Then(@"Enviar documento de venta")]
-        public void ThenEnviarDocumentoDeVenta()
+        [Then("Enviar comprobante de venta")]
+        public void ThenEnviarComprobanteDeVenta()
         {
-            throw new PendingStepException();
+            viewSale.Send();
         }
     }
 }
