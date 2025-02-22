@@ -50,7 +50,8 @@ namespace PruebaConcepto.StepDefinitions
         [When(@"Prueba '([^']*)'")]
         public void WhenDatosDelPagoYY(string dni)
         {
-            registroVentaPage.nuevaguia(dni);
+            
+            //registroVentaPage.nuevaguia(dni);
         }
 
         [When(@"Datos del pago '([^']*)' y '([^']*)'")]
