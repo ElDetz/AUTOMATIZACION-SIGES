@@ -161,7 +161,7 @@ namespace RESTAURANTE.Hoks.Pages.Facturacion
                     throw new ArgumentException($"El {_clientType} no es válido");
             }
 
-            utilities.enterFieldModal(modalFacturacion, fieldLocator, _clientValue);
+            utilities.InputTextoModal(modalFacturacion, fieldLocator, _clientValue);
             Console.WriteLine($"CLIENTE CUENTA {_ncuenta} INGRESADO");
             Thread.Sleep(4000);
 

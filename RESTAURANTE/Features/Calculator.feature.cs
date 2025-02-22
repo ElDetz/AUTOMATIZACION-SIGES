@@ -21,6 +21,7 @@ namespace RESTAURANTE.Features
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Calculator")]
+    [NUnit.Framework.FixtureLifeCycleAttribute(NUnit.Framework.LifeCycle.InstancePerTestCase)]
     public partial class CalculatorFeature
     {
         
@@ -183,14 +184,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
                             "Username",
                             "Password"});
-                table1.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "admin@tintoymadero.com",
                             "calidad"});
 #line 27
- await testRunner.GivenAsync("Inicio de sesion con usuario", ((string)(null)), table1, "Given ");
+ await testRunner.GivenAsync("Inicio de sesion con usuario", ((string)(null)), table6, "Given ");
 #line hidden
 #line 30
  await testRunner.AndAsync("Se ingresa al modulo \'Caja\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");

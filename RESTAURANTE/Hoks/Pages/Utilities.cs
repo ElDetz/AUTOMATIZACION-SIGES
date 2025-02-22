@@ -47,7 +47,7 @@ namespace RESTAURANTE.Hoks.Pages
             });
         }
 
-        public void enterField(By _path, string _field)
+        public void InputTexto(By _path, string _field)
         {
             if (driver.FindElements(_path).Count == 0)
             {
@@ -59,7 +59,7 @@ namespace RESTAURANTE.Hoks.Pages
             driver.FindElement(_path).SendKeys(_field);
         }
 
-        public void enterField2(By _path, string _field)
+        public void SubmitTexto(By _path, string _field)
         {
             if (driver.FindElements(_path).Count == 0)
             {
@@ -106,21 +106,9 @@ namespace RESTAURANTE.Hoks.Pages
                 throw new NoSuchElementException($"El elemento con el localizador {_button} no se encontró.");
             }
 
+            WaitForOverlayToDisappear(); // OVERLAY
             wait.Until(ExpectedConditions.ElementToBeClickable(_button)); // Espera hasta que el elemento sea clickeable
             driver.FindElement(_button).Click();
-        }
-
-        // Esperar que el menú desplegable sea visible
-        public void WaitForElementVisible(By locator)
-        {
-            try
-            {
-                wait.Until(ExpectedConditions.ElementIsVisible(locator));
-            }
-            catch (WebDriverTimeoutException)
-            {
-                throw new NoSuchElementException($"El elemento con el localizador {locator} no se hizo visible dentro del tiempo de espera.");
-            }
         }
         
         
@@ -132,7 +120,7 @@ namespace RESTAURANTE.Hoks.Pages
             _element.FindElement(buttonLocator).Click();
         }
 
-        public void enterFieldModal(IWebElement _element, By _path, string _field)
+        public void InputTextoModal(IWebElement _element, By _path, string _field)
         {
             if (_element.FindElements(_path).Count == 0)
             {
@@ -157,6 +145,20 @@ namespace RESTAURANTE.Hoks.Pages
             _element.FindElement(_path).SendKeys(_field);
         }
 
+        // SCROLL
+        public void ScrollViewElement(IWebElement _path)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("arguments[0].scrollIntoView(true);", _path);
+            Thread.Sleep(2000);
+        }
+
+        public void ScrollViewTop()
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("window.scrollTo(0, 0);");
+            Thread.Sleep(2000);
+        }
 
         public void SelecOption(IWebElement _element, By _path, string option)
         {
