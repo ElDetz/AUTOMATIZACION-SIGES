@@ -21,6 +21,7 @@ namespace RESTAURANTE.Features.Facturacion
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Factura Atencion Cuenta Dividida")]
+    [NUnit.Framework.FixtureLifeCycleAttribute(NUnit.Framework.LifeCycle.InstancePerTestCase)]
     public partial class FacturaAtencionCuentaDivididaFeature
     {
         
@@ -112,44 +113,44 @@ this.ScenarioInitialize(scenarioInfo);
 #line 9
  await testRunner.AndAsync("Se especifica que la factura será dividida en \'3\' cuentas", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
                             "TipoCliente",
                             "ValorCliente",
                             "TipoComprobante",
                             "Observacion",
                             "MedioPago"});
-                table2.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "ALIAS",
                             "72935878",
                             "FACTURA ELECTRONICA",
                             "OBSERVACIÓN1",
                             "DEPCU"});
-                table2.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "ALIAS",
                             "CHIQUI",
                             "NOTA DE VENTA (INTERNA)",
                             "OBSERVACIÓN2",
                             "TDEB"});
 #line 10
- await testRunner.WhenAsync("Se ingresan los detalles de la factura:", ((string)(null)), table2, "When ");
+ await testRunner.WhenAsync("Se ingresan los detalles de la factura:", ((string)(null)), table7, "When ");
 #line hidden
-                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
                             "Banco_Cuenta",
                             "TipoTarjeta",
                             "MontoRecibido",
                             "Informacion"});
-                table3.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "001103180100023457",
                             "-",
                             "-",
                             "-"});
-                table3.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "INTERBANK",
                             "AMERICAN EXPRESS",
                             "-",
                             "10010"});
 #line 15
- await testRunner.AndAsync("Se ingresan los datos del pago:", ((string)(null)), table3, "And ");
+ await testRunner.AndAsync("Se ingresan los datos del pago:", ((string)(null)), table8, "And ");
 #line hidden
 #line 20
  await testRunner.ThenAsync("Se realiza la facturación", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");

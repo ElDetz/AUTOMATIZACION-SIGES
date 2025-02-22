@@ -21,6 +21,7 @@ namespace RESTAURANTE.Features.Facturacion
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Factura Atencion Simple")]
+    [NUnit.Framework.FixtureLifeCycleAttribute(NUnit.Framework.LifeCycle.InstancePerTestCase)]
     public partial class FacturaAtencionSimpleFeature
     {
         
@@ -110,20 +111,20 @@ this.ScenarioInitialize(scenarioInfo);
 #line 11
  await testRunner.AndAsync("Se selecciona el tipo de factura \'SIMPLE\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-                global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
                             "TipoCliente",
                             "ValorCliente",
                             "TipoComprobante",
                             "Observacion",
                             "MedioPago"});
-                table4.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "DNI",
                             "72935878",
                             "NOTA DE VENTA (INTERNA)",
                             "OBSERVACIÓN",
                             "EF"});
 #line 13
- await testRunner.WhenAsync("Se ingresan los detalles de la factura:", ((string)(null)), table4, "When ");
+ await testRunner.WhenAsync("Se ingresan los detalles de la factura:", ((string)(null)), table9, "When ");
 #line hidden
 #line 17
  await testRunner.ThenAsync("Se realiza la facturación", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
@@ -158,20 +159,20 @@ this.ScenarioInitialize(scenarioInfo);
 #line 23
  await testRunner.AndAsync("Se selecciona el tipo de factura \'SIMPLE\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table10 = new global::Reqnroll.Table(new string[] {
                             "TipoCliente",
                             "ValorCliente",
                             "TipoComprobante",
                             "Observacion",
                             "MedioPago"});
-                table5.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "DNI",
                             "72935878",
                             "BOLETA DE VENTA ELECTRONICA",
                             "OBSERVACIÓN",
                             "TDEB"});
 #line 25
- await testRunner.WhenAsync("Se ingresan los detalles de la factura:", ((string)(null)), table5, "When ");
+ await testRunner.WhenAsync("Se ingresan los detalles de la factura:", ((string)(null)), table10, "When ");
 #line hidden
 #line 29
  await testRunner.AndAsync("Se ingresan datos del pago \'INTERBANK\' \'AMERICAN EXPRESS\' \'10001\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -224,18 +225,18 @@ this.ScenarioInitialize(scenarioInfo);
 #line 41
  await testRunner.AndAsync("Selecciona el modo de pago \'TDEB\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-                global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table11 = new global::Reqnroll.Table(new string[] {
                             "Banco_Cuenta",
                             "TipoTarjeta",
                             "MontoRecibido",
                             "Informacion"});
-                table6.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "001103180100023457",
                             "-",
                             "-",
                             "10012"});
 #line 42
-  await testRunner.AndAsync("Se ingresan los datos del pago:", ((string)(null)), table6, "And ");
+  await testRunner.AndAsync("Se ingresan los datos del pago:", ((string)(null)), table11, "And ");
 #line hidden
 #line 45
  await testRunner.ThenAsync("Realizar facturacion", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");

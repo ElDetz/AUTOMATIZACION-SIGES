@@ -2,16 +2,14 @@ using System;
 using Microsoft.VisualBasic;
 using OpenQA.Selenium;
 using RESTAURANTE.Features.Facturacion;
-using RESTAURANTE.Hoks.Pages;
 using RESTAURANTE.Hoks.Pages.Facturacion;
 
-namespace RESTAURANTE.StepDefinitions.Facturacion
+namespace RESTAURANTE.StepDefinitions
 {
     [Binding]
     public class FacturaAtencionStepDefinitions
     {
         IWebDriver driver;
-        AccessPage accessPage;
         FacturacionPage facturacionPage;
         FacturacionSimplePage facturacionSimplePage;
         FacturacionCtaDivididaPage facturacionCtaDivididaPage;
@@ -19,35 +17,9 @@ namespace RESTAURANTE.StepDefinitions.Facturacion
         public FacturaAtencionStepDefinitions(IWebDriver driver)
         {
             this.driver = driver;
-            this.accessPage = new AccessPage(driver);
-            this.facturacionPage = new FacturacionPage(driver);
-            this.facturacionSimplePage = new FacturacionSimplePage(driver);
-            this.facturacionCtaDivididaPage = new FacturacionCtaDivididaPage(driver);
-        }
-
-        [Given(@"Inicio de sesión con usuario '([^']*)' y contraseña '([^']*)'")]
-        public void Login(string _user, string _password)
-        {
-            accessPage.LoginToApplication(_user, _password);
-        }
-
-        /*
-        [Given(@"Inicio de sesion con usuario")]
-        public void GivenInicioDeSesionConUsuario(Table table)
-        {
-            driver.Url = "https://tintoymadero-qa.sigesonline.com/";
-
-            dynamic data = table.CreateInstance<dynamic>();
-
-            // Realizar el inicio de sesión
-            loginPage.LoginToApplication(data.Username, data.Password);
-        }
-        */
-
-        [Given(@"Se ingresa al módulo '([^']*)'")]
-        public void GivenSeIngresaAlModulo(string _modulo)
-        {
-            accessPage.enterModulo(_modulo);
+            facturacionPage = new FacturacionPage(driver);
+            facturacionSimplePage = new FacturacionSimplePage(driver);
+            facturacionCtaDivididaPage = new FacturacionCtaDivididaPage(driver);
         }
 
         [Given(@"Se selecciona el tipo de factura '([^']*)'")]
