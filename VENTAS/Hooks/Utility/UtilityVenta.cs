@@ -47,7 +47,7 @@ namespace SigesCore.Hooks.Utility
         /// </summary>
         /// <param name="pathComponent">Localizador del campo de texto.</param>
         /// <param name="value">Valor a ingresar en el campo.</param>
-        public void EnterField(By pathComponent, string value)
+        public void ClearAndSetInputField(By pathComponent, string value)
         {
             if (driver.FindElements(pathComponent).Count == 0)
             {
@@ -60,9 +60,18 @@ namespace SigesCore.Hooks.Utility
             driver.FindElement(pathComponent).SendKeys(value);
         }
 
+        /// <summary>
+        /// Borra el contenido del campo de entrada y escribe un nuevo valor, 
+        /// luego envía la tecla Enter para confirmar la entrada.
+        /// </summary>
+        /// <param name="pathComponent">El localizador del campo de entrada.</param>
+        /// <param name="value">El valor que se ingresará en el campo.</param>
+        /// <remarks>
+        /// Esta función invoca <see cref="ClearAndSetInputField(By, string)"/> para borrar y escribir el nuevo valor antes de presionar Enter.
+        /// </remarks>
         public void InputAndEnter(By pathComponent, string value)
         {
-            EnterField(pathComponent, value);
+            ClearAndSetInputField(pathComponent, value);
             driver.FindElement(pathComponent).SendKeys(Keys.Enter);
         }
 
@@ -72,7 +81,7 @@ namespace SigesCore.Hooks.Utility
         /// <param name="pathModal">Localizador del modal donde se encuentra el campo.</param>
         /// <param name="pathComponent">Localizador del campo de texto dentro del modal.</param>
         /// <param name="value">Valor a ingresar en el campo.</param>
-        public void EnterFieldModal(By pathModal, By pathComponent, string value)
+        public void InputAndEnterModal(By pathModal, By pathComponent, string value)
         {
             Thread.Sleep(3000);
             IWebElement orderModal = driver.FindElement(pathModal);
@@ -92,7 +101,24 @@ namespace SigesCore.Hooks.Utility
         {
             Thread.Sleep(3000);
             IWebElement orderModal = driver.FindElement(pathModal);
-            EnterField(pathComponent, value);
+            ClearAndSetInputField(pathComponent, value);
+        }
+
+        /// <summary>
+        /// Función que ingresa un valor en un campo de entrada y luego hace clic en otro componente 
+        /// para asegurar que el dato ingresado se guarde correctamente.
+        /// </summary>
+        /// <param name="pathInput">Localizador del campo de entrada donde se ingresará el valor.</param>
+        /// <param name="pathName">Localizador del componente en el que se hará clic después de ingresar el dato.</param>
+        /// <param name="value">Valor que se ingresará en el campo de entrada.</param>
+        public void EnterDateClick(By pathInput, By pathName, string value)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            IWebElement Input = wait.Until(ExpectedConditions.ElementToBeClickable(pathInput));
+            IWebElement Name = wait.Until(ExpectedConditions.ElementToBeClickable(pathName));
+            Input.Click();
+            Input.SendKeys(value);
+            Name.Click();
         }
 
         /// <summary>
@@ -159,20 +185,6 @@ namespace SigesCore.Hooks.Utility
         }
 
         /// <summary>
-        /// Función que ingresa una fecha en un campo de entrada.
-        /// Primero espera que el elemento exista y sea visible, luego ingresa el valor y confirma con Enter.
-        /// Invoca las funciones WaitExistsVisible y EnterField.
-        /// </summary>
-        /// <param name="path">Localizador del campo de fecha.</param>
-        /// <param name="option">Valor de la fecha a ingresar.</param>
-        public void EnterDate(By pathComponent, string option)
-        {
-            WaitExistsVisible(pathComponent, AdditionalElements.OverlayElement);
-            InputAndEnter(pathComponent, option);
-            Thread.Sleep(4000);
-        }
-
-        /// <summary>
         /// Función que selecciona un método de pago en función de la opción proporcionada.
         /// </summary>
         /// <param name="path">Localizador del botón del método de pago.</param>
@@ -180,6 +192,7 @@ namespace SigesCore.Hooks.Utility
         /// <exception cref="ArgumentException">Se lanza si la opción no es válida.</exception>
         public void PaymentMethodUtility(By pathComponent, string option)
         {
+            option = option.ToUpper();
             switch (option)
             {
                 case "DEPCU":
@@ -264,23 +277,6 @@ namespace SigesCore.Hooks.Utility
         }
 
         /// <summary>
-        /// Función que ingresa un valor en un campo de entrada y luego hace clic en otro componente 
-        /// para asegurar que el dato ingresado se guarde correctamente.
-        /// </summary>
-        /// <param name="pathInput">Localizador del campo de entrada donde se ingresará el valor.</param>
-        /// <param name="pathName">Localizador del componente en el que se hará clic después de ingresar el dato.</param>
-        /// <param name="value">Valor que se ingresará en el campo de entrada.</param>
-        public void EnterDateClick(By pathInput, By pathName, string value)
-        {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            IWebElement Input = wait.Until(ExpectedConditions.ElementToBeClickable(pathInput));
-            IWebElement Name = wait.Until(ExpectedConditions.ElementToBeClickable(pathName));
-            Input.Click();
-            Input.SendKeys(value);
-            Name.Click();
-        }
-
-        /// <summary>
         /// Función que selecciona un tipo de comprobante de pago en un menú desplegable.
         /// </summary>
         /// <param name="path">Localizador del elemento del menú desplegable.</param>
@@ -317,113 +313,54 @@ namespace SigesCore.Hooks.Utility
         }
 
         /// <summary>
-        /// Función que ingresa los detalles de pago según el método de pago seleccionado.
+        /// Ingresa los detalles de pago según los medios de pago seleccionado.
         /// </summary>
-        /// <param name="typeBank">Nombre del banco a seleccionar (para pagos con tarjeta, depósito o transferencia).</param>
-        /// <param name="typeCard">Tipo de tarjeta a seleccionar (para pagos con tarjeta).</param>
-        /// <param name="info">Información adicional del pago (número de referencia, monto, etc.).</param>
-        /// <exception cref="ArgumentException">Se lanza si el método de pago no es válido.</exception>
-        public void EnterCardDetailsNewSale(string typeBank, string typeCard, string info)
+        /// <param name="context">Indica si la venta es en modo Contingencia o Nueva Venta y Modo Caja, estos dos últimos son totalmente iguales.</param>
+        /// <param name="bankAccount">Cuenta bancaria seleccionado.</param>
+        /// <param name="typeCard">Tipo de tarjeta (solo aplica para pagos con tarjeta).</param>
+        /// <param name="info">Información adicional requerida según el método de pago.</param>
+        /// <exception cref="ArgumentException">Se lanza si el tipo de pago no es válido.</exception>
+        public void EnterCardDetails(string context, string bankAccount, string typeCard, string info)
         {
-            string option = ViewPaymentMethod();
-            option = option.ToUpper();
+            string option = ViewPaymentMethod().ToUpper();
 
             switch (option)
             {
-                case "TDEB":
 
-                    SelectOption(DebitPaymentNewSale.BankSelector, typeBank);
-                    SelectOption(DebitPaymentNewSale.CardSelector, typeCard);
-                    EnterField(DebitPaymentNewSale.PaymentDetails, info);
-                    Thread.Sleep(4000);
+                case "DEPCU": 
+                    SelectOption(context == "Contingency" ? DepositContingency.BankSelector : DepositNewSale.BankSelector, bankAccount);
+                    ClearAndSetInputField(context == "Contingency" ? DepositContingency.PaymentDetails : DepositNewSale.PaymentDetails, info);
                     break;
 
-                case "TCRE":
-
-                    SelectOption(CreditPaymentNewSale.BankSelector, typeBank);
-                    SelectOption(CreditPaymentNewSale.CardSelector, typeCard);
-                    EnterField(CreditPaymentNewSale.PaymentDetails, info);
-                    Thread.Sleep(4000);
+                case "TRANFON": 
+                    SelectOption(context == "Contingency" ? TransferContingency.BankSelector : TransferNewSale.BankSelector, bankAccount);
+                    ClearAndSetInputField(context == "Contingency" ? TransferContingency.PaymentDetails : TransferNewSale.PaymentDetails, info);
                     break;
 
-                case "DEPCU":
-
-                    SelectOption(DepositNewSale.BankSelector, typeBank);
-                    EnterField(DepositNewSale.PaymentDetails, info);
-                    Thread.Sleep(4000);
+                case "TDEB":  
+                    SelectOption(context == "Contingency" ? DebitPaymentContingency.BankSelector : DebitPaymentNewSale.BankSelector, bankAccount);
+                    SelectOption(context == "Contingency" ? DebitPaymentContingency.CardSelector : DebitPaymentNewSale.CardSelector, typeCard);
+                    ClearAndSetInputField(context == "Contingency" ? DebitPaymentContingency.PaymentDetails : DebitPaymentNewSale.PaymentDetails, info);
                     break;
 
-                case "TRANFON":
-
-                    SelectOption(TransferNewSale.BankSelector, typeBank);
-                    EnterField(TransferNewSale.PaymentDetails, info);
-                    Thread.Sleep(4000);
+                case "TCRE": 
+                    SelectOption(context == "Contingency" ? CreditPaymentContingency.BankSelector : CreditPaymentNewSale.BankSelector, bankAccount);
+                    SelectOption(context == "Contingency" ? CreditPaymentContingency.CardSelector : CreditPaymentNewSale.CardSelector, typeCard);
+                    ClearAndSetInputField(context == "Contingency" ? CreditPaymentContingency.PaymentDetails : CreditPaymentNewSale.PaymentDetails, info);
                     break;
 
-                case "EF":
-
-                    EnterField(CashNewSale.Received, info);
-                    Thread.Sleep(4000);
+                case "EF":  
+                    ClearAndSetInputField(context == "Contingency" ? CashContingency.Received : CashNewSale.Received, info);
                     break;
 
-                case "PTS":
+                case "PTS": 
                     break;
 
                 default:
                     throw new ArgumentException($"El tipo de pago {option} no es válido.");
             }
-        }
-
-        //INGRESAR DETALLES DEL PAGO (VENTA POR CONTINGENCIA)
-        public void EnterCardDetailsContingency(string typeBank, string typeCard, string info)
-        {
-            string option = ViewPaymentMethod();
-            option = option.ToUpper();
-
-            switch (option)
-            {
-                case "TDEB":
-
-                    SelectOption(DebitPaymentContingency.BankSelector, typeBank);
-                    SelectOption(DebitPaymentContingency.CardSelector, typeCard);
-                    EnterField(DebitPaymentContingency.PaymentDetails, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "TCRE":
-
-                    SelectOption(CreditPaymentNewSale.BankSelector, typeBank);
-                    SelectOption(CreditPaymentNewSale.CardSelector, typeCard);
-                    EnterField(CreditPaymentNewSale.PaymentDetails, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "DEPCU":
-
-                    SelectOption(DepositNewSale.BankSelector, typeBank);
-                    EnterField(DepositNewSale.PaymentDetails, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "TRANFON":
-
-                    SelectOption(TransferNewSale.BankSelector, typeBank);
-                    EnterField(TransferNewSale.PaymentDetails, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "EF":
-
-                    EnterField(CashNewSale.Received, info);
-                    Thread.Sleep(4000);
-                    break;
-
-                case "PTS":
-                    break;
-
-                default:
-                    throw new ArgumentException($"El tipo de pago {option} no es válido.");
-            }
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(4));
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector(".loading")));
         }
 
         /// <summary>
@@ -457,7 +394,6 @@ namespace SigesCore.Hooks.Utility
             WaitForOverlayToDisappear(AdditionalElements.OverlayElement);
         }
 
-
         /// <summary>
         /// Espera a que un modal esté presente, verifica que un campo específico exista y luego ingresa un valor en dicho campo.
         /// </summary>
@@ -467,7 +403,7 @@ namespace SigesCore.Hooks.Utility
         public void WaitModalAndEnterField(By pathModal, By pathComponent, string value)
         {
             WaitForModalAndVerifyField(pathModal, pathComponent);
-            EnterField(pathComponent, value);
+            ClearAndSetInputField(pathComponent, value);
         }
 
         /// <summary>
@@ -484,11 +420,11 @@ namespace SigesCore.Hooks.Utility
 
             if (option == "DNI" || option == "RUC")
             {
-                EnterFieldModal(pathModal, pathCustomer, value);
+                InputAndEnterModal(pathModal, pathCustomer, value);
             }
             else if (option == "ALIAS")
             {
-                EnterFieldModal(pathModal, pathAlias, value);
+                InputAndEnterModal(pathModal, pathAlias, value);
             }
             else if (option == "VARIOS")
             {
@@ -545,6 +481,27 @@ namespace SigesCore.Hooks.Utility
             else
             {
                 throw new ArgumentException($"El {option} no es válido");
+            }
+        }
+
+        /// <summary>
+        /// Cambia el foco del WebDriver a una nueva ventana cuando se abre una.
+        /// </summary>
+        /// <param name="driverType">Instancia del WebDriver utilizada para la automatización.</param>
+        public void NewWindow(IWebDriver driverType)
+        {
+            WebDriverWait wait = new WebDriverWait(driverType, TimeSpan.FromSeconds(10));
+            string originalWindow = driverType.CurrentWindowHandle;
+
+            wait.Until(d => driverType.WindowHandles.Count > 1);
+
+            foreach (string window in driverType.WindowHandles)
+            {
+                if (window != originalWindow)
+                {
+                    driverType.SwitchTo().Window(window);
+                    break;
+                }
             }
         }
     }

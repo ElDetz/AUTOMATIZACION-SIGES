@@ -1,15 +1,19 @@
-﻿Feature: NuevaVenta
+﻿Feature: Registrar una venta
 
-Registrar una venta
+Registrar una venta normal, venta en modo caja y venta por contigencia, cada uno con sus distintos escenarios.
+
+Background:
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 
 @NuevaVenta
 
 Scenario: Registro de una nueva venta con pago al contado
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
@@ -19,7 +23,6 @@ Scenario: Registro de una nueva venta con pago al contado
 	Then Guardar venta
 
 Scenario: Registro de una nueva venta con pago al crédito rápido
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -34,7 +37,6 @@ Scenario: Registro de una nueva venta con pago al crédito rápido
 	Then Guardar venta
 
 Scenario: Registro de una nueva venta con pago al crédito rápido sin inicial
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -46,7 +48,6 @@ Scenario: Registro de una nueva venta con pago al crédito rápido sin inicial
 	Then Guardar venta
 
 Scenario: Registro de una nueva venta con pago al crédito configurado
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '10'
@@ -65,7 +66,6 @@ Scenario: Registro de una nueva venta con pago al crédito configurado
 	Then Guardar venta
 
 Scenario: Registro de una nueva venta con pago al crédito configurado sin inicial
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -83,7 +83,6 @@ Scenario: Registro de una nueva venta con pago al crédito configurado sin inici
 @VentaModoCaja
 
 Scenario: Registro de una venta modo caja con pago al contado
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Modo Caja"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -99,7 +98,6 @@ Scenario: Registro de una venta modo caja con pago al contado
 	Then Guardar venta
 
 Scenario: Registro de una venta modo caja con pago al crédito rápido
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Modo Caja"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -116,7 +114,6 @@ Scenario: Registro de una venta modo caja con pago al crédito rápido
 	Then Guardar venta
 
 Scenario: Registro de una venta modo caja con pago al crédito rápido sin inicial
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Modo Caja"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -130,7 +127,6 @@ Scenario: Registro de una venta modo caja con pago al crédito rápido sin inici
 	Then Guardar venta
 
 Scenario: Registro de una venta modo caja con pago al crédito configurado
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Modo Caja"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -150,8 +146,7 @@ Scenario: Registro de una venta modo caja con pago al crédito configurado
 	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Venta Modo Caja"
 	Then Guardar venta
 
-	Scenario: Registro de una modo caja con pago al crédito configurado sin inicial
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+Scenario: Registro de una modo caja con pago al crédito configurado sin inicial
 	When Seleccionar Venta y luego "Venta Modo Caja"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -171,7 +166,6 @@ Scenario: Registro de una venta modo caja con pago al crédito configurado
 @VentaContingencia
 
 Scenario: Registro de una venta por contigencia con pago al contado
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Por Contingencia"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -187,7 +181,6 @@ Scenario: Registro de una venta por contigencia con pago al contado
 	Then Guardar venta
 
 Scenario: Registro de una venta por contigencia con pago al crédito rápido
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Por Contingencia"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -204,7 +197,6 @@ Scenario: Registro de una venta por contigencia con pago al crédito rápido
 	Then Guardar venta
 
 Scenario: Registro de una venta por contigencia con pago al crédito rápido sin inicial
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Por Contingencia"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -218,7 +210,6 @@ Scenario: Registro de una venta por contigencia con pago al crédito rápido sin
 	Then Guardar venta
 
 Scenario: Registro de una venta por contigencia con pago al crédito configurado
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Por Contingencia"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -239,7 +230,6 @@ Scenario: Registro de una venta por contigencia con pago al crédito configurado
 	Then Guardar venta
 
 Scenario: Registro de una venta por contigencia con pago al crédito configurado sin inicial
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Venta Por Contingencia"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -259,7 +249,6 @@ Scenario: Registro de una venta por contigencia con pago al crédito configurado
 @VentaGuiaRemisión
 
 Scenario: Registro de una venta con guía de remisión con transporte público
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -284,7 +273,6 @@ Scenario: Registro de una venta con guía de remisión con transporte público
 	Then Guardar venta
 
 Scenario: Registro de una venta con guía de remisión con transporte privada
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'
@@ -313,7 +301,6 @@ Scenario: Registro de una venta con guía de remisión con transporte privada
 @VentaDetalleUnificado
 
 Scenario: Registro de una venta con detalle unificado
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
 	When Agregar los siguientes conceptos:
     | option | value |
@@ -334,7 +321,6 @@ Scenario: Registro de una venta con detalle unificado
 @TipoEntrega
 
 Scenario: Registro de una nueva venta con entrega diferida o inmediata
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
 	And Ingresar cantidad '2'

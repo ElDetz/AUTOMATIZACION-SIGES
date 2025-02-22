@@ -71,7 +71,10 @@ namespace SigesCore.Hooks.VentasPage
             switch (option)
             {
                 case "BARRA":
-                    utilityPage.EnterDate(Concept.txtBarCode, value);
+                    //utilityPage.EnterDate(Concept.txtBarCode, value);
+                    utilityPage.WaitExistsVisible(Concept.txtBarCode, AdditionalElements.OverlayElement);
+                    utilityPage.InputAndEnter(Concept.txtBarCode, value);
+                    Thread.Sleep(4000);
                     break;
 
                 case "SELECCION":
@@ -85,16 +88,11 @@ namespace SigesCore.Hooks.VentasPage
             }
         }
 
-        // INGRESAR CANTIDAD
-        public void QuantityConcept(string value)
+        // INGRESAR CANTIDAD Y PRECIO UNITARIO
+        public void QuantityAndUnitPrice(string quantity, string unitPrice)
         {
-            utilityPage.EnterField(Concept.txtQuantity, value);
-        }
-
-        // INGRESAR PRECIO UNITARIO
-        public void UnitPrice(string value)
-        {
-            utilityPage.EnterField(Concept.txtUnitPrice, value);
+            utilityPage.ClearAndSetInputField(Concept.txtQuantity, quantity);
+            utilityPage.ClearAndSetInputField(Concept.txtUnitPrice, unitPrice);
         }
 
         // SELECCIONAR IGV Y DET.UNIF
@@ -174,11 +172,13 @@ namespace SigesCore.Hooks.VentasPage
                 default:
                     throw new ArgumentException($"La {option} no es válido");
             }
+            Thread.Sleep(3000);
         }
 
         //SELECCIONAR TIPO DE COMPROBANTE
         public void SelectInvoiceType(string option, string module)
         {
+
             if (module == "Nueva Venta" || module == "Venta Modo Caja")
             {
                 utilityPage.SelectInvoiceType(Voucher.DocNewSaleField, option);
@@ -205,25 +205,25 @@ namespace SigesCore.Hooks.VentasPage
         {
             Thread.Sleep(3000);
             //utilityPage.EnterDate(DispatchGuide.StartDateTransferPath, value);
-            utilityPage.EnterField(DispatchGuide.StartDateTransferPath, value);
+            utilityPage.ClearAndSetInputField(DispatchGuide.StartDateTransferPath, value);
         }
 
         // PESO BRUTO TOTAL
         public void TotalGrossWeight(string value)
         {
-            utilityPage.EnterField(DispatchGuide.TotalGrossWeightPath, value);
+            utilityPage.ClearAndSetInputField(DispatchGuide.TotalGrossWeightPath, value);
         }
 
         // NÚMERO DE BULTOS
         public void NumberOfPackages(string value)
         {
-            utilityPage.EnterField(DispatchGuide.NumberOfPackagesPath, value);
+            utilityPage.ClearAndSetInputField(DispatchGuide.NumberOfPackagesPath, value);
         }
 
         // RUC DE TRANSPORTISTA
         public void CarrierRUC(string value)
         {
-            utilityPage.EnterDate(DispatchGuide.CarrierRUCPath, value);
+            utilityPage.InputAndEnter(DispatchGuide.CarrierRUCPath, value);
         }
 
         // MODALIDAD DE TRANSPORTE
@@ -235,20 +235,20 @@ namespace SigesCore.Hooks.VentasPage
         // INGRESO DEL NRO DE DNI DEL CONDUCTOR
         public void DriverDNI(string option)
         {
-            utilityPage.EnterField(DispatchGuide.DriverDNIPath, option);
+            utilityPage.ClearAndSetInputField(DispatchGuide.DriverDNIPath, option);
             driver.FindElement(DispatchGuide.DriverDNIPath).SendKeys(Keys.Enter);
         }
 
         // INGRESO DEL NRO DE LICENCIA DEL CONDUCTOR
         public void DriverLicense(string option)
         {
-            utilityPage.EnterField(DispatchGuide.DriverLicensePath, option);
+            utilityPage.ClearAndSetInputField(DispatchGuide.DriverLicensePath, option);
         }
 
         // INGRESO DE LA PLACA DEL VEHÍCULO
         public void VehiclePlate(string option)
         {
-            utilityPage.EnterField(DispatchGuide.VehiclePlatePath, option);
+            utilityPage.ClearAndSetInputField(DispatchGuide.VehiclePlatePath, option);
         }
 
         // UBIGEO DE DIRECCIÓN DE ORIGEN
@@ -260,7 +260,7 @@ namespace SigesCore.Hooks.VentasPage
         // DETALLE DE DIRECCIÓN DE ORIGEN
         public void OriginAddressDetail(string option)
         {
-            utilityPage.EnterField(DispatchGuide.OriginAddressDetailPath, option);
+            utilityPage.ClearAndSetInputField(DispatchGuide.OriginAddressDetailPath, option);
         }
 
         // UBIGEO DE DIRECCIÓN DE DESTINO
@@ -272,7 +272,7 @@ namespace SigesCore.Hooks.VentasPage
         // DETALLE DE DIRECCIÓN DE DESTINO
         public void DestinationAddressDetail(string option)
         {
-            utilityPage.EnterField(DispatchGuide.DestinationAddressDetailPath, option);
+            utilityPage.ClearAndSetInputField(DispatchGuide.DestinationAddressDetailPath, option);
         }
 
         // CLICK EN ACEPTAR REGISTRO DE GUÍA DE REMISIÓN
@@ -291,13 +291,14 @@ namespace SigesCore.Hooks.VentasPage
         // INGRESAR EL NRO DEL COMPROBANTE (PROPIO DE VENTA POR CONTINGENCIA)
         public void DocumentNumberContingency (string value)
         {
-            utilityPage.EnterField(Dates.DocNumberContingency, value);
+            utilityPage.ClearAndSetInputField(Dates.DocNumberContingency, value);
         }
 
         // SELECCIÓN DE TIPO DE ENTREGA
         public void SelectDeliveryType(string option)
         {
             option = option.ToUpper();
+
             if (option == "INMEDIATA")
             {
                 utilityPage.ClickButton(Delivery.immediate);
@@ -315,6 +316,7 @@ namespace SigesCore.Hooks.VentasPage
         // SELECCIONAR TIPO DE PAGO
         public void SelectPaymentType(string option)
         {
+
             switch (option.ToLower())
             {
                 case "contado":
@@ -337,13 +339,14 @@ namespace SigesCore.Hooks.VentasPage
         // INGRESAR LA INICIAL DEL MONTO A PAGAR (FUNCIÓN PROPIO PARA CRÉDITO RÁPIDO)
         public void InitialQuickPayment(string value, string module)
         {
+
             if (module == "Nueva Venta" || module == "Venta Modo Caja")
             {
-                utilityPage.EnterField(QuickCreedit.InitialMountNewSale, value);
+                utilityPage.ClearAndSetInputField(QuickCreedit.InitialMountNewSale, value);
             }
             else if (module == "Venta por Contingencia")
             {
-                utilityPage.EnterField(QuickCreedit.InitialMountContingency, value);
+                utilityPage.ClearAndSetInputField(QuickCreedit.InitialMountContingency, value);
             }
             else
             {
@@ -397,14 +400,15 @@ namespace SigesCore.Hooks.VentasPage
         // INGRESAR DETALLES DEL PAGO
         public void EnterCardDetails(string bank, string card, string info, string module)
         {
+
             if (module == "Nueva Venta" || module == "Venta Modo Caja")
             {
-                utilityPage.EnterCardDetailsNewSale(bank, card, info);
+                utilityPage.EnterCardDetails("Nueva Venta o Modo Caja", bank, card, info);
             }
 
             else if (module == "Venta por Contingencia")
             {
-                utilityPage.EnterCardDetailsContingency(bank, card, info);
+                utilityPage.EnterCardDetails("Contingency", bank, card, info);
             }
             else
             {
@@ -421,7 +425,7 @@ namespace SigesCore.Hooks.VentasPage
         // INGRESAR EL NRO DE COUTAS (PROPIO PARA CRÉDITO CONFIGURADO)
         public void Cuota(string value)
         {
-            utilityPage.EnterField(ConfiguredCreditPopup.CoutaField, value);
+            utilityPage.ClearAndSetInputField(ConfiguredCreditPopup.CoutaField, value);
         }
 
         //INGRESAR EL NRO DE COUTAS SIN INICIAL (PROPIO PARA CRÉDITO CONFIGURADO)
@@ -440,7 +444,7 @@ namespace SigesCore.Hooks.VentasPage
         public void GenerateQuota()
         {
             utilityPage.ClickButton(ConfiguredCreditPopup.GenerateQuotaButton);
-        }
+        } 
 
         //BOTÓN ACEPTAR (PROPIO PARA CRÉDITO CONFIGURADO) 
         public void Accept()

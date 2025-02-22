@@ -51,7 +51,7 @@ namespace SigesCore.Hooks.VentasPage
         // AGREGAR CONCEPTO POR CÓDIGO BARRA
         public void ConceptOrder(string value)
         {
-            utilityPage.EnterFieldModal(NewOrders.modal, NewOrders.concept, value);
+            utilityPage.InputAndEnterModal(NewOrders.modal, NewOrders.concept, value);
         }
 
         // INGRESAR LA CANTIDAD DEL CONCEPTO
@@ -100,13 +100,13 @@ namespace SigesCore.Hooks.VentasPage
         public void InitialDate(string value)
         {
             Thread.Sleep(11000);
-            utilityPage.EnterField(ConfirmOrderClass.initialDate, value);
+            utilityPage.ClearAndSetInputField(ConfirmOrderClass.initialDate, value);
         }
 
         // INGRESO DE LA FECHA FINAL
         public void FinalDate(string value)
         {
-            utilityPage.EnterField(ConfirmOrderClass.finalDate, value);
+            utilityPage.ClearAndSetInputField(ConfirmOrderClass.finalDate, value);
         }
 
         // INGRESO DE LA FECHA INICIAL
@@ -138,7 +138,7 @@ namespace SigesCore.Hooks.VentasPage
         // INGRESO DE LA OBSERVACIÓN PARA INVALIDAR UN PEDIDO
         public void AddObservation(string value)
         {
-            utilityPage.EnterField(InvalidateOrderClass.observation, value);
+            utilityPage.ClearAndSetInputField(InvalidateOrderClass.observation, value);
             Thread.Sleep(2000);
         }
 

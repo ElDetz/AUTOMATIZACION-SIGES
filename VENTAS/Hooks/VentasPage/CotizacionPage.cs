@@ -34,7 +34,7 @@ namespace SigesCore.Hooks.VentasPage
             Thread.Sleep(4000);
         }
 
-        // CLICK EN NUEVO PEDIDO
+        // CLICK EN NUEVA COTIZACIÓN
         public void ClickNewQouta()
         {
             utilityPage.ClickButton(NewQuote.newQoute);
@@ -43,7 +43,7 @@ namespace SigesCore.Hooks.VentasPage
         // AGREGAR CONCEPTO POR CÓDIGO BARRA
         public void ConceptQuota(string value)
         {
-            utilityPage.EnterFieldModal(NewQuote.modal, NewOrders.concept, value);
+            utilityPage.InputAndEnterModal(NewQuote.modal, NewOrders.concept, value);
         }
 
         // INGRESAR LA CANTIDAD DEL CONCEPTO
@@ -73,7 +73,8 @@ namespace SigesCore.Hooks.VentasPage
         // SELECCIONAR EL TIPO DE CLIENTE
         public void ExpirationDateQouta(string value)
         {
-            utilityPage.EnterFieldModal(NewQuote.modal, NewQuote.expirationDate, value);
+            utilityPage.InputAndEnterModal(NewQuote.modal, NewQuote.expirationDate, value);
+            Thread.Sleep(2000);
         }
 
         // CLICK EN PREGENERAR PEDIDO
@@ -87,27 +88,29 @@ namespace SigesCore.Hooks.VentasPage
         public void ClickPregenerateSale()
         {
             utilityPage.ClickButton(NewQuote.pregenerateSalePath);
-            Thread.Sleep(5000);
+            Thread.Sleep(7000);
         }
 
         // MARCAR EL CHECKBOX PARA DETALLE UNIFICADO
         public void UnifiedDetailOrderModal(string option)
         {
-            NewWindow();
+            utilityPage.NewWindow(driverQuota);
             utilityPage.CheckBox(NewOrders.modal, NewOrders.unifDetail, option);
+            Thread.Sleep(2000);
         }
 
-        // MARCAR EL CHECKBOX PARA DETALLE UNIFICADO
+        // SELECCIONAR EL TIPO DE CLIENTE
         public void CustomerTypeOrderModal(string option, string value)
         {
-            NewWindow();
+            utilityPage.NewWindow(driverQuota);
             utilityPage.CustomerType(NewOrders.modal, NewOrders.client, NewOrders.alias, option, value);
+            Thread.Sleep(2000);
         }
 
         // GUARDAR EL PEDIDO PREGENERADO DESDE COTIZACIÓN
         public void SaveOrderFromQuote()
         {
-            NewWindow();
+            utilityPage.NewWindow(driverQuota);
             driverQuota.FindElement(NewOrders.save).Click();
             Thread.Sleep(2000);
         }
@@ -115,28 +118,9 @@ namespace SigesCore.Hooks.VentasPage
         // GUARDAR LA VENTA PREGENERADA DESDE COTIZACIÓN
         public void SavePregenerateSale()
         {
-            NewWindow();
+            utilityPage.NewWindow(driverQuota);
             driverQuota.FindElement(SaveSalePath.SaveSaleButton).Click();
             Thread.Sleep(4000);
-        }
-
-        // FUNCIÓN ADICIONAL PARA TENER ACCESO A LOS COMPONENTES CUANDO SE GENERA UNA NUEVA PESTAÑA,
-        // UTILIZADO PARA PREGENERAR UN PEDIDO Y UNA VENTA DESDE COTIZACIÓN
-        public void NewWindow()
-        {
-            WebDriverWait wait = new WebDriverWait(driverQuota, TimeSpan.FromSeconds(10));
-            string originalWindow = driverQuota.CurrentWindowHandle;
-
-            wait.Until(d => driverQuota.WindowHandles.Count > 1);
-
-            foreach (string window in driverQuota.WindowHandles)
-            {
-                if (window != originalWindow)
-                {
-                    driverQuota.SwitchTo().Window(window);
-                    break;
-                }
-            }
         }
     }
 }

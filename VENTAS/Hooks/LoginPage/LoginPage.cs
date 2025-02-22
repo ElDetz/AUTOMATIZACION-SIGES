@@ -22,8 +22,8 @@ namespace SigesCore.Hooks.LoginPage
 
         public void LoginToApplication(string email, string password)
         {
-            utilityPage.EnterField(Login.txtEmail, email);
-            utilityPage.EnterField(Login.txtPassword, password);
+            utilityPage.ClearAndSetInputField(Login.txtEmail, email);
+            utilityPage.ClearAndSetInputField(Login.txtPassword, password);
             utilityPage.ClickButton(Login.btnSignIn);
             utilityPage.ClickButton(Login.btnConfirm);
         }

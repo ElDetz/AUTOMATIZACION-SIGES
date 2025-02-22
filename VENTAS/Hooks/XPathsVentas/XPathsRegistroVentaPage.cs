@@ -36,8 +36,6 @@ namespace SigesCore.Hooks.XPaths
     {
         public static readonly By txtBarCode= By.Id("idCodigoBarra");
 
-        //public static readonly By DataEntryFieldS = By.XPath("//input[@class='select2-search__field']");
-
         public static readonly By selConceptSelection = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/registrador-detalles[1]/div[1]/div[1]/selector-concepto-comercial[1]/ng-form[1]/div[1]/div[3]/div[1]/div[1]/span[1]/span[1]/span[1]");
 
         public static readonly By txtQuantity = By.XPath("//input[@id='cantidad-0']");

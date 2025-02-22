@@ -27,13 +27,13 @@ namespace SigesCore.Hooks.VentasPage
         public void SetInitialDate(string value)
         {
             Thread.Sleep(4000);
-            utilityPage.EnterField(RedeemVoucher.initialDate, value);
+            utilityPage.ClearAndSetInputField(RedeemVoucher.initialDate, value);
         }
 
         // INGRESO DE FECHA FINAL
         public void SetFinalDate(string value)
         {
-            utilityPage.EnterField(RedeemVoucher.finalDate, value);
+            utilityPage.ClearAndSetInputField(RedeemVoucher.finalDate, value);
         }
 
         // CLICK EN CONSULTAR VENTAS
@@ -46,7 +46,7 @@ namespace SigesCore.Hooks.VentasPage
         // BUSCAR UNA VENTA POR SU CÓDIGO
         public void SearchSaleField(string value)
         {
-            utilityPage.EnterField(RedeemVoucher.searchSale, value);
+            utilityPage.ClearAndSetInputField(RedeemVoucher.searchSale, value);
         }
 
         // ACTIVAR CHECKBOX DE CANJE
@@ -122,7 +122,7 @@ namespace SigesCore.Hooks.VentasPage
         // INGRESO DEL MOTIVO DE LA NOTA (NOTA DE DÉBITO)
         public void ReasonDebitNote(string value)
         {
-            utilityPage.EnterField(DebitNote.reasonDebitNotePath, value);
+            utilityPage.ClearAndSetInputField(DebitNote.reasonDebitNotePath, value);
         }
 
         // INGRESO DEL MOTIVO DE LA NOTA (NOTA DE DÉBITO)
@@ -134,19 +134,19 @@ namespace SigesCore.Hooks.VentasPage
         // INGRESO DEL TOTAL AUMENTO DEL VALOR (NOTA DE DÉBITO)
         public void TotalAmount(string value)
         {
-            utilityPage.EnterField(DebitNote.totalAmountPath, value);
+            utilityPage.ClearAndSetInputField(DebitNote.totalAmountPath, value);
         }
 
         // INGRESO  DEL INTERÉS TOTAL (NOTA DE DÉBITO)
         public void NoteAmount(string value)
         {
-            utilityPage.EnterField(DebitNote.totalinterestPath, value);
+            utilityPage.ClearAndSetInputField(DebitNote.totalinterestPath, value);
         }
 
         // INGRESAR LA CANTIDAD PARA DEVOLUCIÓN POR ÍTEM (NOTA DE CRÉDITO)
         public void QuantityCreditNote(string value)
         {
-            utilityPage.EnterField(CreditNote.quantityPath, value);
+            utilityPage.ClearAndSetInputField(CreditNote.quantityPath, value);
         }
 
         // CLICK PARA GUARDA LA NOTA
@@ -165,7 +165,7 @@ namespace SigesCore.Hooks.VentasPage
         // INGRESO DE LA OBSERVACIÓN
         public void Observation(string value)
         {
-            utilityPage.EnterField(InvalidateDocumentClass.observation, value);
+            utilityPage.ClearAndSetInputField(InvalidateDocumentClass.observation, value);
         }
 
         // CLICK EN 'SI' PARA ACEPTAR LA INVALIDACIÓN
@@ -225,7 +225,7 @@ namespace SigesCore.Hooks.VentasPage
         // INGRESAR EL CORREO ELECTRÓNICO
         public void EmailField(string value)
         {
-            utilityPage.EnterField(SendDocumentClass.inputEmail, value);
+            utilityPage.ClearAndSetInputField(SendDocumentClass.inputEmail, value);
         }
 
         // AGREGAR EL CORREO INGRESADO
