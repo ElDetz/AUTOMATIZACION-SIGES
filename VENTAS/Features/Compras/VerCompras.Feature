@@ -37,15 +37,16 @@ Scenario: Registrar nueva venta desde la sección Ver Compras1
     #When Medio de Pago 'DEPCU' y 'OK'
     #When Tipo de pago 'CREDITO CONFIGURADO'
     #When Registrar nuevo concepto '73201339' y 'MASCULINO'
-    When Codigo '123456789' Sufijo 'DE 1" 1/2'
+    When Codigo '' Sufijo '' y '' y '' y '' y '' y ''
 
 Scenario: Registrar nueva venta desde la sección Ver Compras3
     Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
     When Proveedor '71310154' Fecha '14/02/2025'
     #When Tarifa 'CLIENTE FRECUENTE' Precio '11' y 'GUARDAR'
-    When Registrar nueva familia 'XD'
+    When Registrar nueva familia 'BIEN' y 'XDDD' y 'SIN CATEGORIA' y 'NO'
 
 Scenario: Registrar nueva venta desde la sección Ver Compras4
     Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
     When Proveedor '71310154' Fecha '14/02/2025'
     When Registrar nueva familia 'BIEN' y 'XDDD' y 'SIN CATEGORIA' y 'NO'
+    When hola ''

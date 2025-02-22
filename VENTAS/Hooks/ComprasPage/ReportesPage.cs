@@ -5,7 +5,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using SigesCore.Hooks.Utility;
-using SigesCore.Hoks;
+using SigesCore.Hooks;
 using SigesCore.Hooks.Utility;
 using SigesCore.Hooks.XPaths;
 using System;

@@ -365,6 +365,7 @@ Scenario: Registro de una nueva venta con entrega diferida o inmediata
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
 	And Seleccionar tipo de entrega 'INMEDIATA'
+	And Hola ''
 	And Seleccionar tipo de pago "contado"
 	And Seleccionar el medio de pago 'TDEB'
 	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Nueva Venta"

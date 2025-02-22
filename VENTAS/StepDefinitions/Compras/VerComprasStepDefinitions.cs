@@ -135,6 +135,12 @@ namespace SigesCore.StepDefinitions.Compras
             verCompraspage.SearchPurchases(fromdate, todate, optionsearch, specificoptionsearch, datasearch);
         }*/
 
+        [When("hola {string}")]
+        public void WhenHola(string p0)
+        {
+            throw new PendingStepException();
+        }
+
     }
 
 }

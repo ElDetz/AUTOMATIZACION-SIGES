@@ -20,8 +20,9 @@ namespace SigesCore.Features.Ventas
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("NuevaVenta")]
-    public partial class NuevaVentaFeature
+    [NUnit.Framework.DescriptionAttribute("Registrar una venta")]
+    [NUnit.Framework.FixtureLifeCycleAttribute(NUnit.Framework.LifeCycle.InstancePerTestCase)]
+    public partial class RegistrarUnaVentaFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
@@ -1507,16 +1508,19 @@ await this.FeatureBackgroundAsync();
  await testRunner.AndAsync("Seleccionar tipo de entrega \'INMEDIATA\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 368
- await testRunner.AndAsync("Seleccionar tipo de pago \"contado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Hola \'\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 369
- await testRunner.AndAsync("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("Seleccionar tipo de pago \"contado\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 370
+ await testRunner.AndAsync("Seleccionar el medio de pago \'TDEB\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 371
  await testRunner.AndAsync("Rellene datos de la tarjeta \'BBVA\' , \'MASTER\' y \'206556\' en el módulo de \"Nueva V" +
                         "enta\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 371
+#line 372
  await testRunner.ThenAsync("Guardar venta", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }

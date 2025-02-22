@@ -172,7 +172,7 @@ this.ScenarioInitialize(scenarioInfo);
     await testRunner.WhenAsync("Proveedor \'71310154\' Fecha \'14/02/2025\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 40
-    await testRunner.WhenAsync("Codigo \'123456789\' Sufijo \'DE 1\" 1/2\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.WhenAsync("Codigo \'\' Sufijo \'\' y \'\' y \'\' y \'\' y \'\' y \'\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -202,7 +202,7 @@ this.ScenarioInitialize(scenarioInfo);
     await testRunner.WhenAsync("Proveedor \'71310154\' Fecha \'14/02/2025\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 46
-    await testRunner.WhenAsync("Registrar nueva familia \'XD\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.WhenAsync("Registrar nueva familia \'BIEN\' y \'XDDD\' y \'SIN CATEGORIA\' y \'NO\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -233,6 +233,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 51
     await testRunner.WhenAsync("Registrar nueva familia \'BIEN\' y \'XDDD\' y \'SIN CATEGORIA\' y \'NO\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 52
+    await testRunner.WhenAsync("hola \'\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
