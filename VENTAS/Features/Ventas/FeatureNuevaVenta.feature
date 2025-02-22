@@ -25,8 +25,10 @@ Scenario: Registro de una nueva venta con pago al contado
 Scenario: Registro de una nueva venta con pago al crédito rápido
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
@@ -39,8 +41,10 @@ Scenario: Registro de una nueva venta con pago al crédito rápido
 Scenario: Registro de una nueva venta con pago al crédito rápido sin inicial
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
@@ -50,8 +54,10 @@ Scenario: Registro de una nueva venta con pago al crédito rápido sin inicial
 Scenario: Registro de una nueva venta con pago al crédito configurado
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '10'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
@@ -68,8 +74,10 @@ Scenario: Registro de una nueva venta con pago al crédito configurado
 Scenario: Registro de una nueva venta con pago al crédito configurado sin inicial
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
@@ -85,8 +93,10 @@ Scenario: Registro de una nueva venta con pago al crédito configurado sin inici
 Scenario: Registro de una venta modo caja con pago al contado
 	When Seleccionar Venta y luego "Venta Modo Caja"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar un punto de venta 'PRINCIPAL'
 	And Seleccionar un vendedor 'KETHY'
@@ -100,8 +110,10 @@ Scenario: Registro de una venta modo caja con pago al contado
 Scenario: Registro de una venta modo caja con pago al crédito rápido
 	When Seleccionar Venta y luego "Venta Modo Caja"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar un punto de venta 'PRINCIPAL'
 	And Seleccionar un vendedor 'KETHY'
@@ -116,8 +128,10 @@ Scenario: Registro de una venta modo caja con pago al crédito rápido
 Scenario: Registro de una venta modo caja con pago al crédito rápido sin inicial
 	When Seleccionar Venta y luego "Venta Modo Caja"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar un punto de venta 'PRINCIPAL'
 	And Seleccionar un vendedor 'KETHY'
@@ -129,8 +143,10 @@ Scenario: Registro de una venta modo caja con pago al crédito rápido sin inici
 Scenario: Registro de una venta modo caja con pago al crédito configurado
 	When Seleccionar Venta y luego "Venta Modo Caja"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar un punto de venta 'PRINCIPAL'
 	And Seleccionar un vendedor 'KETHY'
@@ -149,8 +165,10 @@ Scenario: Registro de una venta modo caja con pago al crédito configurado
 Scenario: Registro de una modo caja con pago al crédito configurado sin inicial
 	When Seleccionar Venta y luego "Venta Modo Caja"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar un punto de venta 'PRINCIPAL'
 	And Seleccionar un vendedor 'KETHY'
@@ -168,8 +186,10 @@ Scenario: Registro de una modo caja con pago al crédito configurado sin inicial
 Scenario: Registro de una venta por contigencia con pago al contado
 	When Seleccionar Venta y luego "Venta Por Contingencia"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Ingresar fecha de emisión de la venta '30/01/2025'
@@ -183,8 +203,10 @@ Scenario: Registro de una venta por contigencia con pago al contado
 Scenario: Registro de una venta por contigencia con pago al crédito rápido
 	When Seleccionar Venta y luego "Venta Por Contingencia"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Ingresar fecha de emisión de la venta '1/01/2025'
@@ -199,8 +221,10 @@ Scenario: Registro de una venta por contigencia con pago al crédito rápido
 Scenario: Registro de una venta por contigencia con pago al crédito rápido sin inicial
 	When Seleccionar Venta y luego "Venta Por Contingencia"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Ingresar fecha de emisión de la venta '30/01/2025'
@@ -212,8 +236,10 @@ Scenario: Registro de una venta por contigencia con pago al crédito rápido sin
 Scenario: Registro de una venta por contigencia con pago al crédito configurado
 	When Seleccionar Venta y luego "Venta Por Contingencia"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Ingresar fecha de emisión de la venta '30/01/2025'
@@ -232,8 +258,10 @@ Scenario: Registro de una venta por contigencia con pago al crédito configurado
 Scenario: Registro de una venta por contigencia con pago al crédito configurado sin inicial
 	When Seleccionar Venta y luego "Venta Por Contingencia"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Ingresar fecha de emisión de la venta '30/01/2025'
@@ -251,8 +279,10 @@ Scenario: Registro de una venta por contigencia con pago al crédito configurado
 Scenario: Registro de una venta con guía de remisión con transporte público
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'BOLETA' en el módulo de "Nueva Venta"
@@ -275,8 +305,10 @@ Scenario: Registro de una venta con guía de remisión con transporte público
 Scenario: Registro de una venta con guía de remisión con transporte privada
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'BOLETA' en el módulo de "Nueva Venta"
@@ -307,8 +339,10 @@ Scenario: Registro de una venta con detalle unificado
     | BARRA  | 108300559 |
     | SELECCION  | 400001474 |
     | SELECCION  | 400000437 |
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Activar Detalle Unificado 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
@@ -323,8 +357,10 @@ Scenario: Registro de una venta con detalle unificado
 Scenario: Registro de una nueva venta con entrega diferida o inmediata
 	When Seleccionar Venta y luego "Nueva Venta"
 	And Agregar concepto por 'barra' y valor '108300559'
-	And Ingresar cantidad '2'
-	And Ingresar precio unitario '30'
+	And Ingresa los siguientes datos del producto:
+    | Campo            | Valor |
+    | Cantidad         | 2     |
+    | Precio Unitario  | 30    |
 	And Activar IGV 'SI'
 	And Seleccionar tipo de cliente 'DNI' '72380461'
 	And Seleccionar tipo de comprobante 'NOTA' en el módulo de "Nueva Venta"
