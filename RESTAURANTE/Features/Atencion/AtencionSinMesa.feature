@@ -34,6 +34,7 @@ Scenario: Atencion de una orden sin mesa - AL PASO
 	And Se ingresa al módulo 'Atencion'
 	And Se seleciona el tipo de atencion 'SIN MESA' 
 	And Se seleciona el modo 'AL PASO'
+	And Se hace clic en 'Nueva' atencion
 	And Se ingresa el cliente 'LEONARDO'
 	And Se selecciona el mozo 'JAVIER STANLY CISNEROS SANCHEZ'
 	When Se ingresa las siguientes ordenes: 

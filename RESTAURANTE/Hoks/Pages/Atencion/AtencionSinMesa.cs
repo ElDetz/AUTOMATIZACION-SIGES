@@ -307,7 +307,10 @@ namespace RESTAURANTE.Hoks.Pages.Atencion
            
         }
 
-        public void AccionTabla(string _item, string _cantidad)
+
+
+
+        public void AccionTabla(string _item, string _cantidad, string _accion)
         {
             // Encuentra la tabla dentro del div contenedor
             IWebElement tablaOrdenes = driver.FindElement(By.XPath("//div[@id='ordenes']//table"));
@@ -328,29 +331,60 @@ namespace RESTAURANTE.Hoks.Pages.Atencion
 
                     if (item.Contains("VINO FRONTERA BOTELLA 1 UN") && cantidad.Contains("3.00"))
                     {
-                        // IWebElement botonAtender = fila.FindElement(By.XPath(".//button[@title='Agregar observacion']"));
-                        IWebElement botonAtender = fila.FindElement(By.XPath(".//a[@title='Agregar observacion']"));
+                        string xpathAccion = _accion switch
+                        {
+                            "Atender" => ".//a[@title='Atender']",
+                            "Anular" => ".//a[@title='Anular']",
+                            "Devolver" => ".//a[@title='Devolver: se descarta por problemas de calidad']",
+                            "Agregar anotacion" => ".//a[@title='Agregar Anotacion']",
+                            "Agregar observacion" => ".//a[@title='Agregar observacion']",
 
-                        botonAtender.Click();
+                            _ => throw new ArgumentException($"La acción '{_accion}' ingresada no es válida")
+                        };
+
+                        IWebElement botonAccion = fila.FindElement(By.XPath(xpathAccion));
+                        botonAccion.Click();
                         Thread.Sleep(2000);
 
+                        // IWebElement botonAtender = fila.FindElement(By.XPath(".//button[@title='Agregar observacion']"));
                         IWebElement inputAnotacion = driver.FindElement(By.Id("input-anotacion-detalleOrden04"));
                         inputAnotacion.SendKeys("Observacion 2");
                         Thread.Sleep(2000);
                         IWebElement GuardarAnotacion = driver.FindElement(By.XPath(".//a[@title='Guardar observacion']"));
                         Thread.Sleep(4000);
-
                     }
                 }
                 catch (NoSuchElementException)
                 {
                     continue; // Si la fila no tiene una descripción válida, sigue con la siguiente
                 }
-
             }
 
         }
 
+        /*
+        switch (_accion)
+            {
+                case "Atender":
+                    botonAccion = fila.FindElement(By.XPath(".//a[@title='Atender']"));
+                    break;
+
+                case "Anular":
+                    botonAccion = fila.FindElement(By.XPath(".//a[@title='Anular']"));
+                    break;
+                case "Agregar anotacion":
+                    break;
+                case "Devolver":
+                    botonAccion = fila.FindElement(By.XPath(".//a[@title='Devolver: se descarta por problemas de calidad']"));
+
+                    break;
+                case "Agregar observacion":
+
+                    break;
+                default:
+                    throw new ArgumentException($"El {_accion} no es válido");
+            }
+        */
 
         public void AccionOrden(string _accion)
         {

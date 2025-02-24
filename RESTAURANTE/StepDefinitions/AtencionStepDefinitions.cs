@@ -124,7 +124,7 @@ namespace RESTAURANTE.StepDefinitions
         [Given("Se realiza la accion de {string}")]
         public void GivenSeRealizaLaAccionDe(string _accion)
         {
-            atencionSinMesaPage.AccionTabla(_accion, "");
+            atencionSinMesaPage.AccionTabla("item", "cantidad",_accion);
 
             // atencionSinMesaPage.AccionPedido(_accion);
         }
