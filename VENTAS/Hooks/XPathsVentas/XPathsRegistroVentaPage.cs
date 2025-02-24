@@ -10,62 +10,52 @@ namespace SigesCore.Hooks.XPaths
 {
     public class Login
     {
-        public static readonly By EmailInputField = By.XPath("//input[@id='Email']");
+        public static readonly By txtEmail = By.XPath("//input[@id='Email']");
 
-        public static readonly By PasswordInputField = By.XPath("//input[@id='Password']");
+        public static readonly By txtPassword = By.XPath("//input[@id='Password']");
 
-        public static readonly By SignInButton = By.XPath("//button[contains(text(),'Iniciar')]");
+        public static readonly By btnSignIn = By.XPath("//button[contains(text(),'Iniciar')]");
 
-        public static readonly By ConfirmButton = By.XPath("//button[contains(text(),'Aceptar')]");
+        public static readonly By btnConfirm = By.XPath("//button[contains(text(),'Aceptar')]");
     }
 
     public class SalesModule
     {
-        public static readonly By SalesMenu = By.XPath("//span[contains(text(),'Venta')]");
+        public static readonly By btnSalesMenu = By.XPath("//span[contains(text(),'Venta')]");
 
-        public static readonly By NewSaleLink = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[1]/a[1]");
+        public static readonly By btnNewSale = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[1]/a[1]");
 
-        public static readonly By SaleCashModeLink = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[2]/a[1]");
+        public static readonly By btnSaleCashMode = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[2]/a[1]");
 
-        public static readonly By ContingencySaleLink = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[3]/a[1]");
+        public static readonly By btnContingencySale = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[3]/a[1]");
 
-        public static readonly By ViewSalesLink = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[4]/a[1]");
-
-        public static readonly By SellerReportLink = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[5]/a[1]");
-
-        public static readonly By PointsReportLink = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[6]/a[1]");
-
-        public static readonly By ManagerReportLink = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[7]/a[1]");
-
-        public static readonly By ReportsMenu = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[8]/a[1]");
+        public static readonly By btnViewSales = By.XPath("//body/div[@id='wrapper']/aside[1]/div[1]/section[1]/ul[1]/li[1]/ul[1]/li[4]/a[1]");
     }
 
     public class Concept
     {
-        public static readonly By BarcodeInputField = By.XPath("//input[@id='idCodigoBarra']");
+        public static readonly By txtBarCode= By.Id("idCodigoBarra");
 
-        public static readonly By DataEntryField = By.XPath("//input[@class='select2-search__field']");
+        public static readonly By selConceptSelection = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/registrador-detalles[1]/div[1]/div[1]/selector-concepto-comercial[1]/ng-form[1]/div[1]/div[3]/div[1]/div[1]/span[1]/span[1]/span[1]");
 
-        public static readonly By ConceptSelection = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/registrador-detalles[1]/div[1]/div[1]/selector-concepto-comercial[1]/ng-form[1]/div[1]/div[3]/div[1]/div[1]/span[1]/span[1]/span[1]");
+        public static readonly By txtQuantity = By.XPath("//input[@id='cantidad-0']");
 
-        public static readonly By QuantityInputField = By.XPath("//input[@id='cantidad-0']");
-
-        public static readonly By UnitPriceInputField = By.XPath("//input[@id='precio-0']");
+        public static readonly By txtUnitPrice = By.XPath("//input[@id='precio-0']");
 
     }
 
     public class CheckBox
     {
-        public static readonly By CheckboxIGV = By.XPath("//input[@id='ventaigv0']");
+        public static readonly By chkIGV = By.XPath("//input[@id='ventaigv0']");
 
-        public static readonly By CheckboxUnifiedDetail = By.XPath("//input[@id='detalleunificado0']");
+        public static readonly By chkUnifiedDetail = By.XPath("//input[@id='detalleunificado0']");
     }
 
     public class Dates
     {
-        public static readonly By ClientField = By.XPath("//input[@id='DocumentoIdentidad']");
+        public static readonly By chkTypeClient = By.Id("DocumentoIdentidad");
 
-        public static readonly By AliasField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[5]/input[1]");
+        public static readonly By txtAlias = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[5]/input[1]");
 
         public static readonly By RegisteredCustomerButton = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/selector-actor-comercial[1]/ng-form[1]/div[1]/div[1]/div[1]/a[3]");
 
@@ -91,6 +81,13 @@ namespace SigesCore.Hooks.XPaths
         public static readonly By DocInputField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[6]/selector-comprobante[1]/div[1]/ng-form[1]/div[1]/div[1]/span[2]/span[1]/span[1]/input[1]");
 
         public static readonly By DocContingencyField = By.XPath("//body/div[@id='wrapper']/div[1]/section[1]/div[1]/div[1]/div[1]/form[1]/div[2]/facturacion-venta[1]/form[1]/div[1]/div[2]/div[1]/div[7]/selector-comprobante[1]/div[1]/ng-form[1]/div[1]/div[1]/span[1]/span[1]/span[1]");
+    }
+
+    public class Delivery
+    {
+        public static readonly By immediate = By.XPath("//label[@for='radioEntrega1']");
+
+        public static readonly By deferredLabel = By.XPath("//label[@for='radioEntrega2']");
     }
 
     public class DispatchGuide

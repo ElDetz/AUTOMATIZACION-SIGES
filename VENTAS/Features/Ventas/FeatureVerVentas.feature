@@ -8,15 +8,15 @@ Scenario: Canjear comprobante
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
 	And Ingresar fecha inicial "27/01/2025"
-	And Ingresar fecha final "11/02/2025"
+	And Ingresar fecha final "20/02/2025"
 	And Click en consultar ventas
-	And Buscar venta 'NV02-46'
+	And Buscar venta 'NV02-53'
 	And Activar canje
 	And Seleccionar venta
 	And Click en el botón canjear
 	And Seleccionar el tipo de comprobante "BOLETA DE VENTA ELECTRONICA"
 	And Click en el botón aceptar
-	Then Ver comprobante canjeada 'NV02-47'
+	Then Ver comprobante
 
 @NotaDebito
 
@@ -24,182 +24,179 @@ Scenario: Emitir una nota de débito con aumento en el valor
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
 	And Ingresar fecha inicial "27/01/2025"
-	And Ingresar fecha final "11/02/2025"
+	And Ingresar fecha final "19/02/2025"
 	And Click en consultar ventas
 	And Buscar venta 'B002-27905'
 	And Ver venta buscada
-	And Click en nota de débito
-	And Seleccionar el tipo de nota de débito ''
-	And Seleccionar el documento ''
-	And Escribir el motivo de la nota ' '
-	And Ingresar el aumento de valor de la nota ' '
-	And Seleccionar tipo de pago "contado"
-	And Seleccionar el medio de pago 'TDEB'
-	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Ver Ventas"
-	And Guardar nota de débito
-	Then Ver la nota de débito emitida
+	And Elegir tipo de nota 'DÉBITO'
+	And Seleccionar el tipo de nota "AUMENTO EN EL VALOR"
+	And Seleccionar el documento "NOTA DE DEBITO"
+	And Escribir el motivo de la nota "Aumentó el valor"
+	And Ingresar el aumento de valor de la nota '60'
+	And Guardar nota
+	Then Ver comprobante
 
 Scenario: Emitir una nota de débito con interés por mora
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
-	And Ingresar fecha inicial ''
-	And Ingresar fecha final ''
+	And Ingresar fecha inicial "27/01/2025"
+	And Ingresar fecha final "12/02/2025"
 	And Click en consultar ventas
-	And Buscar venta ''
+	And Buscar venta 'B002-27901'
 	And Ver venta buscada
-	And Click en nota de débito
-	And Seleccionar el tipo de nota de débito ''
-	And Seleccionar el documento ''
-	And Escribir el motivo de la nota ' '
-	And Ingresar el interés total ' '
-	And Seleccionar tipo de pago "contado"
-	And Seleccionar el medio de pago 'TDEB'
-	And Rellene datos de la tarjeta 'BBVA' , 'MASTER' y '206556' en el módulo de "Ver Ventas"
-	And Guardar nota de débito
-	Then Ver la nota de débito emitida
+	And Elegir tipo de nota 'DÉBITO'
+	And Seleccionar el tipo de nota "INTERESES POR MORA"
+	And Seleccionar el documento "NOTA DE DEBITO"
+	And Escribir el motivo de la nota "Interés por mora"
+	And Ingresar el interés total '50'
+	And Guardar nota
+	Then Ver comprobante
 
 @NotaCredito
 
 Scenario: Emitir una nota de crédito por anulación de la operación
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
-	And Ingresar fecha inicial ''
-	And Ingresar fecha final ''
+	And Ingresar fecha inicial "27/01/2025"
+	And Ingresar fecha final "19/02/2025"
 	And Click en consultar ventas
-	And Buscar venta ''
+	And Buscar venta 'B002-27922'
 	And Ver venta buscada
-	And Click en nota de crédito
-	And Seleccionar el tipo de nota de crédito ''
-	And Seleccionar el documento ''
-	And Escribir el motivo de la nota ' '
-	And Guardar nota de crédito
-	Then Ver la nota de crédito emitida
+	And Elegir tipo de nota 'CRÉDITO'
+	And Seleccionar el tipo de nota "ANULACIÓN DE LA OPERACIÓN"
+	And Seleccionar el documento "NOTA DE CREDITO"
+	And Escribir el motivo de la nota "Anulación"
+	And Seleccionar el tipo de entrega 'DIFERIDA'
+	And Guardar nota
+	Then Ver comprobante
 
 Scenario: Emitir una nota de crédito por descuento global
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
-	And Ingresar fecha inicial ''
-	And Ingresar fecha final ''
+	And Ingresar fecha inicial "27/01/2025"
+	And Ingresar fecha final "19/02/2025"
 	And Click en consultar ventas
-	And Buscar venta ''
+	And Buscar venta 'B002-27903'
 	And Ver venta buscada
-	And Click en nota de crédito
-	And Seleccionar el tipo de nota de crédito ''
-	And Seleccionar el documento ''
-	And Escribir el motivo de la nota ' '
-	And Ingresar el descuento global ' '
-	And Guardar nota de crédito
-	Then Ver la nota de crédito emitida
+	And Elegir tipo de nota 'CRÉDITO'
+	And Seleccionar el tipo de nota "DESCUENTO GLOBAL"
+	And Seleccionar el documento "NOTA DE CREDITO"
+	And Escribir el motivo de la nota "Descuento"
+	And Ingresar el descuento global '0.1'
+	And Guardar nota
+	Then Ver comprobante
 
 Scenario: Emitir una nota de crédito por descuento por Item
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
-	And Ingresar fecha inicial ''
-	And Ingresar fecha final ''
+	And Ingresar fecha inicial "27/01/2025"
+	And Ingresar fecha final "19/02/2025"
 	And Click en consultar ventas
-	And Buscar venta ''
+	And Buscar venta 'B002-27899'
 	And Ver venta buscada
-	And Click en nota de crédito
-	And Seleccionar el tipo de nota de crédito ''
-	And Seleccionar el documento ''
-	And Escribir el motivo de la nota ' '
-	And Ingresar el total de descuento ''
-	And Guardar nota de crédito
-	Then Ver la nota de crédito emitida
-
-Scenario: Emitir una nota de crédito por devolución total
-	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
-	When Seleccionar Venta y luego "Ver Ventas"
-	And Ingresar fecha inicial ''
-	And Ingresar fecha final ''
-	And Click en consultar ventas
-	And Buscar venta ''
-	And Ver venta buscada
-	And Click en nota de crédito
-	And Seleccionar el tipo de nota de crédito ''
-	And Seleccionar el documento ''
-	And Escribir el motivo de la nota ' '
-	And Guardar nota de crédito
-	Then Ver la nota de crédito emitida
+	And Elegir tipo de nota 'CRÉDITO'
+	And Seleccionar el tipo de nota "DESCUENTO POR ÍTEM"
+	And Seleccionar el documento "NOTA DE CREDITO"
+	And Escribir el motivo de la nota "Descuento"
+	And Ingresar el total de descuento '1'
+	And Guardar nota
+	Then Ver comprobante
 
 Scenario: Emitir una nota de crédito por devolución por Item
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
-	And Ingresar fecha inicial ''
-	And Ingresar fecha final ''
+	And Ingresar fecha inicial "27/01/2025"
+	And Ingresar fecha final "19/02/2025"
 	And Click en consultar ventas
-	And Buscar venta ''
+	And Buscar venta 'F002-8174'
 	And Ver venta buscada
-	And Click en nota de crédito
-	And Seleccionar el tipo de nota de crédito ''
-	And Seleccionar el documento ''
-	And Escribir el motivo de la nota ' '
-	And Guardar nota de crédito
-	Then Ver la nota de crédito emitida
+	And Elegir tipo de nota 'CRÉDITO'
+	And Seleccionar el tipo de nota "DEVOLUCIÓN POR ÍTEM"
+	And Seleccionar el documento "NOTA DE CREDITO"
+	And Escribir el motivo de la nota "Devolución por ítem"
+	And Ingresar la cantidad '1'
+	And Guardar nota
+	Then Ver comprobante
 
-@InvalidarVenta
-
-Scenario: Invalidar una venta
+Scenario: Emitir una nota de crédito por devolución total
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
-	And Ingresar fecha inicial ''
-	And Ingresar fecha final ''
+	And Ingresar fecha inicial "27/01/2025"
+	And Ingresar fecha final "19/02/2025"
 	And Click en consultar ventas
-	And Buscar venta ''
+	And Buscar venta 'F002-8175'
+	And Ver venta buscada
+	And Elegir tipo de nota 'CRÉDITO'
+	And Seleccionar el tipo de nota "DEVOLUCIÓN TOTAL"
+	And Seleccionar el documento "NOTA DE CREDITO"
+	And Escribir el motivo de la nota "Devolución total"
+	And Seleccionar el tipo de entrega 'DIFERIDA'
+	And Guardar nota
+	Then Ver comprobante
+
+@InvalidarComprobante
+
+Scenario: Invalidar un comprobante 
+	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
+	When Seleccionar Venta y luego "Ver Ventas"
+	And Ingresar fecha inicial "27/01/2025"
+	And Ingresar fecha final "13/02/2025"
+	And Click en consultar ventas
+	And Buscar venta 'B002-27909'
 	And Ver venta buscada
 	And Click en el botón invalidar
-	And Ingresar la observación ' '
-	And Click en opción sí
-	Then Ver venta invalidada
+	And Ingresar la observación "Error en el monto"
+	And Click en opción sí para invalidar documento
+	Then Ver comprobante
 
 @ClonarVenta
 
 Scenario: Clonar una venta
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
-	And Ingresar fecha inicial ''
-	And Ingresar fecha final ''
+	And Ingresar fecha inicial "27/01/2025"
+	And Ingresar fecha final "13/02/2025"
 	And Click en consultar ventas
-	And Buscar venta ''
+	And Buscar venta 'B002-27908'
 	And Ver venta buscada
 	And Click en el botón clonar
-	Then Guardar Venta
+	Then Guardar venta
 
-@ImprimirVenta
+@ImprimirComprobante
 
-Scenario: Imprimir una venta
+Scenario: Imprimir comprobante
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
-	And Ingresar fecha inicial ''
-	And Ingresar fecha final ''
+	And Ingresar fecha inicial "27/01/2025"
+	And Ingresar fecha final "13/02/2025"
 	And Click en consultar ventas
-	And Buscar venta ''
+	And Buscar venta 'B002-27909'
 	And Ver venta buscada
 	Then Click en el botón imprimir
 
-@DescargarVenta
+@DescargarComprobante
 
-Scenario: Descargar una venta
+Scenario: Descargar comprobante
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
-	And Ingresar fecha inicial ''
-	And Ingresar fecha final ''
+	And Ingresar fecha inicial "27/01/2025"
+	And Ingresar fecha final "13/02/2025"
 	And Click en consultar ventas
-	And Buscar venta ''
+	And Buscar venta 'B002-27909'
 	And Ver venta buscada
-	Then Click en el botón descargar
+	Then Seleccionar el tipo de descarga 'pdf'
 
-@EnviarVenta
+@EnviarComprobante
 
-Scenario: Enviar documento de una venta
+Scenario: Enviar comprobante
 	Given Inicio de sesion con usuario 'admin@plazafer.com' y contrasena 'calidad'
 	When Seleccionar Venta y luego "Ver Ventas"
-	And Ingresar fecha inicial ''
-	And Ingresar fecha final ''
+	And Ingresar fecha inicial "27/01/2025"
+	And Ingresar fecha final "13/02/2025"
 	And Click en consultar ventas
-	And Buscar venta ''
+	And Buscar venta 'B002-27909'
 	And Ver venta buscada
 	And Click en el botón enviar
-	And Ingresar correo ' ' 
-	And Click en el botón agregar correo
-	Then Enviar documento de venta
+	And Ingresar correo 'kevinsanchezcabrerakevin@gmail.com' 
+	And Click en el botón agregar el correo
+	Then Enviar comprobante de venta
